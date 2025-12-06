@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { currentPhase, globalProgress, phaseBoundaries, totalScrollLength } from '../stores/scroll.js';
+  import { currentPhase, globalProgress, phaseBoundaries, totalScrollLength, updateHash } from '../stores/scroll.js';
 
   export let id;
   export let index;
@@ -42,6 +42,9 @@
           const phaseStart = boundary.start / totalScrollLength;
           const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
           globalProgress.set(phaseStart + self.progress * phaseLength);
+
+          // Update URL hash (debounced by replaceState check)
+          updateHash(index, self.progress);
         }
       },
       onEnter: () => {

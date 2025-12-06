@@ -7,13 +7,14 @@ export const globalProgress = writable(0);
 export const currentPhase = writable(0);
 
 // Phase-Grenzen in vh (aus knowledge.md → TEIL 3 + Outro)
+// Mit steps für URL-basierte Navigation
 export const phaseBoundaries = [
-  { id: 'intro', start: 0, end: 100, label: 'Promptotyping' },
-  { id: 'phase1', start: 100, end: 200, label: 'Vorbereitung' },
-  { id: 'phase2', start: 200, end: 320, label: 'Exploration' },
-  { id: 'phase3', start: 320, end: 440, label: 'Destillation' },
-  { id: 'phase4', start: 440, end: 600, label: 'Implementation' },
-  { id: 'outro', start: 600, end: 720, label: 'Praxis' },
+  { id: 'intro', start: 0, end: 100, label: 'Promptotyping', steps: ['definition', 'system142', 'herausforderung', 'methodik', 'phasen'] },
+  { id: 'phase1', start: 100, end: 200, label: 'Vorbereitung', steps: ['titel', 'text', 'sammeln', 'zusammenfuehren', 'workspace'] },
+  { id: 'phase2', start: 200, end: 320, label: 'Exploration', steps: ['data', 'dialog', 'exploration', 'entitaeten'] },
+  { id: 'phase3', start: 320, end: 440, label: 'Destillation', steps: ['requirements', 'layout', 'partikel', 'dokumente'] },
+  { id: 'phase4', start: 440, end: 600, label: 'Implementation', steps: ['implementation', 'expert', 'dialog', 'browser', 'loops'] },
+  { id: 'outro', start: 600, end: 720, label: 'Praxis', steps: ['konklusion', 'screenshot', 'cases', 'imperative'] },
 ];
 
 // Gesamte Scroll-Länge in vh
@@ -49,5 +50,88 @@ export function initReducedMotion() {
     query.addEventListener('change', (e) => {
       prefersReducedMotion.set(e.matches);
     });
+  }
+}
+
+/**
+ * Parse URL hash and scroll to the correct position
+ * Supports: #intro, #phase1, #phase1-workspace, #phase2-dialog, etc.
+ * Call this after ScrollTrigger is initialized
+ */
+export function scrollToHash() {
+  if (typeof window === 'undefined') return;
+
+  const hash = window.location.hash.slice(1); // Remove #
+  if (!hash) return;
+
+  // Parse hash: "phase1" or "phase1-workspace"
+  const parts = hash.split('-');
+  const phaseId = parts[0];
+  const stepId = parts.slice(1).join('-'); // Handle multi-part step names
+
+  // Find phase
+  const phaseIndex = phaseBoundaries.findIndex(p => p.id === phaseId);
+  if (phaseIndex === -1) return;
+
+  const phase = phaseBoundaries[phaseIndex];
+
+  // Calculate base scroll position for phase start
+  const phaseStartVh = phase.start;
+  const phaseHeightVh = phase.end - phase.start;
+
+  let targetProgress = 0; // Progress within phase (0-1)
+
+  if (stepId && phase.steps) {
+    const stepIndex = phase.steps.indexOf(stepId);
+    if (stepIndex !== -1) {
+      // Calculate progress for this step
+      targetProgress = (stepIndex + 0.5) / phase.steps.length;
+    }
+  }
+
+  // Convert to scroll position using ScrollTrigger if available
+  // @ts-ignore
+  const ScrollTrigger = window.ScrollTrigger;
+  if (ScrollTrigger) {
+    const triggers = ScrollTrigger.getAll();
+    const phaseTrigger = triggers.find(t => t.trigger?.id === phaseId);
+
+    if (phaseTrigger) {
+      const targetScroll = phaseTrigger.start + (phaseTrigger.end - phaseTrigger.start) * targetProgress;
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      return;
+    }
+  }
+
+  // Fallback: use vh calculation
+  const targetVh = phaseStartVh + (phaseHeightVh * targetProgress);
+  const targetPx = (targetVh / 100) * window.innerHeight;
+  window.scrollTo({ top: targetPx, behavior: 'smooth' });
+}
+
+/**
+ * Update URL hash based on current phase and step
+ * Call this from Phase.svelte on progress update
+ */
+export function updateHash(phaseIndex, stepProgress) {
+  if (typeof window === 'undefined') return;
+
+  const phase = phaseBoundaries[phaseIndex];
+  if (!phase) return;
+
+  let newHash = phase.id;
+
+  if (phase.steps && phase.steps.length > 0) {
+    const stepIndex = Math.floor(stepProgress * phase.steps.length);
+    const clampedIndex = Math.min(stepIndex, phase.steps.length - 1);
+    const stepId = phase.steps[clampedIndex];
+    if (stepId) {
+      newHash = `${phase.id}-${stepId}`;
+    }
+  }
+
+  // Only update if different (avoid history spam)
+  if (window.location.hash !== `#${newHash}`) {
+    history.replaceState(null, '', `#${newHash}`);
   }
 }

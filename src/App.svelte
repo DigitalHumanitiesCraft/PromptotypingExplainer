@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { initReducedMotion, currentPhase, globalProgress, phaseProgress } from './lib/stores/scroll.js';
+  import { initReducedMotion, currentPhase, globalProgress, phaseProgress, scrollToHash } from './lib/stores/scroll.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
   import Phase from './lib/components/Phase.svelte';
@@ -13,6 +13,15 @@
 
   onMount(() => {
     initReducedMotion();
+
+    // Wait for ScrollTrigger to initialize, then scroll to hash
+    setTimeout(() => {
+      scrollToHash();
+    }, 500);
+
+    // Handle hash changes (back/forward navigation)
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
   });
 
   // Continuous background based on globalProgress

@@ -2,10 +2,15 @@
   import { currentPhase, phaseBoundaries, phaseProgress } from '../stores/scroll.js';
 
   function scrollToPhase(index) {
-    const phaseId = phaseBoundaries[index].id;
-    const element = document.getElementById(phaseId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    const phase = phaseBoundaries[index];
+    window.location.hash = phase.id;
+  }
+
+  function scrollToStep(phaseIndex, stepIndex) {
+    const phase = phaseBoundaries[phaseIndex];
+    const stepId = phase.steps?.[stepIndex];
+    if (stepId) {
+      window.location.hash = `${phase.id}-${stepId}`;
     }
   }
 
@@ -23,6 +28,16 @@
     const phaseContribution = (1 / totalPhases) * $phaseProgress * 100;
     return Math.min(100, basePercent + phaseContribution);
   })();
+
+  // Sub-steps for each phase (matching animation thresholds in scenes)
+  const phaseSteps = [
+    ['Definition', 'System 1.42', 'Herausforderung', 'Methodik', 'Phasen'],
+    ['Titel', 'Text', 'Sammeln', 'Zusammenführen', 'Workspace'],
+    ['DATA', 'Dialog', 'Exploration', 'Entitäten'],
+    ['Requirements', 'Layout', 'Partikel', 'Dokumente'],
+    ['Implementation', 'Expert', 'Dialog', 'Browser', 'Loops'],
+    ['Konklusion', 'Screenshot', 'Cases', 'Imperative'],
+  ];
 </script>
 
 <nav class="progress-indicator" aria-label="Phasen-Navigation">
@@ -36,6 +51,8 @@
     {#each phaseBoundaries as phase, index}
       {@const isActive = $currentPhase === index}
       {@const isCompleted = $currentPhase > index}
+      {@const steps = phaseSteps[index] || []}
+      {@const activeStepIndex = Math.floor($phaseProgress * steps.length)}
 
       <li>
         <button
@@ -56,6 +73,22 @@
           </span>
           <span class="label">{phase.label}</span>
         </button>
+
+        <!-- Sub-steps indicator (only for active phase) -->
+        {#if isActive && steps.length > 0}
+          <div class="sub-steps">
+            {#each steps as step, stepIndex}
+              <button
+                class="step-dot"
+                class:active={stepIndex === activeStepIndex}
+                class:completed={stepIndex < activeStepIndex}
+                title={step}
+                aria-label="Zu {step} springen"
+                on:click={() => scrollToStep(index, stepIndex)}
+              ></button>
+            {/each}
+          </div>
+        {/if}
       </li>
     {/each}
   </ul>
@@ -199,6 +232,48 @@
     border-radius: 4px;
   }
 
+  /* Sub-steps: compact dot row under active phase */
+  .sub-steps {
+    display: flex;
+    gap: 4px;
+    margin-left: 18px;
+    margin-top: 4px;
+    padding: 2px 0;
+  }
+
+  .step-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-slate);
+    opacity: 0.3;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+  }
+
+  .step-dot:hover {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+
+  .step-dot:focus {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+  }
+
+  .step-dot.completed {
+    background: var(--color-terracotta);
+    opacity: 0.5;
+  }
+
+  .step-dot.active {
+    background: var(--color-terracotta);
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
   /* Mobile: horizontal am unteren Rand */
   @media (max-width: 767px) {
     .progress-indicator {
@@ -229,6 +304,10 @@
     }
 
     .label {
+      display: none;
+    }
+
+    .sub-steps {
       display: none;
     }
   }
