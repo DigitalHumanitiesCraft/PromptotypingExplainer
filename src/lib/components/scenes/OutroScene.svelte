@@ -4,21 +4,27 @@
   export let progress = 0;
 
   // Animation thresholds
-  // 0-0.15: Titel erscheint
-  // 0.15-0.4: Screenshot
-  // 0.4-0.65: Beispiel-Karten
-  // 0.65-0.85: Kernprinzip
-  // 0.85-1.0: Call to Action
+  // 0-0.10: Titel erscheint
+  // 0.10-0.25: Akademische Konklusion
+  // 0.25-0.40: Screenshot
+  // 0.40-0.60: Beispiel-Karten
+  // 0.60-0.78: Kernprinzip
+  // 0.78-0.90: Imperative
+  // 0.90-1.0: Call to Action
 
-  $: titleOpacity = Math.min(1, progress / 0.15);
+  $: titleOpacity = Math.min(1, progress / 0.10);
 
-  $: screenshotOpacity = progress > 0.15 ? Math.min(1, (progress - 0.15) / 0.25) : 0;
+  $: conclusionOpacity = progress > 0.10 ? Math.min(1, (progress - 0.10) / 0.15) : 0;
 
-  $: examplesOpacity = progress > 0.4 ? Math.min(1, (progress - 0.4) / 0.25) : 0;
+  $: screenshotOpacity = progress > 0.25 ? Math.min(1, (progress - 0.25) / 0.15) : 0;
 
-  $: principleOpacity = progress > 0.65 ? Math.min(1, (progress - 0.65) / 0.2) : 0;
+  $: examplesOpacity = progress > 0.40 ? Math.min(1, (progress - 0.40) / 0.20) : 0;
 
-  $: ctaOpacity = progress > 0.85 ? Math.min(1, (progress - 0.85) / 0.15) : 0;
+  $: principleOpacity = progress > 0.60 ? Math.min(1, (progress - 0.60) / 0.18) : 0;
+
+  $: imperativesOpacity = progress > 0.78 ? Math.min(1, (progress - 0.78) / 0.12) : 0;
+
+  $: ctaOpacity = progress > 0.90 ? Math.min(1, (progress - 0.90) / 0.10) : 0;
 
   const examples = [
     {
@@ -68,9 +74,19 @@
 
 <div class="outro-scene">
   <header class="outro-header" style="opacity: {titleOpacity};">
-    <h2>Promptotyping in der Praxis</h2>
-    <p class="lead">Vom Konzept zur funktionierenden Anwendung</p>
+    <h2>Konklusion</h2>
+    <p class="lead">Von der Methode zur Praxis</p>
   </header>
+
+  <div class="academic-conclusion" style="opacity: {conclusionOpacity};">
+    <p>
+      Promptotyping markiert einen signifikanten Fortschritt in der methodisch kontrollierten
+      Integration generativer KI in die geisteswissenschaftliche Forschung. Die Methode überwindet
+      die Dichotomie zwischen unkritischer Technikbegeisterung und reflexhafter Technologieablehnung
+      durch einen dritten Weg: die <strong>kritisch-reflexive Appropriation</strong> von KI-Technologien
+      unter Beibehaltung wissenschaftlicher Standards.
+    </p>
+  </div>
 
   <div class="screenshot-container" style="opacity: {screenshotOpacity};">
     <img src={correspOverview} alt="CorrespExplorer - Vier Views: Karte, Timeline, Themen, Korrespondenten" class="screenshot" />
@@ -110,6 +126,21 @@
     </blockquote>
   </div>
 
+  <div class="imperatives" style="opacity: {imperativesOpacity};">
+    <div class="imperative">
+      <h4>Epistemische Wachsamkeit</h4>
+      <p>Jede LLM-Nutzung reflektiert ihre erkenntnistheoretischen Implikationen.</p>
+    </div>
+    <div class="imperative">
+      <h4>Methodische Transparenz</h4>
+      <p>Nachvollziehbare Dokumentation von Prozessen und Entscheidungen.</p>
+    </div>
+    <div class="imperative">
+      <h4>Kritische Solidarität</h4>
+      <p>Die Community teilt Erfahrungen und entwickelt gemeinsam Standards.</p>
+    </div>
+  </div>
+
   <div class="cta" style="opacity: {ctaOpacity};">
     <p class="final-text">Vom Wissen zum Werkzeug.</p>
     <a
@@ -147,6 +178,22 @@
   .lead {
     color: var(--color-slate);
     font-size: 1.125rem;
+  }
+
+  /* Academic conclusion */
+  .academic-conclusion {
+    max-width: 750px;
+    text-align: center;
+  }
+
+  .academic-conclusion p {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: var(--color-slate);
+    line-height: 1.7;
+  }
+
+  .academic-conclusion strong {
+    color: var(--color-terracotta);
   }
 
   /* Screenshot */
@@ -259,6 +306,36 @@
     text-align: left;
   }
 
+  /* Imperatives */
+  .imperatives {
+    display: flex;
+    gap: var(--space-lg);
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .imperative {
+    flex: 1;
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(96, 125, 139, 0.05);
+    border-radius: 8px;
+    border-top: 3px solid var(--color-terracotta);
+  }
+
+  .imperative h4 {
+    font-size: 0.9rem;
+    color: var(--color-terracotta);
+    margin-bottom: var(--space-xs);
+  }
+
+  .imperative p {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+    margin: 0;
+  }
+
   /* CTA */
   .cta {
     text-align: center;
@@ -297,6 +374,11 @@
 
     blockquote {
       font-size: 1rem;
+    }
+
+    .imperatives {
+      flex-direction: column;
+      gap: var(--space-md);
     }
   }
 </style>

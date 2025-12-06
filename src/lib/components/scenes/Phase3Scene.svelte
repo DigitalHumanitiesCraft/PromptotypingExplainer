@@ -7,33 +7,37 @@
 
   const phase = phases[3];
 
-  // Animation thresholds (aus knowledge.md → TEIL 3 → Phase 3)
-  // 0-0.1: Titel erscheint
-  // 0.1-0.25: Drei-Spalten-Layout
-  // 0.25-0.45: Partikel fließen zum Vault, data.md
-  // 0.45-0.55: data.md erscheint
-  // 0.55-0.7: user-story.md erscheint
-  // 0.7-0.85: context.md erscheint
+  // Animation thresholds
+  // 0-0.08: Titel erscheint
+  // 0.08-0.22: Akademischer Text
+  // 0.22-0.35: Drei-Spalten-Layout
+  // 0.35-0.50: Partikel fließen zum Vault
+  // 0.50-0.60: data.md erscheint
+  // 0.60-0.72: user-story.md erscheint
+  // 0.72-0.85: context.md erscheint
   // 0.85-1.0: Stapel verblasst, Vault ist Zentrum
 
-  $: titleOpacity = Math.min(1, progress / 0.1);
+  $: titleOpacity = Math.min(1, progress / 0.08);
+
+  // Akademischer Text
+  $: academicTextOpacity = progress > 0.08 ? Math.min(1, (progress - 0.08) / 0.14) : 0;
 
   // Layout visibility
-  $: layoutOpacity = progress > 0.1 ? Math.min(1, (progress - 0.1) / 0.15) : 0;
+  $: layoutOpacity = progress > 0.22 ? Math.min(1, (progress - 0.22) / 0.13) : 0;
 
   // Source stack fade
   $: stackOpacity = progress > 0.85 ? Math.max(0.2, 1 - (progress - 0.85) / 0.15) : 1;
 
   // Particle flow progress
-  $: particleProgress = progress > 0.25 ? Math.min(1, (progress - 0.25) / 0.2) : 0;
+  $: particleProgress = progress > 0.35 ? Math.min(1, (progress - 0.35) / 0.15) : 0;
 
   // Document appearances
-  $: doc1Opacity = progress > 0.45 ? Math.min(1, (progress - 0.45) / 0.1) : 0;
-  $: doc2Opacity = progress > 0.55 ? Math.min(1, (progress - 0.55) / 0.15) : 0;
-  $: doc3Opacity = progress > 0.7 ? Math.min(1, (progress - 0.7) / 0.15) : 0;
+  $: doc1Opacity = progress > 0.50 ? Math.min(1, (progress - 0.50) / 0.1) : 0;
+  $: doc2Opacity = progress > 0.60 ? Math.min(1, (progress - 0.60) / 0.12) : 0;
+  $: doc3Opacity = progress > 0.72 ? Math.min(1, (progress - 0.72) / 0.13) : 0;
 
   // Vault pulsing
-  $: vaultPulsing = progress > 0.7;
+  $: vaultPulsing = progress > 0.72;
 
   // Closing text
   $: closingOpacity = progress > 0.85 ? Math.min(1, (progress - 0.85) / 0.15) : 0;
@@ -70,10 +74,21 @@
     <span class="phase-number">Phase 3</span>
     <h2>{phase.title}</h2>
     <p class="metaphor">{phase.metaphor}</p>
-    <p class="context-rot">
-      Context Rot vermeiden: Maximale Information mit minimalen Tokens.
-    </p>
   </header>
+
+  <div class="academic-text" style="opacity: {academicTextOpacity};">
+    <p>
+      Die REQUIREMENTS-Phase formalisiert in <code>REQUIREMENTS.md</code> vage
+      Forschungsideen in testbare Spezifikationen. Die Unterscheidung zwischen
+      <strong>MUSS</strong>, <strong>SOLL</strong> und <strong>KANN</strong> Anforderungen
+      zwingt zur Priorisierung.
+    </p>
+    <p class="highlight">
+      Trade-offs zwischen technischer Machbarkeit und wissenschaftlichem Anspruch
+      werden explizit dokumentiert. Context Compression reduziert Tokens bei
+      maximaler Informationsdichte.
+    </p>
+  </div>
 
   <div class="destillation-area" style="opacity: {layoutOpacity};">
     <!-- Left: Source stack -->
@@ -160,14 +175,33 @@
     color: var(--color-slate);
   }
 
-  .context-rot {
-    font-size: 0.8rem;
+  .academic-text {
+    max-width: 650px;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .academic-text p {
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
     color: var(--color-slate);
-    margin-top: var(--space-sm);
-    padding: var(--space-xs) var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .academic-text code {
     background: rgba(96, 125, 139, 0.1);
+    padding: 0.15em 0.4em;
     border-radius: 4px;
-    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+
+  .academic-text strong {
+    color: var(--color-terracotta);
+    font-weight: 600;
+  }
+
+  .academic-text .highlight {
+    color: var(--color-black);
+    font-weight: 500;
   }
 
   .destillation-area {

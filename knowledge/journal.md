@@ -105,10 +105,81 @@ Build erfolgreich. Alle 139 Module kompiliert.
 
 ---
 
+## 2024-12-06: Akademischer Fließtext und Scroll-Optimierung
+
+### Scroll-Smoothness verbessert
+
+Problem: Scrollen fühlte sich nicht flüssig an.
+
+Analyse ergab drei Ursachen:
+1. `scrub: true` (1:1 Mapping) ohne Interpolation
+2. Inline-Styles ohne CSS-Transitions
+3. Keine GPU-Layer auf Kind-Elementen
+
+Lösung:
+- Phase.svelte: `scrub: 0.5` statt `scrub: true`
+- Phase.svelte: `preventOverlaps: true` hinzugefügt
+- app.css: CSS-Transitions (0.15s ease-out) für alle Szenen-Kinder
+- app.css: GPU-Compositing mit `transform: translateZ(0)` und `backface-visibility: hidden`
+
+### Akademischer Fließtext aus paper-draft.md
+
+Anforderung: Neutraler, sachlicher akademischer Text ohne persönliche Note.
+
+Quelle: paper-draft.md enthält vollständigen Methodenpaper-Entwurf.
+
+Änderungen an allen Szenen:
+
+IntroScene:
+- Neuer Untertitel: "Methodik LLM-gestützter Werkzeugentwicklung"
+- System 1.42 Konzept erklärt
+- Zentrale Herausforderung (Evaluationsverfahren)
+- Methodischer Ansatz (sechsphasiges Modell)
+
+Phase1Scene (CONTEXT):
+- Akademischer Text über README.md als epistemischen Rahmen
+- Verhindert unkritische technische Übernahme
+
+Phase2Scene (DATA + EXPLORATION):
+- Zwei Textblöcke: DATA-Phase und EXPLORATION-Phase
+- DATA: Strukturen, Inkonsistenzen, Normalisierung
+- EXPLORATION: "Epistemische Spielwiese" ohne Overhead
+
+Phase3Scene (REQUIREMENTS):
+- REQUIREMENTS.md zur Formalisierung
+- MUSS/SOLL/KANN Priorisierung
+- Context Compression
+
+Phase4Scene (IMPLEMENTATION + PROTOTYPE):
+- IMPLEMENTATION: Epistemisches Protokoll (INSTRUCTIONS.md)
+- Critical Expert in the Loop + Sycophancy-Tendenz
+
+OutroScene (Konklusion):
+- Akademische Schlussfolgerung
+- "Kritisch-reflexive Appropriation"
+- Drei Imperative: Epistemische Wachsamkeit, Methodische Transparenz, Kritische Solidarität
+
+### Case Studies integriert
+
+7 Case Studies von docs/Case Studies/ nach knowledge/case-studies/ verschoben:
+- correspexplorer.md
+- aldersbach.md
+- diged-neolat.md
+- km.md
+- stained-glass.md
+- imareal-room-object.md
+- szd.md
+
+OutroScene zeigt nun 6 reale Beispiele mit Links zu Demos und GitHub.
+
+CONTEXT-MAP.md um Case-Studies-Tabelle erweitert.
+
+---
+
 ## Offene Fragen
 
-- [ ] Partikel-Animation in Phase 3: Wie viele Elemente sind performant?
-- [ ] Phase 4 Browser-Frame: Echtes Code-Snippet oder stilisiert?
+- [x] Partikel-Animation in Phase 3: Wie viele Elemente sind performant? -> 5 funktioniert
+- [x] Phase 4 Browser-Frame: Echtes Code-Snippet oder stilisiert? -> Stilisiert
 - [ ] Rückschleifen-Visualisierung: Button oder automatisch?
 - [ ] Mobile: Horizontal-Scroll oder vereinfachte Animationen?
 

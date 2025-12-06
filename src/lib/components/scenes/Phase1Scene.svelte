@@ -6,26 +6,30 @@
 
   const phase = phases[1];
 
-  // Animation thresholds (aus knowledge.md → TEIL 3 → Phase 1)
-  // 0-0.2: Titel erscheint
-  // 0.2-0.4: Icons erscheinen am Rand
-  // 0.4-0.7: Icons bewegen sich zur Mitte
-  // 0.7-0.9: Icons stapeln sich
-  // 0.9-1.0: Labels erscheinen
+  // Animation thresholds
+  // 0-0.15: Titel erscheint
+  // 0.15-0.30: Akademischer Text erscheint
+  // 0.30-0.45: Icons erscheinen am Rand
+  // 0.45-0.65: Icons bewegen sich zur Mitte
+  // 0.65-0.85: Icons stapeln sich
+  // 0.85-1.0: Labels erscheinen
 
-  $: titleOpacity = Math.min(1, progress / 0.2);
+  $: titleOpacity = Math.min(1, progress / 0.15);
 
-  $: iconsVisible = progress > 0.2;
-  $: iconProgress = progress > 0.2 ? Math.min(1, (progress - 0.2) / 0.2) : 0;
+  // Akademischer Text
+  $: textOpacity = progress > 0.15 ? Math.min(1, (progress - 0.15) / 0.15) : 0;
 
-  // Move progress: 0.4 - 0.7
-  $: moveProgress = progress > 0.4 ? Math.min(1, (progress - 0.4) / 0.3) : 0;
+  $: iconsVisible = progress > 0.30;
+  $: iconProgress = progress > 0.30 ? Math.min(1, (progress - 0.30) / 0.15) : 0;
 
-  // Stack progress: 0.7 - 0.9
-  $: stackProgress = progress > 0.7 ? Math.min(1, (progress - 0.7) / 0.2) : 0;
+  // Move progress: 0.45 - 0.65
+  $: moveProgress = progress > 0.45 ? Math.min(1, (progress - 0.45) / 0.2) : 0;
 
-  // Label progress: 0.9 - 1.0
-  $: labelOpacity = progress > 0.9 ? Math.min(1, (progress - 0.9) / 0.1) : 0;
+  // Stack progress: 0.65 - 0.85
+  $: stackProgress = progress > 0.65 ? Math.min(1, (progress - 0.65) / 0.2) : 0;
+
+  // Label progress: 0.85 - 1.0
+  $: labelOpacity = progress > 0.85 ? Math.min(1, (progress - 0.85) / 0.15) : 0;
 
   // Pulse animation when complete
   $: pulseActive = progress > 0.95;
@@ -78,6 +82,17 @@
     <p class="metaphor">{phase.metaphor}</p>
   </header>
 
+  <div class="academic-text" style="opacity: {textOpacity};">
+    <p>
+      Die CONTEXT-Phase etabliert durch <code>README.md</code> den epistemischen Rahmen.
+      Forschungsfragen, theoretische Vorannahmen und methodische Constraints werden expliziert.
+    </p>
+    <p class="highlight">
+      Diese Phase verhindert die unkritische Übernahme technischer Lösungen
+      für wissenschaftliche Probleme und zwingt zur präzisen Artikulation der Projektziele.
+    </p>
+  </div>
+
   <div class="workspace" class:pulse={pulseActive}>
     <div class="workspace-area">
       {#if iconsVisible}
@@ -126,6 +141,30 @@
   .metaphor {
     font-style: italic;
     color: var(--color-slate);
+  }
+
+  .academic-text {
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .academic-text p {
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    color: var(--color-slate);
+    margin-bottom: var(--space-sm);
+  }
+
+  .academic-text code {
+    background: rgba(96, 125, 139, 0.1);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .academic-text .highlight {
+    color: var(--color-black);
+    font-weight: 500;
   }
 
   .workspace {

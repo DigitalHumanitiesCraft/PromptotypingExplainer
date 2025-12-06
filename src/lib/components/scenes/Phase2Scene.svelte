@@ -6,29 +6,39 @@
 
   const phase = phases[2];
 
-  // Animation thresholds (aus knowledge.md → TEIL 3 → Phase 2)
-  // 0-0.15: Titel erscheint
-  // 0.15-0.3: Zoom auf XML
-  // 0.3-0.5: XML öffnet sich, Farbcodierung
-  // 0.5-0.65: Terracotta-Elemente hervorgehoben
-  // 0.65-0.8: Entity-Icons lösen sich
-  // 0.8-0.9: Netzwerk entsteht
-  // 0.9-1.0: Interface-Skizzen
+  // Animation thresholds
+  // 0-0.12: Titel erscheint
+  // 0.12-0.25: Akademischer Text DATA
+  // 0.25-0.38: Akademischer Text EXPLORATION
+  // 0.38-0.50: Zoom auf XML
+  // 0.50-0.62: XML öffnet sich, Farbcodierung
+  // 0.62-0.75: Entity-Icons lösen sich
+  // 0.75-0.88: Netzwerk entsteht
+  // 0.88-1.0: Interface-Skizzen
 
-  $: titleOpacity = Math.min(1, progress / 0.15);
+  $: titleOpacity = Math.min(1, progress / 0.12);
+
+  // Akademischer Text DATA
+  $: dataTextOpacity = progress > 0.12 ? Math.min(1, (progress - 0.12) / 0.13) : 0;
+  $: dataTextVisible = progress > 0.12 && progress < 0.50;
+
+  // Akademischer Text EXPLORATION
+  $: explorationTextOpacity = progress > 0.25 ? Math.min(1, (progress - 0.25) / 0.13) : 0;
+  $: explorationTextVisible = progress > 0.25 && progress < 0.50;
 
   // XML zoom and open
-  $: xmlScale = progress > 0.15 ? 1 + Math.min(0.3, (progress - 0.15) / 0.15 * 0.3) : 1;
-  $: xmlOpen = progress > 0.3 ? Math.min(1, (progress - 0.3) / 0.2) : 0;
+  $: xmlScale = progress > 0.38 ? 1 + Math.min(0.3, (progress - 0.38) / 0.12 * 0.3) : 1;
+  $: xmlOpen = progress > 0.50 ? Math.min(1, (progress - 0.50) / 0.12) : 0;
+  $: xmlVisible = progress > 0.38;
 
   // Entity extraction
-  $: entityProgress = progress > 0.5 ? Math.min(1, (progress - 0.5) / 0.3) : 0;
+  $: entityProgress = progress > 0.62 ? Math.min(1, (progress - 0.62) / 0.13) : 0;
 
   // Network formation
-  $: networkOpacity = progress > 0.8 ? Math.min(1, (progress - 0.8) / 0.1) : 0;
+  $: networkOpacity = progress > 0.75 ? Math.min(1, (progress - 0.75) / 0.13) : 0;
 
   // Interface sketches
-  $: sketchOpacity = progress > 0.9 ? Math.min(1, (progress - 0.9) / 0.1) : 0;
+  $: sketchOpacity = progress > 0.88 ? Math.min(1, (progress - 0.88) / 0.12) : 0;
 
   // Entity positions (start from XML, move to right)
   const entityTypes = ['person', 'place', 'time', 'relation'];
@@ -54,7 +64,30 @@
     <p class="metaphor">{phase.metaphor}</p>
   </header>
 
-  <div class="exploration-area">
+  {#if dataTextVisible || explorationTextVisible}
+    <div class="academic-texts">
+      <div class="academic-text data-text" style="opacity: {dataTextOpacity};">
+        <h4>DATA</h4>
+        <p>
+          Die DATA-Phase analysiert in <code>DATA.md</code> Strukturen, Inkonsistenzen und
+          implizite Annahmen der zugrundeliegenden Daten. Die dokumentierte Normalisierung
+          verhindert nicht nur technische Fehler, sondern offenbart auch interpretative
+          Entscheidungen, die für die wissenschaftliche Nachvollziehbarkeit essentiell sind.
+        </p>
+      </div>
+      <div class="academic-text exploration-text" style="opacity: {explorationTextOpacity};">
+        <h4>EXPLORATION</h4>
+        <p>
+          Die EXPLORATION-Phase erlaubt als bewusst undokumentierte Phase kreatives
+          Experimentieren ohne vorzeitige Festlegung. Diese „epistemische Spielwiese"
+          ermöglicht das Entdecken unerwarteter Möglichkeiten und Grenzen, ohne den
+          Overhead formaler Dokumentation.
+        </p>
+      </div>
+    </div>
+  {/if}
+
+  <div class="exploration-area" style="opacity: {xmlVisible ? 1 : 0}; pointer-events: {xmlVisible ? 'auto' : 'none'}">
     <!-- XML Document (left) -->
     <div
       class="xml-container"
@@ -161,6 +194,43 @@
   .metaphor {
     font-style: italic;
     color: var(--color-slate);
+  }
+
+  .academic-texts {
+    display: flex;
+    gap: var(--space-lg);
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .academic-text {
+    flex: 1;
+    background: rgba(96, 125, 139, 0.05);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+  }
+
+  .academic-text h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracotta);
+    margin-bottom: var(--space-sm);
+  }
+
+  .academic-text p {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    color: var(--color-slate);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .academic-text code {
+    background: rgba(96, 125, 139, 0.15);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.9em;
   }
 
   .exploration-area {
@@ -322,6 +392,11 @@
   }
 
   @media (max-width: 767px) {
+    .academic-texts {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
     .exploration-area {
       flex-direction: column;
       gap: var(--space-lg);

@@ -3,28 +3,32 @@
 
   export let progress = 0;
 
-  // Animation thresholds (aus knowledge.md → TEIL 3 → Intro)
-  // 0-0.15: Titel sofort sichtbar, Definition erscheint
-  // 0.15-0.4: Zentrale Frage
-  // 0.4-0.7: Kontext (Dissertation)
-  // 0.7-1.0: Phasen-Icons
+  // Animation thresholds
+  // 0-0.1: Titel sofort sichtbar
+  // 0.1-0.25: Definition (akademisch)
+  // 0.25-0.45: System 1.42 Konzept
+  // 0.45-0.65: Zentrale Herausforderung
+  // 0.65-0.85: Methodischer Ansatz
+  // 0.85-1.0: Phasen-Icons
 
-  // Titel ist sofort sichtbar (opacity startet bei 1)
   $: titleOpacity = 1;
   $: titleScale = 1;
 
   // Definition fadet ein
-  $: definitionOpacity = Math.min(1, progress / 0.15);
+  $: definitionOpacity = Math.min(1, progress / 0.1);
 
-  // Zentrale Frage
-  $: questionOpacity = progress > 0.15 ? Math.min(1, (progress - 0.15) / 0.25) : 0;
+  // System 1.42 Konzept
+  $: system142Opacity = progress > 0.1 ? Math.min(1, (progress - 0.1) / 0.15) : 0;
 
-  // Kontext-Text
-  $: contextOpacity = progress > 0.4 ? Math.min(1, (progress - 0.4) / 0.3) : 0;
+  // Zentrale Herausforderung
+  $: challengeOpacity = progress > 0.25 ? Math.min(1, (progress - 0.25) / 0.2) : 0;
+
+  // Methodischer Ansatz
+  $: approachOpacity = progress > 0.45 ? Math.min(1, (progress - 0.45) / 0.2) : 0;
 
   // Phasen-Icons
-  $: iconsOpacity = progress > 0.7 ? Math.min(1, (progress - 0.7) / 0.3) : 0;
-  $: iconsTranslateY = progress > 0.7 ? Math.max(0, 30 - ((progress - 0.7) / 0.3) * 30) : 30;
+  $: iconsOpacity = progress > 0.65 ? Math.min(1, (progress - 0.65) / 0.2) : 0;
+  $: iconsTranslateY = progress > 0.65 ? Math.max(0, 30 - ((progress - 0.65) / 0.2) * 30) : 30;
 
   const phaseLabels = phases.slice(1).map(p => p.title);
 </script>
@@ -32,21 +36,30 @@
 <div class="intro-scene">
   <div class="title-block" style="opacity: {titleOpacity}; transform: scale({titleScale});">
     <h1>Promptotyping</h1>
-    <p class="subtitle">Vom Wissen zum Werkzeug</p>
+    <p class="subtitle">Methodik LLM-gestützter Werkzeugentwicklung</p>
   </div>
 
   <p class="definition" style="opacity: {definitionOpacity};">
-    Eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene
-    Erstellung von Prototypen mittels Frontier-LLMs.
+    Eine strukturierte Methodik für die LLM-gestützte Entwicklung von
+    Forschungsworkflows und -werkzeugen in den Digital Humanities.
   </p>
 
-  <p class="question" style="opacity: {questionOpacity};">
-    Wie wird aus Forschungsdaten ein funktionales Interface?
+  <p class="system142" style="opacity: {system142Opacity};">
+    LLMs operieren als <strong>„System 1.42"</strong> – ein epistemologischer
+    Zwischenraum zwischen intuitiver Musterassoziation und systematischer
+    Problemlösung, ohne vollständige Eigenschaften beider Systeme zu erreichen.
   </p>
 
-  <p class="context" style="opacity: {contextOpacity};">
-    Entwickelt im Rahmen einer Dissertation über die Modellierung,
-    Operationalisierung und Exploration historischer Information.
+  <p class="challenge" style="opacity: {challengeOpacity};">
+    Die zentrale Herausforderung: Wie können Evaluationsverfahren entwickelt werden,
+    die sowohl die Varianz von LLM-Leistungen als auch qualitative Maßstäbe
+    epistemischer Belastbarkeit abbilden?
+  </p>
+
+  <p class="approach" style="opacity: {approachOpacity};">
+    Ein sechsphasiges Prozessmodell mit systematischer Dokumentation
+    und Critical-Expert-in-the-Loop-Ansatz zur Reduktion
+    zustimmungsorientierter Antwortverzerrungen.
   </p>
 
   <div
@@ -100,19 +113,34 @@
     line-height: 1.6;
   }
 
-  .question {
-    font-size: clamp(1.25rem, 3vw, 2rem);
+  .system142 {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    color: var(--color-black);
+    max-width: 650px;
+    line-height: 1.7;
+    background: rgba(96, 125, 139, 0.08);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+  }
+
+  .system142 strong {
+    color: var(--color-terracotta);
+  }
+
+  .challenge {
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--color-terracotta);
     max-width: 600px;
     font-weight: 500;
+    line-height: 1.5;
   }
 
-  .context {
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
+  .approach {
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
     color: var(--color-slate);
-    max-width: 550px;
-    font-style: italic;
-    opacity: 0.8;
+    max-width: 580px;
+    line-height: 1.6;
   }
 
   .phase-icons {

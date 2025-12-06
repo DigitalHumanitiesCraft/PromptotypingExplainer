@@ -9,37 +9,45 @@
 
   const phase = phases[4];
 
-  // Animation thresholds (aus knowledge.md → TEIL 3 → Phase 4)
-  // 0-0.1: Titel erscheint
-  // 0.1-0.2: Layout erscheint
-  // 0.2-0.3: Erster Prompt
-  // 0.3-0.35: Docs fliegen zum Chat
-  // 0.35-0.45: LLM-Antwort, Code
-  // 0.45-0.55: Zweiter Prompt, Wireframe
-  // 0.55-0.65: Error
-  // 0.65-0.75: Fix-Prompt, LLM-Korrektur
-  // 0.75-0.85: Spinner, Update
+  // Animation thresholds
+  // 0-0.07: Titel erscheint
+  // 0.07-0.18: Akademischer Text IMPLEMENTATION
+  // 0.18-0.28: Akademischer Text PROTOTYPE + Critical Expert
+  // 0.28-0.35: Layout erscheint
+  // 0.35-0.42: Erster Prompt
+  // 0.42-0.47: Docs fliegen zum Chat
+  // 0.47-0.55: LLM-Antwort, Code
+  // 0.55-0.63: Zweiter Prompt, Wireframe
+  // 0.63-0.70: Error
+  // 0.70-0.77: Fix-Prompt, LLM-Korrektur
+  // 0.77-0.85: Spinner, Update
   // 0.85-0.92: Success, Network
   // 0.92-1.0: Closing
 
-  $: titleOpacity = Math.min(1, progress / 0.1);
-  $: layoutOpacity = progress > 0.1 ? Math.min(1, (progress - 0.1) / 0.1) : 0;
+  $: titleOpacity = Math.min(1, progress / 0.07);
 
-  // Chat progression
+  // Akademischer Text
+  $: implementationTextOpacity = progress > 0.07 ? Math.min(1, (progress - 0.07) / 0.11) : 0;
+  $: prototypeTextOpacity = progress > 0.18 ? Math.min(1, (progress - 0.18) / 0.10) : 0;
+  $: academicTextVisible = progress < 0.35;
+
+  $: layoutOpacity = progress > 0.28 ? Math.min(1, (progress - 0.28) / 0.07) : 0;
+
+  // Chat progression (starts at 0.35)
   $: visiblePrompts = Math.floor(
-    progress > 0.2 ? Math.min(prompts.length, ((progress - 0.2) / 0.6) * prompts.length + 1) : 0
+    progress > 0.35 ? Math.min(prompts.length, ((progress - 0.35) / 0.50) * prompts.length + 1) : 0
   );
 
-  // Browser states
+  // Browser states (adjusted for new timeline)
   $: browserState =
     progress > 0.85 ? 'network' :
-    progress > 0.75 ? 'wireframe' :
-    progress > 0.55 ? 'error' :
-    progress > 0.45 ? 'wireframe' :
-    progress > 0.35 ? 'code' :
+    progress > 0.77 ? 'wireframe' :
+    progress > 0.63 ? 'error' :
+    progress > 0.55 ? 'wireframe' :
+    progress > 0.47 ? 'code' :
     'empty';
 
-  $: showSpinner = progress > 0.75 && progress < 0.85;
+  $: showSpinner = progress > 0.77 && progress < 0.85;
 
   // Success indicator
   $: showSuccess = progress > 0.85;
@@ -48,7 +56,7 @@
   $: closingOpacity = progress > 0.92 ? Math.min(1, (progress - 0.92) / 0.08) : 0;
 
   // Vault docs flying animation
-  $: docsFlying = progress > 0.3 && progress < 0.35;
+  $: docsFlying = progress > 0.42 && progress < 0.47;
 </script>
 
 <div class="phase4-scene">
@@ -56,10 +64,28 @@
     <span class="phase-number">Phase 4</span>
     <h2>{phase.title}</h2>
     <p class="metaphor">{phase.metaphor}</p>
-    <p class="expert-loop">
-      Critical-Expert-in-the-Loop: Sei konstruktiv und ehrlich!
-    </p>
   </header>
+
+  {#if academicTextVisible}
+    <div class="academic-texts">
+      <div class="academic-text" style="opacity: {implementationTextOpacity};">
+        <h4>IMPLEMENTATION</h4>
+        <p>
+          Die IMPLEMENTATION-Phase dokumentiert in <code>INSTRUCTIONS.md</code> alle
+          Datentransformationen, Algorithmen und interpretativen Entscheidungen.
+          Sie fungiert als epistemisches Protokoll für spätere Nachvollziehbarkeit.
+        </p>
+      </div>
+      <div class="academic-text" style="opacity: {prototypeTextOpacity};">
+        <h4>Critical Expert in the Loop</h4>
+        <p>
+          Domänenexperten fungieren als aktive Ko-Konstrukteure, nicht als passive Validierende.
+          Durch strukturierte Prompting-Strategien wird die <strong>Sycophancy</strong>-Tendenz
+          von LLMs zur unkritischen Bestätigung systematisch herausgefordert.
+        </p>
+      </div>
+    </div>
+  {/if}
 
   <div class="implementation-area" style="opacity: {layoutOpacity};">
     <!-- Left: Vault -->
@@ -142,14 +168,45 @@
     color: var(--color-slate);
   }
 
-  .expert-loop {
-    font-size: 0.8rem;
+  .academic-texts {
+    display: flex;
+    gap: var(--space-lg);
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .academic-text {
+    flex: 1;
+    background: rgba(96, 125, 139, 0.05);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+  }
+
+  .academic-text h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--color-terracotta);
-    margin-top: var(--space-sm);
-    padding: var(--space-xs) var(--space-sm);
-    background: rgba(191, 91, 62, 0.1);
-    border-radius: 4px;
-    font-family: var(--font-mono);
+    margin-bottom: var(--space-sm);
+  }
+
+  .academic-text p {
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    color: var(--color-slate);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .academic-text code {
+    background: rgba(96, 125, 139, 0.15);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .academic-text strong {
+    color: var(--color-terracotta);
   }
 
   .implementation-area {
@@ -251,6 +308,11 @@
   }
 
   @media (max-width: 767px) {
+    .academic-texts {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
     .implementation-area {
       flex-direction: column;
     }
