@@ -58,6 +58,13 @@
 
   // Vault docs flying animation
   $: docsFlying = progress > 0.42 && progress < 0.47;
+
+  // Rückschleifen-Toggle
+  let showFeedbackLoops = false;
+
+  function toggleFeedbackLoops() {
+    showFeedbackLoops = !showFeedbackLoops;
+  }
 </script>
 
 <div class="phase4-scene">
@@ -128,6 +135,75 @@
       </div>
     </div>
   </div>
+
+  <!-- Feedback Loops Button & Visualization -->
+  {#if showSuccess}
+    <div class="feedback-section" style="opacity: {closingOpacity > 0 ? 1 : layoutOpacity};">
+      <button
+        class="feedback-toggle"
+        class:active={showFeedbackLoops}
+        on:click={toggleFeedbackLoops}
+        aria-pressed={showFeedbackLoops}
+      >
+        <svg class="loop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 1l4 4-4 4" />
+          <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+          <path d="M7 23l-4-4 4-4" />
+          <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+        </svg>
+        Rückschleifen {showFeedbackLoops ? 'ausblenden' : 'anzeigen'}
+      </button>
+
+      {#if showFeedbackLoops}
+        <div class="feedback-loops">
+          <svg class="loop-lines" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid meet">
+            <!-- Loop 1: Interface → Vault (Kontext erweitern) -->
+            <path
+              d="M 350 30 Q 250 -20 150 30"
+              fill="none"
+              stroke="var(--color-terracotta)"
+              stroke-width="2"
+              stroke-dasharray="8 4"
+              class="loop-path"
+            />
+            <polygon
+              points="155,25 145,30 155,35"
+              fill="var(--color-terracotta)"
+              class="loop-arrow"
+            />
+            <text x="250" y="10" class="loop-label" text-anchor="middle">Kontext erweitern</text>
+
+            <!-- Loop 2: Vault → Stapel (Daten ergänzen) -->
+            <path
+              d="M 150 50 Q 80 100 30 70"
+              fill="none"
+              stroke="var(--color-slate)"
+              stroke-width="2"
+              stroke-dasharray="8 4"
+              class="loop-path loop-path-2"
+            />
+            <polygon
+              points="35,75 25,70 35,65"
+              fill="var(--color-slate)"
+              class="loop-arrow loop-arrow-2"
+            />
+            <text x="80" y="110" class="loop-label loop-label-slate" text-anchor="middle">Daten ergänzen</text>
+          </svg>
+
+          <div class="loop-explanation">
+            <p>
+              <strong>Der Prozess ist nicht linear.</strong> Wenn die Implementation zeigt,
+              dass etwas fehlt, geht man zurück:
+            </p>
+            <ul>
+              <li><span class="terracotta">→</span> Zur Destillation (Kontext erweitern)</li>
+              <li><span class="slate">→</span> Zur Vorbereitung (Daten ergänzen)</li>
+            </ul>
+          </div>
+        </div>
+      {/if}
+    </div>
+  {/if}
 
   <!-- Closing text -->
   <p class="closing-text" style="opacity: {closingOpacity};">
@@ -297,6 +373,145 @@
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Feedback Loops Section */
+  .feedback-section {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .feedback-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    border: 2px dashed var(--color-slate);
+    border-radius: 8px;
+    color: var(--color-slate);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .feedback-toggle:hover {
+    border-color: var(--color-terracotta);
+    color: var(--color-terracotta);
+  }
+
+  .feedback-toggle.active {
+    border-color: var(--color-terracotta);
+    border-style: solid;
+    background: rgba(191, 91, 62, 0.08);
+    color: var(--color-terracotta);
+  }
+
+  .loop-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .feedback-loops {
+    width: 100%;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .loop-lines {
+    width: 100%;
+    height: 120px;
+  }
+
+  .loop-path {
+    animation: dashMove 1.5s linear infinite;
+  }
+
+  .loop-path-2 {
+    animation-delay: 0.75s;
+  }
+
+  @keyframes dashMove {
+    to {
+      stroke-dashoffset: -24;
+    }
+  }
+
+  .loop-arrow {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .loop-arrow-2 {
+    animation-delay: 0.75s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .loop-label {
+    font-size: 11px;
+    fill: var(--color-terracotta);
+    font-weight: 500;
+  }
+
+  .loop-label-slate {
+    fill: var(--color-slate);
+  }
+
+  .loop-explanation {
+    background: rgba(96, 125, 139, 0.05);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+  }
+
+  .loop-explanation p {
+    font-size: 0.9rem;
+    color: var(--color-black);
+    margin: 0 0 var(--space-sm) 0;
+    line-height: 1.5;
+  }
+
+  .loop-explanation strong {
+    color: var(--color-terracotta);
+  }
+
+  .loop-explanation ul {
+    margin: 0;
+    padding-left: var(--space-lg);
+    font-size: 0.85rem;
+    color: var(--color-slate);
+  }
+
+  .loop-explanation li {
+    margin-bottom: var(--space-xs);
+  }
+
+  .loop-explanation .terracotta {
+    color: var(--color-terracotta);
+    font-weight: 600;
+  }
+
+  .loop-explanation .slate {
+    color: var(--color-slate);
+    font-weight: 600;
   }
 
   /* Closing text */
