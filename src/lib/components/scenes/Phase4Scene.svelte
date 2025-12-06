@@ -34,7 +34,7 @@
   $: layoutOpacity = fadeIn(progress, 0.28, 0.35);
 
   // Chat progression (starts at 0.35)
-  $: visiblePrompts = countVisible(progress, 0.35, 0.50, prompts.length);
+  $: visiblePrompts = countVisible(progress, 0.35, 0.15, prompts.length);
 
   // Browser states
   $: browserState =

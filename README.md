@@ -8,19 +8,26 @@ Scrollytelling-Website zur Erklärung der **Promptotyping**-Methodik für LLM-ge
 
 > Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
 
-Promptotyping ist eine sechsphasige Methodik:
-1. **CONTEXT** – Epistemischer Rahmen in README.md
-2. **DATA** – Strukturanalyse der Forschungsdaten
-3. **EXPLORATION** – Iterative LLM-Dialoge
-4. **REQUIREMENTS** – Formalisierung in REQUIREMENTS.md
-5. **IMPLEMENTATION** – Epistemisches Protokoll
-6. **PROTOTYPE** – Funktionales Interface
+Promptotyping ist eine vierphasige Methodik:
+
+1. **Vorbereitung** (Mise en place) – Sammlung aller Materialien
+2. **Exploration** (Kartierung) – Untersuchung der Datenstrukturen
+3. **Destillation** (Reduktion) – Kompakte Markdown-Dokumente
+4. **Iterative Implementation** (Ping-Pong) – Der eigentliche Dialog
 
 ## Tech Stack
 
 - **Svelte 5** – Reaktives UI-Framework
 - **GSAP ScrollTrigger** – Scroll-basierte Animationen mit Pinning
-- **Vite** – Build-Tool und Dev-Server
+- **Vite 7** – Build-Tool und Dev-Server
+
+## Features
+
+- **Scroll-gesteuerte Animationen** mit GSAP ScrollTrigger
+- **Interaktives Glossar** mit Hover-Tooltips und Verbindungslinien
+- **Progress Indicator** mit gepunkteter Fortschrittslinie
+- **Responsive Design** (Desktop: Side-Panel, Mobile: Bottom-Sheet)
+- **Dynamischer Hintergrund-Gradient** basierend auf Scroll-Position
 
 ## Entwicklung
 
@@ -39,22 +46,38 @@ npm run build
 
 ```
 src/
-├── App.svelte              # Haupt-Layout, Phasen-Orchestrierung
+├── App.svelte                    # Haupt-Layout, Hintergrund-Gradient
 ├── lib/
 │   ├── components/
-│   │   ├── Phase.svelte           # ScrollTrigger-Wrapper mit Pinning
-│   │   ├── ProgressIndicator.svelte
-│   │   ├── scenes/                # Pro Phase eine Szene
+│   │   ├── Phase.svelte          # ScrollTrigger-Wrapper mit Pinning
+│   │   ├── ProgressIndicator.svelte  # Navigations-Dots
+│   │   ├── PhaseHeader.svelte    # Fixierter Header mit Fortschritt
+│   │   ├── GlossaryTerm.svelte   # Interaktive Glossar-Tooltips
+│   │   ├── scenes/               # Pro Phase eine Szene
 │   │   │   ├── IntroScene.svelte
 │   │   │   ├── Phase1Scene.svelte
 │   │   │   ├── Phase2Scene.svelte
 │   │   │   ├── Phase3Scene.svelte
 │   │   │   ├── Phase4Scene.svelte
 │   │   │   └── OutroScene.svelte
-│   │   └── elements/              # Wiederverwendbare UI-Elemente
-│   └── stores/
-│       └── scroll.js              # Svelte Stores für Progress/Phase
-└── app.css                        # Design System (Slate/Terracotta)
+│   │   ├── elements/             # Wiederverwendbare UI-Elemente
+│   │   │   ├── DocumentIcon.svelte
+│   │   │   ├── EntityIcon.svelte
+│   │   │   ├── VaultIcon.svelte
+│   │   │   ├── ChatBubble.svelte
+│   │   │   └── BrowserFrame.svelte
+│   │   └── blocks/               # Extrahierte Komponenten
+│   │       ├── SceneHeader.svelte
+│   │       └── AcademicBlock.svelte
+│   ├── data/
+│   │   ├── phases.js             # Phasen-Definitionen
+│   │   ├── glossary.js           # 20+ AI/LLM-Begriffe
+│   │   └── prompts.js            # Chat-Dialoge für Phase 4
+│   ├── stores/
+│   │   └── scroll.js             # Svelte Stores für Progress/Phase
+│   └── utils/
+│       └── progressAnimations.js # fadeIn, fadeOut, lerp, etc.
+└── app.css                       # Design System (Slate/Terracotta)
 ```
 
 ## Knowledge Vault

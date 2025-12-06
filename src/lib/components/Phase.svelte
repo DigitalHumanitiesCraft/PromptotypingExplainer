@@ -14,13 +14,12 @@
 
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
+    // Make ScrollTrigger available globally for navigation
+    // @ts-ignore
+    window.ScrollTrigger = ScrollTrigger;
 
     const boundary = phaseBoundaries[index];
     const phaseHeight = boundary ? (boundary.end - boundary.start) : 100;
-
-    // Throttle progress updates to reduce reactivity overhead
-    let lastProgress = 0;
-    const PROGRESS_THRESHOLD = 0.005; // Only update if changed by 0.5%
 
     scrollTrigger = ScrollTrigger.create({
       trigger: element,
@@ -28,24 +27,21 @@
       end: `+=${phaseHeight}vh`,
       pin: true,
       pinSpacing: true,
-      scrub: 0.8,
+      scrub: 0.3,
       anticipatePin: 1,
-      fastScrollEnd: true,
+      fastScrollEnd: false,
       preventOverlaps: true,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        // Only update if progress changed significantly (reduces reactivity)
-        if (Math.abs(self.progress - lastProgress) > PROGRESS_THRESHOLD) {
-          lastProgress = self.progress;
-          progress = self.progress;
+        // Update progress directly for smooth animations
+        progress = self.progress;
 
-          if (self.isActive) {
-            currentPhase.set(index);
-            const boundary = phaseBoundaries[index];
-            const phaseStart = boundary.start / totalScrollLength;
-            const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
-            globalProgress.set(phaseStart + self.progress * phaseLength);
-          }
+        if (self.isActive) {
+          currentPhase.set(index);
+          const boundary = phaseBoundaries[index];
+          const phaseStart = boundary.start / totalScrollLength;
+          const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
+          globalProgress.set(phaseStart + self.progress * phaseLength);
         }
       },
       onEnter: () => {
