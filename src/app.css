@@ -58,24 +58,24 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Force GPU compositing for animated elements */
+/* Force GPU compositing for phase containers */
 .phase {
-  will-change: transform;
+  contain: layout style paint;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 
-/* Smooth transitions for scroll-animated content */
-.intro-scene > *,
-.phase1-scene > *,
-.phase2-scene > *,
-.phase3-scene > *,
-.phase4-scene > *,
-.outro-scene > * {
-  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
-  will-change: opacity, transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+/* Scene containers get isolation for better compositing */
+.intro-scene,
+.phase1-scene,
+.phase2-scene,
+.phase3-scene,
+.phase4-scene,
+.outro-scene {
+  contain: layout style;
+  isolation: isolate;
+  /* Smoother opacity/transform animations during scroll */
+  will-change: opacity;
 }
 
 #app {

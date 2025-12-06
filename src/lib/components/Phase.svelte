@@ -24,10 +24,12 @@
       end: `+=${phaseHeight}vh`,
       pin: true,
       pinSpacing: true,
-      scrub: 0.5,
+      scrub: 1.5,
       anticipatePin: 1,
-      fastScrollEnd: true,
+      fastScrollEnd: false,
       preventOverlaps: true,
+      invalidateOnRefresh: true,
+      ease: 'power2.out',
       onUpdate: (self) => {
         progress = self.progress;
 
@@ -40,8 +42,12 @@
           globalProgress.set(phaseStart + self.progress * phaseLength);
         }
       },
-      onEnter: () => currentPhase.set(index),
-      onEnterBack: () => currentPhase.set(index),
+      onEnter: () => {
+        currentPhase.set(index);
+      },
+      onEnterBack: () => {
+        currentPhase.set(index);
+      },
     });
   });
 

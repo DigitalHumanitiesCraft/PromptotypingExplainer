@@ -176,6 +176,80 @@ CONTEXT-MAP.md um Case-Studies-Tabelle erweitert.
 
 ---
 
+## 2024-12-06: UI-Verbesserungen und Performance
+
+### Progress-Indikator erweitert
+
+Neue Features:
+- Vertikale Verbindungslinie zwischen den Punkten
+- Linie füllt sich mit Terracotta je nach Fortschritt
+- Abgeschlossene Phasen zeigen Häkchen-Icon
+- Aktiver Punkt hat subtilen Glow-Effekt (box-shadow)
+- Mobile: Horizontale Linie am unteren Rand
+
+Story-Bezug: Visualisiert den kontinuierlichen Flow des Promptotyping-Prozesses.
+
+### Hintergrund-Gradient je nach Phase
+
+Subtiler radialer Gradient, der die "Temperatur" der Phasen vermittelt:
+- Intro/Phase 1: Neutral (Slate, sehr dezent)
+- Phase 2: Kühl/analytisch (Slate-Tint links)
+- Phase 3: Aufwärmend (leichter Terracotta-Tint)
+- Phase 4: Heiß (stärkerer Terracotta-Tint rechts)
+- Outro: Abgeklungene Wärme
+
+Story-Bezug: knowledge.md definiert "Slate = Kaltes Gegebene, Terracotta = Hitze des Prozesses".
+
+### Scroll-Performance optimiert
+
+Änderungen:
+- `scrub: 1.2` statt `scrub: 0.5` (längere Interpolation, smoothere Animation)
+- `invalidateOnRefresh: true` für korrekte Berechnung bei Resize
+- `contain: layout style paint` auf .phase (Browser kann Bereiche isolieren)
+- `isolation: isolate` auf Scene-Containern
+- Entfernt: `will-change` auf allen Kindern (verbrauchte zu viel GPU-Speicher)
+- Entfernt: CSS-Transitions, die mit GSAP scrub konfligierten
+
+---
+
+## 2025-12-06: Finale Scroll-Kalibrierung
+
+### Problem: Phasen werden übersprungen
+
+Console-Logging ergab: Bei schnellem Scrollen springt Progress von 0% auf 90%+. Phasen werden nicht sauber durchlaufen.
+
+### Analyse
+
+1. `scrub: 1.2` war noch zu aggressiv für schnelles Scroll-Input
+2. `fastScrollEnd: true` ließ GSAP bei schnellem Scrollen direkt ans Ende springen
+3. `onLeave`/`onLeaveBack` Callbacks ohne Funktion (nur Debug-Logs)
+
+### Lösung (iterativ)
+
+Erste Iteration:
+- `scrub: 2` – längere Interpolationszeit
+- `fastScrollEnd: false` – verhindert abrupte Sprünge
+
+Zweite Iteration (nach User-Feedback "besser aber nicht perfekt"):
+- `scrub: 1.5` – Kompromiss zwischen Reaktivität und Smoothness
+- `ease: 'power2.out'` – natürlichere Verzögerungskurve
+- `will-change: opacity` auf Szenen-Containern – GPU-Hint für Opacity-Animationen
+
+### Aktuelle ScrollTrigger-Konfiguration
+
+```javascript
+ScrollTrigger.create({
+  scrub: 1.5,
+  anticipatePin: 1,
+  fastScrollEnd: false,
+  preventOverlaps: true,
+  invalidateOnRefresh: true,
+  ease: 'power2.out',
+});
+```
+
+---
+
 ## Offene Fragen
 
 - [x] Partikel-Animation in Phase 3: Wie viele Elemente sind performant? -> 5 funktioniert

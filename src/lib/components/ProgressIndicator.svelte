@@ -1,5 +1,5 @@
 <script>
-  import { currentPhase, phaseBoundaries } from '../stores/scroll.js';
+  import { currentPhase, phaseBoundaries, globalProgress } from '../stores/scroll.js';
 
   function scrollToPhase(index) {
     const phaseId = phaseBoundaries[index].id;
@@ -15,21 +15,41 @@
       scrollToPhase(index);
     }
   }
+
+  // Calculate line fill percentage based on current phase and progress
+  $: lineFillPercent = (() => {
+    const totalPhases = phaseBoundaries.length - 1;
+    const basePercent = ($currentPhase / totalPhases) * 100;
+    return Math.min(100, basePercent);
+  })();
 </script>
 
 <nav class="progress-indicator" aria-label="Phasen-Navigation">
+  <!-- Connection line -->
+  <div class="connection-line">
+    <div class="line-track"></div>
+    <div class="line-fill" style="height: {lineFillPercent}%;"></div>
+  </div>
+
   <ul>
     {#each phaseBoundaries as phase, index}
       <li>
         <button
           class="progress-dot"
           class:active={$currentPhase === index}
+          class:completed={$currentPhase > index}
           on:click={() => scrollToPhase(index)}
           on:keydown={(e) => handleKeydown(e, index)}
           aria-label="Zu {phase.label} springen"
           aria-current={$currentPhase === index ? 'step' : undefined}
         >
-          <span class="dot"></span>
+          <span class="dot">
+            {#if $currentPhase > index}
+              <svg class="check-icon" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            {/if}
+          </span>
           <span class="label">{phase.label}</span>
         </button>
       </li>
@@ -46,11 +66,43 @@
     z-index: 100;
   }
 
+  /* Connection line between dots */
+  .connection-line {
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    pointer-events: none;
+  }
+
+  .line-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-slate);
+    opacity: 0.3;
+    border-radius: 1px;
+  }
+
+  .line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-terracotta);
+    border-radius: 1px;
+    transition: height 0.4s var(--ease-out);
+  }
+
   ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
+    position: relative;
   }
 
   .progress-dot {
@@ -61,6 +113,7 @@
     border: none;
     cursor: pointer;
     padding: var(--space-xs);
+    position: relative;
   }
 
   .dot {
@@ -69,11 +122,28 @@
     border-radius: 50%;
     background-color: var(--color-slate);
     transition: all var(--duration-fast) var(--ease-out);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .check-icon {
+    width: 8px;
+    height: 8px;
+    color: var(--color-white);
+  }
+
+  .progress-dot.completed .dot {
+    background-color: var(--color-terracotta);
+    opacity: 0.7;
   }
 
   .progress-dot.active .dot {
     background-color: var(--color-terracotta);
     transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(191, 91, 62, 0.2);
   }
 
   .label {
@@ -97,6 +167,11 @@
     font-weight: 600;
   }
 
+  .progress-dot.completed .label {
+    color: var(--color-terracotta);
+    opacity: 0.7;
+  }
+
   .progress-dot:focus {
     outline: 2px solid var(--color-terracotta);
     outline-offset: 4px;
@@ -111,6 +186,21 @@
       top: auto;
       bottom: var(--space-md);
       transform: translateX(-50%);
+    }
+
+    .connection-line {
+      top: 5px;
+      left: 6px;
+      right: 6px;
+      bottom: auto;
+      width: auto;
+      height: 2px;
+    }
+
+    .line-fill {
+      height: 100% !important;
+      width: var(--fill-percent, 0%);
+      transition: width 0.4s var(--ease-out);
     }
 
     ul {

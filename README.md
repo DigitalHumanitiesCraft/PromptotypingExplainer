@@ -1,43 +1,84 @@
-# Svelte + Vite
+# Promptotyping Explainer
 
-This template should help get you started developing with Svelte in Vite.
+Scrollytelling-Website zur Erklärung der **Promptotyping**-Methodik für LLM-gestützte Werkzeugentwicklung in den Digital Humanities.
 
-## Recommended IDE Setup
+**Live Demo:** [dhcraft.org/PromptotypingExplainer](https://dhcraft.org/PromptotypingExplainer)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Was ist Promptotyping?
 
-## Need an official Svelte framework?
+> Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+Promptotyping ist eine sechsphasige Methodik:
+1. **CONTEXT** – Epistemischer Rahmen in README.md
+2. **DATA** – Strukturanalyse der Forschungsdaten
+3. **EXPLORATION** – Iterative LLM-Dialoge
+4. **REQUIREMENTS** – Formalisierung in REQUIREMENTS.md
+5. **IMPLEMENTATION** – Epistemisches Protokoll
+6. **PROTOTYPE** – Funktionales Interface
 
-## Technical considerations
+## Tech Stack
 
-**Why use this over SvelteKit?**
+- **Svelte 5** – Reaktives UI-Framework
+- **GSAP ScrollTrigger** – Scroll-basierte Animationen mit Pinning
+- **Vite** – Build-Tool und Dev-Server
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+## Entwicklung
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+```bash
+# Dependencies installieren
+npm install
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+# Dev-Server starten
+npm run dev
 
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+# Production Build
+npm run build
 ```
+
+## Architektur
+
+```
+src/
+├── App.svelte              # Haupt-Layout, Phasen-Orchestrierung
+├── lib/
+│   ├── components/
+│   │   ├── Phase.svelte           # ScrollTrigger-Wrapper mit Pinning
+│   │   ├── ProgressIndicator.svelte
+│   │   ├── scenes/                # Pro Phase eine Szene
+│   │   │   ├── IntroScene.svelte
+│   │   │   ├── Phase1Scene.svelte
+│   │   │   ├── Phase2Scene.svelte
+│   │   │   ├── Phase3Scene.svelte
+│   │   │   ├── Phase4Scene.svelte
+│   │   │   └── OutroScene.svelte
+│   │   └── elements/              # Wiederverwendbare UI-Elemente
+│   └── stores/
+│       └── scroll.js              # Svelte Stores für Progress/Phase
+└── app.css                        # Design System (Slate/Terracotta)
+```
+
+## Knowledge Vault
+
+Die Wissensbasis für dieses Projekt liegt in `knowledge/`:
+
+| Datei | Inhalt |
+|-------|--------|
+| `knowledge.md` | Inhalt, Visual System, Scroll-Logic |
+| `requirements.md` | Zielgruppen, User Stories, Constraints |
+| `implementation.md` | Technische Details |
+| `journal.md` | Entwicklungstagebuch |
+| `case-studies/` | Reale Promptotyping-Beispiele |
+
+## Design System
+
+- **Slate** (#607D8B) – Kaltes Gegebene, analytische Phasen
+- **Terracotta** (#BF5B3E) – Hitze des Prozesses, aktive Phasen
+- **Typografie:** Inter (Sans), JetBrains Mono (Code)
+
+## Deployment
+
+GitHub Actions deployed automatisch nach `docs/` für GitHub Pages bei Push auf `main`.
+
+## Lizenz
+
+MIT
