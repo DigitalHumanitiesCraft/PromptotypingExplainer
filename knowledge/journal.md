@@ -4,7 +4,7 @@ Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
 ---
 
-## 2024-12-06: Projektstart und Grundstruktur
+## 2025-12-06: Projektstart und Grundstruktur
 
 ### Ausgangslage
 
@@ -61,7 +61,7 @@ IntroScene und Phase1Scene funktionieren. Scroll-Progress wird korrekt berechnet
 
 ---
 
-## 2024-12-06: Alle Szenen implementiert
+## 2025-12-06: Alle Szenen implementiert
 
 ### Neue Komponenten
 
@@ -105,7 +105,7 @@ Build erfolgreich. Alle 139 Module kompiliert.
 
 ---
 
-## 2024-12-06: Akademischer Fließtext und Scroll-Optimierung
+## 2025-12-06: Akademischer Fließtext und Scroll-Optimierung
 
 ### Scroll-Smoothness verbessert
 
@@ -176,7 +176,7 @@ CONTEXT-MAP.md um Case-Studies-Tabelle erweitert.
 
 ---
 
-## 2024-12-06: UI-Verbesserungen und Performance
+## 2025-12-06: UI-Verbesserungen und Performance
 
 ### Progress-Indikator erweitert
 

@@ -18,28 +18,34 @@
     const boundary = phaseBoundaries[index];
     const phaseHeight = boundary ? (boundary.end - boundary.start) : 100;
 
+    // Throttle progress updates to reduce reactivity overhead
+    let lastProgress = 0;
+    const PROGRESS_THRESHOLD = 0.005; // Only update if changed by 0.5%
+
     scrollTrigger = ScrollTrigger.create({
       trigger: element,
       start: 'top top',
       end: `+=${phaseHeight}vh`,
       pin: true,
       pinSpacing: true,
-      scrub: 1.5,
+      scrub: 0.8,
       anticipatePin: 1,
-      fastScrollEnd: false,
+      fastScrollEnd: true,
       preventOverlaps: true,
       invalidateOnRefresh: true,
-      ease: 'power2.out',
       onUpdate: (self) => {
-        progress = self.progress;
+        // Only update if progress changed significantly (reduces reactivity)
+        if (Math.abs(self.progress - lastProgress) > PROGRESS_THRESHOLD) {
+          lastProgress = self.progress;
+          progress = self.progress;
 
-        if (self.isActive) {
-          currentPhase.set(index);
-          // Update global progress only from active phase
-          const boundary = phaseBoundaries[index];
-          const phaseStart = boundary.start / totalScrollLength;
-          const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
-          globalProgress.set(phaseStart + self.progress * phaseLength);
+          if (self.isActive) {
+            currentPhase.set(index);
+            const boundary = phaseBoundaries[index];
+            const phaseStart = boundary.start / totalScrollLength;
+            const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
+            globalProgress.set(phaseStart + self.progress * phaseLength);
+          }
         }
       },
       onEnter: () => {
