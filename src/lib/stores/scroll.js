@@ -114,6 +114,8 @@ export function scrollToHash() {
  * Update URL hash based on current phase and step
  * Call this from Phase.svelte on progress update
  */
+let lastLoggedStep = '';
+
 export function updateHash(phaseIndex, stepProgress) {
   if (typeof window === 'undefined') return;
 
@@ -121,14 +123,22 @@ export function updateHash(phaseIndex, stepProgress) {
   if (!phase) return;
 
   let newHash = phase.id;
+  let stepIndex = 0;
+  let stepId = '';
 
   if (phase.steps && phase.steps.length > 0) {
-    const stepIndex = Math.floor(stepProgress * phase.steps.length);
+    stepIndex = Math.floor(stepProgress * phase.steps.length);
     const clampedIndex = Math.min(stepIndex, phase.steps.length - 1);
-    const stepId = phase.steps[clampedIndex];
+    stepId = phase.steps[clampedIndex];
     if (stepId) {
       newHash = `${phase.id}-${stepId}`;
     }
+  }
+
+  // Log step changes
+  if (newHash !== lastLoggedStep) {
+    console.log(`📍 ${phase.label} [${stepIndex + 1}/${phase.steps?.length || 1}] → ${stepId || 'start'} | progress: ${(stepProgress * 100).toFixed(0)}%`);
+    lastLoggedStep = newHash;
   }
 
   // Only update if different (avoid history spam)

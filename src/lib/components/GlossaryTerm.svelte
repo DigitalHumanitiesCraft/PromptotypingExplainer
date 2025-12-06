@@ -37,21 +37,7 @@
     updatePositions();
   }
 
-  let hoverTimeout;
-  function handleMouseLeave() {
-    // Delay close to allow moving to panel
-    hoverTimeout = setTimeout(() => {
-      showTooltip = false;
-    }, 300);
-  }
-
-  function handlePanelEnter() {
-    clearTimeout(hoverTimeout);
-  }
-
-  function handlePanelLeave() {
-    showTooltip = false;
-  }
+  // Panel bleibt offen bis explizit geschlossen (X-Button oder Klick außerhalb)
 
   function closeTooltip() {
     showTooltip = false;
@@ -76,7 +62,6 @@
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updatePositions);
       clearTimeout(scrollTimeout);
-      clearTimeout(hoverTimeout);
     };
   });
 
@@ -101,7 +86,6 @@
     bind:this={termElement}
     on:click={handleClick}
     on:mouseenter={handleMouseEnter}
-    on:mouseleave={handleMouseLeave}
     on:keydown={(e) => e.key === 'Enter' && handleClick(e)}
     role="button"
     tabindex="0"
@@ -136,10 +120,7 @@
     <aside
       id="tooltip-{id}"
       class="glossary-panel"
-      role="complementary"
       aria-label="Glossar: {entry.term}"
-      on:mouseenter={handlePanelEnter}
-      on:mouseleave={handlePanelLeave}
     >
       <button class="close-btn" on:click={closeTooltip} aria-label="Schließen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
