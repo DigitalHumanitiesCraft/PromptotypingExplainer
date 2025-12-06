@@ -56,6 +56,9 @@
     <span class="phase-number">Phase 4</span>
     <h2>{phase.title}</h2>
     <p class="metaphor">{phase.metaphor}</p>
+    <p class="expert-loop">
+      Critical-Expert-in-the-Loop: Sei konstruktiv und ehrlich!
+    </p>
   </header>
 
   <div class="implementation-area" style="opacity: {layoutOpacity};">
@@ -137,6 +140,16 @@
   .metaphor {
     font-style: italic;
     color: var(--color-slate);
+  }
+
+  .expert-loop {
+    font-size: 0.8rem;
+    color: var(--color-terracotta);
+    margin-top: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(191, 91, 62, 0.1);
+    border-radius: 4px;
+    font-family: var(--font-mono);
   }
 
   .implementation-area {

@@ -70,6 +70,9 @@
     <span class="phase-number">Phase 3</span>
     <h2>{phase.title}</h2>
     <p class="metaphor">{phase.metaphor}</p>
+    <p class="context-rot">
+      Context Rot vermeiden: Maximale Information mit minimalen Tokens.
+    </p>
   </header>
 
   <div class="destillation-area" style="opacity: {layoutOpacity};">
@@ -155,6 +158,16 @@
   .metaphor {
     font-style: italic;
     color: var(--color-slate);
+  }
+
+  .context-rot {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    margin-top: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    background: rgba(96, 125, 139, 0.1);
+    border-radius: 4px;
+    font-family: var(--font-mono);
   }
 
   .destillation-area {

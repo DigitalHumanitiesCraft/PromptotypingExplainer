@@ -8,6 +8,7 @@
   import Phase2Scene from './lib/components/scenes/Phase2Scene.svelte';
   import Phase3Scene from './lib/components/scenes/Phase3Scene.svelte';
   import Phase4Scene from './lib/components/scenes/Phase4Scene.svelte';
+  import OutroScene from './lib/components/scenes/OutroScene.svelte';
 
   onMount(() => {
     initReducedMotion();
@@ -35,6 +36,10 @@
 
   <Phase id="phase4" index={4} height="160vh" let:progress>
     <Phase4Scene {progress} />
+  </Phase>
+
+  <Phase id="outro" index={5} height="120vh" let:progress>
+    <OutroScene {progress} />
   </Phase>
 </main>
 

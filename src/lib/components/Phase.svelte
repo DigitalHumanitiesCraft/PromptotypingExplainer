@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { currentPhase, globalProgress, totalScrollLength, phaseBoundaries } from '../stores/scroll.js';
+  import { currentPhase, globalProgress, phaseBoundaries, totalScrollLength } from '../stores/scroll.js';
 
   export let id;
   export let index;
@@ -23,20 +23,24 @@
       start: 'top top',
       end: `+=${phaseHeight}vh`,
       pin: true,
-      scrub: 0.5,
+      pinSpacing: true,
+      scrub: true,
+      anticipatePin: 1,
+      fastScrollEnd: true,
       onUpdate: (self) => {
         progress = self.progress;
 
-        // Update global stores
         if (self.isActive) {
           currentPhase.set(index);
+          // Update global progress only from active phase
+          const boundary = phaseBoundaries[index];
+          const phaseStart = boundary.start / totalScrollLength;
+          const phaseLength = (boundary.end - boundary.start) / totalScrollLength;
+          globalProgress.set(phaseStart + self.progress * phaseLength);
         }
-
-        // Calculate global progress
-        const scrollY = window.scrollY;
-        const totalHeight = document.body.scrollHeight - window.innerHeight;
-        globalProgress.set(scrollY / totalHeight);
       },
+      onEnter: () => currentPhase.set(index),
+      onEnterBack: () => currentPhase.set(index),
     });
   });
 

@@ -1,9 +1,8 @@
 <script>
-  import { currentPhase } from '../stores/scroll.js';
-  import { phases } from '../data/phases.js';
+  import { currentPhase, phaseBoundaries } from '../stores/scroll.js';
 
   function scrollToPhase(index) {
-    const phaseId = phases[index].id;
+    const phaseId = phaseBoundaries[index].id;
     const element = document.getElementById(phaseId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -20,18 +19,18 @@
 
 <nav class="progress-indicator" aria-label="Phasen-Navigation">
   <ul>
-    {#each phases as phase, index}
+    {#each phaseBoundaries as phase, index}
       <li>
         <button
           class="progress-dot"
           class:active={$currentPhase === index}
           on:click={() => scrollToPhase(index)}
           on:keydown={(e) => handleKeydown(e, index)}
-          aria-label="Zu {phase.title} springen"
+          aria-label="Zu {phase.label} springen"
           aria-current={$currentPhase === index ? 'step' : undefined}
         >
           <span class="dot"></span>
-          <span class="label">{phase.number ? `Phase ${phase.number}` : phase.title}</span>
+          <span class="label">{phase.label}</span>
         </button>
       </li>
     {/each}

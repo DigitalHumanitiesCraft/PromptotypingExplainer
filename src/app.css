@@ -40,7 +40,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Disable smooth scroll - conflicts with GSAP ScrollTrigger */
+  scroll-behavior: auto;
 }
 
 body {
@@ -48,8 +49,17 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-black);
-  background-color: var(--color-white);
+  background-color: #E8E8E8;
   overflow-x: hidden;
+  /* GPU acceleration for smoother scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Force GPU compositing for animated elements */
+.phase {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 #app {
