@@ -6,7 +6,12 @@
 
   export let id;
   export let index;
-  export let height = '100vh';
+
+  // Calculate height from phaseBoundaries
+  $: phaseHeight = (() => {
+    const boundary = phaseBoundaries[index];
+    return boundary ? `${boundary.end - boundary.start}vh` : '100vh';
+  })();
 
   let element;
   let scrollTrigger;
@@ -67,7 +72,7 @@
   bind:this={element}
   {id}
   class="phase"
-  style="height: {height};"
+  style="height: {phaseHeight};"
   aria-label="Phase {index}"
 >
   <slot {progress} />

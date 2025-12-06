@@ -83,27 +83,27 @@
 <main>
   <ProgressIndicator />
 
-  <Phase id="intro" index={0} height="100vh" let:progress>
+  <Phase id="intro" index={0} let:progress>
     <IntroScene {progress} />
   </Phase>
 
-  <Phase id="phase1" index={1} height="100vh" let:progress>
+  <Phase id="phase1" index={1} let:progress>
     <Phase1Scene {progress} />
   </Phase>
 
-  <Phase id="phase2" index={2} height="120vh" let:progress>
+  <Phase id="phase2" index={2} let:progress>
     <Phase2Scene {progress} />
   </Phase>
 
-  <Phase id="phase3" index={3} height="120vh" let:progress>
+  <Phase id="phase3" index={3} let:progress>
     <Phase3Scene {progress} />
   </Phase>
 
-  <Phase id="phase4" index={4} height="160vh" let:progress>
+  <Phase id="phase4" index={4} let:progress>
     <Phase4Scene {progress} />
   </Phase>
 
-  <Phase id="outro" index={5} height="120vh" let:progress>
+  <Phase id="outro" index={5} let:progress>
     <OutroScene {progress} />
   </Phase>
 </main>

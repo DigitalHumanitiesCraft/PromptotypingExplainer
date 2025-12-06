@@ -8,17 +8,18 @@ export const currentPhase = writable(0);
 
 // Phase-Grenzen in vh (aus knowledge.md → TEIL 3 + Outro)
 // Mit steps für URL-basierte Navigation
+// Jeder Step sollte ~50-60vh haben für ein volles Scroll-Wheel pro Step
 export const phaseBoundaries = [
-  { id: 'intro', start: 0, end: 100, label: 'Promptotyping', steps: ['definition', 'system142', 'herausforderung', 'methodik', 'phasen'] },
-  { id: 'phase1', start: 100, end: 200, label: 'Vorbereitung', steps: ['titel', 'text', 'sammeln', 'zusammenfuehren', 'workspace'] },
-  { id: 'phase2', start: 200, end: 320, label: 'Exploration', steps: ['data', 'dialog', 'exploration', 'entitaeten'] },
-  { id: 'phase3', start: 320, end: 440, label: 'Destillation', steps: ['requirements', 'layout', 'partikel', 'dokumente'] },
-  { id: 'phase4', start: 440, end: 600, label: 'Implementation', steps: ['implementation', 'expert', 'dialog', 'browser', 'loops'] },
-  { id: 'outro', start: 600, end: 720, label: 'Praxis', steps: ['konklusion', 'screenshot', 'cases', 'imperative'] },
+  { id: 'intro', start: 0, end: 300, label: 'Promptotyping', steps: ['definition', 'system142', 'herausforderung', 'methodik', 'phasen'] },      // 5 steps × 60vh = 300vh
+  { id: 'phase1', start: 300, end: 600, label: 'Vorbereitung', steps: ['titel', 'text', 'sammeln', 'zusammenfuehren', 'workspace'] },            // 5 steps × 60vh = 300vh
+  { id: 'phase2', start: 600, end: 840, label: 'Exploration', steps: ['data', 'dialog', 'exploration', 'entitaeten'] },                          // 4 steps × 60vh = 240vh
+  { id: 'phase3', start: 840, end: 1080, label: 'Destillation', steps: ['requirements', 'layout', 'partikel', 'dokumente'] },                    // 4 steps × 60vh = 240vh
+  { id: 'phase4', start: 1080, end: 1380, label: 'Implementation', steps: ['implementation', 'expert', 'dialog', 'browser', 'loops'] },          // 5 steps × 60vh = 300vh
+  { id: 'outro', start: 1380, end: 1620, label: 'Praxis', steps: ['konklusion', 'screenshot', 'cases', 'imperative'] },                          // 4 steps × 60vh = 240vh
 ];
 
 // Gesamte Scroll-Länge in vh
-export const totalScrollLength = 720;
+export const totalScrollLength = 1620;
 
 // Derived: Progress innerhalb der aktuellen Phase (0-1)
 export const phaseProgress = derived(
