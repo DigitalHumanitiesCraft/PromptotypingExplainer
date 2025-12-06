@@ -4,7 +4,9 @@
 
 Destilliertes Wissen für die Entwicklung einer Scrollytelling-Webseite, die den Promptotyping-Prozess narrativ und visuell vermittelt.
 
-**Weitere Dokumente im Vault:**
+Weitere Dokumente im Vault:
+- [CONTEXT-MAP.md](CONTEXT-MAP.md) – Einstiegspunkt, Vault-Navigation
+- [VAULT-RULES.md](VAULT-RULES.md) – Dokumentationsstandards
 - [requirements.md](requirements.md) – Zielgruppen, User Stories, technische Constraints
 - [implementation.md](implementation.md) – Tech Stack, Komponenten-Architektur
 - [journal.md](journal.md) – Arbeitstagbuch, Entscheidungen, Learnings
