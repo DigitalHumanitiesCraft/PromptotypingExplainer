@@ -15,6 +15,20 @@ Einstiegspunkt für die Navigation im Promptotyping Explainer Vault.
 | implementation.md | Tech Stack, Komponenten-Architektur | Für technische Details |
 | journal.md | Arbeitstagbuch, Entscheidungen | Für Kontext und Historie |
 
+## Case Studies
+
+Dokumentation realer Promptotyping-Projekte in case-studies/:
+
+| Projekt | Daten | Zeit | Dokumente |
+|---------|-------|------|-----------|
+| correspexplorer.md | CMIF-Korrespondenzen | 2 Nachmittage | 12 Vault-Docs |
+| diged-neolat.md | Neulateinische Gedichte | 25h | Multi-Iteration |
+| km.md | Kriminalmuseum TEI/LIDO | 10h | 3 Docs |
+| stained-glass.md | CVMA Knowledge Graph | 8h | 4 Docs |
+| aldersbach.md | RDF/XML Finanzdaten | 8h | 6 Docs |
+| imareal-room-object.md | REALonline Inventare | 5h | 6 Docs |
+| szd.md | Stefan Zweig GAMS | 2h | Experimentell |
+
 ---
 
 ## Dokumentbeziehungen
