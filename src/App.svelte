@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { initReducedMotion, currentPhase, globalProgress } from './lib/stores/scroll.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
+  import PhaseHeader from './lib/components/PhaseHeader.svelte';
   import Phase from './lib/components/Phase.svelte';
   import IntroScene from './lib/components/scenes/IntroScene.svelte';
   import Phase1Scene from './lib/components/scenes/Phase1Scene.svelte';
@@ -28,6 +29,8 @@
 </script>
 
 <div class="background-layer" style="background: {backgroundGradient};"></div>
+
+<PhaseHeader />
 
 <main>
   <ProgressIndicator />
@@ -72,5 +75,6 @@
   main {
     width: 100%;
     position: relative;
+    padding-top: 50px; /* Space for fixed header */
   }
 </style>
