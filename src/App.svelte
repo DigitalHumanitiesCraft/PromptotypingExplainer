@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { initReducedMotion, currentPhase, globalProgress } from './lib/stores/scroll.js';
+  import { initReducedMotion, currentPhase, globalProgress, phaseProgress } from './lib/stores/scroll.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
   import Phase from './lib/components/Phase.svelte';
@@ -15,20 +15,59 @@
     initReducedMotion();
   });
 
-  // Phase colors: neutral → cool/analytical → warm/concentrated → hot/implementation
-  const phaseGradients = [
-    'radial-gradient(ellipse at 50% 30%, rgba(232, 232, 232, 1) 0%, rgba(232, 232, 232, 1) 100%)', // Intro: neutral
-    'radial-gradient(ellipse at 50% 50%, rgba(96, 125, 139, 0.08) 0%, rgba(232, 232, 232, 1) 70%)', // Phase 1: slight slate
-    'radial-gradient(ellipse at 30% 50%, rgba(96, 125, 139, 0.12) 0%, rgba(232, 232, 232, 1) 60%)', // Phase 2: cool/analytical
-    'radial-gradient(ellipse at 50% 50%, rgba(191, 91, 62, 0.06) 0%, rgba(232, 232, 232, 1) 70%)', // Phase 3: warming
-    'radial-gradient(ellipse at 70% 50%, rgba(191, 91, 62, 0.10) 0%, rgba(232, 232, 232, 1) 60%)', // Phase 4: hot
-    'radial-gradient(ellipse at 50% 70%, rgba(191, 91, 62, 0.08) 0%, rgba(232, 232, 232, 1) 70%)', // Outro: settled warmth
-  ];
+  // Continuous background based on globalProgress
+  // Metaphor: Slate (cold/raw) → Terracotta (hot/transformed)
+  // The gradient intensity and position changes as you scroll
 
-  $: backgroundGradient = phaseGradients[$currentPhase] || phaseGradients[0];
+  // Color interpolation helper
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  // Calculate dynamic background based on scroll progress
+  $: dynamicBackground = (() => {
+    const progress = $globalProgress;
+
+    // Slate RGB: 96, 125, 139
+    // Terracotta RGB: 191, 91, 62
+    // Base: 232, 232, 232
+
+    // Temperature curve: starts cold, peaks hot at ~75%, cools down at end
+    let temperature;
+    if (progress < 0.2) {
+      // Intro + Phase 1: Cold (Slate)
+      temperature = 0;
+    } else if (progress < 0.5) {
+      // Phase 2-3: Warming up
+      temperature = (progress - 0.2) / 0.3; // 0 → 1
+    } else if (progress < 0.85) {
+      // Phase 4: Hot (peak)
+      temperature = 1;
+    } else {
+      // Outro: Cooling down
+      temperature = 1 - (progress - 0.85) / 0.15 * 0.3; // 1 → 0.7
+    }
+
+    // Interpolate colors
+    const r = Math.round(lerp(96, 191, temperature));
+    const g = Math.round(lerp(125, 91, temperature));
+    const b = Math.round(lerp(139, 62, temperature));
+
+    // Intensity increases with progress (more visible as you go deeper)
+    const intensity = 0.04 + progress * 0.12;
+
+    // Ellipse position moves: center → right (following the "flow")
+    const ellipseX = 30 + progress * 40; // 30% → 70%
+    const ellipseY = 50 - Math.sin(progress * Math.PI) * 20; // Arc motion
+
+    // Gradient spread tightens as intensity increases
+    const spread = 70 - progress * 20; // 70% → 50%
+
+    return `radial-gradient(ellipse at ${ellipseX}% ${ellipseY}%, rgba(${r}, ${g}, ${b}, ${intensity}) 0%, rgba(232, 232, 232, 1) ${spread}%)`;
+  })();
 </script>
 
-<div class="background-layer" style="background: {backgroundGradient};"></div>
+<div class="background-layer" style="background: {dynamicBackground};"></div>
 
 <PhaseHeader />
 
@@ -68,7 +107,7 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    transition: background 0.8s ease-out;
+    transition: background 0.15s ease-out;
     pointer-events: none;
   }
 
