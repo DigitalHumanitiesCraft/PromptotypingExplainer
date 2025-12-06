@@ -1,5 +1,6 @@
 <script>
   import { phases } from '../../data/phases.js';
+  import GlossaryTerm from '../GlossaryTerm.svelte';
 
   export let progress = 0;
 
@@ -40,12 +41,13 @@
   </div>
 
   <p class="definition" style="opacity: {definitionOpacity};">
-    Eine strukturierte Methodik für die LLM-gestützte Entwicklung von
+    Eine <GlossaryTerm id="context-engineering">Context Engineering</GlossaryTerm>-Methodik
+    für die <GlossaryTerm id="llm">LLM</GlossaryTerm>-gestützte Entwicklung von
     Forschungsworkflows und -werkzeugen in den Digital Humanities.
   </p>
 
   <p class="system142" style="opacity: {system142Opacity};">
-    LLMs operieren als <strong>„System 1.42"</strong> – ein epistemologischer
+    <GlossaryTerm id="llm">LLMs</GlossaryTerm> operieren als <strong>„System 1.42"</strong> – ein epistemologischer
     Zwischenraum zwischen intuitiver Musterassoziation und systematischer
     Problemlösung, ohne vollständige Eigenschaften beider Systeme zu erreichen.
   </p>
@@ -59,7 +61,7 @@
   <p class="approach" style="opacity: {approachOpacity};">
     Ein sechsphasiges Prozessmodell mit systematischer Dokumentation
     und Critical-Expert-in-the-Loop-Ansatz zur Reduktion
-    zustimmungsorientierter Antwortverzerrungen.
+    <GlossaryTerm id="sycophancy">zustimmungsorientierter Antwortverzerrungen</GlossaryTerm>.
   </p>
 
   <div

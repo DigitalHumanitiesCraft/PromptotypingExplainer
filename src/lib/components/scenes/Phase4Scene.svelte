@@ -4,6 +4,7 @@
   import VaultIcon from '../elements/VaultIcon.svelte';
   import ChatBubble from '../elements/ChatBubble.svelte';
   import BrowserFrame from '../elements/BrowserFrame.svelte';
+  import GlossaryTerm from '../GlossaryTerm.svelte';
 
   export let progress = 0;
 
@@ -80,8 +81,9 @@
         <h4>Critical Expert in the Loop</h4>
         <p>
           Domänenexperten fungieren als aktive Ko-Konstrukteure, nicht als passive Validierende.
-          Durch strukturierte Prompting-Strategien wird die <strong>Sycophancy</strong>-Tendenz
-          von LLMs zur unkritischen Bestätigung systematisch herausgefordert.
+          Durch strukturierte <GlossaryTerm id="prompt-engineering">Prompting-Strategien</GlossaryTerm> wird die
+          <GlossaryTerm id="sycophancy">Sycophancy</GlossaryTerm>-Tendenz
+          von <GlossaryTerm id="llm">LLMs</GlossaryTerm> zur unkritischen Bestätigung systematisch herausgefordert.
         </p>
       </div>
     </div>

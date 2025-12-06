@@ -1,0 +1,185 @@
+// Glossar-Daten aus glossar_de.md extrahiert
+// Nur die für Promptotyping relevantesten Begriffe
+
+export const glossary = {
+  'context-engineering': {
+    term: 'Context Engineering',
+    en: 'Context Engineering',
+    definition: 'Die systematische Gestaltung und Optimierung des Informationskontexts von LLMs, mit dem Ziel, unter begrenzten Ressourcen die Qualität und Zuverlässigkeit der Modellantworten zu maximieren.',
+    tags: ['prompting', 'ai-engineering'],
+    source: 'Mei et al. 2025'
+  },
+  'llm': {
+    term: 'Large Language Model (LLM)',
+    en: 'Large Language Model',
+    definition: 'Ein auf neuronalen Netzen basierendes probabilistisches Modell, das auf riesigen Textmengen trainiert wurde, um statistische Muster der Sprache zu erlernen.',
+    tags: ['fundamentals'],
+    source: 'Zhao et al. 2023'
+  },
+  'context-window': {
+    term: 'Context Window',
+    en: 'Context Window',
+    definition: 'Die maximale Anzahl an Token, die ein Modell in einem einzigen Durchgang verarbeiten kann. Es fungiert als das "Arbeitsgedächtnis" des Modells.',
+    tags: ['architecture', 'fundamentals'],
+    source: 'Vaswani et al. 2017'
+  },
+  'context-rot': {
+    term: 'Context Rot',
+    en: 'Context Rot',
+    definition: 'Ein Phänomen, bei dem die Leistungsfähigkeit von LLMs mit zunehmender Länge des Eingabekontexts und sinkender Informationsdichte abnimmt.',
+    tags: ['architecture'],
+    source: 'Hong et al. 2025'
+  },
+  'in-context-learning': {
+    term: 'In-Context Learning',
+    en: 'In-Context Learning',
+    definition: 'Die Fähigkeit von Sprachmodellen, Aufgaben durch Anweisungen oder Beispiele im Prompt zu lösen, ohne dass ein Retraining stattfindet.',
+    tags: ['prompting', 'fundamentals'],
+    source: 'Brown et al. 2020'
+  },
+  'prompt-engineering': {
+    term: 'Prompt Engineering',
+    en: 'Prompt Engineering',
+    definition: 'Ein systematisches und iteratives Verfahren zur Entwicklung und Optimierung von Eingabeaufforderungen (Prompts), um Large Language Models effektiv zu steuern.',
+    tags: ['prompting'],
+    source: 'Schulhoff et al. 2024'
+  },
+  'chain-of-thought': {
+    term: 'Chain of Thought (CoT)',
+    en: 'Chain of Thought',
+    definition: 'Eine Prompting-Technik, die LLMs dazu veranlasst, komplexe Aufgaben in eine Sequenz intermediärer Denkschritte zu zerlegen, bevor die finale Antwort generiert wird.',
+    tags: ['prompting'],
+    source: 'Wei et al. 2022'
+  },
+  'sycophancy': {
+    term: 'Sycophancy',
+    en: 'Sycophancy',
+    definition: 'Die Tendenz von Modellen, Nutzern übermäßig zuzustimmen oder ihnen zu schmeicheln, oft auf Kosten der faktischen Genauigkeit.',
+    tags: ['safety'],
+    source: 'Malmqvist 2024'
+  },
+  'halluzinationen': {
+    term: 'Halluzinationen',
+    en: 'Hallucinations',
+    definition: 'Das Generieren von Inhalten, die grammatikalisch plausibel klingen, aber faktisch falsch sind. Der Begriff "Konfabulation" beschreibt das "Lückenfüllen" ohne Realitätsbezug.',
+    tags: ['safety', 'fundamentals'],
+    source: 'Ji et al. 2023'
+  },
+  'rag': {
+    term: 'Retrieval Augmented Generation (RAG)',
+    en: 'RAG',
+    definition: 'Ein Ansatz, der generative Sprachmodelle mit einem externen Informationsabrufsystem koppelt, um faktische Genauigkeit zu erhöhen.',
+    tags: ['ai-engineering'],
+    source: 'Lewis et al. 2020'
+  },
+  'token': {
+    term: 'Token',
+    en: 'Token',
+    definition: 'Die atomare Einheit der Informationsverarbeitung in einem Sprachmodell - die "Atome" des Systems. Ein Token entspricht etwa 4 Zeichen bzw. 0,75 Wörtern.',
+    tags: ['fundamentals', 'architecture'],
+    source: 'Karpathy 2024'
+  },
+  'system-prompt': {
+    term: 'System Prompt',
+    en: 'System Prompt',
+    definition: 'Eine initiale Konfigurationsschicht, die einem LLM vor der Nutzerinteraktion übergeordnete Handlungsanweisungen und Restriktionen vorgibt.',
+    tags: ['prompting', 'ai-engineering'],
+    source: 'Claude Docs'
+  },
+  'few-shot': {
+    term: 'Zero-Shot / Few-Shot',
+    en: 'Zero-Shot & Few-Shot Learning',
+    definition: 'Eine Form des In-Context Learning, bei der das Modell durch Anweisungen (Zero-Shot) oder Beispiele (Few-Shot) im Context Window konditioniert wird.',
+    tags: ['prompting'],
+    source: 'Brown et al. 2020'
+  },
+  'tool-use': {
+    term: 'Tool Use / Function Calling',
+    en: 'Tool Use',
+    definition: 'Die Fähigkeit eines Modells, zu erkennen, dass eine Anfrage externe Werkzeuge erfordert, und strukturierte Befehle zu generieren.',
+    tags: ['agents', 'ai-engineering'],
+    source: 'Schick et al. 2023'
+  },
+  'ai-agent': {
+    term: 'AI Agent',
+    en: 'AI Agent',
+    definition: 'Ein autonomes System, das ein LLM als zentrale Reasoning-Einheit nutzt, um mehrstufige Pläne zu erstellen und externe Werkzeuge zur Ausführung zu verwenden.',
+    tags: ['agents'],
+    source: 'Sapkota et al. 2025'
+  },
+  'agentic-ai': {
+    term: 'Agentic AI',
+    en: 'Agentic AI',
+    definition: 'Ein Paradigma, das den Übergang von generativer KI zu Systemen beschreibt, die als aktive Problemlöser fungieren und Aufgaben selbstständig in Teilschritte zerlegen.',
+    tags: ['agents'],
+    source: 'Sapkota et al. 2025'
+  },
+  'mcp': {
+    term: 'Model Context Protocol (MCP)',
+    en: 'Model Context Protocol',
+    definition: 'Ein offener Standard, der als universelle Schnittstelle dient, um KI-Assistenten sicher mit externen Datenquellen zu verbinden.',
+    tags: ['ai-engineering', 'agents'],
+    source: 'Anthropic 2024'
+  },
+  'alignment': {
+    term: 'Alignment',
+    en: 'AI Alignment',
+    definition: 'Die Ausrichtung von KI-Systemen auf menschliche Intentionen und Werte, konkret operationalisiert durch die Prinzipien "helpful, honest, and harmless" (HHH).',
+    tags: ['safety', 'training'],
+    source: 'Askell et al. 2021'
+  },
+  'fine-tuning': {
+    term: 'Fine-Tuning',
+    en: 'Fine-Tuning',
+    definition: 'Der Prozess des Nachtrainierens eines vortrainierten Modells mit einem spezifischen Datensatz, um es auf konkrete Aufgaben zu spezialisieren.',
+    tags: ['training'],
+    source: 'Claude Docs'
+  },
+  'embedding': {
+    term: 'Embedding',
+    en: 'Embedding',
+    definition: 'Eine mathematische Repräsentation von Token oder Textabschnitten als Vektoren, in der inhaltlich ähnliche Begriffe geometrisch nah beieinander liegen.',
+    tags: ['architecture', 'ai-engineering'],
+    source: 'Mikolov et al. 2013'
+  }
+};
+
+// Mapping von Begriffen zu IDs für einfacheres Matching
+export const termToId = {
+  'context engineering': 'context-engineering',
+  'llm': 'llm',
+  'large language model': 'llm',
+  'sprachmodell': 'llm',
+  'context window': 'context-window',
+  'kontextfenster': 'context-window',
+  'context rot': 'context-rot',
+  'in-context learning': 'in-context-learning',
+  'prompt engineering': 'prompt-engineering',
+  'chain of thought': 'chain-of-thought',
+  'cot': 'chain-of-thought',
+  'sycophancy': 'sycophancy',
+  'halluzination': 'halluzinationen',
+  'halluzinationen': 'halluzinationen',
+  'konfabulation': 'halluzinationen',
+  'rag': 'rag',
+  'retrieval augmented generation': 'rag',
+  'token': 'token',
+  'tokens': 'token',
+  'system prompt': 'system-prompt',
+  'system-prompt': 'system-prompt',
+  'few-shot': 'few-shot',
+  'zero-shot': 'few-shot',
+  'tool use': 'tool-use',
+  'function calling': 'tool-use',
+  'ai agent': 'ai-agent',
+  'agent': 'ai-agent',
+  'agentic ai': 'agentic-ai',
+  'agentic': 'agentic-ai',
+  'mcp': 'mcp',
+  'model context protocol': 'mcp',
+  'alignment': 'alignment',
+  'fine-tuning': 'fine-tuning',
+  'finetuning': 'fine-tuning',
+  'embedding': 'embedding',
+  'embeddings': 'embedding'
+};

@@ -2,6 +2,7 @@
   import { phases } from '../../data/phases.js';
   import VaultIcon from '../elements/VaultIcon.svelte';
   import DocumentIcon from '../elements/DocumentIcon.svelte';
+  import GlossaryTerm from '../GlossaryTerm.svelte';
 
   export let progress = 0;
 
@@ -85,8 +86,8 @@
     </p>
     <p class="highlight">
       Trade-offs zwischen technischer Machbarkeit und wissenschaftlichem Anspruch
-      werden explizit dokumentiert. Context Compression reduziert Tokens bei
-      maximaler Informationsdichte.
+      werden explizit dokumentiert. <GlossaryTerm id="context-rot">Context Compression</GlossaryTerm> reduziert
+      <GlossaryTerm id="token">Tokens</GlossaryTerm> bei maximaler Informationsdichte.
     </p>
   </div>
 
