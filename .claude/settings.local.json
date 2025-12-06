@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"c:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\PromptotypingExplainer\\knowledge\")",
+      "Bash(npm create:*)",
+      "Bash(del \"c:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\PromptotypingExplainer\\PLAN.md\")",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx vite build)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
