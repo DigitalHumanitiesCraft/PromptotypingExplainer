@@ -205,9 +205,19 @@ Dauer: 300-500ms für UI-Feedback, 800-1200ms für narrative Übergänge.
 
 ## Gesamtstruktur
 
-Fünf Hauptsektionen: Intro, Phase 1, Phase 2, Phase 3, Phase 4.
-Gesamte Scroll-Länge: etwa 600vh.
-Jede Phase: 100-120vh.
+Sechs Hauptsektionen: Intro, Phase 1, Phase 2, Phase 3, Phase 4, Outro.
+Gesamte Scroll-Länge: 1620vh (~60vh pro Sub-Step für ein volles Scroll-Wheel).
+
+**Phase-Boundaries (scroll.js):**
+- Intro: 0-300vh (5 steps × 60vh)
+- Phase 1 (Vorbereitung): 300-600vh (5 steps × 60vh)
+- Phase 2 (Exploration): 600-840vh (4 steps × 60vh)
+- Phase 3 (Destillation): 840-1080vh (4 steps × 60vh)
+- Phase 4 (Implementation): 1080-1380vh (5 steps × 60vh)
+- Outro (Praxis): 1380-1620vh (4 steps × 60vh)
+
+**URL-Navigation:**
+Jeder Step hat eine eigene URL: `#intro-definition`, `#phase1-workspace`, `#phase4-loops`, etc.
 
 ## Intro (0-100vh)
 

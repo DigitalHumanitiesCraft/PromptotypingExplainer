@@ -352,3 +352,56 @@ Ungenutzter CSS-Selector `.academic-text strong` in Phase4Scene entfernt.
 **GSAP ScrollTrigger Pinning**: Funktioniert gut, aber die `end`-Berechnung muss zur tatsächlichen Scroll-Länge passen. Bei 600vh Gesamtlänge müssen die einzelnen Phasen korrekt aufaddiert werden.
 
 **Promptotyping in der Praxis**: Dieses Projekt ist selbst ein Beispiel für Promptotyping. Der Knowledge-Vault mit den drei Dokumenten ist die destillierte Wissensbasis, aus der die Implementation entsteht.
+
+---
+
+## 2025-12-06: URL-Navigation und Scroll-Kalibrierung
+
+### URL-basierte Deep-Links
+
+Neue Features in scroll.js:
+- `scrollToHash()` – Navigiert zu URL-Hash beim Laden
+- `updateHash()` – Aktualisiert URL während Scrollen (replaceState)
+- `phaseBoundaries.steps[]` – Sub-Step-IDs für jede Phase
+
+URL-Format: `#phase1-workspace`, `#intro-system142`, `#phase4-loops`
+
+### Scroll-Länge erhöht
+
+Problem: Sub-Steps wechselten zu schnell (20-30vh pro Step).
+
+Lösung: ~60vh pro Sub-Step für ca. ein volles Scroll-Wheel.
+
+**Vorher:** 720vh total
+**Nachher:** 1620vh total
+
+Phase-Höhen werden jetzt dynamisch aus `phaseBoundaries` berechnet (Phase.svelte).
+
+### ProgressIndicator mit klickbaren Sub-Steps
+
+- Sub-Step-Dots sind jetzt Buttons
+- Klick setzt `window.location.hash` → löst Navigation aus
+- Hover zeigt Step-Namen als Title-Attribut
+
+### GlossaryTerm: Panel bleibt offen
+
+Geändert: Panel schließt nicht mehr bei Mouse-Leave.
+Schließt nur bei: X-Button klicken, Term erneut klicken, 2s Scrolling.
+
+### Console-Logging für Debug
+
+`updateHash()` loggt Step-Übergänge:
+```
+📍 Promptotyping [2/5] → system142 | progress: 25%
+📍 Vorbereitung [3/5] → sammeln | progress: 49%
+```
+
+---
+
+## Offene Fragen
+
+- [x] Partikel-Animation in Phase 3: Wie viele Elemente sind performant? -> 5 funktioniert
+- [x] Phase 4 Browser-Frame: Echtes Code-Snippet oder stilisiert? -> Stilisiert
+- [x] Rückschleifen-Visualisierung: Button oder automatisch? -> Button
+- [x] Scroll-Geschwindigkeit: Wie viel vh pro Sub-Step? -> 60vh (ein Scroll-Wheel)
+- [ ] Mobile: Horizontal-Scroll oder vereinfachte Animationen?

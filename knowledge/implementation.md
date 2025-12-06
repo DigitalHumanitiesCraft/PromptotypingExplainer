@@ -1,6 +1,6 @@
 # Implementation: Promptotyping Explainer
 
-> **Status**: Planungsdokument. Es existiert noch kein Code.
+> **Status**: Implementiert und live unter [dhcraft.org/PromptotypingExplainer](https://dhcraft.org/PromptotypingExplainer)
 
 **Weitere Dokumente im Vault:**
 - [knowledge.md](knowledge.md) – Single Source of Truth für Inhalt, Visual System, Scroll-Logic
@@ -28,44 +28,53 @@ PromptotypingExplainer/
 ├── src/
 │   ├── lib/
 │   │   ├── components/
-│   │   │   ├── ProgressIndicator.svelte
-│   │   │   ├── Phase.svelte
+│   │   │   ├── Phase.svelte              # ScrollTrigger-Wrapper mit dynamischer Höhe
+│   │   │   ├── ProgressIndicator.svelte  # Navigation mit Sub-Steps
+│   │   │   ├── PhaseHeader.svelte        # Fixierter Header mit Fortschritt
+│   │   │   ├── GlossaryTerm.svelte       # Interaktive Tooltips (Side-Panel)
 │   │   │   ├── scenes/
 │   │   │   │   ├── IntroScene.svelte
 │   │   │   │   ├── Phase1Scene.svelte
 │   │   │   │   ├── Phase2Scene.svelte
 │   │   │   │   ├── Phase3Scene.svelte
-│   │   │   │   └── Phase4Scene.svelte
-│   │   │   └── elements/
-│   │   │       ├── DocumentIcon.svelte
-│   │   │       ├── EntityIcon.svelte
-│   │   │       ├── VaultIcon.svelte
-│   │   │       ├── ChatBubble.svelte
-│   │   │       ├── BrowserFrame.svelte
-│   │   │       └── ConnectionLine.svelte
+│   │   │   │   ├── Phase4Scene.svelte
+│   │   │   │   └── OutroScene.svelte
+│   │   │   ├── elements/
+│   │   │   │   ├── DocumentIcon.svelte
+│   │   │   │   ├── EntityIcon.svelte
+│   │   │   │   ├── VaultIcon.svelte
+│   │   │   │   ├── ChatBubble.svelte
+│   │   │   │   └── BrowserFrame.svelte
+│   │   │   └── blocks/
+│   │   │       ├── SceneHeader.svelte    # Extrahierter Header-Block
+│   │   │       └── AcademicBlock.svelte  # Extrahierter Text-Block
 │   │   ├── stores/
-│   │   │   └── scroll.js
-│   │   └── data/
-│   │       ├── phases.js
-│   │       └── prompts.js
+│   │   │   └── scroll.js                 # Stores + URL-Navigation
+│   │   ├── data/
+│   │   │   ├── phases.js
+│   │   │   ├── prompts.js
+│   │   │   └── glossary.js               # 20+ AI/LLM-Begriffe
+│   │   └── utils/
+│   │       └── progressAnimations.js     # fadeIn, lerp, ease, etc.
+│   ├── assets/images/                    # Screenshots für Case Studies
 │   ├── app.css
 │   ├── App.svelte
 │   └── main.js
-├── static/
-│   ├── fonts/
-│   │   ├── Inter-Regular.woff2
-│   │   ├── Inter-Bold.woff2
-│   │   └── JetBrainsMono-Regular.woff2
-│   └── og-image.png
 ├── index.html
 ├── vite.config.js
 ├── svelte.config.js
 ├── package.json
-├── knowledge/                    # Wissensvault (nicht Teil des Builds)
+├── knowledge/                            # Wissensvault
 │   ├── knowledge.md
 │   ├── requirements.md
-│   └── implementation.md
-└── docs/                         # GitHub Pages Output (generiert)
+│   ├── implementation.md
+│   ├── journal.md
+│   ├── glossar_de.md
+│   ├── paper-draft.md
+│   ├── CONTEXT-MAP.md
+│   ├── VAULT-RULES.md
+│   └── case-studies/                     # 7 reale Beispiele
+└── docs/                                 # GitHub Pages Output
 ```
 
 ---
