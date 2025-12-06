@@ -1,12 +1,15 @@
 <script>
   import { phases } from '../../data/phases.js';
   import DocumentIcon from '../elements/DocumentIcon.svelte';
+  import SceneHeader from '../blocks/SceneHeader.svelte';
+  import AcademicBlock from '../blocks/AcademicBlock.svelte';
+  import { fadeIn, lerp } from '../../utils/progressAnimations.js';
 
   export let progress = 0;
 
   const phase = phases[1];
 
-  // Animation thresholds
+  // Animation thresholds (dokumentiert in ANIMATION_GUIDE.md)
   // 0-0.15: Titel erscheint
   // 0.15-0.30: Akademischer Text erscheint
   // 0.30-0.45: Icons erscheinen am Rand
@@ -14,27 +17,16 @@
   // 0.65-0.85: Icons stapeln sich
   // 0.85-1.0: Labels erscheinen
 
-  $: titleOpacity = Math.min(1, progress / 0.15);
-
-  // Akademischer Text
-  $: textOpacity = progress > 0.15 ? Math.min(1, (progress - 0.15) / 0.15) : 0;
-
+  $: titleOpacity = fadeIn(progress, 0, 0.15);
+  $: textOpacity = fadeIn(progress, 0.15, 0.30);
   $: iconsVisible = progress > 0.30;
-  $: iconProgress = progress > 0.30 ? Math.min(1, (progress - 0.30) / 0.15) : 0;
-
-  // Move progress: 0.45 - 0.65
-  $: moveProgress = progress > 0.45 ? Math.min(1, (progress - 0.45) / 0.2) : 0;
-
-  // Stack progress: 0.65 - 0.85
-  $: stackProgress = progress > 0.65 ? Math.min(1, (progress - 0.65) / 0.2) : 0;
-
-  // Label progress: 0.85 - 1.0
-  $: labelOpacity = progress > 0.85 ? Math.min(1, (progress - 0.85) / 0.15) : 0;
-
-  // Pulse animation when complete
+  $: iconProgress = fadeIn(progress, 0.30, 0.45);
+  $: moveProgress = fadeIn(progress, 0.45, 0.65);
+  $: stackProgress = fadeIn(progress, 0.65, 0.85);
+  $: labelOpacity = fadeIn(progress, 0.85, 1.0);
   $: pulseActive = progress > 0.95;
 
-  // Calculate icon positions
+  // Icon positions
   const startPositions = [
     { x: -200, y: -100 },
     { x: 200, y: -100 },
@@ -53,36 +45,32 @@
     const start = startPositions[index];
     const stack = stackOffsets[index];
 
-    // Interpolate from start to center, then to stack
     let x, y, rotate;
 
     if (moveProgress < 1) {
-      // Moving to center
       x = start.x * (1 - moveProgress);
       y = start.y * (1 - moveProgress);
       rotate = 0;
     } else {
-      // Stacking
       x = stack.x * stackProgress;
       y = stack.y * stackProgress;
       rotate = stack.rotate * stackProgress;
     }
 
-    const opacity = iconProgress;
     const scale = 0.8 + (iconProgress * 0.2);
-
-    return `transform: translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale}); opacity: ${opacity};`;
+    return `transform: translate(${x}px, ${y}px) rotate(${rotate}deg) scale(${scale}); opacity: ${iconProgress};`;
   }
 </script>
 
 <div class="phase1-scene">
-  <header class="phase-header" style="opacity: {titleOpacity};">
-    <span class="phase-number">Phase 1</span>
-    <h2>{phase.title}</h2>
-    <p class="metaphor">{phase.metaphor}</p>
-  </header>
+  <SceneHeader
+    number={1}
+    title={phase.title}
+    metaphor={phase.metaphor}
+    opacity={titleOpacity}
+  />
 
-  <div class="academic-text" style="opacity: {textOpacity};">
+  <AcademicBlock opacity={textOpacity} maxWidth="600px">
     <p>
       Die CONTEXT-Phase etabliert durch <code>README.md</code> den epistemischen Rahmen.
       Forschungsfragen, theoretische Vorannahmen und methodische Constraints werden expliziert.
@@ -91,7 +79,7 @@
       Diese Phase verhindert die unkritische Übernahme technischer Lösungen
       für wissenschaftliche Probleme und zwingt zur präzisen Artikulation der Projektziele.
     </p>
-  </div>
+  </AcademicBlock>
 
   <div class="workspace" class:pulse={pulseActive}>
     <div class="workspace-area">
@@ -119,52 +107,6 @@
     justify-content: center;
     gap: var(--space-xl);
     padding: var(--space-lg);
-  }
-
-  .phase-header {
-    text-align: center;
-  }
-
-  .phase-number {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-terracotta);
-    font-weight: 600;
-  }
-
-  h2 {
-    color: var(--color-black);
-    margin: var(--space-xs) 0;
-  }
-
-  .metaphor {
-    font-style: italic;
-    color: var(--color-slate);
-  }
-
-  .academic-text {
-    max-width: 600px;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  .academic-text p {
-    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    color: var(--color-slate);
-    margin-bottom: var(--space-sm);
-  }
-
-  .academic-text code {
-    background: rgba(96, 125, 139, 0.1);
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    font-size: 0.9em;
-  }
-
-  .academic-text .highlight {
-    color: var(--color-black);
-    font-weight: 500;
   }
 
   .workspace {

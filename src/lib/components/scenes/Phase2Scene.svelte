@@ -1,6 +1,8 @@
 <script>
   import { phases } from '../../data/phases.js';
   import EntityIcon from '../elements/EntityIcon.svelte';
+  import SceneHeader from '../blocks/SceneHeader.svelte';
+  import { fadeIn, inRange } from '../../utils/progressAnimations.js';
 
   export let progress = 0;
 
@@ -16,31 +18,20 @@
   // 0.75-0.88: Netzwerk entsteht
   // 0.88-1.0: Interface-Skizzen
 
-  $: titleOpacity = Math.min(1, progress / 0.12);
+  $: titleOpacity = fadeIn(progress, 0, 0.12);
+  $: dataTextOpacity = fadeIn(progress, 0.12, 0.25);
+  $: dataTextVisible = inRange(progress, 0.12, 0.50);
+  $: explorationTextOpacity = fadeIn(progress, 0.25, 0.38);
+  $: explorationTextVisible = inRange(progress, 0.25, 0.50);
 
-  // Akademischer Text DATA
-  $: dataTextOpacity = progress > 0.12 ? Math.min(1, (progress - 0.12) / 0.13) : 0;
-  $: dataTextVisible = progress > 0.12 && progress < 0.50;
-
-  // Akademischer Text EXPLORATION
-  $: explorationTextOpacity = progress > 0.25 ? Math.min(1, (progress - 0.25) / 0.13) : 0;
-  $: explorationTextVisible = progress > 0.25 && progress < 0.50;
-
-  // XML zoom and open
   $: xmlScale = progress > 0.38 ? 1 + Math.min(0.3, (progress - 0.38) / 0.12 * 0.3) : 1;
-  $: xmlOpen = progress > 0.50 ? Math.min(1, (progress - 0.50) / 0.12) : 0;
+  $: xmlOpen = fadeIn(progress, 0.50, 0.62);
   $: xmlVisible = progress > 0.38;
 
-  // Entity extraction
-  $: entityProgress = progress > 0.62 ? Math.min(1, (progress - 0.62) / 0.13) : 0;
+  $: entityProgress = fadeIn(progress, 0.62, 0.75);
+  $: networkOpacity = fadeIn(progress, 0.75, 0.88);
+  $: sketchOpacity = fadeIn(progress, 0.88, 1.0);
 
-  // Network formation
-  $: networkOpacity = progress > 0.75 ? Math.min(1, (progress - 0.75) / 0.13) : 0;
-
-  // Interface sketches
-  $: sketchOpacity = progress > 0.88 ? Math.min(1, (progress - 0.88) / 0.12) : 0;
-
-  // Entity positions (start from XML, move to right)
   const entityTypes = ['person', 'place', 'time', 'relation'];
 
   function getEntityStyle(index) {
@@ -50,19 +41,19 @@
 
     const x = startX + (endX - startX) * entityProgress;
     const y = endY * entityProgress;
-    const opacity = entityProgress;
     const scale = 0.5 + entityProgress * 0.5;
 
-    return `transform: translate(${x}px, ${y}px) scale(${scale}); opacity: ${opacity};`;
+    return `transform: translate(${x}px, ${y}px) scale(${scale}); opacity: ${entityProgress};`;
   }
 </script>
 
 <div class="phase2-scene">
-  <header class="phase-header" style="opacity: {titleOpacity};">
-    <span class="phase-number">Phase 2</span>
-    <h2>{phase.title}</h2>
-    <p class="metaphor">{phase.metaphor}</p>
-  </header>
+  <SceneHeader
+    number={2}
+    title={phase.title}
+    metaphor={phase.metaphor}
+    opacity={titleOpacity}
+  />
 
   {#if dataTextVisible || explorationTextVisible}
     <div class="academic-texts">
@@ -88,11 +79,8 @@
   {/if}
 
   <div class="exploration-area" style="opacity: {xmlVisible ? 1 : 0}; pointer-events: {xmlVisible ? 'auto' : 'none'}">
-    <!-- XML Document (left) -->
-    <div
-      class="xml-container"
-      style="transform: scale({xmlScale});"
-    >
+    <!-- XML Document -->
+    <div class="xml-container" style="transform: scale({xmlScale});">
       <div class="xml-document" class:open={xmlOpen > 0.5}>
         <div class="xml-header">&lt;TEI&gt;</div>
         <div class="xml-content" style="opacity: {xmlOpen};">
@@ -119,7 +107,7 @@
       </div>
     </div>
 
-    <!-- Entities (moving to right) -->
+    <!-- Entities -->
     <div class="entities-area">
       {#each entityTypes as type, i}
         <div class="entity-wrapper" style={getEntityStyle(i)}>
@@ -128,7 +116,6 @@
         </div>
       {/each}
 
-      <!-- Network lines -->
       {#if networkOpacity > 0}
         <svg class="network-lines" style="opacity: {networkOpacity};">
           <line x1="100" y1="20" x2="160" y2="20" stroke="var(--color-slate)" stroke-width="1" />
@@ -139,7 +126,7 @@
       {/if}
     </div>
 
-    <!-- Interface sketches (far right) -->
+    <!-- Interface sketches -->
     <div class="sketches" style="opacity: {sketchOpacity};">
       <div class="sketch">
         <div class="sketch-label">Timeline?</div>
@@ -172,28 +159,6 @@
     justify-content: center;
     gap: var(--space-lg);
     padding: var(--space-lg);
-  }
-
-  .phase-header {
-    text-align: center;
-  }
-
-  .phase-number {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-terracotta);
-    font-weight: 600;
-  }
-
-  h2 {
-    color: var(--color-black);
-    margin: var(--space-xs) 0;
-  }
-
-  .metaphor {
-    font-style: italic;
-    color: var(--color-slate);
   }
 
   .academic-texts {
@@ -244,7 +209,6 @@
     position: relative;
   }
 
-  /* XML Document */
   .xml-container {
     flex-shrink: 0;
     transition: transform 0.3s var(--ease-out);
@@ -287,7 +251,6 @@
     border-radius: 2px;
   }
 
-  /* Entities */
   .entities-area {
     position: relative;
     width: 200px;
@@ -317,7 +280,6 @@
     pointer-events: none;
   }
 
-  /* Sketches */
   .sketches {
     display: flex;
     flex-direction: column;

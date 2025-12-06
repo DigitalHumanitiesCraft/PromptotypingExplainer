@@ -3,6 +3,9 @@
   import VaultIcon from '../elements/VaultIcon.svelte';
   import DocumentIcon from '../elements/DocumentIcon.svelte';
   import GlossaryTerm from '../GlossaryTerm.svelte';
+  import SceneHeader from '../blocks/SceneHeader.svelte';
+  import AcademicBlock from '../blocks/AcademicBlock.svelte';
+  import { fadeIn, fadeOut } from '../../utils/progressAnimations.js';
 
   export let progress = 0;
 
@@ -18,30 +21,16 @@
   // 0.72-0.85: context.md erscheint
   // 0.85-1.0: Stapel verblasst, Vault ist Zentrum
 
-  $: titleOpacity = Math.min(1, progress / 0.08);
-
-  // Akademischer Text
-  $: academicTextOpacity = progress > 0.08 ? Math.min(1, (progress - 0.08) / 0.14) : 0;
-
-  // Layout visibility
-  $: layoutOpacity = progress > 0.22 ? Math.min(1, (progress - 0.22) / 0.13) : 0;
-
-  // Source stack fade
-  $: stackOpacity = progress > 0.85 ? Math.max(0.2, 1 - (progress - 0.85) / 0.15) : 1;
-
-  // Particle flow progress
-  $: particleProgress = progress > 0.35 ? Math.min(1, (progress - 0.35) / 0.15) : 0;
-
-  // Document appearances
-  $: doc1Opacity = progress > 0.50 ? Math.min(1, (progress - 0.50) / 0.1) : 0;
-  $: doc2Opacity = progress > 0.60 ? Math.min(1, (progress - 0.60) / 0.12) : 0;
-  $: doc3Opacity = progress > 0.72 ? Math.min(1, (progress - 0.72) / 0.13) : 0;
-
-  // Vault pulsing
+  $: titleOpacity = fadeIn(progress, 0, 0.08);
+  $: academicTextOpacity = fadeIn(progress, 0.08, 0.22);
+  $: layoutOpacity = fadeIn(progress, 0.22, 0.35);
+  $: stackOpacity = fadeOut(progress, 0.85, 1.0, 0.2);
+  $: particleProgress = fadeIn(progress, 0.35, 0.50);
+  $: doc1Opacity = fadeIn(progress, 0.50, 0.60);
+  $: doc2Opacity = fadeIn(progress, 0.60, 0.72);
+  $: doc3Opacity = fadeIn(progress, 0.72, 0.85);
   $: vaultPulsing = progress > 0.72;
-
-  // Closing text
-  $: closingOpacity = progress > 0.85 ? Math.min(1, (progress - 0.85) / 0.15) : 0;
+  $: closingOpacity = fadeIn(progress, 0.85, 1.0);
 
   // Visible documents
   $: visibleDocs = [
@@ -71,13 +60,14 @@
 </script>
 
 <div class="phase3-scene">
-  <header class="phase-header" style="opacity: {titleOpacity};">
-    <span class="phase-number">Phase 3</span>
-    <h2>{phase.title}</h2>
-    <p class="metaphor">{phase.metaphor}</p>
-  </header>
+  <SceneHeader
+    number={3}
+    title={phase.title}
+    metaphor={phase.metaphor}
+    opacity={titleOpacity}
+  />
 
-  <div class="academic-text" style="opacity: {academicTextOpacity};">
+  <AcademicBlock opacity={academicTextOpacity}>
     <p>
       Die REQUIREMENTS-Phase formalisiert in <code>REQUIREMENTS.md</code> vage
       Forschungsideen in testbare Spezifikationen. Die Unterscheidung zwischen
@@ -89,7 +79,7 @@
       werden explizit dokumentiert. <GlossaryTerm id="context-rot">Context Compression</GlossaryTerm> reduziert
       <GlossaryTerm id="token">Tokens</GlossaryTerm> bei maximaler Informationsdichte.
     </p>
-  </div>
+  </AcademicBlock>
 
   <div class="destillation-area" style="opacity: {layoutOpacity};">
     <!-- Left: Source stack -->
@@ -152,57 +142,6 @@
     justify-content: center;
     gap: var(--space-lg);
     padding: var(--space-lg);
-  }
-
-  .phase-header {
-    text-align: center;
-  }
-
-  .phase-number {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-terracotta);
-    font-weight: 600;
-  }
-
-  h2 {
-    color: var(--color-black);
-    margin: var(--space-xs) 0;
-  }
-
-  .metaphor {
-    font-style: italic;
-    color: var(--color-slate);
-  }
-
-  .academic-text {
-    max-width: 650px;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  .academic-text p {
-    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    color: var(--color-slate);
-    margin-bottom: var(--space-sm);
-  }
-
-  .academic-text code {
-    background: rgba(96, 125, 139, 0.1);
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    font-size: 0.9em;
-  }
-
-  .academic-text strong {
-    color: var(--color-terracotta);
-    font-weight: 600;
-  }
-
-  .academic-text .highlight {
-    color: var(--color-black);
-    font-weight: 500;
   }
 
   .destillation-area {

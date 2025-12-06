@@ -5,6 +5,8 @@
   import ChatBubble from '../elements/ChatBubble.svelte';
   import BrowserFrame from '../elements/BrowserFrame.svelte';
   import GlossaryTerm from '../GlossaryTerm.svelte';
+  import SceneHeader from '../blocks/SceneHeader.svelte';
+  import { fadeIn, inRange, countVisible } from '../../utils/progressAnimations.js';
 
   export let progress = 0;
 
@@ -25,21 +27,16 @@
   // 0.85-0.92: Success, Network
   // 0.92-1.0: Closing
 
-  $: titleOpacity = Math.min(1, progress / 0.07);
-
-  // Akademischer Text
-  $: implementationTextOpacity = progress > 0.07 ? Math.min(1, (progress - 0.07) / 0.11) : 0;
-  $: prototypeTextOpacity = progress > 0.18 ? Math.min(1, (progress - 0.18) / 0.10) : 0;
+  $: titleOpacity = fadeIn(progress, 0, 0.07);
+  $: implementationTextOpacity = fadeIn(progress, 0.07, 0.18);
+  $: prototypeTextOpacity = fadeIn(progress, 0.18, 0.28);
   $: academicTextVisible = progress < 0.35;
-
-  $: layoutOpacity = progress > 0.28 ? Math.min(1, (progress - 0.28) / 0.07) : 0;
+  $: layoutOpacity = fadeIn(progress, 0.28, 0.35);
 
   // Chat progression (starts at 0.35)
-  $: visiblePrompts = Math.floor(
-    progress > 0.35 ? Math.min(prompts.length, ((progress - 0.35) / 0.50) * prompts.length + 1) : 0
-  );
+  $: visiblePrompts = countVisible(progress, 0.35, 0.50, prompts.length);
 
-  // Browser states (adjusted for new timeline)
+  // Browser states
   $: browserState =
     progress > 0.85 ? 'network' :
     progress > 0.77 ? 'wireframe' :
@@ -48,16 +45,10 @@
     progress > 0.47 ? 'code' :
     'empty';
 
-  $: showSpinner = progress > 0.77 && progress < 0.85;
-
-  // Success indicator
+  $: showSpinner = inRange(progress, 0.77, 0.85);
   $: showSuccess = progress > 0.85;
-
-  // Closing
-  $: closingOpacity = progress > 0.92 ? Math.min(1, (progress - 0.92) / 0.08) : 0;
-
-  // Vault docs flying animation
-  $: docsFlying = progress > 0.42 && progress < 0.47;
+  $: closingOpacity = fadeIn(progress, 0.92, 1.0);
+  $: docsFlying = inRange(progress, 0.42, 0.47);
 
   // Rückschleifen-Toggle
   let showFeedbackLoops = false;
@@ -68,11 +59,12 @@
 </script>
 
 <div class="phase4-scene">
-  <header class="phase-header" style="opacity: {titleOpacity};">
-    <span class="phase-number">Phase 4</span>
-    <h2>{phase.title}</h2>
-    <p class="metaphor">{phase.metaphor}</p>
-  </header>
+  <SceneHeader
+    number={4}
+    title={phase.title}
+    metaphor={phase.metaphor}
+    opacity={titleOpacity}
+  />
 
   {#if academicTextVisible}
     <div class="academic-texts">
@@ -224,28 +216,6 @@
     padding-top: var(--space-xl);
   }
 
-  .phase-header {
-    text-align: center;
-  }
-
-  .phase-number {
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-terracotta);
-    font-weight: 600;
-  }
-
-  h2 {
-    color: var(--color-black);
-    margin: var(--space-xs) 0;
-  }
-
-  .metaphor {
-    font-style: italic;
-    color: var(--color-slate);
-  }
-
   .academic-texts {
     display: flex;
     gap: var(--space-lg);
@@ -281,10 +251,6 @@
     padding: 0.1em 0.3em;
     border-radius: 3px;
     font-size: 0.9em;
-  }
-
-  .academic-text strong {
-    color: var(--color-terracotta);
   }
 
   .implementation-area {

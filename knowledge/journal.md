@@ -250,11 +250,97 @@ ScrollTrigger.create({
 
 ---
 
+## 2025-12-06: UX-Verbesserungen und Glossar-Integration
+
+### Neue Komponenten
+
+**PhaseHeader.svelte** – Fixierter Header:
+- Zeigt aktuelle Phase und Namen
+- Fortschrittsbalken unterhalb
+- Verschwindet bei 0% und 100% Progress
+
+**GlossaryTerm.svelte** – Interaktive Tooltips:
+- Hover/Click zeigt Definition, Tags und Quelle
+- 20+ AI/LLM-Begriffe aus glossar_de.md
+- Farbcodierte Tags (prompting, ai-engineering, etc.)
+
+**glossary.js** – Datenbasis:
+- Begriffe: Context Engineering, LLM, Sycophancy, Token, etc.
+- Integriert in IntroScene, Phase3Scene, Phase4Scene
+
+### ProgressIndicator erweitert
+
+- Sub-Phasen mit Mini-Fortschrittsbalken
+- Dauer-Hints (●, ●●, ●●●) für relative Phasenlänge
+
+### Rückschleifen-Button (US-04)
+
+- Toggle-Button erscheint nach Success-State in Phase 4
+- Animierte SVG-Linien zeigen Feedback-Loops
+- Terracotta: Kontext erweitern, Slate: Daten ergänzen
+- Erklärungstext: "Der Prozess ist nicht linear"
+
+### Kontinuierlicher Hintergrund-Gradient
+
+- Farbe ändert sich basierend auf globalProgress
+- Temperatur-Metapher: Slate (kalt) → Terracotta (heiß) → Abkühlung
+- Position wandert von links (30%) nach rechts (70%)
+- Intensität steigt von 4% auf 16%
+- Farbinterpolation mit lerp()-Funktion
+
+---
+
+## 2025-12-06: Code-Refactoring
+
+### Neue Utility-Komponenten
+
+**SceneHeader.svelte** (blocks/):
+- Extrahiert aus 5x dupliziertem Header-Code
+- Props: number, title, metaphor, opacity
+
+**AcademicBlock.svelte** (blocks/):
+- Extrahiert aus 4x dupliziertem Text-Block-Code
+- Props: opacity, maxWidth
+- Globale Styles für p, code, strong, .highlight
+
+**progressAnimations.js** (utils/):
+- `fadeIn(progress, start, end)` – Opacity 0→1
+- `fadeOut(progress, start, end, min)` – Opacity 1→min
+- `lerp(progress, start, end, from, to)` – Wert-Interpolation
+- `inRange(progress, start, end)` – Boolean-Check
+- `countVisible(progress, start, duration, total)` – Sichtbare Elemente
+- `ease(t, type)` – Easing-Funktionen
+
+### CSS Design System erweitert
+
+Neue Variablen in app.css:
+```css
+--color-code-keyword: #7c3aed;
+--color-code-function: #2563eb;
+--color-code-string: #16a34a;
+--color-code-bg: #f5f5f5;
+```
+
+BrowserFrame.svelte nutzt nun CSS-Variablen statt Hardcodes.
+
+### Refactoring-Ergebnisse
+
+| Datei | Vorher | Nachher | Reduktion |
+|-------|--------|---------|-----------|
+| Phase1Scene.svelte | 232 | 174 | -25% |
+| Phase2Scene.svelte | 415 | 377 | -9% |
+| Phase3Scene.svelte | 310 | 256 | -17% |
+| Phase4Scene.svelte | 549 | 520 | -5% |
+
+Ungenutzter CSS-Selector `.academic-text strong` in Phase4Scene entfernt.
+
+---
+
 ## Offene Fragen
 
 - [x] Partikel-Animation in Phase 3: Wie viele Elemente sind performant? -> 5 funktioniert
 - [x] Phase 4 Browser-Frame: Echtes Code-Snippet oder stilisiert? -> Stilisiert
-- [ ] Rückschleifen-Visualisierung: Button oder automatisch?
+- [x] Rückschleifen-Visualisierung: Button oder automatisch? -> Button
 - [ ] Mobile: Horizontal-Scroll oder vereinfachte Animationen?
 
 ---
