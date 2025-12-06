@@ -24,9 +24,10 @@
       end: `+=${phaseHeight}vh`,
       pin: true,
       pinSpacing: true,
-      scrub: true,
+      scrub: 0.5,
       anticipatePin: 1,
       fastScrollEnd: true,
+      preventOverlaps: true,
       onUpdate: (self) => {
         progress = self.progress;
 

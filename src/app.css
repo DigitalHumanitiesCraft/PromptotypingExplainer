@@ -42,6 +42,9 @@
 html {
   /* Disable smooth scroll - conflicts with GSAP ScrollTrigger */
   scroll-behavior: auto;
+  /* Optimize scrolling performance */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -58,6 +61,19 @@ body {
 /* Force GPU compositing for animated elements */
 .phase {
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Smooth transitions for scroll-animated content */
+.intro-scene > *,
+.phase1-scene > *,
+.phase2-scene > *,
+.phase3-scene > *,
+.phase4-scene > *,
+.outro-scene > * {
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  will-change: opacity, transform;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
