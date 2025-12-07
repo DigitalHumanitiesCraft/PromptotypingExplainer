@@ -8,23 +8,20 @@
 
 ### Definition
 
-> **Promptotyping** ist ein dreiebenes Framework für die methodisch strukturierte KI-gestützte Entwicklung digitaler Forschungswerkzeuge. Es integriert technisches Prompt Engineering, methodisches Requirements Engineering und epistemische Reflexion systematisch.
+> Promptotyping ist ein dreiebenes Framework für die methodisch strukturierte KI-gestützte Entwicklung digitaler Forschungswerkzeuge. Es integriert technisches Prompt Engineering, methodisches Requirements Engineering und epistemische Reflexion systematisch.
 
 ### Context Engineering: Eine Arbeitsdefinition
 
-> **Context Engineering** bezeichnet die systematische Gestaltung, Verdichtung und Orchestrierung von Kontextinformationen, die einem Frontier-LLM zur Verfügung gestellt werden, um dessen Outputs auf spezifische Aufgaben, Domänen und Qualitätsanforderungen auszurichten.
+> Context Engineering bezeichnet die systematische Gestaltung, Verdichtung und Orchestrierung von Kontextinformationen, die einem Frontier-LLM zur Verfügung gestellt werden, um dessen Outputs auf spezifische Aufgaben, Domänen und Qualitätsanforderungen auszurichten.
 
-Der Begriff geht auf Mei et al. (2025) zurück und grenzt sich vom engeren **Prompt Engineering** ab: Während Prompt Engineering die Formulierung einzelner Anfragen optimiert, umfasst Context Engineering die strategische Strukturierung des gesamten Informationsraums über multiple Interaktionen hinweg.
+Der Begriff geht auf Mei et al. (2025) zurück und grenzt sich vom engeren Prompt Engineering ab: Während Prompt Engineering die Formulierung einzelner Anfragen optimiert, umfasst Context Engineering die strategische Strukturierung des gesamten Informationsraums über multiple Interaktionen hinweg.
 
-**Drei Kernoperationen:**
+Drei Kernoperationen:
+- Creation: Explizierung impliziten Wissens in maschinenlesbare Formate
+- Compression: Verdichtung auf relevante Information unter Vermeidung von Context Rot
+- Orchestration: Dynamische Steuerung des Kontextflusses über Iterationen
 
-| Operation | Beschreibung |
-|-----------|--------------|
-| **Creation** | Explizierung impliziten Wissens in maschinenlesbare Formate |
-| **Compression** | Verdichtung auf relevante Information unter Vermeidung von *Context Rot* |
-| **Orchestration** | Dynamische Steuerung des Kontextflusses über Iterationen |
-
-> **Context Rot** (Hong et al., 2025): Die Beobachtung, dass LLM-Leistung mit wachsender Kontextlänge degradiert. Mehr Tokens führen nicht zu besseren Ergebnissen – gezielte Verdichtung erhöht die Modellaufmerksamkeit auf wesentliche Aspekte.
+> Context Rot (Hong et al., 2025): Die Beobachtung, dass LLM-Leistung mit wachsender Kontextlänge degradiert. Mehr Tokens führen nicht zu besseren Ergebnissen – gezielte Verdichtung erhöht die Modellaufmerksamkeit auf wesentliche Aspekte.
 
 ---
 
@@ -32,11 +29,9 @@ Der Begriff geht auf Mei et al. (2025) zurück und grenzt sich vom engeren **Pro
 
 #### Ebene 1: Technisch (Context Engineering)
 
-| Komponente | Beschreibung |
-|------------|--------------|
-| **Context Creation** | Systematische Erstellung relevanter Kontextinformationen durch Formalisierung impliziten Domänenwissens und Strukturierung von Anforderungen |
-| **Context Compression** | Gezielte Verdichtung auf relevante Information. Das *Compression-als-Amplification*-Paradox führt zu erhöhter Modellaufmerksamkeit auf wesentliche Aspekte |
-| **Context Orchestration** | Strategische Steuerung über multiple Iterationen mit dynamischer Anpassung basierend auf Zwischenergebnissen |
+- Context Creation: Systematische Erstellung relevanter Kontextinformationen durch Formalisierung impliziten Domänenwissens und Strukturierung von Anforderungen
+- Context Compression: Gezielte Verdichtung auf relevante Information. Das Compression-als-Amplification-Paradox führt zu erhöhter Modellaufmerksamkeit auf wesentliche Aspekte
+- Context Orchestration: Strategische Steuerung über multiple Iterationen mit dynamischer Anpassung basierend auf Zwischenergebnissen
 
 #### Ebene 2: Methodisch (Requirements Engineering)
 
@@ -48,114 +43,76 @@ Promptotyping funktioniert als iterativer Requirements Engineering Ansatz, der e
 
 Promptotyping etabliert eine kritisch-reflexive Praxis der Ko-Konstruktion von Wissen zwischen menschlicher Expertise und maschineller Verarbeitung.
 
-> Jeder Prompt wird als **epistemische Intervention** verstanden, die nicht nur Informationen abruft, sondern aktiv die Generierung neuer Zusammenhänge anregt.
+> Jeder Prompt wird als epistemische Intervention verstanden, die nicht nur Informationen abruft, sondern aktiv die Generierung neuer Zusammenhänge anregt.
 
 ---
 
-## 3.2 Das sechsphasige Entwicklungsmodell
+## 3.2 Das Phasenmodell
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                                                                         │
-│   ┌──────────┐    ┌──────────┐    ┌─────────────┐    ┌──────────────┐  │
-│   │  CONTEXT │───▶│   DATA   │───▶│ EXPLORATION │───▶│ REQUIREMENTS │  │
-│   │ README.md│    │ DATA.md  │    │   (frei)    │    │REQUIREMENTS.md│  │
-│   └──────────┘    └──────────┘    └─────────────┘    └──────────────┘  │
-│        ▲                                                     │         │
-│        │              ◀─── Rückschleifen ───◀                │         │
-│        └─────────────────────────────────────────────────────┘         │
-│                                                              │         │
-│                                                              ▼         │
-│                              ┌────────────────┐    ┌────────────────┐  │
-│                              │ IMPLEMENTATION │───▶│   PROTOTYPE    │  │
-│                              │INSTRUCTIONS.md │    │   Code/Tool    │  │
-│                              └────────────────┘    └────────────────┘  │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+Promptotyping strukturiert sich in vier Hauptphasen, die jeweils spezifische Artefakte produzieren:
+
+Der Prozess beginnt mit der Preparation: Rohdateien (.doc, .xml, PDFs) werden gesammelt. Es folgt die Exploration, in der analysiert und experimentiert wird – ohne formale Dokumentation (keine Artefakte). Die Destillation verdichtet das Wissen zu DATA.md, REQUIREMENTS.md und CONTEXT.md – hier entstehen die .md-Files. Die Implementation nutzt diese Dokumente für iterative LLM-Dialoge. Jede Iteration produziert einen neuen Prototype. Neues Wissen fließt als Vault-Update zurück in die .md-Dateien der Destillation-Phase.
 
 ---
 
-### Phase 1: CONTEXT
+### Phase 1: PREPARATION
 
-**Artefakt:** `README.md`
+Artefakte: Rohdateien (keine .md Dokumente)
 
-**Ziel:** Etablierung des epistemischen Rahmens.
+Ziel: Sammlung aller relevanten Materialien als Input für die späteren Phasen.
 
-**Inhalt:**
-- Forschungsfragen
-- Theoretische Vorannahmen
-- Methodische Constraints
-- Projektziele
+Typische Rohmaterialien:
+- Forschungsdaten (.doc, .xml, .csv, PDFs)
+- Dokumentation (Editionsrichtlinien, Schemata, Standards)
+- Kontextmaterial (Papers, Notizen, Expertengespräche)
 
-**Funktion:**
-Diese Phase verhindert die unkritische Übernahme technischer Lösungen für wissenschaftliche Probleme und zwingt zur präzisen Artikulation der Projektziele.
+Funktion:
+Diese Phase schafft die Materialbasis. Die Rohdateien werden noch nicht strukturiert oder destilliert - das passiert in Phase 3.
 
-**Typische Fragestellungen:**
-- Was ist das wissenschaftliche Ziel?
-- Welche Forschungsfrage soll beantwortet werden?
-- Welche methodischen Einschränkungen bestehen?
-- Wer sind die Zielnutzer:innen?
+Beispiel aus der Praxis:
+Im CorrespExplorer-Projekt: CMIF-XML-Dateien + correspSearch-Dokumentation + Editionsrichtlinien wurden gesammelt.
 
 ---
 
-### Phase 2: DATA
+### Phase 2: EXPLORATION
 
-**Artefakt:** `DATA.md`
+Artefakt: Keines (bewusst undokumentiert)
 
-**Ziel:** Analyse und Dokumentation der Datenstrukturen.
+Ziel: Kreatives Experimentieren ohne vorzeitige Festlegung.
 
-**Inhalt:**
-- Datenformat und Schema
-- Inkonsistenzen und Anomalien
-- Semantische Bedeutungen
-- Normalisierungsempfehlungen
-
-**Funktion:**
-Die dokumentierte Analyse verhindert nicht nur technische Fehler, sondern offenbart auch interpretative Entscheidungen, die für die wissenschaftliche Nachvollziehbarkeit essentiell sind.
-
-**Beispiel aus der Praxis:**
-Im REALonline-Projekt traten JSON-Felder inkonsistent als String oder Array auf. Diese in der DATA-Phase dokumentierte Problematik informierte die spätere Normalisierung und machte die Entscheidung nachvollziehbar.
-
----
-
-### Phase 3: EXPLORATION
-
-**Artefakt:** Keines (bewusst undokumentiert)
-
-**Ziel:** Kreatives Experimentieren ohne vorzeitige Festlegung.
-
-**Funktion:**
+Funktion:
 Diese „epistemische Spielwiese" ermöglicht das Entdecken unerwarteter Möglichkeiten und Grenzen, ohne den Overhead formaler Dokumentation.
 
-**Charakteristika:**
+Charakteristika:
 - Freies Experimentieren mit dem LLM
 - Erste Prompt-Versuche
 - Erkundung der Möglichkeitsräume
 - Kein Dokumentationszwang
 
-> **Wichtig:** Die Ergebnisse dieser Phase fließen in die nachfolgende REQUIREMENTS-Phase ein, werden aber nicht formal dokumentiert.
+> Wichtig: Die Ergebnisse dieser Phase fließen in die nachfolgende REQUIREMENTS-Phase ein, werden aber nicht formal dokumentiert.
 
 ---
 
-### Phase 4: REQUIREMENTS
+### Phase 3: DESTILLATION
 
-**Artefakt:** `REQUIREMENTS.md`
+Artefakte (der Promptotyping Vault):
+- `DATA.md` – Aus der Analyse des Rohmaterials destillierte Datenstruktur
+- `REQUIREMENTS.md` – Formalisierte Anforderungen mit Priorisierung
+- `CONTEXT.md` – Domänenwissen, Forschungsfragen, Projektziele
 
-**Ziel:** Formalisierung vager Forschungsideen in testbare Spezifikationen.
+Ziel: Das Rohmaterial aus Phase 1 und die Erkenntnisse aus Phase 2 werden zu strukturierten .md-Dokumenten verdichtet. Diese Dokumente bilden den "Vault" – das destillierte Wissen, das in Phase 4 an das LLM übergeben wird.
 
-**Priorisierungsschema:**
+Typischer Workflow:
+1. Datenanalyse → DATA.md: Ein Script (ggf. LLM-generiert) analysiert die Struktur der Rohdaten und extrahiert Schema, Felder, Beziehungen
+2. Kontextaufbereitung → CONTEXT.md: Domänenwissen, Forschungsfragen und Projektziele werden explizit dokumentiert
+3. Anforderungsformalisierung → REQUIREMENTS.md: Vage Ideen werden zu testbaren Spezifikationen
 
-| Priorität | Beschreibung |
-|-----------|--------------|
-| **MUSS** | Kritische Features ohne die das System keinen Wert hat |
-| **SOLL** | Wichtige Features die den Wert signifikant steigern |
-| **KANN** | Nice-to-have Features für zukünftige Iterationen |
+Priorisierungsschema (für REQUIREMENTS.md):
+- MUSS: Kritische Features ohne die das System keinen Wert hat
+- SOLL: Wichtige Features die den Wert signifikant steigern
+- KANN: Nice-to-have Features für zukünftige Iterationen
 
-**Funktion:**
-Die Unterscheidung zwingt zur Priorisierung und macht Trade-offs zwischen technischer Machbarkeit und wissenschaftlichem Anspruch explizit.
-
-**Formulierungsprinzip:**
+Formulierungsprinzip:
 Jede Anforderung als testbaren Satz formulieren.
 
 ```
@@ -163,60 +120,61 @@ Jede Anforderung als testbaren Satz formulieren.
 ✗ "Das System soll benutzerfreundlich sein"
 ```
 
----
-
-### Phase 5: IMPLEMENTATION
-
-**Artefakt:** `INSTRUCTIONS.md`
-
-**Ziel:** Dokumentation aller Datentransformationen, Algorithmen und interpretativen Entscheidungen.
-
-**Inhalt pro Feature:**
-- Input-Format (Rohdaten)
-- Transformationsschritte (präzise Algorithmen)
-- Output-Format (Zielstruktur)
-- Edge Cases und deren Behandlung
-- Validierungen und Fehlerbehandlung
-
-**Funktion:**
-Diese Phase fungiert als **epistemisches Protokoll**, das spätere Nachvollziehbarkeit und Kritik ermöglicht.
-
-> **Aus der Praxis:** Diese Phase erwies sich als kritisch für die Fehlervermeidung. Projekte ohne INSTRUCTIONS.md (z.B. Kriminalmuseum mit nur 3 Dokumenten) litten unter erschwerter Wartbarkeit.
+Warum .md-Files erst hier?
+Die Destillation ist der kritische Übergang von unstrukturiertem Rohmaterial zu LLM-optimiertem Kontext. Die .md-Dateien sind speziell darauf ausgelegt, maximale Information bei minimaler Token-Anzahl zu liefern (siehe: Context Rot).
 
 ---
 
-### Phase 6: PROTOTYPE
+### Phase 4: IMPLEMENTATION
 
-**Artefakt:** Lauffähiger Code
+Artefakte: Prototype(n) + Vault-Updates
 
-**Ziel:** Generierung von Code basierend auf den dokumentierten Spezifikationen.
+Diese Phase ist iterativ: Jede Iteration produziert einen neuen Prototype und kann Updates an den bestehenden Vault-Dokumenten (DATA.md, REQUIREMENTS.md, CONTEXT.md) auslösen.
 
-**Charakteristika:**
+#### Der Iterationszyklus
+
+```
+Vault (.md Files) → Prompt → LLM → Prototype → Validierung → Vault-Update → ...
+```
+
+1. Prompt mit Vault-Kontext: Die .md-Dateien aus Phase 3 werden dem LLM übergeben
+2. Prototype-Generierung: LLM erzeugt lauffähigen Code
+3. Validierung durch Expert: Critical Expert prüft gegen REQUIREMENTS.md
+4. Vault-Update: Neues Wissen fließt zurück in die .md-Dateien
+5. Nächste Iteration: Verbesserter Vault → besserer Prototype
+
+#### PROTOTYPE → Lauffähiger Code
+
+Charakteristika:
 - Der generierte Code ist nicht Endpunkt, sondern Ausgangspunkt für weitere Iteration
-- Jede Iteration kann Rückschleifen zu früheren Phasen auslösen
+- Jede Iteration = neuer Prototype + potentielles Vault-Update
 - Validierung gegen REQUIREMENTS.md
 
-**Typisches Output:**
+Typisches Output:
 - Single HTML File mit inline CSS/JS
 - Keine externen Dependencies außer CDN-verfügbare
 - Kommentierter Code an kritischen Stellen
 
+#### Dokumentation von Transformationen
+
+Während der Implementation werden Datentransformationen, Algorithmen und interpretativen Entscheidungen dokumentiert – entweder als Erweiterung der bestehenden Vault-Dokumente oder als Kommentare im Code. Diese Dokumentation fungiert als epistemisches Protokoll, das spätere Nachvollziehbarkeit und Kritik ermöglicht.
+
 ---
 
-## 3.3 Rückschleifen und Iteration
+## 3.3 Iteratives Vault-Update
 
-### Wann sind Rückschleifen nötig?
+### Wann sind Vault-Updates nötig?
 
-| Auslöser | Zielphase | Beschreibung |
-|----------|-----------|--------------|
-| Fehlende Datenfelder | DATA | Benötigte Information nicht in Datenstruktur vorhanden |
-| Unklare Anforderungen | REQUIREMENTS | Spezifikation lässt mehrere Interpretationen zu |
-| Neue Erkenntnisse | CONTEXT | Prototyp offenbart neue Forschungsfragen |
-| Inkonsistente Daten | DATA | Normalisierung erfordert Neubewertung |
+- Fehlende Datenfelder → DATA.md: Benötigte Information nicht in Datenstruktur dokumentiert
+- Unklare Anforderungen → REQUIREMENTS.md: Spezifikation lässt mehrere Interpretationen zu
+- Neue Erkenntnisse → CONTEXT.md: Prototyp offenbart neue Forschungsfragen
+- Inkonsistente Daten → DATA.md: Normalisierung erfordert Neubewertung
+
+Jede Promptotyping-Iteration generiert neues Wissen: über die Daten, den Kontext, die Anforderungen. Dieses Wissen fließt zurück in den Vault. Die .md-Dateien werden aktualisiert, erweitert, präzisiert. So wächst das destillierte Wissen mit jeder Iteration.
 
 ### Erkennung
 
-> Die Erkennung notwendiger Rückschleifen erfordert **Fachwissen**. Der Mensch muss wissen, wann ein Output falsch, unvollständig oder irreführend ist. Dieses Urteil erfordert Domänenwissen und methodische Erfahrung.
+> Die Erkennung notwendiger Vault-Updates erfordert Fachwissen. Der Mensch muss erkennen, wann ein LLM-Output zeigt, dass Kontext fehlt oder falsch verstanden wurde. Dieses Urteil erfordert Domänenwissen und methodische Erfahrung.
 
 ---
 
@@ -224,27 +182,27 @@ Diese Phase fungiert als **epistemisches Protokoll**, das spätere Nachvollziehb
 
 ### Definition
 
-> Der **Critical Expert in the Loop** ist nicht passiver Empfänger, sondern kritischer Validator. Domänenexpert:innen bringen ihr Fachwissen kontinuierlich in den Dialog ein.
+> Der Critical Expert in the Loop ist nicht passiver Empfänger, sondern kritischer Validator. Domänenexpert:innen bringen ihr Fachwissen kontinuierlich in den Dialog ein.
 
 ### Operationalisierung
 
 Der Critical-Expert-Ansatz operationalisiert Schöns Reflective Practice für die KI-gestützte Forschung:
 
-**Strategien gegen Sycophancy:**
+Strategien gegen Sycophancy:
 
-1. **Critical Questioning**: Explizites Auffordern zur Kritik
+1. Critical Questioning: Explizites Auffordern zur Kritik
    ```
    "Welche Schwächen siehst du in diesem Ansatz?"
    "Was könnte an meiner Annahme falsch sein?"
    ```
 
-2. **Alternative Exploration**: Einfordern von Alternativen
+2. Alternative Exploration: Einfordern von Alternativen
    ```
    "Zeige mir drei verschiedene Ansätze für dieses Problem"
    "Was wäre ein gegenteiliger Standpunkt?"
    ```
 
-3. **Assumption Surfacing**: Explizitmachen von Annahmen
+3. Assumption Surfacing: Explizitmachen von Annahmen
    ```
    "Welche impliziten Annahmen macht dieser Code?"
    "Was setze ich hier als gegeben voraus?"
@@ -254,18 +212,18 @@ Der Critical-Expert-Ansatz operationalisiert Schöns Reflective Practice für di
 
 Der Historiker korrigierte die technische Annahme, Objekte nach modernen Kategorien zu strukturieren:
 
-**Technische Annahme (falsch):**
+Technische Annahme (falsch):
 ```
 Objekte → Kategorien (Möbel, Textilien, Gefäße)
 ```
 
-**Historische Korrektur:**
+Historische Korrektur:
 ```
 Objekte → Räume → Gebäude
 (mit historischen Begriffen aus nomenclature_original)
 ```
 
-**Begründung:** Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien.
+Begründung: Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien.
 
 > Diese Korrektur war mehr als technische Anpassung. Sie transformierte das Datenmodell von einer anachronistischen zu einer historisch adäquaten Repräsentation.
 
@@ -275,7 +233,7 @@ Objekte → Räume → Gebäude
 
 ### Funktion
 
-Das **Promptotyping Journal** ist das Arbeitstagebuch des Projekts. Es dokumentiert Sessions mit Aufgaben und Erkenntnissen – nicht als bürokratischer Overhead, sondern als Gedächtnis des Entwicklungsprozesses.
+Das Promptotyping Journal ist das Arbeitstagebuch des Projekts. Es dokumentiert Sessions mit Aufgaben und Erkenntnissen – nicht als bürokratischer Overhead, sondern als Gedächtnis des Entwicklungsprozesses.
 
 ### Struktur eines Journal-Eintrags
 
@@ -300,11 +258,9 @@ Git-Commit: [Hash]
 
 ### Skalierung für größere Projekte
 
-| Projektgröße | Journal-Struktur |
-|--------------|------------------|
-| **Klein** (1-2 Tage) | Ein JOURNAL.md |
-| **Mittel** (Wochen) | JOURNAL.md mit Phasen-Abschnitten |
-| **Groß** (Monate) | Separate Journals: JOURNAL-CONTEXT.md, JOURNAL-DATA.md, etc. |
+- Klein (1-2 Tage): Ein JOURNAL.md
+- Mittel (Wochen): JOURNAL.md mit Phasen-Abschnitten
+- Groß (Monate): Separate Journals: JOURNAL-CONTEXT.md, JOURNAL-DATA.md, etc.
 
 ### Verdichtung
 
@@ -313,7 +269,7 @@ Bei längeren Projekten kann das Journal destilliert werden:
 - Nur relevante Learnings behalten
 - Redundanzen entfernen
 
-> **Prinzip:** Das Journal wächst mit dem Projekt und wird bei Bedarf verdichtet – wie die anderen Dokumente auch.
+> Prinzip: Das Journal wächst mit dem Projekt und wird bei Bedarf verdichtet – wie die anderen Dokumente auch.
 
 ---
 
@@ -321,49 +277,46 @@ Bei längeren Projekten kann das Journal destilliert werden:
 
 ### Empfohlenes Setup
 
-| Komponente | Empfehlung |
-|------------|------------|
-| **IDE** | VS Code mit Markdown-Extensions |
-| **Versionskontrolle** | Git mit Commits nach jedem Savepoint |
-| **Preprocessing** | Python für komplexe Datenstrukturen |
-| **LLM-Zugang** | API für Reproduzierbarkeit, kostenlos für Einstieg |
+- IDE: VS Code mit Markdown-Extensions
+- Versionskontrolle: Git mit Commits nach jedem Savepoint
+- Preprocessing: Python für komplexe Datenstrukturen
+- LLM-Zugang: API für Reproduzierbarkeit, kostenlos für Einstieg
 
 ### Projektstruktur (Ausgangspunkt)
 
 ```
 project/
-├── README.md           # CONTEXT
+├── CONTEXT.md          # Domänenwissen, Forschungsfragen
 ├── DATA.md             # Datenspezifikation
 ├── REQUIREMENTS.md     # Anforderungen
-├── INSTRUCTIONS.md     # Implementierungsanweisungen
 ├── JOURNAL.md          # Entwicklungsprotokoll
-├── data/               # Rohdaten
+├── data/               # Rohdaten (Phase 1: Preparation)
 │   └── sample.json
-├── exploration/        # Experimentelle Prototypen
+├── exploration/        # Experimentelle Prototypen (Phase 2)
 │   └── test-01.html
-├── prototype/          # Finaler Code
+├── prototype/          # Iterative Prototypen (Phase 4)
 │   └── index.html
 └── .git/               # Versionskontrolle
 ```
 
-> **Flexibilität:** Die Dokumentstruktur ist vollständig anpassbar. Je nach Daten und Kontext können beliebige Dokumente ergänzt werden: `SCHEMA.md`, `VALIDATION.md`, `API-NOTES.md` – was immer das Projekt erfordert. Die genannten Dateien sind ein Ausgangspunkt, keine starre Vorgabe.
+> Hinweis: Die .md-Dateien (CONTEXT.md, DATA.md, REQUIREMENTS.md) entstehen in Phase 3: Destillation, nicht am Projektanfang. Rohdaten werden zuerst gesammelt (Phase 1), analysiert (Phase 2), und erst dann zu strukturierten Dokumenten verdichtet (Phase 3).
+
+> Flexibilität: Die Dokumentstruktur ist vollständig anpassbar. Je nach Daten und Kontext können beliebige Dokumente ergänzt werden: `SCHEMA.md`, `VALIDATION.md`, `API-NOTES.md` – was immer das Projekt erfordert. Die genannten Dateien sind ein Ausgangspunkt, keine starre Vorgabe.
 
 ---
 
 ## 3.7 Prompting-Strategien
 
-Promptotyping verwendet keine festgelegten Prompt-Templates, sondern **Meta-Strategien**, die situativ angewendet werden. Diese Strategien operationalisieren die Interaktion mit dem Frontier-LLM über alle Phasen hinweg.
+Promptotyping verwendet keine festgelegten Prompt-Templates, sondern Meta-Strategien, die situativ angewendet werden. Diese Strategien operationalisieren die Interaktion mit dem Frontier-LLM über alle Phasen hinweg.
 
 ### Übersicht der Strategien
 
-| Strategie | Zweck | Anwendung |
-|-----------|-------|-----------|
-| **Reasoning** | Möglichkeitsraum öffnen | Token-Generierung zur Exploration von Optionen |
-| **LLM-Validierung** | Qualitätsprüfung | LLM zur Bewertung eigener Outputs nutzen |
-| **Expert-in-the-Loop** | Richtungskorrektur | Menschliche Intervention bei Abweichungen |
-| **LLM-as-Judge** | Unabhängige Bewertung | Zweites Frontier-LLM mit eigenem Kontext |
-| **Context Distillation** | Wissensakkumulation | Vault-Dokumentation nachziehen und kuratieren |
-| **Plan Generation** | Strukturierte Umsetzung | Pläne erzeugen und kritisch begleiten |
+- Reasoning: Möglichkeitsraum öffnen – Token-Generierung zur Exploration von Optionen
+- LLM-Validierung: Qualitätsprüfung – LLM zur Bewertung eigener Outputs nutzen
+- Expert-in-the-Loop: Richtungskorrektur – Menschliche Intervention bei Abweichungen
+- LLM-as-Judge: Unabhängige Bewertung – Zweites Frontier-LLM mit eigenem Kontext
+- Context Distillation: Wissensakkumulation – Vault-Dokumentation nachziehen und kuratieren
+- Plan Generation: Strukturierte Umsetzung – Pläne erzeugen und kritisch begleiten
 
 ---
 
@@ -376,7 +329,7 @@ Frontier-LLMs nutzen Token-Generierung als "Denkprozess". Das Anfordern von expl
 "Generiere drei unterschiedliche Lösungswege mit Vor- und Nachteilen"
 ```
 
-**Zweck:** Vermeidung vorschneller Festlegung auf eine Lösung.
+Zweck: Vermeidung vorschneller Festlegung auf eine Lösung.
 
 ---
 
@@ -390,7 +343,7 @@ Das LLM wird zur Prüfung seiner eigenen Outputs eingesetzt:
 "Sind die genannten Optionen vollständig?"
 ```
 
-**Limitation:** LLMs können eigene systematische Fehler nicht zuverlässig erkennen.
+Limitation: LLMs können eigene systematische Fehler nicht zuverlässig erkennen.
 
 ---
 
@@ -403,7 +356,7 @@ Der menschliche Experte greift aktiv ein, um das LLM in die richtige Richtung zu
 "Ignoriere die moderne Kategorisierung. Verwende stattdessen..."
 ```
 
-**Voraussetzung:** Domänenwissen, um falsche Annahmen überhaupt zu erkennen.
+Voraussetzung: Domänenwissen, um falsche Annahmen überhaupt zu erkennen.
 
 ---
 
@@ -411,14 +364,14 @@ Der menschliche Experte greift aktiv ein, um das LLM in die richtige Richtung zu
 
 Ein zweites Frontier-LLM mit eigenem Kontext bewertet die Outputs des ersten:
 
-**Setup:**
+Setup:
 1. LLM A generiert Lösung
 2. LLM B erhält Aufgabenbeschreibung + Lösung (ohne Kontext von A)
 3. LLM B bewertet Qualität, Vollständigkeit, Korrektheit
 
-**Vorteil:** Unabhängige Perspektive, reduziert Bestätigungsfehler.
+Vorteil: Unabhängige Perspektive, reduziert Bestätigungsfehler.
 
-**Anmerkung zu Modellstärken:** Verschiedene Frontier-LLMs haben unterschiedliche Stärken. Große Kontextfenster, Videoverarbeitung, oder spezifische Reasoning-Fähigkeiten können die Wahl des Judge-Modells beeinflussen. Die genauen Stärken ändern sich mit jeder Modellgeneration.
+Anmerkung zu Modellstärken: Verschiedene Frontier-LLMs haben unterschiedliche Stärken. Große Kontextfenster, Videoverarbeitung, oder spezifische Reasoning-Fähigkeiten können die Wahl des Judge-Modells beeinflussen. Die genauen Stärken ändern sich mit jeder Modellgeneration.
 
 ---
 
@@ -426,11 +379,11 @@ Ein zweites Frontier-LLM mit eigenem Kontext bewertet die Outputs des ersten:
 
 Systematische Verdichtung und Kuratierung des Kontexts über Iterationen:
 
-1. **Nachziehen:** Erkenntnisse aus der aktuellen Sitzung in Vault-Dokumente übertragen
-2. **Kuratieren:** Veraltetes entfernen, Wichtiges hervorheben
-3. **Komprimieren:** Redundanzen eliminieren, auf Wesentliches fokussieren
+1. Nachziehen: Erkenntnisse aus der aktuellen Sitzung in Vault-Dokumente übertragen
+2. Kuratieren: Veraltetes entfernen, Wichtiges hervorheben
+3. Komprimieren: Redundanzen eliminieren, auf Wesentliches fokussieren
 
-**Zweck:** Vermeidung von Context Rot, Erhalt des akkumulierten Wissens.
+Zweck: Vermeidung von Context Rot, Erhalt des akkumulierten Wissens.
 
 ---
 
@@ -443,7 +396,7 @@ Komplexe Aufgaben werden in explizite Pläne zerlegt:
 "Was sind die Abhängigkeiten zwischen den Schritten?"
 ```
 
-**Kritisches Begleiten:**
+Kritisches Begleiten:
 - Pläne nicht blind übernehmen
 - Jeden Schritt auf Plausibilität prüfen
 - Bei Abweichungen Plan anpassen
@@ -472,11 +425,9 @@ Promptotyping adaptiert Konzepte aus dem Requirements Engineering für die struk
 
 ### Begrifflichkeiten
 
-| Begriff | Herkunft | Bedeutung in Promptotyping |
-|---------|----------|---------------------------|
-| **Baseline** | Configuration Management (ISO/IEC 12207) | Eingefrorener, validierter Dokumentstand |
-| **Increment** | Iterative Entwicklung | Funktionsfähige Vorstufe des Endprodukts |
-| **Gate** | Stage-Gate (Cooper) | Validierungspunkt vor Phasenübergang |
+- Baseline (Configuration Management, ISO/IEC 12207): Eingefrorener, validierter Dokumentstand
+- Increment (Iterative Entwicklung): Funktionsfähige Vorstufe des Endprodukts
+- Gate (Stage-Gate, Cooper): Validierungspunkt vor Phasenübergang
 
 ### Savepoint = Baseline + Increment + Gate
 
@@ -490,35 +441,34 @@ Phase N → [Artefakt erstellen] → [Gate: CEIL-Validierung] → [Baseline: Git
 
 ### Übergangskriterien pro Phase
 
-| Übergang | Kriterium |
-|----------|-----------|
-| CONTEXT → DATA | Projektziele und Constraints dokumentiert |
-| DATA → EXPLORATION | Datenstrukturen analysiert und spezifiziert |
-| EXPLORATION → REQUIREMENTS | Technische Machbarkeit geklärt |
-| REQUIREMENTS → IMPLEMENTATION | Anforderungen priorisiert und testbar |
-| IMPLEMENTATION → PROTOTYPE | Transformationslogik dokumentiert |
+- CONTEXT → DATA: Projektziele und Constraints dokumentiert
+- DATA → EXPLORATION: Datenstrukturen analysiert und spezifiziert
+- EXPLORATION → REQUIREMENTS: Technische Machbarkeit geklärt
+- REQUIREMENTS → IMPLEMENTATION: Anforderungen priorisiert und testbar
+- IMPLEMENTATION → PROTOTYPE: Transformationslogik dokumentiert
 
 ### Praktische Umsetzung
 
-1. **Artefakt fertigstellen** – Dokument der aktuellen Phase abschließen
-2. **CEIL-Review** – Expertenvalidierung durchführen
-3. **Git-Commit** – Baseline einfrieren mit aussagekräftiger Message
-4. **Journal-Eintrag** – Savepoint dokumentieren
+1. Artefakt fertigstellen – Dokument der aktuellen Phase abschließen
+2. CEIL-Review – Expertenvalidierung durchführen
+3. Git-Commit – Baseline einfrieren mit aussagekräftiger Message
+4. Journal-Eintrag – Savepoint dokumentieren
 
-> **Rollback-Prinzip:** Bei Problemen in späteren Phasen kann auf den letzten funktionierenden Savepoint zurückgegangen werden. Die Dokumentation ermöglicht das Nachvollziehen, welche Entscheidungen zur Abweichung geführt haben.
+> Rollback-Prinzip: Bei Problemen in späteren Phasen kann auf den letzten funktionierenden Savepoint zurückgegangen werden. Die Dokumentation ermöglicht das Nachvollziehen, welche Entscheidungen zur Abweichung geführt haben.
 
 ---
 
 ## Kernaussagen dieses Kapitels
 
-1. Promptotyping integriert **drei Ebenen**: technisch, methodisch, epistemisch
-2. Das **sechsphasige Modell** strukturiert den Entwicklungsprozess
-3. **Rückschleifen** sind erwarteter Teil des Prozesses, nicht Fehler
-4. Der **Critical Expert in the Loop** ist essentiell für Qualitätssicherung
-5. Das **Journal** institutionalisiert Reflexion und Nachvollziehbarkeit
-6. **Dokumentation** ist nicht Overhead, sondern Teil der Methode
-7. **Prompting-Strategien** sind Meta-Ansätze, keine festen Templates
-8. **Savepoints** ermöglichen strukturierte Versionierung und Rollback
+1. Promptotyping integriert drei Ebenen: technisch, methodisch, epistemisch
+2. Das vierphasige Modell (Preparation → Exploration → Destillation → Implementation) strukturiert den Entwicklungsprozess
+3. Jede Implementation-Iteration produziert einen neuen Prototype mit potentiellem Vault-Update
+4. Vault-Updates sind erwarteter Teil des Prozesses, nicht Fehler
+5. Der Critical Expert in the Loop ist essentiell für Qualitätssicherung
+6. Das Journal institutionalisiert Reflexion und Nachvollziehbarkeit
+7. Dokumentation ist nicht Overhead, sondern Teil der Methode
+8. Prompting-Strategien sind Meta-Ansätze, keine festen Templates
+9. Savepoints ermöglichen strukturierte Versionierung und Rollback
 
 ---
 

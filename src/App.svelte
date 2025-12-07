@@ -108,17 +108,17 @@
     </div>
   </Step>
 
-  <Step id="phase1-sammeln" phaseIndex={1} stepIndex={1}>
+  <Step id="phase1-rohdaten" phaseIndex={1} stepIndex={1}>
     <div class="placeholder-step">
-      <h2>Phase 1: Sammeln</h2>
-      <p>Coming soon...</p>
+      <h2>Phase 1: Rohdaten</h2>
+      <p>XML, PDF, CSV, Notizen sammeln</p>
     </div>
   </Step>
 
-  <Step id="phase1-workspace" phaseIndex={1} stepIndex={2}>
+  <Step id="phase1-sammlung" phaseIndex={1} stepIndex={2}>
     <div class="placeholder-step">
-      <h2>Phase 1: Workspace</h2>
-      <p>Coming soon...</p>
+      <h2>Phase 1: Sammlung</h2>
+      <p>Alle Materialien bereit für Analyse</p>
     </div>
   </Step>
 
@@ -142,7 +142,7 @@
     </div>
   </Step>
 
-  <Step id="phase3-layout" phaseIndex={3} stepIndex={0}>
+  <Step id="phase3-titel" phaseIndex={3} stepIndex={0}>
     <div class="legacy-scene">
       <Phase3Scene progress={0.5} />
     </div>
@@ -150,19 +150,19 @@
 
   <Step id="phase3-dokumente" phaseIndex={3} stepIndex={1}>
     <div class="placeholder-step">
-      <h2>Phase 3: Dokumente</h2>
-      <p>Coming soon...</p>
+      <h2>Phase 3: .md Dokumente</h2>
+      <p>DATA.md, REQUIREMENTS.md, CONTEXT.md entstehen</p>
     </div>
   </Step>
 
   <Step id="phase3-vault" phaseIndex={3} stepIndex={2}>
     <div class="placeholder-step">
       <h2>Phase 3: Vault</h2>
-      <p>Coming soon...</p>
+      <p>Destilliertes Wissen für das LLM</p>
     </div>
   </Step>
 
-  <Step id="phase4-dialog" phaseIndex={4} stepIndex={0}>
+  <Step id="phase4-titel" phaseIndex={4} stepIndex={0}>
     <div class="legacy-scene">
       <Phase4Scene progress={0.5} />
     </div>
@@ -171,14 +171,14 @@
   <Step id="phase4-iteration" phaseIndex={4} stepIndex={1}>
     <div class="placeholder-step">
       <h2>Phase 4: Iteration</h2>
-      <p>Coming soon...</p>
+      <p>Prompt → LLM → Validierung → neuer Prototype</p>
     </div>
   </Step>
 
-  <Step id="phase4-rueckschleifen" phaseIndex={4} stepIndex={2}>
+  <Step id="phase4-vault-update" phaseIndex={4} stepIndex={2}>
     <div class="placeholder-step">
-      <h2>Phase 4: Rückschleifen</h2>
-      <p>Coming soon...</p>
+      <h2>Phase 4: Vault-Update</h2>
+      <p>Neues Wissen fließt zurück in den Vault</p>
     </div>
   </Step>
 

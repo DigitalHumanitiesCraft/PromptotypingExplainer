@@ -1,94 +1,87 @@
-# Website Outline: Interaktives Paper
+# Website Outline: Scrollytelling-Struktur
 
-Struktur der Scrollytelling-Website für Promptotyping.
-
----
-
-## Gesamtstruktur
-
-| Section | Scroll-Bereich | Steps | Inhalt |
-|---------|----------------|-------|--------|
-| Intro | 0-300vh | 5 | Titel, Frage, Methoden-Übersicht |
-| Phase 1: Preparation | 300-600vh | 5 | Materialien sammeln |
-| Phase 2: Exploration | 600-840vh | 4 | Daten verstehen |
-| Phase 3: Destillation | 840-1080vh | 4 | Wissen verdichten |
-| Phase 4: Implementation | 1080-1380vh | 5 | Iterativ bauen |
-| Outro | 1380-1620vh | 4 | Zusammenfassung, Ressourcen |
+Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 
 ---
 
-## Intro (5 Steps)
+## Gesamtstruktur (18 Steps)
 
-1. **Titel**: "Promptotyping" + Untertitel "Vom Wissen zum Werkzeug"
-2. **Zentrale Frage**: "Wie wird aus Forschungsdaten ein funktionales Interface?"
-3. **4-Phasen-Übersicht**: Icons (ausgegraut), Labels
-4. **Workflow-Bild**: Großes Diagramm mit Animation (Preparation → Exploration → Destillation → Implementation)
-5. **Definition**: Was ist Promptotyping? Abgrenzung zu Vibe Coding
-
----
-
-## Phase 1: Preparation (5 Steps)
-
-**Untertitel:** Materialsammlung
-
-1. Titel + Untertitel erscheint
-2. Leerer Arbeitsbereich
-3. Quellen erscheinen an Rändern (XML, PDF, CSV, Notizen)
-4. Quellen bewegen sich zur Mitte
-5. Stapel formiert sich → "Bereit für nächste Phase"
-
-**Deep Dive:** Scholar-Centered Design
+- Intro (4): Definition, Kernprinzip, Methodik, Phasen
+- Phase 1: Preparation (3): Übersicht, Rohdaten, Sammlung
+- Phase 2: Exploration (3): Struktur, Entitäten, Fragen
+- Phase 3: Destillation (3): Übersicht, .md-Files, Vault
+- Phase 4: Implementation (3): Übersicht, Iteration, Vault-Update
+- Outro (2): Beispiele, Zusammenfassung
 
 ---
 
-## Phase 2: Exploration (4 Steps)
+## Intro (4 Steps)
 
-**Untertitel:** Datenanalyse
-
-1. Titel + Untertitel erscheint
-2. Zoom auf Dokument, Farbcodierung zeigt Struktur
-3. Entitäten lösen sich (Person, Ort, Zeit, Relation)
-4. Erste Interface-Skizzen, Fragezeichen: "Welche Fragen?"
-
-**Deep Dive:** Context Engineering
+1. Definition: Was ist Promptotyping?
+2. Kernprinzip: Mapping von Forschungsdaten auf Interfaces
+3. Methodik: Verhältnis zu Vibe Coding (komplementär)
+4. Phasen: 4-Phasen-Übersicht mit Diagramm
 
 ---
 
-## Phase 3: Destillation (4 Steps)
+## Phase 1: Preparation (3 Steps)
 
-**Untertitel:** Wissenskomprimierung
+Untertitel: Materialsammlung
+Artefakte: Rohdateien (.doc, .xml, PDFs) – keine .md
 
-1. Titel + Untertitel erscheint
-2. Drei-Spalten: Stapel → Vault → Skizzen
-3. Partikel fließen, Dokumente entstehen (DATA.md, REQUIREMENTS.md)
-4. Vault pulsiert: "Destilliertes Wissen. Bereit für das LLM."
+1. Übersicht: Titel, was passiert in dieser Phase
+2. Rohdaten: Quellen erscheinen (XML, PDF, CSV, Notizen)
+3. Sammlung: Stapel formiert sich → "Bereit für Analyse"
 
-**Deep Dive:** Dokumentenstruktur (flexibel anpassbar)
+Deep Dive: Scholar-Centered Design
 
 ---
 
-## Phase 4: Implementation (5 Steps)
+## Phase 2: Exploration (3 Steps)
 
-**Untertitel:** Iterative Entwicklung
+Untertitel: Datenanalyse
+Artefakte: Keine formalen Dokumente (epistemische Spielwiese)
 
-1. Titel + Untertitel erscheint
-2. Layout: Vault → Chat → Browser
-3. Erster Prompt (Terracotta), LLM antwortet (Slate Grey), Code erscheint
-4. Fehler (rotes X) → Korrektur → Iteration (orange Spinner)
-5. Rückschleife zu Phase 3 (gestrichelter Pfeil)
+1. Struktur: Zoom auf Dokument, Farbcodierung zeigt Aufbau
+2. Entitäten: Elemente lösen sich (Person, Ort, Zeit, Relation)
+3. Fragen: Interface-Skizzen, "Welche Fragen stellen wir?"
 
-**Deep Dives:**
+Deep Dive: Context Engineering
+
+---
+
+## Phase 3: Destillation (3 Steps)
+
+Untertitel: Wissenskomprimierung
+Artefakte: DATA.md, REQUIREMENTS.md, CONTEXT.md (hier entstehen die .md Files)
+
+1. Übersicht: Drei-Spalten-Layout (Rohdaten → Vault → Prototyp-Skizze)
+2. Requirements: Partikel fließen, .md-Dokumente entstehen
+3. Vault: Vault pulsiert: "Destilliertes Wissen. Bereit für das LLM."
+
+Deep Dive: Dokumentenstruktur (flexibel anpassbar)
+
+---
+
+## Phase 4: Implementation (3 Steps)
+
+Untertitel: Iterative Entwicklung
+Artefakte: Prototype(n) + Vault-Updates
+
+1. Übersicht: Layout Vault → Chat → Browser
+2. Iteration: Prompt → LLM → Code → Fehler → Korrektur → neuer Prototype
+3. Vault-Update: Neues Wissen fließt zurück in .md-Dateien
+
+Deep Dives:
 - Prompting-Strategien
 - Critical Expert in the Loop
 
 ---
 
-## Outro (4 Steps)
+## Outro (2 Steps)
 
-1. **Zusammenfassung**: 4 Phasen kompakt visualisiert
-2. **Praxisbeispiele**: Links zu Live-Demos
-3. **Call to Action**: "Starte dein Projekt"
-4. **Ressourcen**: Paper (knowledge/paper/), GitHub, Glossar
+1. Beispiele: Links zu Live-Demos (CorrespExplorer, Aldersbach, etc.)
+2. Zusammenfassung: 4 Phasen kompakt, Ressourcen, Call to Action
 
 ---
 
@@ -96,35 +89,24 @@ Struktur der Scrollytelling-Website für Promptotyping.
 
 Optionale Vertiefungen, die vom Hauptfluss abzweigen:
 
-| Trigger-Phase | Deep Dive | Inhalt |
-|---------------|-----------|--------|
-| Phase 1 | Scholar-Centered Design | UCD/SCD-Synthese, akademische Fundierung |
-| Phase 2 | Context Engineering | Mei et al., Context Rot, Verdichtung |
-| Phase 3 | Dokumentenstruktur | Flexibilität, Skalierung, Beispiele |
-| Phase 4 | Prompting-Strategien | Reasoning, LLM-as-Judge, etc. |
-| Phase 4 | Critical Expert in the Loop | Sycophancy, Validierung, Korrektur |
+- Phase 1 → Scholar-Centered Design: UCD/SCD-Synthese, akademische Fundierung
+- Phase 2 → Context Engineering: Mei et al., Context Rot, Verdichtung
+- Phase 3 → Dokumentenstruktur: Flexibilität, Skalierung, Beispiele
+- Phase 4 → Prompting-Strategien: Reasoning, LLM-as-Judge, etc.
+- Phase 4 → Critical Expert in the Loop: Sycophancy, Validierung, Korrektur
 
 ---
 
 ## Mapping: Website → Paper
 
-| Website-Section | Paper-Kapitel |
-|-----------------|---------------|
-| Intro | 01-introduction.md |
-| Phase 1-4 | 03-methodology.md |
-| Deep Dive: SCD | 04-scholar-centered-design.md |
-| Deep Dive: Theorie | 02-theoretical-foundation.md |
-| Outro/Beispiele | 05-case-studies.md |
-| Glossar | glossar_de.md + src/lib/data/glossary.js |
+- Intro → 01-introduction.md
+- Phase 1-4 → 03-methodology.md
+- Deep Dive: SCD → 04-scholar-centered-design.md
+- Deep Dive: Theorie → 02-theoretical-foundation.md
+- Outro/Beispiele → 05-case-studies.md
 
 ---
 
 ## Visual System (Referenz)
 
-Farben:
-- Slate Grey (#607D8B): Daten, LLM-Antworten
-- Terracotta (#BF5B3E): Menschliche Intervention, Prompts
-- Weiß (#FFFFFF): Hintergrund
-- Schwarz (#1A1A1A): Text, Linien
-
-Details siehe: knowledge.md → TEIL 2: VISUAL SYSTEM
+Siehe: knowledge.md → TEIL 2: VISUAL SYSTEM

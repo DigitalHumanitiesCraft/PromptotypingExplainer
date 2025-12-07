@@ -1,21 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir \"c:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\PromptotypingExplainer\\knowledge\")",
-      "Bash(npm create:*)",
-      "Bash(del \"c:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\PromptotypingExplainer\\PLAN.md\")",
-      "Bash(npm install)",
-      "Bash(npm install:*)",
+      "Bash(copy:*)",
+      "Bash(npm run build:*)",
       "Bash(npm run dev:*)",
-      "Bash(npx vite build)",
       "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(cat:*)",
-      "Bash(gh api:*)",
-      "Bash(curl:*)",
-      "Bash(dir:*)",
-      "Bash(dass der Prozess nicht linear ist\"\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

@@ -22,13 +22,13 @@ export const stepStructure = [
   },
   {
     id: 'phase1',
-    label: 'Vorbereitung',
+    label: 'Preparation',
     number: 1,
     subtitle: 'Materialsammlung',
     steps: [
-      { id: 'titel', label: 'Titel' },
-      { id: 'sammeln', label: 'Sammeln' },
-      { id: 'workspace', label: 'Workspace' },
+      { id: 'titel', label: 'Übersicht' },
+      { id: 'rohdaten', label: 'Rohdaten' },
+      { id: 'sammlung', label: 'Sammlung' },
     ]
   },
   {
@@ -46,10 +46,10 @@ export const stepStructure = [
     id: 'phase3',
     label: 'Destillation',
     number: 3,
-    subtitle: 'Wissenskomprimierung',
+    subtitle: 'Vault (.md Files)',
     steps: [
-      { id: 'layout', label: 'Layout' },
-      { id: 'dokumente', label: 'Dokumente' },
+      { id: 'titel', label: 'Übersicht' },
+      { id: 'dokumente', label: '.md Dokumente' },
       { id: 'vault', label: 'Vault' },
     ]
   },
@@ -57,11 +57,11 @@ export const stepStructure = [
     id: 'phase4',
     label: 'Implementation',
     number: 4,
-    subtitle: 'Iterative Entwicklung',
+    subtitle: 'Prototype + Vault-Update',
     steps: [
-      { id: 'dialog', label: 'Dialog' },
+      { id: 'titel', label: 'Übersicht' },
       { id: 'iteration', label: 'Iteration' },
-      { id: 'rueckschleifen', label: 'Rückschleifen' },
+      { id: 'vault-update', label: 'Vault-Update' },
     ]
   },
   {

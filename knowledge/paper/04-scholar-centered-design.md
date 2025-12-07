@@ -128,7 +128,7 @@ Forschungsfrage (initial)
         ↓
     Neue Muster erkannt
         ↓
-Forschungsfrage (revidiert)  ← Rückschleife
+Forschungsfrage (revidiert)  ← Vault-Update
         ↓
     Prototyp v2
         ↓

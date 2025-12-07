@@ -469,7 +469,7 @@ jobs:
 | Font Loading | Self-hosted | Performance, DSGVO |
 | Partikel in Phase 3 | 3-5 Elemente | Performance, Klarheit |
 | Code in Phase 4 | Stilisierte Blöcke | Keine Syntax-Highlighting-Lib nötig |
-| Rückschleifen | Click-Triggered Toggle | Nicht überladen beim ersten Durchgang |
+| Vault-Updates | Partikel-Animation | Wissensrückfluss visuell darstellen |
 
 ---
 

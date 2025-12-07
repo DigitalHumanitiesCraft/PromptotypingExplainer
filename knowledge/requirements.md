@@ -24,7 +24,7 @@ Stoßen über Social Media, Konferenzen oder Publikationen auf die Seite. Wollen
 | 1 | Vorbereitung | Materialsammlung (TEI, XML, Notizen) |
 | 2 | Exploration | Datenanalyse, Entitäten identifizieren |
 | 3 | Destillation | Wissenskomprimierung in Markdown-Dokumente |
-| 4 | Implementation | Iterative Entwicklung mit LLM, Validierung, Rückschleifen |
+| 4 | Implementation | Iterative Entwicklung mit LLM, Validierung, Vault-Updates |
 
 Ausführliche Beschreibung: [knowledge.md#die-vier-phasen](knowledge.md#die-vier-phasen)
 
@@ -59,13 +59,13 @@ Akzeptanzkriterien:
 - Smooth-Scroll zur gewählten Phase
 - Animationen der übersprungenen Phasen werden nicht abgespielt
 
-**US-04: Rückschleifen verstehen**
-Als Besucher:in will ich verstehen, dass der Prozess nicht linear ist, um keine falschen Erwartungen zu haben.
+**US-04: Vault-Updates verstehen**
+Als Besucher:in will ich verstehen, dass jede Iteration neues Wissen generiert, das in den Vault zurückfließt.
 
 Akzeptanzkriterien:
-- Rückschleifen-Visualisierung ist verfügbar (Click oder Toggle)
-- Erklärung, wann Rückschleifen nötig sind
-- Visuelle Darstellung der Zirkularität
+- Vault-Update-Visualisierung zeigt den Wissensrückfluss
+- Erklärung, wann Vault-Updates nötig sind
+- Visuelle Darstellung des iterativen Wissenswachstums
 
 ### Vertiefung
 
