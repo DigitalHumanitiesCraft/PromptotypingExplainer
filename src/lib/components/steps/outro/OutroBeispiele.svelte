@@ -61,7 +61,7 @@
   </div>
 
   <p class="insight" in:fade={{ delay: 800, duration: 400 }}>
-    Von <strong>2 Stunden</strong> bis <strong>25 Stunden</strong> - je nach Komplexität
+    Von <strong>2 Stunden</strong> bis <strong>25 Stunden</strong>, je nach Komplexität
   </p>
 </div>
 
@@ -173,9 +173,13 @@
   }
 
   .insight {
-    color: var(--color-slate);
+    color: var(--color-black);
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     margin: 0;
+    background: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .insight strong {

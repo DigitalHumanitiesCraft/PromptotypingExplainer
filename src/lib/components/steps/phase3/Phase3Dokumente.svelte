@@ -5,7 +5,8 @@
 <div class="phase3-dokumente">
   <h3 in:fade={{ duration: 400 }}>Die Vault-Dokumente</h3>
   <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Drei Kerndokumente verdichten das Wissen LLM-optimiert
+    Drei Kerndokumente verdichten das Wissen für LLMs optimal. Das Prinzip der
+    <strong>Context Compression</strong> bedeutet maximale Information bei minimaler Token-Anzahl.
   </p>
 
   <div class="documents-grid">
@@ -15,7 +16,7 @@
       </div>
       <div class="doc-content">
         <h4>DATA.md</h4>
-        <p>Struktur und Semantik der Forschungsdaten - Schema, Felder, Beziehungen</p>
+        <p>Struktur und Semantik der Forschungsdaten, also Schema, Felder und Beziehungen</p>
       </div>
     </div>
 
@@ -39,11 +40,6 @@
       </div>
     </div>
   </div>
-
-  <div class="compression-note" in:fade={{ delay: 800, duration: 400 }}>
-    <span class="note-icon">!</span>
-    <p><strong>Context Compression:</strong> Maximale Information bei minimaler Token-Anzahl</p>
-  </div>
 </div>
 
 <style>
@@ -62,10 +58,15 @@
   }
 
   .description {
-    color: var(--color-slate);
+    color: var(--color-black);
     font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0;
+    background: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: justify;
   }
 
   .documents-grid {
@@ -140,38 +141,7 @@
     line-height: 1.4;
   }
 
-  .compression-note {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    background: rgba(191, 91, 62, 0.08);
-    border-radius: 8px;
-    max-width: 450px;
-  }
-
-  .note-icon {
-    width: 24px;
-    height: 24px;
-    background: var(--color-terracotta);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.8rem;
-    flex-shrink: 0;
-  }
-
-  .compression-note p {
-    font-size: 0.85rem;
-    color: var(--color-slate);
-    margin: 0;
-    text-align: left;
-  }
-
-  .compression-note strong {
+  .description strong {
     color: var(--color-terracotta);
   }
 

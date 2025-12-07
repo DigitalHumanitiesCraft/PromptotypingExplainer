@@ -17,7 +17,7 @@
 
   <div class="content" in:fade={{ delay: 200, duration: 400 }}>
     <p>
-      Die <strong>Preparation</strong>-Phase sammelt alle relevanten Rohmaterialien:
+      Die <strong>Preparation</strong>-Phase sammelt alle relevanten Rohmaterialien, darunter
       Forschungsdaten, Dokumentation zu Standards und Modellen,
       Forschungsfragen und Domänenwissen.
     </p>
@@ -72,14 +72,19 @@
   }
 
   .content {
-    max-width: 600px;
+    max-width: 700px;
     line-height: 1.7;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .content p {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-slate);
+    color: var(--color-black);
     margin-bottom: var(--space-md);
+    text-align: justify;
   }
 
   .content strong {

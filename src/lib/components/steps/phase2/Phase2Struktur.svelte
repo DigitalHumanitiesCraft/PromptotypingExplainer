@@ -14,7 +14,7 @@
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
       Freies Experimentieren mit dem Rohmaterial. LLM-gestützte Analyse der Daten,
-      erste Prompt-Versuche, Erkundung der Möglichkeitsräume – <strong>ohne Dokumentationszwang</strong>.
+      erste Prompt-Versuche, Erkundung der Möglichkeitsräume, <strong>ohne Dokumentationszwang</strong>.
     </p>
 
     <div class="key-point">
@@ -75,13 +75,18 @@
   }
 
   .content-block {
-    max-width: 640px;
+    max-width: 700px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .lead {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-slate);
+    color: var(--color-black);
     line-height: 1.8;
+    text-align: justify;
     margin: 0 0 var(--space-md) 0;
   }
 

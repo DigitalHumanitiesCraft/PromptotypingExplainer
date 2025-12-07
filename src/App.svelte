@@ -35,8 +35,9 @@
   import OutroBeispiele from './lib/components/steps/outro/OutroBeispiele.svelte';
   import OutroZusammenfassung from './lib/components/steps/outro/OutroZusammenfassung.svelte';
 
-  // Bibliography, Glossary & About
+  // Bibliography, Glossary, Vault & About
   import About from './lib/components/About.svelte';
+  import Vault from './lib/components/Vault.svelte';
   import Glossary from './lib/components/Glossary.svelte';
   import Bibliography from './lib/components/Bibliography.svelte';
 
@@ -175,6 +176,9 @@
 
   <!-- About -->
   <About />
+
+  <!-- Vault -->
+  <Vault />
 
   <!-- Glossar -->
   <Glossary />

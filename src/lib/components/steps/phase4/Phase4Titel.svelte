@@ -11,8 +11,8 @@
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Der Vault aus Phase 3 wird dem LLM übergeben.
-      <strong>Der eigentliche Promptotyping-Dialog beginnt.</strong>
+      Der Vault wird dem LLM übergeben und die <strong>Cyborg-Arbeit</strong> beginnt.
+      Mensch und KI entwickeln gemeinsam, validieren iterativ und aktualisieren den Vault mit neuem Wissen.
     </p>
 
     <div class="cycle-preview" in:fly={{ y: 20, duration: 400, delay: 400 }}>
@@ -70,13 +70,18 @@
   }
 
   .content-block {
-    max-width: 600px;
+    max-width: 700px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .lead {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-slate);
-    line-height: 1.6;
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
     margin: 0 0 var(--space-lg) 0;
   }
 

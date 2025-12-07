@@ -357,7 +357,7 @@ export const deepDives = {
         Es ist verlockend, nur noch im Chat zu "fixen", ohne den Vault nachzuziehen.
       </p>
       <ul>
-        <li><strong>Gefahr:</strong> Der Vault veraltet (= Epistemische Schuld).</li>
+        <li><strong>Gefahr:</strong> Der Vault veraltet und entkoppelt sich vom tatsächlichen System (Context Rot).</li>
         <li><strong>Lösung:</strong> Der Mensch agiert nicht als Schreiber, sondern als Kurator.
         Lassen Sie das LLM die Zusammenfassung für <code>DATA.md</code> schreiben, aber <em>prüfen</em> Sie sie penibel vor dem Commit.</li>
       </ul>
@@ -446,72 +446,6 @@ export const deepDives = {
 
       <div class="reference">
         <strong>Quelle:</strong> Mollick, E. (2024): <em>Co-Intelligence: Living and Working with AI</em>. Portfolio.
-      </div>
-    `
-  },
-
-  'epistemic-debt': {
-    id: 'epistemic-debt',
-    title: 'Epistemische Schuld',
-    content: `
-      <h3>Definition</h3>
-      <p>
-        <strong>Epistemische Schuld</strong> bezeichnet den Verlust von Prozesswissen, wenn der Weg
-        zum Ergebnis nicht verstanden oder dokumentiert wird – selbst wenn der generierte Code funktional ist.
-      </p>
-
-      <h3>Das strukturelle Problem</h3>
-      <p>
-        Die anekdotische Warnung <em>"Nach zwei Wochen verstehst du deinen Code nicht mehr"</em>
-        greift zu kurz. Das eigentliche Problem ist nicht der Code selbst, sondern der Verlust der
-        <strong>Transformationen und Entscheidungen</strong>, die zu ihm führten.
-      </p>
-
-      <h3>Manifestationen</h3>
-      <table>
-        <thead>
-          <tr><th>Art</th><th>Beschreibung</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Blackbox-Entscheidungen</strong></td>
-            <td>Das LLM trifft Architekturentscheidungen, die nicht nachvollzogen werden</td>
-          </tr>
-          <tr>
-            <td><strong>Prozessamnesie</strong></td>
-            <td>Warum bestimmte Lösungen gewählt wurden, bleibt unklar</td>
-          </tr>
-          <tr>
-            <td><strong>Interpretative Verarmung</strong></td>
-            <td>Maschinelle Durchschnittsantworten ersetzen kreative Exploration</td>
-          </tr>
-          <tr>
-            <td><strong>Debugging-Unfähigkeit</strong></td>
-            <td>Fehler können ohne LLM nicht mehr analysiert werden</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Wie Promptotyping gegensteuert</h3>
-      <ul>
-        <li>✅ <strong>Vault-Dokumentation:</strong> Entscheidungen werden in DATA.md, CONTEXT.md expliziert</li>
-        <li>✅ <strong>Journal:</strong> Transformationen und Learnings werden festgehalten</li>
-        <li>✅ <strong>Iterative Updates:</strong> Neues Wissen fließt zurück in den Vault</li>
-        <li>❌ <strong>Grenzen:</strong> Interne LLM-Prozesse bleiben opak</li>
-        <li>❌ <strong>Grenzen:</strong> Nicht dokumentierte Experimente gehen verloren</li>
-      </ul>
-
-      <h3>Die Kurator-Rolle</h3>
-      <p>
-        Der Mensch agiert nicht als Schreiber, sondern als <strong>Kurator</strong>:
-        Das LLM kann Zusammenfassungen für die Dokumentation schreiben – aber der Mensch
-        <em>prüft</em> sie penibel vor dem Commit. Die Verantwortung für epistemische
-        Qualität bleibt beim Menschen.
-      </p>
-
-      <div class="reference">
-        <strong>Fazit:</strong> Dokumentation reduziert epistemische Schuld, eliminiert sie aber nicht.
-        Der bewusste Umgang mit diesem Restrisiko ist Teil der methodischen Reflexion.
       </div>
     `
   }

@@ -5,7 +5,7 @@
 <div class="phase4-vault-update">
   <h3 in:fade={{ duration: 400 }}>Vault-Update</h3>
   <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Neues Wissen fließt zurück - der Vault wächst mit jeder Iteration
+    Neues Wissen fließt zurück und der Vault wächst mit jeder Iteration
   </p>
 
   <div class="update-visual">
@@ -79,10 +79,15 @@
   }
 
   .description {
-    color: var(--color-slate);
+    color: var(--color-black);
     font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0;
+    background: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: justify;
   }
 
   .update-visual {

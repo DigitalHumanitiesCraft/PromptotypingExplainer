@@ -2,6 +2,37 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-07 Spät: Vault-Seite, Blog-Texte, UI-Konsolidierung
+
+### Tasks
+- Vault-Seite als Meta-Beispiel implementiert
+- Alle Texte auf Forschungsblog-Stil umgestellt
+- Hervorhebungselemente konsolidiert
+- Styling-Konsistenz durchgesetzt
+
+### Ergebnisse
+**Vault.svelte** erstellt mit interaktivem Dateibaum des knowledge/-Ordners. Zeigt die eigene Dokumentation als Meta-Beispiel für Promptotyping-Vaults.
+
+**Blog-Text-Stil** angewendet auf alle Komponenten:
+- Weiße Hintergründe mit box-shadow für Leseflächen
+- Blocksatz (text-align: justify)
+- Keine Dashes (–) oder Colons (:) in Texten
+
+**Hervorhebungselemente konsolidiert:**
+- `.context-note` → in `.definition-block` integriert
+- `.compression-note` → in `.description` integriert
+- Verbleibend: `.key-point` (Kernaussagen), `.example-box` (Beispiele)
+
+**Betroffene Komponenten:**
+IntroDefinition, IntroKernprinzip, IntroMethodik, Phase1Titel, Phase1Rohdaten, Phase2Struktur, Phase3Titel, Phase3Dokumente, Phase3Vault, Phase4Titel, Phase4Iteration, Phase4VaultUpdate, OutroBeispiele, OutroZusammenfassung
+
+### Entscheidungen
+- Nur 2 didaktische Hervorhebungstypen: Accent (terracotta) für Kernaussagen, Example (slate) für Beispiele
+- Alle Textblöcke mit einheitlichem weißen "Lesefläche"-Design
+- Vault-Seite in Navigation zwischen About und Glossar
+
+---
+
 ## 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, UI-Fixes
 
 ### Tasks

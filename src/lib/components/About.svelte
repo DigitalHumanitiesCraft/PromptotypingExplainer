@@ -3,44 +3,49 @@
 
   const readmeContent = `# Über diese Dokumentation
 
-Diese interaktive Dokumentation erklärt **Promptotyping** – eine Methodik zur Entwicklung von LLM-gestützten Werkzeugen in den Digital Humanities.
+Diese interaktive Dokumentation erklärt **Promptotyping** – eine Methode zur systematischen Entwicklung funktionaler Prototypen durch strukturierte Interaktion mit Large Language Models.
 
-## Was Sie hier lernen
+## Was ist Promptotyping?
 
-> **Promptotyping** ist das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
+Promptotyping kombiniert die Intuition des "Vibe Codings" mit einem systematischen Framework zur Wissensaufbereitung. Es ist ein **Context-Engineering-Prozess**, der domänenspezifisches Wissen für LLMs optimal strukturiert – kein Gegenentwurf zum intuitiven Arbeiten, sondern dessen methodische Erweiterung.
 
-Diese Dokumentation führt Sie durch:
+Der Name setzt sich zusammen aus **Prompt** (die Eingabe an ein LLM) und **Prototyping** (iterative Entwicklung von Funktionsmustern).
 
-1. **Die Grundidee** – Warum klassisches Prompt Engineering für Forschungskontexte nicht ausreicht
-2. **Die vier Phasen** – Von der Materialsammlung bis zum funktionierenden Werkzeug
-3. **Das Knowledge Vault** – Wie strukturiertes Domänenwissen LLMs effektiver macht
-4. **Praktische Beispiele** – Konkrete Anwendungen aus der DH-Praxis
+## Das Kernprinzip: Co-Intelligence
 
-## Für wen ist das?
+Die Methode basiert auf dem Konzept der **Co-Intelligence** nach Ethan Mollick (2024): der produktiven Zusammenarbeit zwischen menschlicher Expertise und KI-Fähigkeiten. Dabei unterscheiden wir zwei Arbeitsmodi:
 
-- **Digital Humanists**, die LLMs für ihre Forschung nutzen wollen
-- **Entwickler:innen**, die domänenspezifische KI-Werkzeuge bauen
-- **Methodiker:innen**, die sich für Human-AI-Collaboration interessieren
+- **Centaur-Arbeit**: Klare Aufgabenteilung. Der Mensch definiert Anforderungen, die KI führt technische Implementierung aus.
+- **Cyborg-Arbeit**: Fließende, verschränkte Zusammenarbeit. Ideen entstehen im Dialog, die Grenze zwischen menschlichem und maschinellem Beitrag verschwimmt.
+
+Promptotyping operiert primär im Cyborg-Modus: Der iterative Dialog ist keine sequentielle Auftragsabarbeitung, sondern ein gemeinsamer Erkenntnisprozess.
 
 ## Die vier Phasen
 
 | Phase | Fokus | Ergebnis |
 |-------|-------|----------|
-| **Vorbereitung** | Materialsammlung | Rohdaten, Quellen, Kontext |
-| **Exploration** | Datenanalyse | Strukturverständnis, Entitäten |
-| **Destillation** | Wissenskomprimierung | Knowledge Vault |
-| **Implementation** | Iterative Entwicklung | Funktionales Werkzeug |
+| **Vorbereitung** | Materialsammlung | Rohdaten, Quellen, Dokumentation |
+| **Exploration** | Epistemische Spielwiese | Strukturverständnis, erste Experimente |
+| **Destillation** | Wissenskomprimierung | Der Vault: DATA.md, REQUIREMENTS.md, CONTEXT.md |
+| **Implementation** | Iterative Entwicklung | Funktionales Werkzeug + Vault-Updates |
+
+## Critical Expert in the Loop
+
+Ein zentrales Prinzip: **Domänenexpert:innen bleiben unverzichtbar**. LLMs können technisch korrekte, aber fachlich inadäquate Lösungen produzieren. Nur Expert:innen erkennen, ob eine Visualisierung dem Forschungsgegenstand gerecht wird oder ob Kategorisierungen historisch sinnvoll sind.
+
+## Für wen ist das?
+
+- **Forscher:innen**, die LLMs für ihre Arbeit nutzen wollen – ohne tiefe Programmierkenntnisse
+- **Digital Humanists**, die domänenspezifische Werkzeuge entwickeln
+- **Methodiker:innen**, die sich für Human-AI-Collaboration interessieren
 
 ## Kontext
 
-Promptotyping entstand aus der Praxis der digitalen Briefedition und wurde für geisteswissenschaftliche Forschungskontexte entwickelt, in denen:
-
-- Daten **semantisch reich** und kontextabhängig sind
-- **Domänenexpertise** entscheidend für die Interpretation ist
-- Werkzeuge **scholar-centered** statt technologiezentriert sein sollten
+Obwohl die Methodik ihren Ursprung in den Digital Humanities hat, sind ihre Mechanismen – Wissensdestillation und Context Engineering – universell auf datenintensive Forschungsprozesse übertragbar: statistische Analysen, Datenvisualisierung, explorative Analysen in verschiedensten Disziplinen.
 
 ## Weiterführend
 
+- [Vault](#vault) – Der echte Promptotyping Vault dieses Projekts
 - [Glossar](#glossar) – Zentrale Begriffe aus AI und Prompt Engineering
 - [Bibliographie](#bibliographie) – Alle verwendeten Quellen`;
 

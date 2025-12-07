@@ -74,14 +74,18 @@
 
   blockquote {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-slate);
+    color: var(--color-black);
     font-style: italic;
     line-height: 1.7;
     border-left: 3px solid var(--color-terracotta);
+    padding: var(--space-lg);
     padding-left: var(--space-md);
     margin: 0;
-    max-width: 600px;
-    text-align: left;
+    max-width: 700px;
+    text-align: justify;
+    background: white;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .imperatives {

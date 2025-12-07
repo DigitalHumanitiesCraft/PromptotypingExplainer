@@ -58,10 +58,7 @@ Entwicklung einer Timeline-Visualisierung für Archivdaten des Stefan Zweig Arch
 - Funktionierender Prototyp nach ca. 2 Stunden
 
 **Beobachtung:**
-Nach zwei Wochen war der Code für den Entwickler selbst nicht mehr nachvollziehbar. Änderungen erforderten erheblichen Einarbeitungsaufwand.
-
-**Reflektion:**
-Dieses Beispiel illustriert die Grenzen des undokumentierten Vorgehens. Es diente als **Negativbeispiel**, das zur Entwicklung der strukturierten Methode beitrug.
+Dieses frühe Projekt entstand vor der Formalisierung der Promptotyping-Methode. Die schnelle Entwicklung (~2h) demonstriert das Potenzial von LLM-gestütztem Prototyping. Die Erfahrungen aus diesem Projekt flossen in die Entwicklung der strukturierten Vault-Dokumentation ein.
 
 ---
 
@@ -147,10 +144,7 @@ Entwicklung eines digitalen Archivs für die Hans Gross Sammlung mit 3.892 Objek
 Nur drei Dokumente erstellt, IMPLEMENTATION.md fehlte.
 
 **Beobachtung:**
-Das funktionale Dual-Interface entstand zwar erfolgreich, aber spätere Anpassungen waren erheblich erschwert, da die Transformationslogik nicht dokumentiert war.
-
-**Reflektion:**
-Dieses Beispiel illustriert, dass ein funktionierendes Ergebnis nicht gleichbedeutend mit einem wartbaren Ergebnis ist. Die „epistemische Schuld" (fehlendes Prozesswissen) manifestierte sich bei späteren Änderungswünschen.
+Das funktionale Dual-Interface entstand erfolgreich mit minimaler Dokumentation. Bei späteren Anpassungen zeigte sich der Wert vollständiger Vault-Dokumentation – die Erfahrungen flossen in die Weiterentwicklung der Methode ein.
 
 ---
 

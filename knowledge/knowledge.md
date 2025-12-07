@@ -62,14 +62,6 @@ Vibe Coding funktioniert. Promptotyping gibt ihm Struktur für Forschungskontext
 
 **Das scheinbare Paradoxon**: Die Methode integriert intuitive Steuerung durch natürliche Sprache mit zwingend systematischer Dokumentation. Die Dokumentation ist dabei nicht bürokratische Nachbereitung, sondern notwendiger Input – Context Engineering, das das Modell vor Context Rot schützt und die Informationsdichte maximiert.
 
-### Epistemische Schuld
-
-> **Epistemische Schuld** bezeichnet den Verlust von Prozesswissen, wenn der Weg zum Ergebnis nicht dokumentiert wird – selbst wenn der generierte Code funktional ist.
-
-Das Konzept ersetzt die anekdotische Warnung "Nach zwei Wochen verstehst du deinen Code nicht mehr" durch eine strukturelle Beschreibung: Nicht der Code selbst ist das Problem, sondern der Verlust der Transformationen und Entscheidungen, die zu ihm führten.
-
-Promptotyping adressiert Epistemische Schuld durch systematische Vault-Dokumentation – reduziert sie aber nicht vollständig, da interne LLM-Prozesse opak bleiben.
-
 ---
 
 ## Methodische Grundlagen: User-Centered Design & Scholar-Centered Design

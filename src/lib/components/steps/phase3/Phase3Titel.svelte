@@ -11,8 +11,9 @@
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Die Erkenntnisse aus Phase 2 werden nun <strong>formalisiert</strong>.
-      Rohmaterial und Mapping-Wissen verdichten sich zu strukturierten Dokumenten.
+      Die Erkenntnisse aus der Exploration werden nun <strong>destilliert</strong>.
+      Das Kernprinzip: maximale Information mit minimalen Tokens. Je präziser der Kontext,
+      desto besser die LLM-Performance – denn <strong>Context Rot</strong> ist real.
     </p>
 
     <div class="vault-preview">
@@ -66,13 +67,18 @@
   }
 
   .content-block {
-    max-width: 550px;
+    max-width: 700px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .lead {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-slate);
-    line-height: 1.6;
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
     margin: 0;
   }
 

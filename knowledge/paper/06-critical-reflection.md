@@ -163,33 +163,7 @@ LLMs können systematische Verzerrungen reproduzieren:
 
 ---
 
-## 6.6 Epistemische Schulden
-
-### Definition
-
-> **Epistemische Schuld** bezeichnet den Verlust von Prozesswissen, wenn der Weg zum Ergebnis nicht verstanden oder dokumentiert wird.
-
-### Manifestationen
-
-| Art | Beschreibung |
-|-----|--------------|
-| **Blackbox-Entscheidungen** | LLM trifft Entscheidungen, die nicht nachvollzogen werden |
-| **Prozessamnesie** | Warum bestimmte Lösungen gewählt wurden, ist unklar |
-| **Interpretative Verarmung** | Maschinelle Durchschnittsantworten ersetzen kreative Exploration |
-| **Debugging-Unfähigkeit** | Fehler können nicht ohne LLM analysiert werden |
-
-### Gegenmaßnahmen in Promptotyping
-
-Die Dokumentationsphasen (besonders IMPLEMENTATION und JOURNAL) adressieren epistemische Schuld, können sie aber nicht vollständig eliminieren:
-
-- ✅ Entscheidungen werden dokumentiert
-- ✅ Transformationen werden expliziert
-- ❌ Interne LLM-Prozesse bleiben opak
-- ❌ Nicht dokumentierte Experimente gehen verloren
-
----
-
-## 6.7 Ökologische Bedenken
+## 6.6 Ökologische Bedenken
 
 ### Energieverbrauch
 
@@ -207,7 +181,7 @@ Promptotyping als Methode reflektiert diesen Aspekt bisher nicht systematisch:
 
 ---
 
-## 6.8 Was wir nicht wissen
+## 6.7 Was wir nicht wissen
 
 ### Offene empirische Fragen
 
@@ -248,8 +222,7 @@ Promptotyping als Methode reflektiert diesen Aspekt bisher nicht systematisch:
 2. **Zugangsbarrieren:** Sprachliche, finanzielle, technische Hürden schließen aus
 3. **Lock-in-Risiken:** Abhängigkeit von kommerziellen Anbietern
 4. **Expertise-Paradox:** Wer bildet die zukünftigen Critical Experts aus?
-5. **Epistemische Schulden:** Dokumentation reduziert, eliminiert sie aber nicht
-6. **Viele offene Fragen:** Empirische und theoretische Arbeit steht aus
+5. **Viele offene Fragen:** Empirische und theoretische Arbeit steht aus
 
 ---
 

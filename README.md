@@ -30,7 +30,8 @@ Promptotyping ist eine vierphasige Methodik:
 - **Responsive Design** (Desktop: Side-Panel, Mobile: Bottom-Sheet)
 - **Dynamischer Hintergrund-Gradient** basierend auf Scroll-Position
 - **Bibliographie** mit APA-Zitaten und verlinkten Quellen
-- **About/Glossar/Bibliographie** Navigation im Header
+- **About/Vault/Glossar/Bibliographie** Navigation im Header
+- **Vault-Seite** zeigt den knowledge/-Ordner als Meta-Beispiel
 
 ## Entwicklung
 
@@ -57,7 +58,8 @@ src/
 │   │   ├── PhaseHeader.svelte    # Fixierter Header mit Phase/Step
 │   │   ├── GlossaryTerm.svelte   # Kontextsensitive Glossar-Popovers
 │   │   ├── DeepDivePanel.svelte  # Modal für Vertiefungen
-│   │   ├── About.svelte          # About-Seite (aus README)
+│   │   ├── About.svelte          # About-Seite (Methodik-Fokus)
+│   │   ├── Vault.svelte          # Interaktiver Vault-Viewer (Meta-Beispiel)
 │   │   ├── Glossary.svelte       # Glossar-Übersicht (alphabetisch)
 │   │   ├── Bibliography.svelte   # Bibliographie mit APA-Zitaten
 │   │   ├── steps/                # Step-Komponenten pro Phase
@@ -82,6 +84,7 @@ src/
 │   │   ├── glossary.js           # 20+ AI/LLM-Begriffe
 │   │   ├── bibliography.js       # Bibliographie-Einträge (APA)
 │   │   ├── deep-dives.js         # Deep Dive Inhalte
+│   │   ├── vault-structure.js    # Vault-Dateistruktur für Viewer
 │   │   └── prompts.js            # Chat-Dialoge für Phase 4
 │   └── stores/
 │       ├── scroll.js             # Svelte Stores für Progress/Phase/Step

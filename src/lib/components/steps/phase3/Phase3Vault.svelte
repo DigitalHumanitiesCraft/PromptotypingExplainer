@@ -5,7 +5,7 @@
 <div class="phase3-vault">
   <h3 in:fade={{ duration: 400 }}>Der Vault ist bereit</h3>
   <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Destilliertes Wissen - komprimiert und strukturiert für das LLM
+    Destilliertes Wissen, komprimiert und strukturiert für das LLM
   </p>
 
   <div class="vault-visual">
@@ -48,7 +48,7 @@
   </div>
 
   <p class="conclusion" in:fade={{ delay: 900, duration: 400 }}>
-    Das Wissen ist verdichtet - <strong>bereit für den LLM-Dialog</strong>
+    Das Wissen ist verdichtet und <strong>bereit für den LLM-Dialog</strong>
   </p>
 </div>
 
@@ -68,10 +68,15 @@
   }
 
   .description {
-    color: var(--color-slate);
+    color: var(--color-black);
     font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0;
+    background: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: justify;
   }
 
   .vault-visual {

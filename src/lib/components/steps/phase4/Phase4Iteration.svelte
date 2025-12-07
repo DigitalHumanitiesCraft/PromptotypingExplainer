@@ -78,11 +78,15 @@
   }
 
   .description {
-    color: var(--color-slate);
+    color: var(--color-black);
     font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 500px;
+    max-width: 600px;
     margin: 0;
     font-family: var(--font-mono);
+    background: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
   .iteration-visual {
