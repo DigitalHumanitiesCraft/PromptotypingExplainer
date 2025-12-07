@@ -27,6 +27,7 @@
 
     <!-- Navigation Links -->
     <nav class="header-nav">
+      <a href="#about" class="nav-link">About</a>
       <a href="#glossar" class="nav-link">Glossar</a>
       <a href="#bibliographie" class="nav-link">Bibliographie</a>
     </nav>

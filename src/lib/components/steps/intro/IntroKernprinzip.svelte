@@ -15,7 +15,19 @@
       durch iterative Mensch-LLM-Kollaboration.
     </p>
 
+    <p class="foundation-note">
+      LLMs sind <em>"Strange New Minds"</em> (Summerfield, 2025) – weder reine Werkzeuge
+      noch echte Intelligenz. Um produktiv mit ihnen zu arbeiten, müssen wir verstehen,
+      <strong>wie</strong> sie funktionieren: als statistische Mustermaschinen, die
+      halluzinieren können und externe Validierung brauchen.
+    </p>
+
     <div class="deep-dive-triggers">
+      <DeepDiveTrigger
+        label="System 1.42 – LLM-Grundlagen"
+        deepDiveId="system-1-42"
+        on:open={handleDeepDive}
+      />
       <DeepDiveTrigger
         label="Scholar-Centered Design"
         deepDiveId="scholar-centered-design"
@@ -63,6 +75,21 @@
     display: block;
     margin-bottom: var(--space-sm);
     font-size: 1.1em;
+  }
+
+  .foundation-note {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--color-slate);
+    line-height: 1.6;
+    max-width: 600px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .foundation-note em {
+    color: var(--color-terracotta);
+    font-style: normal;
+    font-weight: 600;
   }
 
   .deep-dive-triggers {

@@ -208,13 +208,30 @@
     border-collapse: collapse;
     margin: var(--space-md, 1rem) 0;
     font-size: 0.85rem;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .panel-content :global(thead),
+  .panel-content :global(tbody),
+  .panel-content :global(tr) {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
   }
 
   .panel-content :global(th),
   .panel-content :global(td) {
-    padding: var(--space-sm, 0.5rem);
+    padding: var(--space-sm, 0.5rem) var(--space-md, 1rem);
     text-align: left;
     border-bottom: 1px solid rgba(96, 125, 139, 0.2);
+    word-wrap: break-word;
+  }
+
+  .panel-content :global(th:first-child),
+  .panel-content :global(td:first-child) {
+    width: 30%;
+    min-width: 100px;
   }
 
   .panel-content :global(th) {

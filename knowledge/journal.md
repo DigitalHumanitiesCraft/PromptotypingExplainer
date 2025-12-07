@@ -2,6 +2,34 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, UI-Fixes
+
+### Tasks
+- About-Seite mit Header-Navigation implementiert
+- System 1.42 Deep Dive für theoretische LLM-Grundlagen erstellt
+- "Strange New Minds" (Summerfield) ins Intro-Kernprinzip integriert
+- DeepDivePanel Table-Styling für bessere Lesbarkeit korrigiert
+- Bibliographie erweitert (Summerfield 2025, Pollin 2025)
+
+### Ergebnisse
+**About.svelte** erstellt mit `marked` für Markdown-Rendering. Fokus auf Methodik/Lernwert statt technischer Details (Tech Stack, Features, Lizenz bewusst weggelassen).
+
+**System 1.42 Deep Dive** in deep-dives.js: Erklärt LLM-Grundlagen (Token, Embedding, Context Window, Attention, Next-Token-Prediction, Training-Phasen, Emergenz). Referenziert Pollin 2025 DHCraft Blog.
+
+**IntroKernprinzip.svelte** erweitert: "Strange New Minds" (Summerfield, 2025) als theoretischer Rahmen. Drei Deep Dive Trigger: System 1.42, Scholar-Centered Design, Knowledge Acquisition.
+
+**PhaseHeader.svelte**: Navigation erweitert um About-Link (vor Glossar/Bibliographie).
+
+**DeepDivePanel.svelte**: Table-CSS korrigiert (display: block, overflow-x: auto, table-layout: fixed). Erste Spalte 30% Breite mit min-width 100px.
+
+### Entscheidungen
+- About-Inhalt methodenzentriert, nicht technisch (README.md bleibt für Entwickler)
+- "Strange New Minds" als konzeptueller Anker für LLM-Verständnis
+- System 1.42 als Deep Dive statt Hauptinhalt (optionale Vertiefung)
+- `marked` Dependency für flexibles Markdown-Rendering in About
+
+---
+
 ## 2025-12-07: Phasenmodell-Korrektur und Narrativ
 
 ### Tasks

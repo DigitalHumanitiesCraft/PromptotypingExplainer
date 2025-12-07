@@ -345,7 +345,34 @@ Punkte sind klickbar für Navigation.
 
 ---
 
+## Theoretische Grundlagen: LLMs verstehen
+
+### "Strange New Minds" (Summerfield, 2025)
+
+LLMs sind weder reine Werkzeuge noch echte Intelligenz – sie sind etwas Neues. Christopher Summerfield beschreibt sie als "Strange New Minds": Systeme, die menschenähnliche Outputs produzieren, aber fundamental anders funktionieren.
+
+Für Promptotyping bedeutet das: Wir müssen verstehen, **wie** LLMs arbeiten, um produktiv mit ihnen zu kollaborieren.
+
+### System 1.42 – Weder System 1 noch System 2
+
+Der Begriff spielt auf Kahnemans Dual-Process-Theorie an. LLMs passen in keine Kategorie:
+- **System 1** (schnell, intuitiv) – aber LLMs haben keine Intuition
+- **System 2** (langsam, analytisch) – aber LLMs "denken" nicht wirklich
+
+Sie sind "halluzinierende Reasoner": statistische Mustermaschinen, die überzeugende Outputs produzieren, ohne deren Wahrheit validieren zu können.
+
+Konsequenzen für Promptotyping:
+- Externe Verifikation durch Domänenexpert:innen ist notwendig
+- Halluzinationen sind architekturisch unvermeidbar
+- Context Engineering (Destillation) kompensiert LLM-Schwächen
+
+---
+
 ## Quellen und Referenzen
+
+Summerfield, C. (2025). Strange New Minds: Understanding Large Language Models. Oxford University Press.
+
+Pollin, C. (2025). System 1.42 – Wie Frontier-LLMs funktionieren. DHCraft Blog. https://dhcraft.org/excellence/blog/System1-42/
 
 Hong, K., Troynikov, A., & Huber, J. (2025). Context rot: How increasing input tokens impacts LLM performance.
 

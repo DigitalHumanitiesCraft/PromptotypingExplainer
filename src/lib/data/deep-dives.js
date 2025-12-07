@@ -4,6 +4,82 @@
  */
 
 export const deepDives = {
+  'system-1-42': {
+    id: 'system-1-42',
+    title: 'System 1.42 – Wie LLMs funktionieren',
+    content: `
+      <h3>Warum "System 1.42"?</h3>
+      <p>
+        Der Begriff spielt auf Daniel Kahnemans Dual-Process-Theorie an: <strong>System 1</strong> (schnell, intuitiv)
+        vs. <strong>System 2</strong> (langsam, analytisch). LLMs passen in keine der beiden Kategorien –
+        sie sind etwas Neues: <em>halluzinierende Reasoner</em>.
+      </p>
+      <p>
+        "1.42" symbolisiert die grundlegende <strong>Ungewissheit</strong> über diese Technologie.
+        Wer mit LLMs arbeitet, muss verstehen, was sie sind – und was nicht.
+      </p>
+
+      <h3>Technische Grundlagen</h3>
+      <table>
+        <thead>
+          <tr><th>Konzept</th><th>Erklärung</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Token</strong></td>
+            <td>Atomare Einheiten der Textverarbeitung. Ein Wort, Wortfragment oder Zeichen.</td>
+          </tr>
+          <tr>
+            <td><strong>Embedding</strong></td>
+            <td>Mathematische Vektoren in hochdimensionalen Räumen. "Katze" und "Hund" liegen näher als "Katze" und "Stein".</td>
+          </tr>
+          <tr>
+            <td><strong>Context Window</strong></td>
+            <td>Das "Arbeitsgedächtnis" – moderne Modelle verarbeiten bis zu 200.000 Token gleichzeitig.</td>
+          </tr>
+          <tr>
+            <td><strong>Attention</strong></td>
+            <td>Der Mechanismus, der bestimmt, welche Token für andere relevant sind.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Next-Token-Prediction</h3>
+      <p>
+        Die Kernfunktion aller LLMs: Das Modell berechnet die <strong>Wahrscheinlichkeit des nächsten Tokens</strong>
+        basierend auf allen vorherigen Token. Das ist alles. Keine "Intelligenz", keine "Absicht" –
+        nur statistische Mustererkennung auf massiver Skala.
+      </p>
+
+      <h3>Training in drei Phasen</h3>
+      <ol>
+        <li><strong>Pre-Training:</strong> Selbstüberwachtes Lernen aus Billionen Token Internet-Text</li>
+        <li><strong>Supervised Fine-Tuning:</strong> Spezialisierung durch Instruktion-Antwort-Paare</li>
+        <li><strong>RLHF:</strong> Optimierung anhand menschlicher Präferenzen (Reinforcement Learning from Human Feedback)</li>
+      </ol>
+
+      <h3>Emergenz – oder Illusion?</h3>
+      <p>
+        Große Modelle zeigen plötzliche Fähigkeitssprünge bei kritischer Größe – sogenannte <em>emergente Eigenschaften</em>.
+        Ob dies echter Emergenz entspricht oder überzeugender Simulation, bleibt wissenschaftlich offen.
+      </p>
+
+      <h3>Konsequenzen für die Praxis</h3>
+      <ul>
+        <li>LLMs <strong>können nicht validieren</strong>, ob ihre Antworten korrekt sind</li>
+        <li><strong>Halluzinationen sind architekturisch unvermeidbar</strong>, nicht behebbar</li>
+        <li><strong>Externe Verifikation</strong> durch Domänenexpert:innen ist notwendig</li>
+        <li>Sie funktionieren <strong>anders als menschliches Denken</strong>, auch wenn Ergebnisse ähnlich wirken</li>
+      </ul>
+
+      <div class="reference">
+        <strong>Fazit:</strong> Promptotyping basiert auf diesem Verständnis: LLMs als mächtige Werkzeuge nutzen,
+        aber mit kritischem Expertenblick validieren.<br><br>
+        <strong>Quelle:</strong> Pollin, C. (2025): <em>System 1.42 – Wie Frontier-LLMs funktionieren</em>. DHCraft Blog.
+      </div>
+    `
+  },
+
   'scholar-centered-design': {
     id: 'scholar-centered-design',
     title: 'Scholar-Centered Design & Requirements Engineering',

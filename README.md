@@ -24,11 +24,13 @@ Promptotyping ist eine vierphasige Methodik:
 ## Features
 
 - **Step-basierte Navigation** mit IntersectionObserver
-- **Interaktives Glossar** mit Hover-Tooltips und Verbindungslinien
+- **Interaktives Glossar** mit kontextsensitiven Popovers
 - **Deep Dives** für Vertiefungen (Scholar-Centered Design, Limitations)
 - **Progress Indicator** mit Sub-Step-Labels
 - **Responsive Design** (Desktop: Side-Panel, Mobile: Bottom-Sheet)
 - **Dynamischer Hintergrund-Gradient** basierend auf Scroll-Position
+- **Bibliographie** mit APA-Zitaten und verlinkten Quellen
+- **About/Glossar/Bibliographie** Navigation im Header
 
 ## Entwicklung
 
@@ -53,8 +55,11 @@ src/
 │   │   ├── Step.svelte           # IntersectionObserver-Wrapper
 │   │   ├── ProgressIndicator.svelte  # Navigations-Dots mit Sub-Steps
 │   │   ├── PhaseHeader.svelte    # Fixierter Header mit Phase/Step
-│   │   ├── GlossaryTerm.svelte   # Interaktive Glossar-Tooltips
+│   │   ├── GlossaryTerm.svelte   # Kontextsensitive Glossar-Popovers
 │   │   ├── DeepDivePanel.svelte  # Modal für Vertiefungen
+│   │   ├── About.svelte          # About-Seite (aus README)
+│   │   ├── Glossary.svelte       # Glossar-Übersicht (alphabetisch)
+│   │   ├── Bibliography.svelte   # Bibliographie mit APA-Zitaten
 │   │   ├── steps/                # Step-Komponenten pro Phase
 │   │   │   ├── intro/            # Definition, Kernprinzip, Methodik, Phasen
 │   │   │   ├── phase1/           # Titel, Rohdaten, Sammlung
@@ -75,6 +80,7 @@ src/
 │   ├── data/
 │   │   ├── phases.js             # Phasen-Definitionen
 │   │   ├── glossary.js           # 20+ AI/LLM-Begriffe
+│   │   ├── bibliography.js       # Bibliographie-Einträge (APA)
 │   │   ├── deep-dives.js         # Deep Dive Inhalte
 │   │   └── prompts.js            # Chat-Dialoge für Phase 4
 │   └── stores/

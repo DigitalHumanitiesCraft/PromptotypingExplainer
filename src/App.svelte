@@ -37,7 +37,8 @@
   import OutroBeispiele from './lib/components/steps/outro/OutroBeispiele.svelte';
   import OutroZusammenfassung from './lib/components/steps/outro/OutroZusammenfassung.svelte';
 
-  // Bibliography & Glossary
+  // Bibliography, Glossary & About
+  import About from './lib/components/About.svelte';
   import Glossary from './lib/components/Glossary.svelte';
   import Bibliography from './lib/components/Bibliography.svelte';
 
@@ -181,6 +182,9 @@
   <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={1}>
     <OutroZusammenfassung />
   </Step>
+
+  <!-- About -->
+  <About />
 
   <!-- Glossar -->
   <Glossary />

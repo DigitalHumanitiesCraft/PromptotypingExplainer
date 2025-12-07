@@ -2,6 +2,22 @@
 // sourceKey entspricht dem Kurzformat in glossary.js
 
 export const bibliography = {
+  'Summerfield 2025': {
+    id: 'summerfield-2025',
+    authors: 'Summerfield, C.',
+    year: 2025,
+    title: 'Strange New Minds: Understanding Large Language Models',
+    source: 'Oxford University Press',
+    url: null
+  },
+  'Pollin 2025': {
+    id: 'pollin-2025',
+    authors: 'Pollin, C.',
+    year: 2025,
+    title: 'System 1.42 – Wie Frontier-LLMs funktionieren',
+    source: 'DHCraft Blog',
+    url: 'https://dhcraft.org/excellence/blog/System1-42/'
+  },
   'Mei et al. 2025': {
     id: 'mei-2025',
     authors: 'Mei, K., et al.',

@@ -25,11 +25,14 @@ src/
     ├── components/
     │   ├── Step.svelte           # IntersectionObserver-Wrapper
     │   ├── ProgressIndicator.svelte  # Navigation mit Sub-Steps
-    │   ├── PhaseHeader.svelte    # Fixed Header
+    │   ├── PhaseHeader.svelte    # Fixed Header + About/Glossar/Biblio Nav
     │   ├── GlossaryTerm.svelte   # Interaktive Tooltips
     │   ├── DeepDivePanel.svelte  # Modal für Vertiefungen
+    │   ├── About.svelte          # Methodenfokussierte About-Seite
+    │   ├── Glossary.svelte       # Alphabetische Glossar-Übersicht
+    │   ├── Bibliography.svelte   # APA-Bibliographie
     │   ├── steps/                # 18 Step-Komponenten
-    │   │   ├── intro/            # 4 Steps
+    │   │   ├── intro/            # 4 Steps (inkl. Strange New Minds)
     │   │   ├── phase1/           # 3 Steps
     │   │   ├── phase2/           # 3 Steps
     │   │   ├── phase3/           # 3 Steps
@@ -40,7 +43,8 @@ src/
     ├── data/
     │   ├── phases.js             # Phasen + Steps Definition
     │   ├── glossary.js           # 20+ Begriffe
-    │   ├── deep-dives.js         # Deep Dive HTML-Inhalte
+    │   ├── bibliography.js       # Bibliographie-Einträge (APA)
+    │   ├── deep-dives.js         # Deep Dive HTML-Inhalte (System 1.42, Scholar-Centered, Limitations)
     │   └── prompts.js            # Chat-Dialoge
     └── stores/
         ├── scroll.js             # Phase/Step/Progress State
@@ -92,7 +96,9 @@ phases.js definiert stepStructure mit 6 Phasen (intro, phase1-4, outro), jeweils
 
 glossary.js enthält 20+ AI/LLM-Begriffe mit term, en (englisch), definition, tags und source.
 
-deep-dives.js enthält HTML-Strings für Vertiefungen (scholar-centered-design, limitations).
+deep-dives.js enthält HTML-Strings für Vertiefungen: system-1-42 (LLM-Grundlagen), scholar-centered-design, knowledge-acquisition, limitations.
+
+bibliography.js enthält Bibliographie-Einträge mit APA-Format (authors, year, title, source, url). Inkl. Summerfield 2025 ("Strange New Minds"), Pollin 2025 (System 1.42).
 
 prompts.js enthält Chat-Dialoge für Phase 4 mit type (human/llm/error) und text.
 
@@ -116,7 +122,7 @@ Bei prefers-reduced-motion werden Animationen minimiert.
 
 vite.config.js: svelte Plugin, base: /PromptotypingExplainer/, outDir: docs.
 
-package.json: dev, build, preview Scripts. Nur Svelte als Runtime-Dependency.
+package.json: dev, build, preview Scripts. Dependencies: Svelte (Runtime), marked (Markdown-Rendering für About).
 
 GitHub Actions: Bei Push auf main wird gebaut und nach docs/ deployed.
 
@@ -134,6 +140,9 @@ GitHub Actions: Bei Push auf main wird gebaut und nach docs/ deployed.
 
 ## Journal
 
-2024-12-07: GSAP komplett entfernt, Migration zu Step-Architektur abgeschlossen. ProgressIndicator redesigned (Linie entfernt, Sub-Step-Labels hinzugefügt). Dokumentation aktualisiert.
+Siehe [journal.md](journal.md) für vollständiges Arbeitstagbuch.
 
-2024-12-06: Dokumentstruktur konsolidiert. Tech Stack geändert von React zu Svelte + GSAP. implementation.md refactored zu reinen technischen Details.
+Letzte Updates:
+- 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, "Strange New Minds" im Intro, UI-Fixes
+- 2025-12-07: GSAP entfernt, Step-Architektur, ProgressIndicator redesign
+- 2025-12-06: Svelte + GSAP Setup, alle Szenen implementiert
