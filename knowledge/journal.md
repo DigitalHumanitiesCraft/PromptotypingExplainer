@@ -2,6 +2,35 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-07 Nacht: AnimatedChat & Reasoning-Zyklus
+
+### Tasks
+- AnimatedChat-Komponente für Phase 4 Iteration erstellt
+- Meta-Beispiel implementiert (Entstehungsprozess dieser Website)
+- Vollständiger Reasoning-Zyklus visualisiert
+- Grid-Layout für Chat + Erklärtext
+
+### Ergebnisse
+**AnimatedChat.svelte** erstellt mit 8-Message-Loop-Animation. Zeigt den vollständigen Promptotyping-Workflow: Context → Reasoning → Plan → Implementation → Test → Feedback → Dokumentation.
+
+**Meta-Beispiel** statt generischem Beispiel: Die Animation zeigt exakt den Prozess, der diese Komponente selbst erstellt hat. Authentischer als ein erfundenes Szenario.
+
+**Phase4Iteration.svelte** komplett überarbeitet:
+- Grid-Layout: AnimatedChat links, Fließtext-Erklärung rechts
+- Pattern-Labels für beide Seiten (human=terracotta, llm=slate)
+- Typing-Indicator während LLM "denkt"
+- Loop-Animation nach Abschluss (kontinuierliche Demo)
+
+**Fließtext statt Listenformat** für rechte Seite: Konsistenz mit anderen Textblöcken (Blocksatz, weißer Hintergrund, strong-Hervorhebungen in Terracotta).
+
+### Entscheidungen
+- Meta-Beispiel statt generischem Beispiel für maximale Authentizität
+- Fließtext rechts statt Journal-Einträge (Konsistenz mit Design System)
+- 8 Messages zeigen vollständigen Zyklus (nicht gekürzt)
+- journal.md-Referenz in letzter LLM-Nachricht schließt den Kreis
+
+---
+
 ## 2025-12-07 Spät: Vault-Seite, Blog-Texte, UI-Konsolidierung
 
 ### Tasks

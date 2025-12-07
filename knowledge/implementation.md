@@ -71,7 +71,7 @@ Inline-Term mit ?-Indicator. Bei Hover/Click öffnet sich ein Panel rechts (Desk
 Modal für Vertiefungen. Slide-in von links, dunkler Overlay mit Blur. Schließbar via Escape, Backdrop-Click oder Button. Inhalte kommen aus deep-dives.js als HTML.
 
 ### Element-Komponenten
-DocumentIcon (type: xml, pdf, csv, md, notes), EntityIcon (person, place, time, relation), VaultIcon (mit Dokument-Liste), ChatBubble (human, llm, error), BrowserFrame (empty, skeleton, wireframe, interface), DeepDiveTrigger (Button zum Öffnen).
+DocumentIcon (type: xml, pdf, csv, md, notes), EntityIcon (person, place, time, relation), VaultIcon (mit Dokument-Liste), ChatBubble (human, llm, error), BrowserFrame (empty, skeleton, wireframe, interface), DeepDiveTrigger (Button zum Öffnen), AnimatedChat (8-Message Loop-Animation des Reasoning-Zyklus mit Pattern-Labels und Typing-Indicator).
 
 ---
 
@@ -143,6 +143,7 @@ GitHub Actions: Bei Push auf main wird gebaut und nach docs/ deployed.
 Siehe [journal.md](journal.md) für vollständiges Arbeitstagbuch.
 
 Letzte Updates:
+- 2025-12-07 Nacht: AnimatedChat für Phase 4, Meta-Beispiel, vollständiger Reasoning-Zyklus
 - 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, "Strange New Minds" im Intro, UI-Fixes
 - 2025-12-07: GSAP entfernt, Step-Architektur, ProgressIndicator redesign
 - 2025-12-06: Svelte + GSAP Setup, alle Szenen implementiert

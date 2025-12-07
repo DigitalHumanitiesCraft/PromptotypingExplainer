@@ -75,6 +75,7 @@ src/
 │   │   │   ├── VaultIcon.svelte
 │   │   │   ├── ChatBubble.svelte
 │   │   │   ├── BrowserFrame.svelte
+│   │   │   ├── AnimatedChat.svelte   # Loop-Animation des Reasoning-Zyklus
 │   │   │   └── DeepDiveTrigger.svelte
 │   │   └── blocks/               # Extrahierte Komponenten
 │   │       ├── SceneHeader.svelte
