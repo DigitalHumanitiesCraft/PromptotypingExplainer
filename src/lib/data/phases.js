@@ -24,14 +24,8 @@ export const phases = [
     id: 'phase2',
     number: 2,
     title: 'Exploration',
-    subtitle: 'Exploration & Mapping',
-    description: 'LLM-generierte Scripts explorieren Daten, die zu groß für das Context Window sind.',
-    entities: [
-      { type: 'person', label: 'Person' },
-      { type: 'place', label: 'Ort' },
-      { type: 'time', label: 'Zeit' },
-      { type: 'relation', label: 'Relation' },
-    ],
+    subtitle: 'Epistemische Spielwiese',
+    description: 'Freies Experimentieren mit dem Rohmaterial. Keine formalen Artefakte – die Erkenntnisse fließen in Phase 3.',
   },
   {
     id: 'phase3',

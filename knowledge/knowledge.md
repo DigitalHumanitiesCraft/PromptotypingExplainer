@@ -37,15 +37,38 @@ Promptotyping ist der Versuch, dieses Wissen systematisch an LLMs zu kommunizier
 
 Promptotyping ist eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-LLMs.
 
+### Anwendungsbereich
+
+Obwohl die Methodik ihren Ursprung in den Digital Humanities hat, sind ihre Mechanismen – Wissensdestillation und Context Engineering – universell auf datenintensive Forschungsprozesse übertragbar: statistische Analysen in der Psychologie, Datenvisualisierung in den Sozialwissenschaften, explorative Analysen in der Bioinformatik.
+
 ### Kernprinzip
 
 Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
+
+### Theoretischer Rahmen: Co-Intelligence
+
+Das Verhältnis zwischen Mensch und LLM folgt Ethan Mollicks Konzept der **Co-Intelligence** (2024) – einer epistemischen Partnerschaft mit zwei Modi:
+
+- **Centaur-Arbeit**: Klare Aufgabenteilung. Menschen treffen strategische Entscheidungen, KI übernimmt operative Aufgaben. Schnittstellen sind definiert.
+- **Cyborg-Arbeit**: Enge kognitive Verschränkung. Mensch und Maschine entwickeln in iterativen Dialogschleifen gemeinsam Lösungen. Die Grenze zwischen menschlichem und maschinellem Beitrag verschwimmt.
+
+Promptotyping operiert primär im Cyborg-Modus: Der iterative Dialog in Phase 4 ist keine bloße Arbeitsteilung, sondern eine gemeinsame Lösungsentwicklung.
 
 ### Verhältnis zu Vibe Coding
 
 Promptotyping ist kein Gegenentwurf zu Vibe Coding, sondern ein strukturierter Context-Engineering-Prozess MIT Vibe-Coding-Elementen. Die intuitive, explorative Arbeitsweise des Vibe Codings wird beibehalten, aber durch systematische Dokumentation und Destillation ergänzt.
 
 Vibe Coding funktioniert. Promptotyping gibt ihm Struktur für Forschungskontexte, indem es LLM-Eigenschaften wie Context Rot und Sycophancy durch Destillation adressiert.
+
+**Das scheinbare Paradoxon**: Die Methode integriert intuitive Steuerung durch natürliche Sprache mit zwingend systematischer Dokumentation. Die Dokumentation ist dabei nicht bürokratische Nachbereitung, sondern notwendiger Input – Context Engineering, das das Modell vor Context Rot schützt und die Informationsdichte maximiert.
+
+### Epistemische Schuld
+
+> **Epistemische Schuld** bezeichnet den Verlust von Prozesswissen, wenn der Weg zum Ergebnis nicht dokumentiert wird – selbst wenn der generierte Code funktional ist.
+
+Das Konzept ersetzt die anekdotische Warnung "Nach zwei Wochen verstehst du deinen Code nicht mehr" durch eine strukturelle Beschreibung: Nicht der Code selbst ist das Problem, sondern der Verlust der Transformationen und Entscheidungen, die zu ihm führten.
+
+Promptotyping adressiert Epistemische Schuld durch systematische Vault-Dokumentation – reduziert sie aber nicht vollständig, da interne LLM-Prozesse opak bleiben.
 
 ---
 

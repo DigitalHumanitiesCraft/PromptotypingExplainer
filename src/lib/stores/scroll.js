@@ -35,11 +35,9 @@ export const stepStructure = [
     id: 'phase2',
     label: 'Exploration',
     number: 2,
-    subtitle: 'Exploration & Mapping',
+    subtitle: 'Epistemische Spielwiese',
     steps: [
-      { id: 'struktur', label: 'Struktur' },
-      { id: 'entitaeten', label: 'Mapping' },
-      { id: 'fragen', label: 'Fragen' },
+      { id: 'exploration', label: 'Exploration' },
     ]
   },
   {

@@ -19,9 +19,7 @@
   import Phase1Sammlung from './lib/components/steps/phase1/Phase1Sammlung.svelte';
 
   // Phase 2 Steps
-  import Phase2Struktur from './lib/components/steps/phase2/Phase2Struktur.svelte';
-  import Phase2Entitaeten from './lib/components/steps/phase2/Phase2Entitaeten.svelte';
-  import Phase2Fragen from './lib/components/steps/phase2/Phase2Fragen.svelte';
+  import Phase2Exploration from './lib/components/steps/phase2/Phase2Struktur.svelte';
 
   // Phase 3 Steps
   import Phase3Titel from './lib/components/steps/phase3/Phase3Titel.svelte';
@@ -135,17 +133,9 @@
     <Phase1Sammlung />
   </Step>
 
-  <!-- Phase 2: Exploration - 3 Steps -->
-  <Step id="phase2-struktur" phaseIndex={2} stepIndex={0}>
-    <Phase2Struktur />
-  </Step>
-
-  <Step id="phase2-entitaeten" phaseIndex={2} stepIndex={1}>
-    <Phase2Entitaeten />
-  </Step>
-
-  <Step id="phase2-fragen" phaseIndex={2} stepIndex={2}>
-    <Phase2Fragen />
+  <!-- Phase 2: Exploration - 1 Step -->
+  <Step id="phase2-exploration" phaseIndex={2} stepIndex={0}>
+    <Phase2Exploration />
   </Step>
 
   <!-- Phase 3: Destillation - 3 Steps -->

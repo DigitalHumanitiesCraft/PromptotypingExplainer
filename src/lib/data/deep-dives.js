@@ -388,6 +388,132 @@ export const deepDives = {
         nicht für blinde Delegation an KI.
       </div>
     `
+  },
+
+  'co-intelligence': {
+    id: 'co-intelligence',
+    title: 'Co-Intelligence: Mensch-KI-Partnerschaft',
+    content: `
+      <h3>Jenseits der Arbeitsteilung</h3>
+      <p>
+        Ethan Mollicks Konzept der <strong>Co-Intelligence</strong> (2024) beschreibt das Verhältnis
+        zwischen Mensch und KI nicht als bloße Delegation, sondern als <em>epistemische Partnerschaft</em>.
+      </p>
+
+      <h3>Zwei Modi der Zusammenarbeit</h3>
+      <table>
+        <thead>
+          <tr><th>Modus</th><th>Charakteristik</th><th>Beispiel</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Centaur-Arbeit</strong></td>
+            <td>Klare Aufgabenteilung. Mensch entscheidet strategisch, KI führt operativ aus. Schnittstellen sind definiert.</td>
+            <td>Mensch schreibt Anforderungen, LLM generiert Code</td>
+          </tr>
+          <tr>
+            <td><strong>Cyborg-Arbeit</strong></td>
+            <td>Enge kognitive Verschränkung. Mensch und Maschine entwickeln gemeinsam Lösungen. Die Grenze verschwimmt.</td>
+            <td>Iterativer Dialog, bei dem beide Seiten die Lösung formen</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Promptotyping als Cyborg-Arbeit</h3>
+      <p>
+        Die Methode operiert primär im <strong>Cyborg-Modus</strong>: Der iterative Dialog in Phase 4
+        ist keine sequentielle Auftragsabarbeitung, sondern ein gemeinsamer Erkenntnisprozess.
+      </p>
+      <ul>
+        <li>Der Mensch bringt Domänenwissen und kritische Validierung ein</li>
+        <li>Das LLM bringt Mustererkennung und Codegenerierung ein</li>
+        <li>Das Ergebnis entsteht <em>zwischen</em> beiden – nicht durch Addition, sondern durch Verschränkung</li>
+      </ul>
+
+      <h3>Das Sycophancy-Problem</h3>
+      <p>
+        Enge Verschränkung birgt Risiken: LLMs neigen zur unkritischen Bestätigung von Nutzerannahmen
+        (<strong>Sycophancy</strong>). Das Training auf Nutzerzufriedenheit belohnt Gefälligkeit statt Wahrheit.
+      </p>
+      <p>
+        <strong>Gegenmaßnahmen:</strong>
+      </p>
+      <ul>
+        <li>Explizites Hinterfragen eigener Annahmen</li>
+        <li>Alternative Interpretationen einfordern</li>
+        <li>Character Training (Anthropic, 2024): Epistemische Tugenden statt bloßer Gefälligkeit</li>
+      </ul>
+
+      <div class="reference">
+        <strong>Quelle:</strong> Mollick, E. (2024): <em>Co-Intelligence: Living and Working with AI</em>. Portfolio.
+      </div>
+    `
+  },
+
+  'epistemic-debt': {
+    id: 'epistemic-debt',
+    title: 'Epistemische Schuld',
+    content: `
+      <h3>Definition</h3>
+      <p>
+        <strong>Epistemische Schuld</strong> bezeichnet den Verlust von Prozesswissen, wenn der Weg
+        zum Ergebnis nicht verstanden oder dokumentiert wird – selbst wenn der generierte Code funktional ist.
+      </p>
+
+      <h3>Das strukturelle Problem</h3>
+      <p>
+        Die anekdotische Warnung <em>"Nach zwei Wochen verstehst du deinen Code nicht mehr"</em>
+        greift zu kurz. Das eigentliche Problem ist nicht der Code selbst, sondern der Verlust der
+        <strong>Transformationen und Entscheidungen</strong>, die zu ihm führten.
+      </p>
+
+      <h3>Manifestationen</h3>
+      <table>
+        <thead>
+          <tr><th>Art</th><th>Beschreibung</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Blackbox-Entscheidungen</strong></td>
+            <td>Das LLM trifft Architekturentscheidungen, die nicht nachvollzogen werden</td>
+          </tr>
+          <tr>
+            <td><strong>Prozessamnesie</strong></td>
+            <td>Warum bestimmte Lösungen gewählt wurden, bleibt unklar</td>
+          </tr>
+          <tr>
+            <td><strong>Interpretative Verarmung</strong></td>
+            <td>Maschinelle Durchschnittsantworten ersetzen kreative Exploration</td>
+          </tr>
+          <tr>
+            <td><strong>Debugging-Unfähigkeit</strong></td>
+            <td>Fehler können ohne LLM nicht mehr analysiert werden</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Wie Promptotyping gegensteuert</h3>
+      <ul>
+        <li>✅ <strong>Vault-Dokumentation:</strong> Entscheidungen werden in DATA.md, CONTEXT.md expliziert</li>
+        <li>✅ <strong>Journal:</strong> Transformationen und Learnings werden festgehalten</li>
+        <li>✅ <strong>Iterative Updates:</strong> Neues Wissen fließt zurück in den Vault</li>
+        <li>❌ <strong>Grenzen:</strong> Interne LLM-Prozesse bleiben opak</li>
+        <li>❌ <strong>Grenzen:</strong> Nicht dokumentierte Experimente gehen verloren</li>
+      </ul>
+
+      <h3>Die Kurator-Rolle</h3>
+      <p>
+        Der Mensch agiert nicht als Schreiber, sondern als <strong>Kurator</strong>:
+        Das LLM kann Zusammenfassungen für die Dokumentation schreiben – aber der Mensch
+        <em>prüft</em> sie penibel vor dem Commit. Die Verantwortung für epistemische
+        Qualität bleibt beim Menschen.
+      </p>
+
+      <div class="reference">
+        <strong>Fazit:</strong> Dokumentation reduziert epistemische Schuld, eliminiert sie aber nicht.
+        Der bewusste Umgang mit diesem Restrisiko ist Teil der methodischen Reflexion.
+      </div>
+    `
   }
 };
 
