@@ -47,6 +47,58 @@ Promptotyping ist strukturiertes Vibe Coding. Nicht "den Vibes freien Lauf lasse
 
 ---
 
+## Methodische Grundlagen: User-Centered Design & Scholar-Centered Design
+
+> **Deep Dive**: Dieser Abschnitt beschreibt die methodischen Fundamente, auf denen Promptotyping aufbaut.
+
+### Begriffsdefinitionen
+
+#### User-Centered Design (UCD) Requirements Engineering
+
+UCD Requirements Engineering bezeichnet die systematische Erhebung, Dokumentation und Verwaltung von Anforderungen, bei der die Bedürfnisse, Fähigkeiten und Einschränkungen der zukünftigen Nutzer im Mittelpunkt stehen. Anders als beim klassischen Requirements Engineering, das oft funktionsgetrieben ist, leitet UCD die Anforderungen aus dem Nutzungskontext ab.
+
+- **Kernziel**: Maximierung von Usability (Gebrauchstauglichkeit) und User Experience (UX).
+- **Leitprinzip**: Anpassung der Technologie an den Menschen.
+
+#### Scholar-Centered Design (SCD)
+
+Scholar-Centered Design ist eine spezialisierte Weiterentwicklung des UCD für den wissenschaftlichen Kontext (oft Digital Humanities oder Data Science). Es adressiert die spezifischen Arbeitsweisen von Forschenden, die sich signifikant von denen klassischer Endverbraucher unterscheiden.
+
+- **Kernziel**: Unterstützung komplexer hermeneutischer Prozesse, kritischer Analyse und Erkenntnisgewinnung.
+- **Leitprinzip**: Unterstützung von Komplexität und Ambiguität statt reiner Vereinfachung. Transparenz der Datenherkunft (Provenienz) ist wichtiger als effiziente Abarbeitung von Routineaufgaben.
+
+### Synthese im Phasenmodell
+
+Die vier Phasen des Promptotyping integrieren beide Ansätze:
+
+| Phase | UCD-Perspektive | SCD-Perspektive |
+|-------|-----------------|-----------------|
+| **Analyse (CONTEXT)** | Identifikation der Nutzergruppen (Personas), User Stories. „Welches Problem löst das System?" | Analyse der Forschungsmethodik. „Wie beeinflusst das Tool die Interpretation der Daten?" |
+| **Design (DATA/REQUIREMENTS)** | Reduktion kognitiver Belastung. Intuitive Interfaces. | Design für Exploration. Mehrere Informationsebenen. Methodische Transparenz. |
+| **Prototyping (IMPLEMENTATION)** | Low- bis High-Fidelity Prototypen für Interaktionsflüsse. | Datennahe Prototypen mit echten Forschungsdaten statt Platzhalter. |
+| **Evaluation (PROTOTYPE)** | Usability-Tests (Effizienz, Effektivität, Zufriedenheit nach ISO 9241-11). | Validierung wissenschaftlicher Utility. Neue Erkenntnisse? Verzerrungen vermieden? |
+
+### Iteration und der hermeneutische Zirkel
+
+Die Rücksprünge im Prozess haben unterschiedliche Auslöser:
+
+- **Fehlerkorrektur (UCD)**: Wenn in der Evaluation festgestellt wird, dass ein Nutzer die Navigation nicht versteht, erfolgt ein Rücksprung zum Design.
+- **Hermeneutischer Zirkel (SCD)**: Das erste Sichten von Ergebnissen verändert oft die Fragestellung selbst. Der Forscher erkennt neue Muster und muss die Anforderungen ändern. Dies ist nicht Fehlerbehebung, sondern Teil des Erkenntnisgewinns.
+
+### Referenzen
+
+**User-Centered Design & Requirements Engineering:**
+- ISO 9241-210:2019: Ergonomics of human-system interaction — Part 210: Human-centred design for interactive systems.
+- Pohl, K., & Rupp, C. (2015): *Basiswissen Requirements Engineering*. dpunkt.verlag.
+- Beyer, H., & Holtzblatt, K. (1998): *Contextual Design: Defining Customer-Centered Systems*. Morgan Kaufmann.
+
+**Scholar-Centered Design & Digital Humanities:**
+- Warwick, C. (2012): Studying Users in Digital Humanities. In: Warwick, C., Terras, M., & Nyhan, J. (Eds.), *Digital Humanities in Practice*. Facet Publishing.
+- Gibbs, F., & Owens, T. (2012): Building Better Digital Humanities Tools.
+- Kemman, M. (2021): *Trading Zones of Digital History*. De Gruyter.
+
+---
+
 ## Die vier Phasen
 
 ### Phase 1: Vorbereitung

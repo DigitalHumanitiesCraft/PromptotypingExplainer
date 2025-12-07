@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   import { initReducedMotion, currentPhase, globalProgress, phaseProgress, scrollToHash } from './lib/stores/scroll.js';
+  import { isDeepDiveOpen, currentDeepDive, closeDeepDive } from './lib/stores/deepDive.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
   import Phase from './lib/components/Phase.svelte';
+  import DeepDivePanel from './lib/components/DeepDivePanel.svelte';
   import IntroScene from './lib/components/scenes/IntroScene.svelte';
   import Phase1Scene from './lib/components/scenes/Phase1Scene.svelte';
   import Phase2Scene from './lib/components/scenes/Phase2Scene.svelte';
@@ -107,6 +109,14 @@
     <OutroScene {progress} />
   </Phase>
 </main>
+
+<!-- Deep Dive Panel (Branch nach links) -->
+<DeepDivePanel
+  isOpen={$isDeepDiveOpen}
+  title={$currentDeepDive?.title || ''}
+  content={$currentDeepDive?.content || ''}
+  on:close={closeDeepDive}
+/>
 
 <style>
   .background-layer {

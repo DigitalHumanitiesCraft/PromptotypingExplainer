@@ -141,6 +141,13 @@ export const glossary = {
     definition: 'Eine mathematische Repräsentation von Token oder Textabschnitten als Vektoren, in der inhaltlich ähnliche Begriffe geometrisch nah beieinander liegen.',
     tags: ['architecture', 'ai-engineering'],
     source: 'Mikolov et al. 2013'
+  },
+  'vibe-check': {
+    term: 'Vibe Check',
+    en: 'Vibe Check',
+    definition: 'Eine qualitative, intuitionsbasierte Evaluationsmethode für LLM-Outputs, bei der menschliche Experten die Plausibilität, den Ton und die Gesamtqualität einer Antwort subjektiv beurteilen – komplementär zu quantitativen Benchmarks.',
+    tags: ['evaluation'],
+    source: 'Praxisbegriff'
   }
 };
 
@@ -181,5 +188,7 @@ export const termToId = {
   'fine-tuning': 'fine-tuning',
   'finetuning': 'fine-tuning',
   'embedding': 'embedding',
-  'embeddings': 'embedding'
+  'embeddings': 'embedding',
+  'vibe check': 'vibe-check',
+  'vibe-check': 'vibe-check'
 };

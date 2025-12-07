@@ -1,8 +1,14 @@
 <script>
   import { phases } from '../../data/phases.js';
   import GlossaryTerm from '../GlossaryTerm.svelte';
+  import DeepDiveTrigger from '../elements/DeepDiveTrigger.svelte';
+  import { openDeepDive } from '../../stores/deepDive.js';
 
   export let progress = 0;
+
+  function handleDeepDive(event) {
+    openDeepDive(event.detail.id);
+  }
 
   // Animation thresholds
   // 0-0.1: Titel sofort sichtbar
@@ -63,6 +69,19 @@
     und Critical-Expert-in-the-Loop-Ansatz zur Reduktion
     <GlossaryTerm id="sycophancy">zustimmungsorientierter Antwortverzerrungen</GlossaryTerm>.
   </p>
+
+  <div class="deep-dive-triggers" style="opacity: {approachOpacity};">
+    <DeepDiveTrigger
+      label="Scholar-Centered Design"
+      deepDiveId="scholar-centered-design"
+      on:open={handleDeepDive}
+    />
+    <DeepDiveTrigger
+      label="Knowledge Acquisition"
+      deepDiveId="knowledge-acquisition"
+      on:open={handleDeepDive}
+    />
+  </div>
 
   <div
     class="phase-icons"
@@ -143,6 +162,13 @@
     color: var(--color-slate);
     max-width: 580px;
     line-height: 1.6;
+  }
+
+  .deep-dive-triggers {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .phase-icons {

@@ -3,9 +3,15 @@
   import DocumentIcon from '../elements/DocumentIcon.svelte';
   import SceneHeader from '../blocks/SceneHeader.svelte';
   import AcademicBlock from '../blocks/AcademicBlock.svelte';
+  import DeepDiveTrigger from '../elements/DeepDiveTrigger.svelte';
   import { fadeIn, lerp } from '../../utils/progressAnimations.js';
+  import { openDeepDive } from '../../stores/deepDive.js';
 
   export let progress = 0;
+
+  function handleDeepDive(event) {
+    openDeepDive(event.detail.id);
+  }
 
   const phase = phases[1];
 
@@ -79,6 +85,18 @@
       Diese Phase verhindert die unkritische Übernahme technischer Lösungen
       für wissenschaftliche Probleme und zwingt zur präzisen Artikulation der Projektziele.
     </p>
+    <div class="deep-dive-row">
+      <DeepDiveTrigger
+        label="Context Engineering"
+        deepDiveId="context-engineering"
+        on:open={handleDeepDive}
+      />
+      <DeepDiveTrigger
+        label="Critical Expert"
+        deepDiveId="critical-expert"
+        on:open={handleDeepDive}
+      />
+    </div>
   </AcademicBlock>
 
   <div class="workspace" class:pulse={pulseActive}>
@@ -158,6 +176,14 @@
     font-size: 0.75rem;
     color: var(--color-black);
     white-space: nowrap;
+  }
+
+  :global(.deep-dive-row) {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+    justify-content: center;
   }
 
   @media (max-width: 767px) {
