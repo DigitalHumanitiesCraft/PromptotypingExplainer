@@ -28,8 +28,12 @@
   import Phase3Dokumente from './lib/components/steps/phase3/Phase3Dokumente.svelte';
   import Phase3Vault from './lib/components/steps/phase3/Phase3Vault.svelte';
 
-  // Legacy Scene imports (Phase 4 + Outro to be migrated)
-  import Phase4Scene from './lib/components/scenes/Phase4Scene.svelte';
+  // Phase 4 Steps
+  import Phase4Titel from './lib/components/steps/phase4/Phase4Titel.svelte';
+  import Phase4Iteration from './lib/components/steps/phase4/Phase4Iteration.svelte';
+  import Phase4VaultUpdate from './lib/components/steps/phase4/Phase4VaultUpdate.svelte';
+
+  // Legacy Scene imports (Outro to be migrated)
   import OutroScene from './lib/components/scenes/OutroScene.svelte';
 
   onMount(() => {
@@ -151,24 +155,17 @@
     <Phase3Vault />
   </Step>
 
+  <!-- Phase 4: Implementation - 3 Steps -->
   <Step id="phase4-titel" phaseIndex={4} stepIndex={0}>
-    <div class="legacy-scene">
-      <Phase4Scene progress={0.5} />
-    </div>
+    <Phase4Titel />
   </Step>
 
   <Step id="phase4-iteration" phaseIndex={4} stepIndex={1}>
-    <div class="placeholder-step">
-      <h2>Phase 4: Iteration</h2>
-      <p>Prompt → LLM → Validierung → neuer Prototype</p>
-    </div>
+    <Phase4Iteration />
   </Step>
 
   <Step id="phase4-vault-update" phaseIndex={4} stepIndex={2}>
-    <div class="placeholder-step">
-      <h2>Phase 4: Vault-Update</h2>
-      <p>Neues Wissen fließt zurück in den Vault</p>
-    </div>
+    <Phase4VaultUpdate />
   </Step>
 
   <Step id="outro-beispiele" phaseIndex={5} stepIndex={0}>
