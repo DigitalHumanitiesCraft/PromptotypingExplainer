@@ -1,5 +1,5 @@
 <script>
-  import { currentPhase, currentStep, stepStructure, globalStepIndex, totalSteps, scrollToStep } from '../stores/scroll.js';
+  import { currentPhase, currentStep, stepStructure, scrollToStep } from '../stores/scroll.js';
 
   function handlePhaseClick(phaseIndex) {
     const phase = stepStructure[phaseIndex];
@@ -20,18 +20,9 @@
       handlePhaseClick(phaseIndex);
     }
   }
-
-  // Calculate line fill percentage
-  $: lineFillPercent = ($globalStepIndex / (totalSteps - 1)) * 100;
 </script>
 
 <nav class="progress-indicator" aria-label="Phasen-Navigation">
-  <!-- Connection line -->
-  <div class="connection-line">
-    <div class="line-track"></div>
-    <div class="line-fill" style="height: {lineFillPercent}%;"></div>
-  </div>
-
   <ul>
     {#each stepStructure as phase, phaseIndex}
       {@const isActivePhase = $currentPhase === phaseIndex}
@@ -57,7 +48,7 @@
           <span class="label">{phase.label}</span>
         </button>
 
-        <!-- Sub-steps (only for active phase) -->
+        <!-- Sub-steps (only for active phase) - vertical with labels -->
         {#if isActivePhase}
           <div class="sub-steps">
             {#each phase.steps as step, stepIndex}
@@ -67,10 +58,12 @@
                 class="step-dot"
                 class:active={isActiveStep}
                 class:completed={isCompletedStep}
-                title={step.label}
                 aria-label="Zu {step.label} springen"
                 on:click={() => handleStepClick(phaseIndex, stepIndex)}
-              ></button>
+              >
+                <span class="step-dot-marker"></span>
+                <span class="step-label">{step.label}</span>
+              </button>
             {/each}
           </div>
         {/if}
@@ -82,64 +75,25 @@
 <style>
   .progress-indicator {
     position: fixed;
-    right: var(--space-lg);
+    right: var(--space-xl);
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
-  }
-
-  /* Connection line between dots */
-  .connection-line {
-    position: absolute;
-    left: 5px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
-    pointer-events: none;
-  }
-
-  .line-track {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--color-slate) 0px,
-      var(--color-slate) 3px,
-      transparent 3px,
-      transparent 8px
-    );
-    opacity: 0.3;
-  }
-
-  .line-fill {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--color-terracotta) 0px,
-      var(--color-terracotta) 3px,
-      transparent 3px,
-      transparent 8px
-    );
-    transition: height 0.3s var(--ease-out);
   }
 
   ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-lg);
     position: relative;
     padding: 0;
     margin: 0;
   }
 
   .phase-item {
+    display: flex;
+    flex-direction: column;
     transition: all 0.3s var(--ease-out);
   }
 
@@ -155,8 +109,8 @@
   }
 
   .dot {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background-color: var(--color-slate);
     transition: all var(--duration-fast) var(--ease-out);
@@ -169,8 +123,8 @@
   }
 
   .check-icon {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     color: var(--color-white);
   }
 
@@ -181,27 +135,27 @@
 
   .progress-dot.active .dot {
     background-color: var(--color-terracotta);
-    transform: scale(1.3);
-    box-shadow: 0 0 0 4px rgba(191, 91, 62, 0.2);
+    transform: scale(1.4);
+    box-shadow: 0 0 0 5px rgba(191, 91, 62, 0.25);
   }
 
   .label {
     font-size: 0.75rem;
+    font-weight: 500;
     color: var(--color-slate);
-    opacity: 0;
-    transform: translateX(-8px);
+    opacity: 0.7;
+    text-align: left;
     transition: all var(--duration-fast) var(--ease-out);
     white-space: nowrap;
   }
 
   .progress-dot:hover .label,
-  .progress-dot:focus .label,
-  .progress-dot.active .label {
+  .progress-dot:focus .label {
     opacity: 1;
-    transform: translateX(0);
   }
 
   .progress-dot.active .label {
+    opacity: 1;
     color: var(--color-terracotta);
     font-weight: 600;
   }
@@ -217,46 +171,79 @@
     border-radius: 4px;
   }
 
-  /* Sub-steps */
+  /* Sub-steps - aligned left with labels to the right */
   .sub-steps {
     display: flex;
-    gap: 4px;
-    margin-left: 18px;
-    margin-top: 4px;
-    padding: 2px 0;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: var(--space-sm);
+    margin-left: 4px; /* Align with main dot */
+    padding: var(--space-xs) 0;
   }
 
   .step-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-slate);
-    opacity: 0.3;
-    transition: all 0.2s ease;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: none;
     border: none;
-    padding: 0;
+    cursor: pointer;
+    padding: 2px 4px;
   }
 
-  .step-dot:hover {
-    transform: scale(1.5);
-    opacity: 0.6;
+  .step-dot-marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-slate);
+    opacity: 0.4;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .step-dot:hover .step-dot-marker {
+    transform: scale(1.2);
+    opacity: 0.7;
   }
 
   .step-dot:focus {
     outline: 2px solid var(--color-terracotta);
     outline-offset: 2px;
+    border-radius: 4px;
   }
 
-  .step-dot.completed {
+  .step-dot.completed .step-dot-marker {
     background: var(--color-terracotta);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
-  .step-dot.active {
+  .step-dot.active .step-dot-marker {
     background: var(--color-terracotta);
     opacity: 1;
-    transform: scale(1.3);
+    transform: scale(1.2);
+  }
+
+  .step-label {
+    font-size: 0.7rem;
+    color: var(--color-slate);
+    opacity: 0.6;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .step-dot:hover .step-label {
+    opacity: 0.9;
+  }
+
+  .step-dot.active .step-label {
+    color: var(--color-terracotta);
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .step-dot.completed .step-label {
+    color: var(--color-terracotta);
+    opacity: 0.6;
   }
 
   /* Mobile: horizontal at bottom */
@@ -269,12 +256,9 @@
       transform: translateX(-50%);
     }
 
-    .connection-line {
-      display: none;
-    }
-
     ul {
       flex-direction: row;
+      gap: var(--space-md);
     }
 
     .label {
