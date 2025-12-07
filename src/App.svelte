@@ -33,8 +33,9 @@
   import Phase4Iteration from './lib/components/steps/phase4/Phase4Iteration.svelte';
   import Phase4VaultUpdate from './lib/components/steps/phase4/Phase4VaultUpdate.svelte';
 
-  // Legacy Scene imports (Outro to be migrated)
-  import OutroScene from './lib/components/scenes/OutroScene.svelte';
+  // Outro Steps
+  import OutroBeispiele from './lib/components/steps/outro/OutroBeispiele.svelte';
+  import OutroZusammenfassung from './lib/components/steps/outro/OutroZusammenfassung.svelte';
 
   onMount(() => {
     initReducedMotion();
@@ -168,17 +169,13 @@
     <Phase4VaultUpdate />
   </Step>
 
+  <!-- Outro: Praxis - 2 Steps -->
   <Step id="outro-beispiele" phaseIndex={5} stepIndex={0}>
-    <div class="legacy-scene">
-      <OutroScene progress={0.5} />
-    </div>
+    <OutroBeispiele />
   </Step>
 
   <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={1}>
-    <div class="placeholder-step">
-      <h2>Zusammenfassung</h2>
-      <p>Coming soon...</p>
-    </div>
+    <OutroZusammenfassung />
   </Step>
 </main>
 
@@ -209,23 +206,5 @@
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     padding-top: 50px; /* Space for fixed header */
-  }
-
-  .legacy-scene {
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .placeholder-step {
-    text-align: center;
-    color: var(--color-slate);
-  }
-
-  .placeholder-step h2 {
-    color: var(--color-black);
-    margin-bottom: var(--space-md);
   }
 </style>
