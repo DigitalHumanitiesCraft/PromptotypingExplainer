@@ -84,18 +84,7 @@ Visualisierung mittelalterlicher Objektverteilungen in österreichischen Adelsh�
 | PROTOTYPE | 90 min | Vier Iterationen bis finale Version |
 
 **Kritische Intervention:**
-Der Historiker korrigierte die technische Annahme, Objekte nach **modernen funktionalen Kategorien** zu strukturieren.
-
-Ursprünglicher Ansatz:
-```
-Objekte → Kategorien (Möbel, Textilien, Gefäße)
-```
-
-Korrigierter Ansatz:
-```
-Objekte → Räume → Gebäude
-(mit historischen Begriffen aus nomenclature_original)
-```
+Der Historiker korrigierte die technische Annahme, Objekte nach modernen funktionalen Kategorien zu strukturieren. Der ursprüngliche Ansatz gruppierte Objekte nach Kategorien (Möbel, Textilien, Gefäße). Die Korrektur: Objekte werden über Räume und Gebäude organisiert, mit historischen Begriffen aus nomenclature_original.
 
 **Begründung des Historikers:**
 > „Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien."
@@ -226,13 +215,7 @@ In allen Projekten mit Domänenexpert:innen-Einbindung traten Korrekturen auf, d
 
 ### Muster 3: Iterative Prompt-Verfeinerung
 
-Die Prompt-Entwicklung folgte einem wiederkehrenden Muster:
-
-```
-Generisch → Spezifisch → Korrektur → Verfeinerung
-```
-
-Typischerweise waren 3–5 Iterationen nötig, um von einer Idee zu einer funktionalen Lösung zu gelangen.
+Die Prompt-Entwicklung folgte einem wiederkehrenden Muster: von generisch zu spezifisch, dann Korrektur, dann Verfeinerung. Typischerweise waren 3–5 Iterationen nötig, um von einer Idee zu einer funktionalen Lösung zu gelangen.
 
 ### Muster 4: Skalierungsgrenzen
 

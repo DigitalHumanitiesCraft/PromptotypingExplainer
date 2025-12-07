@@ -147,21 +147,7 @@ Dieses Paradigma zeigt, dass LLMs stärker in der **Verifikation** bestehender A
 
 ### Design Science Research (Hevner et al., 2004)
 
-Das Design Science Research Framework bildet die methodologische Basis:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│   Problemidentifikation                                 │
-│         ↓                                               │
-│   Artefaktentwicklung                                   │
-│         ↓                                               │
-│   Demonstration                                         │
-│         ↓                                               │
-│   Evaluation                                            │
-│         ↓                                               │
-│   (Iteration)                                           │
-└─────────────────────────────────────────────────────────┘
-```
+Das Design Science Research Framework bildet die methodologische Basis. Der Prozess verläuft von der Problemidentifikation über die Artefaktentwicklung zur Demonstration und Evaluation, mit möglicher Iteration zurück zu früheren Phasen.
 
 Für KI-gestützte Artefakte erweitert sich das Framework um drei zusätzliche Qualitätsdimensionen:
 

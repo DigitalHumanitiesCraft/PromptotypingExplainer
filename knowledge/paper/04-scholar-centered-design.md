@@ -119,21 +119,7 @@ Die vier Hauptphasen des Promptotyping integrieren beide Ansätze:
 
 ### Anwendung auf Promptotyping
 
-In der wissenschaftlichen Praxis verändert oft das erste Sichten von Ergebnissen (im Prototyp) die Fragestellung selbst:
-
-```
-Forschungsfrage (initial)
-        ↓
-    Prototyp v1
-        ↓
-    Neue Muster erkannt
-        ↓
-Forschungsfrage (revidiert)  ← Vault-Update
-        ↓
-    Prototyp v2
-        ↓
-       ...
-```
+In der wissenschaftlichen Praxis verändert oft das erste Sichten von Ergebnissen (im Prototyp) die Fragestellung selbst. Der Prozess verläuft von der initialen Forschungsfrage über Prototyp v1 zur Erkennung neuer Muster, was zu einer revidierten Forschungsfrage führt (Vault-Update), dann zu Prototyp v2, und so weiter.
 
 ### Unterschied zur Fehlerkorrektur
 
@@ -197,25 +183,9 @@ Für die CONTEXT-Phase von Promptotyping sind folgende Methoden der Wissenserheb
 
 ### User Stories
 
-**Format:**
+Format: "Als [Rolle] will ich [Funktion], um [Nutzen] zu erreichen."
 
-```
-Als [Rolle]
-will ich [Funktion],
-um [Nutzen] zu erreichen.
-```
-
-**Beispiele:**
-
-```
-Als Historikerin
-will ich Korrespondenznetzwerke visualisieren,
-um Kommunikationsmuster in Exilgemeinschaften zu rekonstruieren.
-
-Als Editionswissenschaftler
-will ich Textvarianten synoptisch darstellen,
-um Abhängigkeiten zwischen Handschriften zu identifizieren.
-```
+Beispiele: Eine Historikerin will Korrespondenznetzwerke visualisieren, um Kommunikationsmuster in Exilgemeinschaften zu rekonstruieren. Ein Editionswissenschaftler will Textvarianten synoptisch darstellen, um Abhängigkeiten zwischen Handschriften zu identifizieren.
 
 ---
 

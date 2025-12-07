@@ -113,12 +113,7 @@ Priorisierungsschema (für REQUIREMENTS.md):
 - KANN: Nice-to-have Features für zukünftige Iterationen
 
 Formulierungsprinzip:
-Jede Anforderung als testbaren Satz formulieren.
-
-```
-✓ "Das System muss Korrespondenzen nach Datum filterbar darstellen"
-✗ "Das System soll benutzerfreundlich sein"
-```
+Jede Anforderung als testbaren Satz formulieren. Korrekt wäre: "Das System muss Korrespondenzen nach Datum filterbar darstellen." Falsch wäre: "Das System soll benutzerfreundlich sein" – zu vage, nicht testbar.
 
 Warum .md-Files erst hier?
 Die Destillation ist der kritische Übergang von unstrukturiertem Rohmaterial zu LLM-optimiertem Kontext. Die .md-Dateien sind speziell darauf ausgelegt, maximale Information bei minimaler Token-Anzahl zu liefern (siehe: Context Rot).
@@ -133,9 +128,7 @@ Diese Phase ist iterativ: Jede Iteration produziert einen neuen Prototype und ka
 
 #### Der Iterationszyklus
 
-```
-Vault (.md Files) → Prompt → LLM → Prototype → Validierung → Vault-Update → ...
-```
+Der Zyklus verläuft vom Vault über den Prompt zum LLM, das einen Prototype generiert. Dieser wird validiert, und neues Wissen fließt als Vault-Update zurück – dann beginnt der Zyklus erneut.
 
 1. Prompt mit Vault-Kontext: Die .md-Dateien aus Phase 3 werden dem LLM übergeben
 2. Prototype-Generierung: LLM erzeugt lauffähigen Code
@@ -190,40 +183,17 @@ Der Critical-Expert-Ansatz operationalisiert Schöns Reflective Practice für di
 
 Strategien gegen Sycophancy:
 
-1. Critical Questioning: Explizites Auffordern zur Kritik
-   ```
-   "Welche Schwächen siehst du in diesem Ansatz?"
-   "Was könnte an meiner Annahme falsch sein?"
-   ```
+1. Critical Questioning: Explizites Auffordern zur Kritik – etwa durch Fragen nach Schwächen im Ansatz oder möglichen Fehlern in Annahmen.
 
-2. Alternative Exploration: Einfordern von Alternativen
-   ```
-   "Zeige mir drei verschiedene Ansätze für dieses Problem"
-   "Was wäre ein gegenteiliger Standpunkt?"
-   ```
+2. Alternative Exploration: Einfordern von Alternativen – verschiedene Ansätze für ein Problem generieren lassen, gegenteilige Standpunkte erfragen.
 
-3. Assumption Surfacing: Explizitmachen von Annahmen
-   ```
-   "Welche impliziten Annahmen macht dieser Code?"
-   "Was setze ich hier als gegeben voraus?"
-   ```
+3. Assumption Surfacing: Explizitmachen von Annahmen – implizite Annahmen im Code oder Voraussetzungen bewusst machen.
 
 ### Beispiel: REALonline-Projekt
 
-Der Historiker korrigierte die technische Annahme, Objekte nach modernen Kategorien zu strukturieren:
+Der Historiker korrigierte die technische Annahme, Objekte nach modernen Kategorien zu strukturieren.
 
-Technische Annahme (falsch):
-```
-Objekte → Kategorien (Möbel, Textilien, Gefäße)
-```
-
-Historische Korrektur:
-```
-Objekte → Räume → Gebäude
-(mit historischen Begriffen aus nomenclature_original)
-```
-
-Begründung: Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien.
+Die technische Annahme war falsch: Objekte sollten nach funktionalen Kategorien wie Möbel, Textilien, Gefäße gruppiert werden. Die historische Korrektur: Objekte werden über Räume und Gebäude organisiert, mit historischen Begriffen aus nomenclature_original. Begründung: Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien.
 
 > Diese Korrektur war mehr als technische Anpassung. Sie transformierte das Datenmodell von einer anachronistischen zu einer historisch adäquaten Repräsentation.
 
@@ -237,24 +207,7 @@ Das Promptotyping Journal ist das Arbeitstagebuch des Projekts. Es dokumentiert 
 
 ### Struktur eines Journal-Eintrags
 
-```markdown
-## [Datum] - Session [Nr.]
-
-### Tasks
-- [ ] Was wurde in dieser Session bearbeitet
-- [x] Was wurde abgeschlossen
-
-### Learnings
-- Was funktioniert hat
-- Was nicht funktioniert hat
-- Überraschungen und neue Erkenntnisse
-
-### Nächste Schritte
-- Was als nächstes ansteht
-
-### Savepoint
-Git-Commit: [Hash]
-```
+Ein Journal-Eintrag enthält Datum und Session-Nummer, gefolgt von Tasks (bearbeitet und abgeschlossen), Learnings (was funktioniert hat, was nicht, Überraschungen), Nächste Schritte und einen Savepoint mit Git-Commit-Hash.
 
 ### Skalierung für größere Projekte
 
@@ -284,24 +237,11 @@ Bei längeren Projekten kann das Journal destilliert werden:
 
 ### Projektstruktur (Ausgangspunkt)
 
-```
-project/
-├── CONTEXT.md          # Domänenwissen, Forschungsfragen
-├── DATA.md             # Datenspezifikation
-├── REQUIREMENTS.md     # Anforderungen
-├── JOURNAL.md          # Entwicklungsprotokoll
-├── data/               # Rohdaten (Phase 1: Preparation)
-│   └── sample.json
-├── exploration/        # Experimentelle Prototypen (Phase 2)
-│   └── test-01.html
-├── prototype/          # Iterative Prototypen (Phase 4)
-│   └── index.html
-└── .git/               # Versionskontrolle
-```
+Ein typisches Projekt enthält die Vault-Dokumente (CONTEXT.md, DATA.md, REQUIREMENTS.md, JOURNAL.md) auf oberster Ebene. Der data-Ordner enthält Rohdaten aus Phase 1, exploration experimentelle Prototypen aus Phase 2, und prototype die iterativen Prototypen aus Phase 4. Git für Versionskontrolle ist essentiell.
 
-> Hinweis: Die .md-Dateien (CONTEXT.md, DATA.md, REQUIREMENTS.md) entstehen in Phase 3: Destillation, nicht am Projektanfang. Rohdaten werden zuerst gesammelt (Phase 1), analysiert (Phase 2), und erst dann zu strukturierten Dokumenten verdichtet (Phase 3).
+Hinweis: Die .md-Dateien entstehen in Phase 3 (Destillation), nicht am Projektanfang. Rohdaten werden zuerst gesammelt (Phase 1), analysiert (Phase 2), und erst dann zu strukturierten Dokumenten verdichtet (Phase 3).
 
-> Flexibilität: Die Dokumentstruktur ist vollständig anpassbar. Je nach Daten und Kontext können beliebige Dokumente ergänzt werden: `SCHEMA.md`, `VALIDATION.md`, `API-NOTES.md` – was immer das Projekt erfordert. Die genannten Dateien sind ein Ausgangspunkt, keine starre Vorgabe.
+Flexibilität: Die Dokumentstruktur ist vollständig anpassbar. Je nach Daten und Kontext können beliebige Dokumente ergänzt werden (SCHEMA.md, VALIDATION.md, API-NOTES.md) – was immer das Projekt erfordert. Die genannten Dateien sind ein Ausgangspunkt, keine starre Vorgabe.
 
 ---
 
@@ -322,41 +262,19 @@ Promptotyping verwendet keine festgelegten Prompt-Templates, sondern Meta-Strate
 
 ### Reasoning (Explorative Token-Generierung)
 
-Frontier-LLMs nutzen Token-Generierung als "Denkprozess". Das Anfordern von explizitem Reasoning öffnet den Möglichkeitsraum:
-
-```
-"Denke laut nach: Welche Ansätze gibt es für dieses Problem?"
-"Generiere drei unterschiedliche Lösungswege mit Vor- und Nachteilen"
-```
-
-Zweck: Vermeidung vorschneller Festlegung auf eine Lösung.
+Frontier-LLMs nutzen Token-Generierung als "Denkprozess". Das Anfordern von explizitem Reasoning öffnet den Möglichkeitsraum – etwa durch Aufforderungen, laut nachzudenken oder mehrere Lösungswege mit Vor- und Nachteilen zu generieren. Zweck: Vermeidung vorschneller Festlegung auf eine Lösung.
 
 ---
 
 ### LLM-Validierung
 
-Das LLM wird zur Prüfung seiner eigenen Outputs eingesetzt:
-
-```
-"Prüfe diesen Code auf Fehler und Inkonsistenzen"
-"Welche Edge Cases werden nicht behandelt?"
-"Sind die genannten Optionen vollständig?"
-```
-
-Limitation: LLMs können eigene systematische Fehler nicht zuverlässig erkennen.
+Das LLM wird zur Prüfung seiner eigenen Outputs eingesetzt – durch Aufforderungen zur Fehlerprüfung, Edge-Case-Analyse oder Vollständigkeitsprüfung. Limitation: LLMs können eigene systematische Fehler nicht zuverlässig erkennen.
 
 ---
 
 ### Expert-in-the-Loop Korrektur
 
-Der menschliche Experte greift aktiv ein, um das LLM in die richtige Richtung zu "schubsen":
-
-```
-"Deine Annahme X ist falsch. Im historischen Kontext gilt Y."
-"Ignoriere die moderne Kategorisierung. Verwende stattdessen..."
-```
-
-Voraussetzung: Domänenwissen, um falsche Annahmen überhaupt zu erkennen.
+Der menschliche Experte greift aktiv ein, um das LLM in die richtige Richtung zu lenken – durch Korrektur falscher Annahmen oder Vorgabe domänenspezifischer Kategorisierungen. Voraussetzung: Domänenwissen, um falsche Annahmen überhaupt zu erkennen.
 
 ---
 
@@ -389,33 +307,13 @@ Zweck: Vermeidung von Context Rot, Erhalt des akkumulierten Wissens.
 
 ### Plan Generation
 
-Komplexe Aufgaben werden in explizite Pläne zerlegt:
-
-```
-"Erstelle einen Schritt-für-Schritt-Plan für die Implementierung"
-"Was sind die Abhängigkeiten zwischen den Schritten?"
-```
-
-Kritisches Begleiten:
-- Pläne nicht blind übernehmen
-- Jeden Schritt auf Plausibilität prüfen
-- Bei Abweichungen Plan anpassen
+Komplexe Aufgaben werden in explizite Pläne zerlegt – durch Aufforderungen zu Schritt-für-Schritt-Plänen und Analyse von Abhängigkeiten. Kritisches Begleiten: Pläne nicht blind übernehmen, jeden Schritt auf Plausibilität prüfen, bei Abweichungen anpassen.
 
 ---
 
 ### Kombination der Strategien
 
-In der Praxis werden Strategien kombiniert:
-
-```
-1. Reasoning       → Optionen generieren
-2. LLM-Validierung → Optionen bewerten lassen
-3. Expert-in-the-Loop → Falsche Annahmen korrigieren
-4. Plan Generation → Gewählte Option strukturieren
-5. Context Distillation → Entscheidung dokumentieren
-```
-
-Diese Sequenz wiederholt sich iterativ über alle Phasen.
+In der Praxis werden Strategien kombiniert: Reasoning generiert Optionen, LLM-Validierung bewertet sie, Expert-in-the-Loop korrigiert falsche Annahmen, Plan Generation strukturiert die gewählte Option, Context Distillation dokumentiert die Entscheidung. Diese Sequenz wiederholt sich iterativ über alle Phasen.
 
 ---
 
@@ -431,13 +329,7 @@ Promptotyping adaptiert Konzepte aus dem Requirements Engineering für die struk
 
 ### Savepoint = Baseline + Increment + Gate
 
-Ein Savepoint markiert einen verifizierten Zustand, auf den bei Problemen zurückgegangen werden kann:
-
-```
-Phase N → [Artefakt erstellen] → [Gate: CEIL-Validierung] → [Baseline: Git-Commit] → Phase N+1
-                                         ↓
-                                    Bei Fehler: Rollback zu letzter Baseline
-```
+Ein Savepoint markiert einen verifizierten Zustand, auf den bei Problemen zurückgegangen werden kann. Der Ablauf: Artefakt erstellen, Gate-Validierung durch Critical Expert, Git-Commit als Baseline, dann weiter zur nächsten Phase. Bei Fehlern: Rollback zur letzten Baseline.
 
 ### Übergangskriterien pro Phase
 

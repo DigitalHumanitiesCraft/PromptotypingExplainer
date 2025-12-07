@@ -115,17 +115,7 @@ Für die Lehre fehlen:
 
 ### Das Paradox der Expertise
 
-Der **Critical-Expert-in-the-Loop**-Ansatz erfordert Expertise, die erst durch Ausbildung erworben wird:
-
-```
-Um LLM-Outputs zu validieren, braucht man Fachwissen
-    ↓
-Fachwissen erwirbt man durch Ausbildung
-    ↓
-Ausbildung könnte durch LLMs verändert werden
-    ↓
-Wer bildet die zukünftigen Critical Experts aus?
-```
+Der Critical-Expert-in-the-Loop-Ansatz erfordert Expertise, die erst durch Ausbildung erworben wird. Das erzeugt ein Paradox: Um LLM-Outputs zu validieren, braucht man Fachwissen. Fachwissen erwirbt man durch Ausbildung. Ausbildung könnte durch LLMs verändert werden. Die Frage bleibt: Wer bildet die zukünftigen Critical Experts aus?
 
 ### Skills Atrophy
 

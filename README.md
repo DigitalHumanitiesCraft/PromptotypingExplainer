@@ -13,7 +13,7 @@ Promptotyping ist eine vierphasige Methodik:
 1. **Vorbereitung** – Materialsammlung
 2. **Exploration** – Datenanalyse
 3. **Destillation** – Wissenskomprimierung
-4. **Iterative Implementation** – Iterative Entwicklung
+4. **Implementation** – Iterative Entwicklung mit Vault-Updates
 
 ## Tech Stack
 
@@ -90,7 +90,7 @@ Die Wissensbasis für dieses Projekt liegt in `knowledge/`:
 | `requirements.md` | Zielgruppen, User Stories, Constraints |
 | `implementation.md` | Technische Details |
 | `journal.md` | Entwicklungstagebuch |
-| `case-studies/` | Reale Promptotyping-Beispiele |
+| `paper/` | Methodenpaper (Kapitel 01-07) |
 
 ## Design System
 

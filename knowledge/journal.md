@@ -269,16 +269,7 @@ Zweite Iteration (nach User-Feedback "besser aber nicht perfekt"):
 
 ### Aktuelle ScrollTrigger-Konfiguration
 
-```javascript
-ScrollTrigger.create({
-  scrub: 1.5,
-  anticipatePin: 1,
-  fastScrollEnd: false,
-  preventOverlaps: true,
-  invalidateOnRefresh: true,
-  ease: 'power2.out',
-});
-```
+Die finale Konfiguration nutzt scrub 1.5 für einen Kompromiss zwischen Reaktivität und Smoothness, anticipatePin 1 für flüssigere Übergänge, fastScrollEnd false um abrupte Sprünge zu verhindern, preventOverlaps true, invalidateOnRefresh true für korrekte Berechnung bei Resize, und ease power2.out für eine natürliche Verzögerungskurve.
 
 ---
 
@@ -345,15 +336,7 @@ progressAnimations.js (utils/):
 
 ### CSS Design System erweitert
 
-Neue Variablen in app.css:
-```css
---color-code-keyword: #7c3aed;
---color-code-function: #2563eb;
---color-code-string: #16a34a;
---color-code-bg: #f5f5f5;
-```
-
-BrowserFrame.svelte nutzt nun CSS-Variablen statt Hardcodes.
+Neue Variablen in app.css für Code-Highlighting: color-code-keyword (violett), color-code-function (blau), color-code-string (grün), color-code-bg (hellgrau). BrowserFrame.svelte nutzt nun CSS-Variablen statt Hardcodes.
 
 ### Refactoring-Ergebnisse
 
@@ -401,11 +384,7 @@ Schließt nur bei: X-Button klicken, Term erneut klicken, 2s Scrolling.
 
 ### Console-Logging für Debug
 
-updateHash() loggt Step-Übergänge:
-```
-📍 Promptotyping [2/5] → system142 | progress: 25%
-📍 Vorbereitung [3/5] → sammeln | progress: 49%
-```
+updateHash() loggt Step-Übergänge im Format: Emoji, Phasenname, Position, Step-ID und Progress-Prozent.
 
 ---
 
