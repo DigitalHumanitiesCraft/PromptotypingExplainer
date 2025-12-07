@@ -327,7 +327,7 @@ Das **Promptotyping Journal** dokumentiert nicht nur Entscheidungen, sondern auc
 | **Preprocessing** | Python für komplexe Datenstrukturen |
 | **LLM-Zugang** | API für Reproduzierbarkeit, kostenlos für Einstieg |
 
-### Standardisierte Projektstruktur
+### Projektstruktur (Ausgangspunkt)
 
 ```
 project/
@@ -344,6 +344,8 @@ project/
 │   └── index.html
 └── .git/               # Versionskontrolle
 ```
+
+> **Flexibilität:** Die Dokumentstruktur ist vollständig anpassbar. Je nach Daten und Kontext können beliebige Dokumente ergänzt werden: `SCHEMA.md`, `VALIDATION.md`, `API-NOTES.md` – was immer das Projekt erfordert. Die genannten Dateien sind ein Ausgangspunkt, keine starre Vorgabe.
 
 ---
 
