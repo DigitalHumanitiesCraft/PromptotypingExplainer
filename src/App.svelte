@@ -1,12 +1,19 @@
 <script>
   import { onMount } from 'svelte';
-  import { initReducedMotion, currentPhase, globalProgress, phaseProgress, scrollToHash } from './lib/stores/scroll.js';
+  import { initReducedMotion, globalProgress, scrollToHash, updateHash, currentPhase, currentStep } from './lib/stores/scroll.js';
   import { isDeepDiveOpen, currentDeepDive, closeDeepDive } from './lib/stores/deepDive.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
-  import Phase from './lib/components/Phase.svelte';
+  import Step from './lib/components/Step.svelte';
   import DeepDivePanel from './lib/components/DeepDivePanel.svelte';
-  import IntroScene from './lib/components/scenes/IntroScene.svelte';
+
+  // Intro Steps
+  import IntroDefinition from './lib/components/steps/intro/IntroDefinition.svelte';
+  import IntroKernprinzip from './lib/components/steps/intro/IntroKernprinzip.svelte';
+  import IntroMethodik from './lib/components/steps/intro/IntroMethodik.svelte';
+  import IntroPhasen from './lib/components/steps/intro/IntroPhasen.svelte';
+
+  // Legacy Scene imports (to be replaced with steps)
   import Phase1Scene from './lib/components/scenes/Phase1Scene.svelte';
   import Phase2Scene from './lib/components/scenes/Phase2Scene.svelte';
   import Phase3Scene from './lib/components/scenes/Phase3Scene.svelte';
@@ -16,19 +23,20 @@
   onMount(() => {
     initReducedMotion();
 
-    // Wait for ScrollTrigger to initialize, then scroll to hash
+    // Wait for DOM, then scroll to hash
     setTimeout(() => {
       scrollToHash();
-    }, 500);
+    }, 300);
 
     // Handle hash changes (back/forward navigation)
     window.addEventListener('hashchange', scrollToHash);
     return () => window.removeEventListener('hashchange', scrollToHash);
   });
 
-  // Continuous background based on globalProgress
-  // Metaphor: Slate (cold/raw) → Terracotta (hot/transformed)
-  // The gradient intensity and position changes as you scroll
+  // Update hash when phase/step changes
+  $: if (typeof window !== 'undefined') {
+    updateHash($currentPhase, $currentStep);
+  }
 
   // Color interpolation helper
   function lerp(a, b, t) {
@@ -46,33 +54,23 @@
     // Temperature curve: starts cold, peaks hot at ~75%, cools down at end
     let temperature;
     if (progress < 0.2) {
-      // Intro + Phase 1: Cold (Slate)
       temperature = 0;
     } else if (progress < 0.5) {
-      // Phase 2-3: Warming up
-      temperature = (progress - 0.2) / 0.3; // 0 → 1
+      temperature = (progress - 0.2) / 0.3;
     } else if (progress < 0.85) {
-      // Phase 4: Hot (peak)
       temperature = 1;
     } else {
-      // Outro: Cooling down
-      temperature = 1 - (progress - 0.85) / 0.15 * 0.3; // 1 → 0.7
+      temperature = 1 - (progress - 0.85) / 0.15 * 0.3;
     }
 
-    // Interpolate colors
     const r = Math.round(lerp(96, 191, temperature));
     const g = Math.round(lerp(125, 91, temperature));
     const b = Math.round(lerp(139, 62, temperature));
 
-    // Intensity increases with progress (more visible as you go deeper)
     const intensity = 0.04 + progress * 0.12;
-
-    // Ellipse position moves: center → right (following the "flow")
-    const ellipseX = 30 + progress * 40; // 30% → 70%
-    const ellipseY = 50 - Math.sin(progress * Math.PI) * 20; // Arc motion
-
-    // Gradient spread tightens as intensity increases
-    const spread = 70 - progress * 20; // 70% → 50%
+    const ellipseX = 30 + progress * 40;
+    const ellipseY = 50 - Math.sin(progress * Math.PI) * 20;
+    const spread = 70 - progress * 20;
 
     return `radial-gradient(ellipse at ${ellipseX}% ${ellipseY}%, rgba(${r}, ${g}, ${b}, ${intensity}) 0%, rgba(232, 232, 232, 1) ${spread}%)`;
   })();
@@ -82,35 +80,123 @@
 
 <PhaseHeader />
 
-<main>
+<main class="scroll-container">
   <ProgressIndicator />
 
-  <Phase id="intro" index={0} let:progress>
-    <IntroScene {progress} />
-  </Phase>
+  <!-- Intro Phase: 4 Steps -->
+  <Step id="intro-definition" phaseIndex={0} stepIndex={0}>
+    <IntroDefinition />
+  </Step>
 
-  <Phase id="phase1" index={1} let:progress>
-    <Phase1Scene {progress} />
-  </Phase>
+  <Step id="intro-kernprinzip" phaseIndex={0} stepIndex={1}>
+    <IntroKernprinzip />
+  </Step>
 
-  <Phase id="phase2" index={2} let:progress>
-    <Phase2Scene {progress} />
-  </Phase>
+  <Step id="intro-methodik" phaseIndex={0} stepIndex={2}>
+    <IntroMethodik />
+  </Step>
 
-  <Phase id="phase3" index={3} let:progress>
-    <Phase3Scene {progress} />
-  </Phase>
+  <Step id="intro-phasen" phaseIndex={0} stepIndex={3}>
+    <IntroPhasen />
+  </Step>
 
-  <Phase id="phase4" index={4} let:progress>
-    <Phase4Scene {progress} />
-  </Phase>
+  <!-- Phase 1-4 and Outro: Temporary legacy placeholders -->
+  <!-- These will be split into steps in a later iteration -->
+  <Step id="phase1-titel" phaseIndex={1} stepIndex={0}>
+    <div class="legacy-scene">
+      <Phase1Scene progress={0.5} />
+    </div>
+  </Step>
 
-  <Phase id="outro" index={5} let:progress>
-    <OutroScene {progress} />
-  </Phase>
+  <Step id="phase1-sammeln" phaseIndex={1} stepIndex={1}>
+    <div class="placeholder-step">
+      <h2>Phase 1: Sammeln</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase1-workspace" phaseIndex={1} stepIndex={2}>
+    <div class="placeholder-step">
+      <h2>Phase 1: Workspace</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase2-struktur" phaseIndex={2} stepIndex={0}>
+    <div class="legacy-scene">
+      <Phase2Scene progress={0.5} />
+    </div>
+  </Step>
+
+  <Step id="phase2-entitaeten" phaseIndex={2} stepIndex={1}>
+    <div class="placeholder-step">
+      <h2>Phase 2: Entitäten</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase2-fragen" phaseIndex={2} stepIndex={2}>
+    <div class="placeholder-step">
+      <h2>Phase 2: Fragen</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase3-layout" phaseIndex={3} stepIndex={0}>
+    <div class="legacy-scene">
+      <Phase3Scene progress={0.5} />
+    </div>
+  </Step>
+
+  <Step id="phase3-dokumente" phaseIndex={3} stepIndex={1}>
+    <div class="placeholder-step">
+      <h2>Phase 3: Dokumente</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase3-vault" phaseIndex={3} stepIndex={2}>
+    <div class="placeholder-step">
+      <h2>Phase 3: Vault</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase4-dialog" phaseIndex={4} stepIndex={0}>
+    <div class="legacy-scene">
+      <Phase4Scene progress={0.5} />
+    </div>
+  </Step>
+
+  <Step id="phase4-iteration" phaseIndex={4} stepIndex={1}>
+    <div class="placeholder-step">
+      <h2>Phase 4: Iteration</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="phase4-rueckschleifen" phaseIndex={4} stepIndex={2}>
+    <div class="placeholder-step">
+      <h2>Phase 4: Rückschleifen</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
+
+  <Step id="outro-beispiele" phaseIndex={5} stepIndex={0}>
+    <div class="legacy-scene">
+      <OutroScene progress={0.5} />
+    </div>
+  </Step>
+
+  <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={1}>
+    <div class="placeholder-step">
+      <h2>Zusammenfassung</h2>
+      <p>Coming soon...</p>
+    </div>
+  </Step>
 </main>
 
-<!-- Deep Dive Panel (Branch nach links) -->
+<!-- Deep Dive Panel -->
 <DeepDivePanel
   isOpen={$isDeepDiveOpen}
   title={$currentDeepDive?.title || ''}
@@ -130,9 +216,30 @@
     pointer-events: none;
   }
 
-  main {
+  .scroll-container {
     width: 100%;
-    position: relative;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
     padding-top: 50px; /* Space for fixed header */
+  }
+
+  .legacy-scene {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .placeholder-step {
+    text-align: center;
+    color: var(--color-slate);
+  }
+
+  .placeholder-step h2 {
+    color: var(--color-black);
+    margin-bottom: var(--space-md);
   }
 </style>

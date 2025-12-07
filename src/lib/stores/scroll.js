@@ -1,43 +1,134 @@
 import { writable, derived } from 'svelte/store';
 
-// Globaler Scroll-Progress (0-1 über gesamte Seite)
-export const globalProgress = writable(0);
-
 // Aktuelle Phase (0-5: Intro, Phase1, Phase2, Phase3, Phase4, Outro)
 export const currentPhase = writable(0);
 
-// Phase-Grenzen in vh (aus knowledge.md → TEIL 3 + Outro)
-// Mit steps für URL-basierte Navigation
-// Jeder Step sollte ~50-60vh haben für ein volles Scroll-Wheel pro Step
-export const phaseBoundaries = [
-  { id: 'intro', start: 0, end: 300, label: 'Promptotyping', steps: ['definition', 'system142', 'herausforderung', 'methodik', 'phasen'] },      // 5 steps × 60vh = 300vh
-  { id: 'phase1', start: 300, end: 600, label: 'Vorbereitung', steps: ['titel', 'text', 'sammeln', 'zusammenfuehren', 'workspace'] },            // 5 steps × 60vh = 300vh
-  { id: 'phase2', start: 600, end: 840, label: 'Exploration', steps: ['data', 'dialog', 'exploration', 'entitaeten'] },                          // 4 steps × 60vh = 240vh
-  { id: 'phase3', start: 840, end: 1080, label: 'Destillation', steps: ['requirements', 'layout', 'partikel', 'dokumente'] },                    // 4 steps × 60vh = 240vh
-  { id: 'phase4', start: 1080, end: 1380, label: 'Implementation', steps: ['implementation', 'expert', 'dialog', 'browser', 'loops'] },          // 5 steps × 60vh = 300vh
-  { id: 'outro', start: 1380, end: 1620, label: 'Praxis', steps: ['konklusion', 'screenshot', 'cases', 'imperative'] },                          // 4 steps × 60vh = 240vh
+// Aktueller Step innerhalb der Phase
+export const currentStep = writable(0);
+
+// Step-Struktur: Definiert alle Steps pro Phase
+export const stepStructure = [
+  {
+    id: 'intro',
+    label: 'Promptotyping',
+    number: null,
+    subtitle: 'Einführung',
+    steps: [
+      { id: 'definition', label: 'Definition' },
+      { id: 'kernprinzip', label: 'Kernprinzip' },
+      { id: 'methodik', label: 'Methodik' },
+      { id: 'phasen', label: 'Phasen' },
+    ]
+  },
+  {
+    id: 'phase1',
+    label: 'Vorbereitung',
+    number: 1,
+    subtitle: 'Materialsammlung',
+    steps: [
+      { id: 'titel', label: 'Titel' },
+      { id: 'sammeln', label: 'Sammeln' },
+      { id: 'workspace', label: 'Workspace' },
+    ]
+  },
+  {
+    id: 'phase2',
+    label: 'Exploration',
+    number: 2,
+    subtitle: 'Datenanalyse',
+    steps: [
+      { id: 'struktur', label: 'Struktur' },
+      { id: 'entitaeten', label: 'Entitäten' },
+      { id: 'fragen', label: 'Fragen' },
+    ]
+  },
+  {
+    id: 'phase3',
+    label: 'Destillation',
+    number: 3,
+    subtitle: 'Wissenskomprimierung',
+    steps: [
+      { id: 'layout', label: 'Layout' },
+      { id: 'dokumente', label: 'Dokumente' },
+      { id: 'vault', label: 'Vault' },
+    ]
+  },
+  {
+    id: 'phase4',
+    label: 'Implementation',
+    number: 4,
+    subtitle: 'Iterative Entwicklung',
+    steps: [
+      { id: 'dialog', label: 'Dialog' },
+      { id: 'iteration', label: 'Iteration' },
+      { id: 'rueckschleifen', label: 'Rückschleifen' },
+    ]
+  },
+  {
+    id: 'outro',
+    label: 'Praxis',
+    number: null,
+    subtitle: 'Case Studies',
+    steps: [
+      { id: 'beispiele', label: 'Beispiele' },
+      { id: 'zusammenfassung', label: 'Zusammenfassung' },
+    ]
+  },
 ];
 
-// Gesamte Scroll-Länge in vh
-export const totalScrollLength = 1620;
+// Gesamtzahl aller Steps
+export const totalSteps = stepStructure.reduce((acc, phase) => acc + phase.steps.length, 0);
+
+// Derived: Globaler Step-Index (0 bis totalSteps-1)
+export const globalStepIndex = derived(
+  [currentPhase, currentStep],
+  ([$phase, $step]) => {
+    let index = 0;
+    for (let i = 0; i < $phase; i++) {
+      index += stepStructure[i].steps.length;
+    }
+    return index + $step;
+  }
+);
+
+// Derived: Globaler Progress (0-1)
+export const globalProgress = derived(
+  globalStepIndex,
+  ($index) => $index / (totalSteps - 1)
+);
 
 // Derived: Progress innerhalb der aktuellen Phase (0-1)
 export const phaseProgress = derived(
-  [globalProgress, currentPhase],
-  ([$global, $phase]) => {
-    const boundary = phaseBoundaries[$phase];
-    if (!boundary) return 0;
-
-    const phaseStart = boundary.start / totalScrollLength;
-    const phaseEnd = boundary.end / totalScrollLength;
-    const phaseLength = phaseEnd - phaseStart;
-
-    if (phaseLength === 0) return 0;
-
-    const progress = ($global - phaseStart) / phaseLength;
-    return Math.max(0, Math.min(1, progress));
+  [currentPhase, currentStep],
+  ([$phase, $step]) => {
+    const phase = stepStructure[$phase];
+    if (!phase || phase.steps.length <= 1) return 0;
+    return $step / (phase.steps.length - 1);
   }
 );
+
+// Derived: Aktuelle Phase-Info
+export const currentPhaseInfo = derived(
+  currentPhase,
+  ($phase) => stepStructure[$phase] || stepStructure[0]
+);
+
+// Derived: Aktueller Step-Info
+export const currentStepInfo = derived(
+  [currentPhase, currentStep],
+  ([$phase, $step]) => {
+    const phase = stepStructure[$phase];
+    if (!phase) return null;
+    return phase.steps[$step] || phase.steps[0];
+  }
+);
+
+// Legacy-Kompatibilität: phaseBoundaries für bestehende Komponenten
+export const phaseBoundaries = stepStructure.map((phase, index) => ({
+  id: phase.id,
+  label: phase.label,
+  steps: phase.steps.map(s => s.id),
+}));
 
 // Reduced Motion Preference
 export const prefersReducedMotion = writable(false);
@@ -55,94 +146,83 @@ export function initReducedMotion() {
 }
 
 /**
- * Parse URL hash and scroll to the correct position
- * Supports: #intro, #phase1, #phase1-workspace, #phase2-dialog, etc.
- * Call this after ScrollTrigger is initialized
+ * Scroll to a specific step by element ID
+ */
+export function scrollToStep(stepId) {
+  if (typeof window === 'undefined') return;
+
+  const element = document.getElementById(stepId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/**
+ * Parse URL hash and scroll to the correct step
+ * Supports: #intro, #intro-definition, #phase1-workspace, etc.
  */
 export function scrollToHash() {
   if (typeof window === 'undefined') return;
 
-  const hash = window.location.hash.slice(1); // Remove #
+  const hash = window.location.hash.slice(1);
   if (!hash) return;
+
+  // Try to find element directly
+  const element = document.getElementById(hash);
+  if (element) {
+    setTimeout(() => {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+    return;
+  }
 
   // Parse hash: "phase1" or "phase1-workspace"
   const parts = hash.split('-');
   const phaseId = parts[0];
-  const stepId = parts.slice(1).join('-'); // Handle multi-part step names
+  const stepId = parts.slice(1).join('-');
 
   // Find phase
-  const phaseIndex = phaseBoundaries.findIndex(p => p.id === phaseId);
+  const phaseIndex = stepStructure.findIndex(p => p.id === phaseId);
   if (phaseIndex === -1) return;
 
-  const phase = phaseBoundaries[phaseIndex];
+  const phase = stepStructure[phaseIndex];
 
-  // Calculate base scroll position for phase start
-  const phaseStartVh = phase.start;
-  const phaseHeightVh = phase.end - phase.start;
-
-  let targetProgress = 0; // Progress within phase (0-1)
-
-  if (stepId && phase.steps) {
-    const stepIndex = phase.steps.indexOf(stepId);
-    if (stepIndex !== -1) {
-      // Calculate progress for this step
-      targetProgress = (stepIndex + 0.5) / phase.steps.length;
+  // Build full step ID
+  let targetId = phaseId;
+  if (stepId) {
+    const stepExists = phase.steps.some(s => s.id === stepId);
+    if (stepExists) {
+      targetId = `${phaseId}-${stepId}`;
     }
+  } else {
+    // Default to first step of phase
+    targetId = `${phaseId}-${phase.steps[0].id}`;
   }
 
-  // Convert to scroll position using ScrollTrigger if available
-  // @ts-ignore
-  const ScrollTrigger = window.ScrollTrigger;
-  if (ScrollTrigger) {
-    const triggers = ScrollTrigger.getAll();
-    const phaseTrigger = triggers.find(t => t.trigger?.id === phaseId);
-
-    if (phaseTrigger) {
-      const targetScroll = phaseTrigger.start + (phaseTrigger.end - phaseTrigger.start) * targetProgress;
-      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-      return;
+  setTimeout(() => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-
-  // Fallback: use vh calculation
-  const targetVh = phaseStartVh + (phaseHeightVh * targetProgress);
-  const targetPx = (targetVh / 100) * window.innerHeight;
-  window.scrollTo({ top: targetPx, behavior: 'smooth' });
+  }, 100);
 }
 
 /**
  * Update URL hash based on current phase and step
- * Call this from Phase.svelte on progress update
  */
-let lastLoggedStep = '';
+let lastHash = '';
 
-export function updateHash(phaseIndex, stepProgress) {
+export function updateHash(phaseIndex, stepIndex) {
   if (typeof window === 'undefined') return;
 
-  const phase = phaseBoundaries[phaseIndex];
+  const phase = stepStructure[phaseIndex];
   if (!phase) return;
 
-  let newHash = phase.id;
-  let stepIndex = 0;
-  let stepId = '';
+  const step = phase.steps[stepIndex];
+  const newHash = step ? `${phase.id}-${step.id}` : phase.id;
 
-  if (phase.steps && phase.steps.length > 0) {
-    stepIndex = Math.floor(stepProgress * phase.steps.length);
-    const clampedIndex = Math.min(stepIndex, phase.steps.length - 1);
-    stepId = phase.steps[clampedIndex];
-    if (stepId) {
-      newHash = `${phase.id}-${stepId}`;
-    }
-  }
-
-  // Log step changes
-  if (newHash !== lastLoggedStep) {
-    console.log(`📍 ${phase.label} [${stepIndex + 1}/${phase.steps?.length || 1}] → ${stepId || 'start'} | progress: ${(stepProgress * 100).toFixed(0)}%`);
-    lastLoggedStep = newHash;
-  }
-
-  // Only update if different (avoid history spam)
-  if (window.location.hash !== `#${newHash}`) {
+  if (newHash !== lastHash) {
+    lastHash = newHash;
     history.replaceState(null, '', `#${newHash}`);
   }
 }

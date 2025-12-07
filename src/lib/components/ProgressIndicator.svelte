@@ -1,43 +1,28 @@
 <script>
-  import { currentPhase, phaseBoundaries, phaseProgress } from '../stores/scroll.js';
+  import { currentPhase, currentStep, stepStructure, globalStepIndex, totalSteps, scrollToStep } from '../stores/scroll.js';
 
-  function scrollToPhase(index) {
-    const phase = phaseBoundaries[index];
-    window.location.hash = phase.id;
+  function handlePhaseClick(phaseIndex) {
+    const phase = stepStructure[phaseIndex];
+    const stepId = `${phase.id}-${phase.steps[0].id}`;
+    scrollToStep(stepId);
   }
 
-  function scrollToStep(phaseIndex, stepIndex) {
-    const phase = phaseBoundaries[phaseIndex];
-    const stepId = phase.steps?.[stepIndex];
-    if (stepId) {
-      window.location.hash = `${phase.id}-${stepId}`;
-    }
+  function handleStepClick(phaseIndex, stepIndex) {
+    const phase = stepStructure[phaseIndex];
+    const step = phase.steps[stepIndex];
+    const stepId = `${phase.id}-${step.id}`;
+    scrollToStep(stepId);
   }
 
-  function handleKeydown(event, index) {
+  function handleKeydown(event, phaseIndex) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      scrollToPhase(index);
+      handlePhaseClick(phaseIndex);
     }
   }
 
-  // Calculate line fill percentage based on current phase and progress
-  $: lineFillPercent = (() => {
-    const totalPhases = phaseBoundaries.length - 1;
-    const basePercent = ($currentPhase / totalPhases) * 100;
-    const phaseContribution = (1 / totalPhases) * $phaseProgress * 100;
-    return Math.min(100, basePercent + phaseContribution);
-  })();
-
-  // Sub-steps for each phase (matching animation thresholds in scenes)
-  const phaseSteps = [
-    ['Definition', 'Kernprinzip', 'Methodik', 'Phasen'],
-    ['Titel', 'Text', 'Sammeln', 'Zusammenführen', 'Workspace'],
-    ['DATA', 'Dialog', 'Exploration', 'Entitäten'],
-    ['Requirements', 'Layout', 'Partikel', 'Dokumente'],
-    ['Implementation', 'Expert', 'Dialog', 'Browser', 'Loops'],
-    ['Konklusion', 'Screenshot', 'Cases', 'Imperative'],
-  ];
+  // Calculate line fill percentage
+  $: lineFillPercent = ($globalStepIndex / (totalSteps - 1)) * 100;
 </script>
 
 <nav class="progress-indicator" aria-label="Phasen-Navigation">
@@ -48,24 +33,22 @@
   </div>
 
   <ul>
-    {#each phaseBoundaries as phase, index}
-      {@const isActive = $currentPhase === index}
-      {@const isCompleted = $currentPhase > index}
-      {@const steps = phaseSteps[index] || []}
-      {@const activeStepIndex = Math.floor($phaseProgress * steps.length)}
+    {#each stepStructure as phase, phaseIndex}
+      {@const isActivePhase = $currentPhase === phaseIndex}
+      {@const isCompletedPhase = $currentPhase > phaseIndex}
 
-      <li>
+      <li class="phase-item">
         <button
           class="progress-dot"
-          class:active={isActive}
-          class:completed={isCompleted}
-          on:click={() => scrollToPhase(index)}
-          on:keydown={(e) => handleKeydown(e, index)}
+          class:active={isActivePhase}
+          class:completed={isCompletedPhase}
+          on:click={() => handlePhaseClick(phaseIndex)}
+          on:keydown={(e) => handleKeydown(e, phaseIndex)}
           aria-label="Zu {phase.label} springen"
-          aria-current={isActive ? 'step' : undefined}
+          aria-current={isActivePhase ? 'step' : undefined}
         >
           <span class="dot">
-            {#if isCompleted}
+            {#if isCompletedPhase}
               <svg class="check-icon" viewBox="0 0 12 12" fill="none">
                 <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -74,17 +57,19 @@
           <span class="label">{phase.label}</span>
         </button>
 
-        <!-- Sub-steps indicator (only for active phase) -->
-        {#if isActive && steps.length > 0}
+        <!-- Sub-steps (only for active phase) -->
+        {#if isActivePhase}
           <div class="sub-steps">
-            {#each steps as step, stepIndex}
+            {#each phase.steps as step, stepIndex}
+              {@const isActiveStep = $currentStep === stepIndex}
+              {@const isCompletedStep = $currentStep > stepIndex}
               <button
                 class="step-dot"
-                class:active={stepIndex === activeStepIndex}
-                class:completed={stepIndex < activeStepIndex}
-                title={step}
-                aria-label="Zu {step} springen"
-                on:click={() => scrollToStep(index, stepIndex)}
+                class:active={isActiveStep}
+                class:completed={isCompletedStep}
+                title={step.label}
+                aria-label="Zu {step.label} springen"
+                on:click={() => handleStepClick(phaseIndex, stepIndex)}
               ></button>
             {/each}
           </div>
@@ -103,7 +88,7 @@
     z-index: 100;
   }
 
-  /* Connection line between dots - dotted style */
+  /* Connection line between dots */
   .connection-line {
     position: absolute;
     left: 5px;
@@ -119,7 +104,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Dotted pattern using gradient */
     background: repeating-linear-gradient(
       to bottom,
       var(--color-slate) 0px,
@@ -135,7 +119,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    /* Dotted pattern using gradient */
     background: repeating-linear-gradient(
       to bottom,
       var(--color-terracotta) 0px,
@@ -152,9 +135,11 @@
     flex-direction: column;
     gap: var(--space-sm);
     position: relative;
+    padding: 0;
+    margin: 0;
   }
 
-  li {
+  .phase-item {
     transition: all 0.3s var(--ease-out);
   }
 
@@ -232,7 +217,7 @@
     border-radius: 4px;
   }
 
-  /* Sub-steps: compact dot row under active phase */
+  /* Sub-steps */
   .sub-steps {
     display: flex;
     gap: 4px;
@@ -274,7 +259,7 @@
     transform: scale(1.3);
   }
 
-  /* Mobile: horizontal am unteren Rand */
+  /* Mobile: horizontal at bottom */
   @media (max-width: 767px) {
     .progress-indicator {
       right: auto;
@@ -285,18 +270,7 @@
     }
 
     .connection-line {
-      top: 5px;
-      left: 6px;
-      right: 6px;
-      bottom: auto;
-      width: auto;
-      height: 2px;
-    }
-
-    .line-fill {
-      height: 100% !important;
-      width: var(--fill-percent, 0%);
-      transition: width 0.4s var(--ease-out);
+      display: none;
     }
 
     ul {

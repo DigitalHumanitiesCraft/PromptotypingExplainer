@@ -1,39 +1,27 @@
 <script>
-  import { currentPhase, phaseProgress, phaseBoundaries } from '../stores/scroll.js';
+  import { currentPhase, currentStep, stepStructure } from '../stores/scroll.js';
 
-  // Phase metadata with sub-steps
-  const phaseData = [
-    { number: null, title: 'Promptotyping', subtitle: 'Einführung', steps: ['Definition', 'Kernprinzip', 'Methodik', 'Phasen'] },
-    { number: 1, title: 'Vorbereitung', subtitle: 'Materialsammlung', steps: ['Sammeln', 'Zusammenführen', 'Workspace'] },
-    { number: 2, title: 'Exploration', subtitle: 'Datenanalyse', steps: ['Struktur', 'Entitäten', 'Fragen'] },
-    { number: 3, title: 'Destillation', subtitle: 'Wissenskomprimierung', steps: ['Layout', 'Dokumente', 'Vault'] },
-    { number: 4, title: 'Implementation', subtitle: 'Iterative Entwicklung', steps: ['Dialog', 'Iteration', 'Rückschleifen'] },
-    { number: null, title: 'Praxis', subtitle: 'Case Studies', steps: ['Beispiele', 'Zusammenfassung'] },
-  ];
-
-  $: current = phaseData[$currentPhase] || phaseData[0];
-  $: steps = current.steps || [];
-  $: currentStepIndex = Math.min(Math.floor($phaseProgress * steps.length), steps.length - 1);
-  $: currentStep = steps[currentStepIndex] || '';
+  $: phase = stepStructure[$currentPhase] || stepStructure[0];
+  $: step = phase.steps[$currentStep] || phase.steps[0];
 </script>
 
 <header class="phase-header">
   <div class="header-content">
     <!-- Phase badge -->
     <div class="phase-badge">
-      {#if current.number}
-        <span class="phase-number">Phase {current.number}</span>
+      {#if phase.number}
+        <span class="phase-number">Phase {phase.number}</span>
       {:else}
-        <span class="phase-tag">{current.subtitle}</span>
+        <span class="phase-tag">{phase.subtitle}</span>
       {/if}
     </div>
 
     <!-- Title + Current Step -->
     <div class="title-group">
-      <h2 class="phase-title">{current.title}</h2>
-      {#if currentStep}
+      <h2 class="phase-title">{phase.label}</h2>
+      {#if step}
         <span class="step-separator">—</span>
-        <span class="current-step">{currentStep}</span>
+        <span class="current-step">{step.label}</span>
       {/if}
     </div>
   </div>
