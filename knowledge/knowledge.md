@@ -101,39 +101,30 @@ Die Rücksprünge im Prozess haben unterschiedliche Auslöser:
 
 ## Die vier Phasen
 
-### Phase 1: Vorbereitung
+### Phase 1: Vorbereitung (Materialsammlung)
 
 **Narrativ**
 Sammlung aller relevanten Materialien. Forschungsdaten (TEI, XML, RDF, CSV), Dokumentation zu Standards und Modellen, Forschungsfragen und Domänenwissen.
-
-**Metapher**
-Mise en place in der Küche. Alle Zutaten bereitstellen, bevor gekocht wird.
 
 **Typische Artefakte**
 Rohdateien, Papers, Spezifikationen, Notizen aus Gesprächen mit Domänenexpert:innen.
 
 ---
 
-### Phase 2: Exploration
+### Phase 2: Exploration (Datenanalyse)
 
 **Narrativ**
 Untersuchung der Datenstrukturen. Welche Entitäten gibt es? Welche Relationen? Welche semantischen Elemente können für Visualisierungen genutzt werden? Erste Experimente mit dem LLM.
-
-**Metapher**
-Kartierung eines unbekannten Terrains. Man weiß noch nicht, wohin die Reise geht, aber man versteht das Gelände.
 
 **Typische Artefakte**
 Annotierte Datenbeispiele, erste Prompt-Versuche, Notizen zu Auffälligkeiten und Möglichkeiten.
 
 ---
 
-### Phase 3: Destillation
+### Phase 3: Destillation (Wissenskomprimierung)
 
 **Narrativ**
 Überführung des gesammelten Wissens in kompakte Markdown-Dokumente. Diese Dokumente sind keine Dokumentation im klassischen Sinn, sondern Denkumgebungen für das LLM.
-
-**Metapher**
-Reduktion einer Sauce. Das Wesentliche wird konzentriert, Unnötiges verdampft.
 
 **Kernprinzip: Context Rot vermeiden**
 Je mehr Tokens im Context Window, desto schlechter die Modellleistung (Hong et al., 2025). Destillation bedeutet: maximale Information mit minimalen Tokens.
@@ -148,13 +139,10 @@ context.md fasst das relevante Domänenwissen zusammen. Was muss das LLM über d
 
 ---
 
-### Phase 4: Iterative Implementation
+### Phase 4: Iterative Implementation (Iterative Entwicklung)
 
 **Narrativ**
 Der eigentliche Promptotyping-Dialog beginnt. Das LLM erhält die destillierten Dokumente und generiert Code. Der Mensch validiert, gibt Feedback, lässt nachbessern.
-
-**Metapher**
-Ping-Pong-Spiel mit steigender Präzision. Jeder Ballwechsel bringt das Ergebnis näher ans Ziel.
 
 **Critical Expert in the Loop**
 Der Mensch ist nicht passiver Empfänger, sondern kritischer Validator. Bewusstsein für Sycophancy (LLM stimmt zu statt zu widersprechen) und Konfabulationen (plausible aber falsche Outputs) ist essentiell.
@@ -281,7 +269,7 @@ Jeder Step hat eine eigene URL: `#intro-definition`, `#phase1-workspace`, `#phas
 
 ## Phase 1: Vorbereitung (100-200vh)
 
-**100-120vh**: Phase-1-Icon wird aktiv (Terracotta). Titel: "Phase 1: Vorbereitung". Metapher-Text: "Mise en place".
+**100-120vh**: Phase-1-Icon wird aktiv (Terracotta). Titel: "Phase 1: Vorbereitung". Untertitel: "Materialsammlung".
 
 **120-150vh**: Leerer Arbeitsbereich erscheint zentral. Icons für Quelltypen erscheinen an den Rändern (XML, PDF, CSV, Notizen).
 
@@ -291,7 +279,7 @@ Jeder Step hat eine eigene URL: `#intro-definition`, `#phase1-workspace`, `#phas
 
 ## Phase 2: Exploration (200-320vh)
 
-**200-220vh**: Phase-2-Icon wird aktiv. Titel: "Phase 2: Exploration". Metapher-Text: "Kartierung".
+**200-220vh**: Phase-2-Icon wird aktiv. Titel: "Phase 2: Exploration". Untertitel: "Datenanalyse".
 
 **220-250vh**: Zoom auf XML-Dokument (links). Rechte Seite leer mit Raster.
 
@@ -303,7 +291,7 @@ Jeder Step hat eine eigene URL: `#intro-definition`, `#phase1-workspace`, `#phas
 
 ## Phase 3: Destillation (320-440vh)
 
-**320-340vh**: Phase-3-Icon wird aktiv. Titel: "Phase 3: Destillation". Metapher-Text: "Reduktion".
+**320-340vh**: Phase-3-Icon wird aktiv. Titel: "Phase 3: Destillation". Untertitel: "Wissenskomprimierung".
 
 **340-360vh**: Drei-Spalten-Layout: Links der Stapel aus Phase 1, Mitte leerer Vault, rechts Interface-Skizzen aus Phase 2.
 
@@ -317,7 +305,7 @@ Jeder Step hat eine eigene URL: `#intro-definition`, `#phase1-workspace`, `#phas
 
 ## Phase 4: Implementation (440-600vh)
 
-**440-460vh**: Phase-4-Icon wird aktiv. Titel: "Phase 4: Iterative Implementation". Metapher-Text: "Ping-Pong".
+**440-460vh**: Phase-4-Icon wird aktiv. Titel: "Phase 4: Iterative Implementation". Untertitel: "Iterative Entwicklung".
 
 **460-480vh**: Layout: Links Vault, rechts zweigeteilter Bereich (Chat oben, Browser unten).
 

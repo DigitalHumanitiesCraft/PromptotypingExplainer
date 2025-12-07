@@ -5,7 +5,7 @@
    */
   export let number = null;
   export let title;
-  export let metaphor = '';
+  export let subtitle = '';
   export let opacity = 1;
 </script>
 
@@ -14,8 +14,8 @@
     <span class="phase-number">Phase {number}</span>
   {/if}
   <h2>{title}</h2>
-  {#if metaphor}
-    <p class="metaphor">{metaphor}</p>
+  {#if subtitle}
+    <p class="subtitle">{subtitle}</p>
   {/if}
 </header>
 
@@ -37,8 +37,7 @@
     margin: var(--space-xs) 0;
   }
 
-  .metaphor {
-    font-style: italic;
+  .subtitle {
     color: var(--color-slate);
   }
 </style>

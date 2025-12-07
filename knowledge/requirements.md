@@ -19,12 +19,12 @@ Stoßen über Social Media, Konferenzen oder Publikationen auf die Seite. Wollen
 
 ## Die vier Phasen (Kurzreferenz)
 
-| Phase | Name | Metapher | Kern |
-|-------|------|----------|------|
-| 1 | Vorbereitung | Mise en place | Materialien sammeln (TEI, XML, Notizen) |
-| 2 | Exploration | Kartierung | Datenstrukturen untersuchen, Entitäten identifizieren |
-| 3 | Destillation | Reduktion | Wissen in kompakte Markdown-Dokumente überführen |
-| 4 | Implementation | Ping-Pong | Iterativer Dialog mit LLM, Validierung, Rückschleifen |
+| Phase | Name | Beschreibung |
+|-------|------|--------------|
+| 1 | Vorbereitung | Materialsammlung (TEI, XML, Notizen) |
+| 2 | Exploration | Datenanalyse, Entitäten identifizieren |
+| 3 | Destillation | Wissenskomprimierung in Markdown-Dokumente |
+| 4 | Implementation | Iterative Entwicklung mit LLM, Validierung, Rückschleifen |
 
 Ausführliche Beschreibung: [knowledge.md#die-vier-phasen](knowledge.md#die-vier-phasen)
 

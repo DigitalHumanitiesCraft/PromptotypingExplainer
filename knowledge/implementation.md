@@ -223,25 +223,25 @@ export const phases = [
   {
     id: 'phase1',
     title: 'Vorbereitung',
-    metaphor: 'Mise en place',
+    subtitle: 'Materialsammlung',
     artifacts: ['XML', 'PDF', 'CSV', 'Notizen'],
   },
   {
     id: 'phase2',
     title: 'Exploration',
-    metaphor: 'Kartierung',
+    subtitle: 'Datenanalyse',
     entities: ['Person', 'Ort', 'Zeit', 'Relation'],
   },
   {
     id: 'phase3',
     title: 'Destillation',
-    metaphor: 'Reduktion',
+    subtitle: 'Wissenskomprimierung',
     documents: ['data.md', 'user-story.md', 'context.md'],
   },
   {
     id: 'phase4',
     title: 'Implementation',
-    metaphor: 'Ping-Pong',
+    subtitle: 'Iterative Entwicklung',
   },
 ];
 ```

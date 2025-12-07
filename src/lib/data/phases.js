@@ -11,7 +11,7 @@ export const phases = [
     id: 'phase1',
     number: 1,
     title: 'Vorbereitung',
-    metaphor: 'Mise en place',
+    subtitle: 'Materialsammlung',
     description: 'Sammlung aller relevanten Materialien.',
     artifacts: [
       { type: 'xml', label: 'TEI/XML' },
@@ -24,7 +24,7 @@ export const phases = [
     id: 'phase2',
     number: 2,
     title: 'Exploration',
-    metaphor: 'Kartierung',
+    subtitle: 'Datenanalyse',
     description: 'Untersuchung der Datenstrukturen.',
     entities: [
       { type: 'person', label: 'Person' },
@@ -37,7 +37,7 @@ export const phases = [
     id: 'phase3',
     number: 3,
     title: 'Destillation',
-    metaphor: 'Reduktion',
+    subtitle: 'Wissenskomprimierung',
     description: 'Überführung in kompakte Markdown-Dokumente.',
     documents: [
       { name: 'data.md', purpose: 'Struktur und Semantik der Forschungsdaten' },
@@ -50,7 +50,7 @@ export const phases = [
     id: 'phase4',
     number: 4,
     title: 'Iterative Implementation',
-    metaphor: 'Ping-Pong',
+    subtitle: 'Iterative Entwicklung',
     description: 'Der eigentliche Promptotyping-Dialog beginnt.',
     closingText: 'Vom Wissen zum Werkzeug.',
   },

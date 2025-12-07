@@ -29,9 +29,9 @@ Struktur der Scrollytelling-Website für Promptotyping.
 
 ## Phase 1: Preparation (5 Steps)
 
-**Metapher:** Mise en place
+**Untertitel:** Materialsammlung
 
-1. Titel + Metapher erscheint
+1. Titel + Untertitel erscheint
 2. Leerer Arbeitsbereich
 3. Quellen erscheinen an Rändern (XML, PDF, CSV, Notizen)
 4. Quellen bewegen sich zur Mitte
@@ -43,9 +43,9 @@ Struktur der Scrollytelling-Website für Promptotyping.
 
 ## Phase 2: Exploration (4 Steps)
 
-**Metapher:** Kartierung
+**Untertitel:** Datenanalyse
 
-1. Titel + Metapher erscheint
+1. Titel + Untertitel erscheint
 2. Zoom auf Dokument, Farbcodierung zeigt Struktur
 3. Entitäten lösen sich (Person, Ort, Zeit, Relation)
 4. Erste Interface-Skizzen, Fragezeichen: "Welche Fragen?"
@@ -56,9 +56,9 @@ Struktur der Scrollytelling-Website für Promptotyping.
 
 ## Phase 3: Destillation (4 Steps)
 
-**Metapher:** Reduktion
+**Untertitel:** Wissenskomprimierung
 
-1. Titel + Metapher erscheint
+1. Titel + Untertitel erscheint
 2. Drei-Spalten: Stapel → Vault → Skizzen
 3. Partikel fließen, Dokumente entstehen (DATA.md, REQUIREMENTS.md)
 4. Vault pulsiert: "Destilliertes Wissen. Bereit für das LLM."
@@ -69,9 +69,9 @@ Struktur der Scrollytelling-Website für Promptotyping.
 
 ## Phase 4: Implementation (5 Steps)
 
-**Metapher:** Ping-Pong
+**Untertitel:** Iterative Entwicklung
 
-1. Titel + Metapher erscheint
+1. Titel + Untertitel erscheint
 2. Layout: Vault → Chat → Browser
 3. Erster Prompt (Terracotta), LLM antwortet (Slate Grey), Code erscheint
 4. Fehler (rotes X) → Korrektur → Iteration (orange Spinner)

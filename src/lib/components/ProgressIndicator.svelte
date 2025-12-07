@@ -31,7 +31,7 @@
 
   // Sub-steps for each phase (matching animation thresholds in scenes)
   const phaseSteps = [
-    ['Definition', 'System 1.42', 'Herausforderung', 'Methodik', 'Phasen'],
+    ['Definition', 'Kernprinzip', 'Methodik', 'Phasen'],
     ['Titel', 'Text', 'Sammeln', 'Zusammenführen', 'Workspace'],
     ['DATA', 'Dialog', 'Exploration', 'Entitäten'],
     ['Requirements', 'Layout', 'Partikel', 'Dokumente'],

@@ -51,7 +51,7 @@
   <SceneHeader
     number={2}
     title={phase.title}
-    metaphor={phase.metaphor}
+    subtitle={phase.subtitle}
     opacity={titleOpacity}
   />
 

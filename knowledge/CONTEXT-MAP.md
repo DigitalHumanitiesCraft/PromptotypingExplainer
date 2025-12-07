@@ -24,7 +24,7 @@ Detaillierte Methodenbeschreibung mit wissenschaftlichen Quellen:
 |---------|--------|
 | 00-index.md | Abstract, Navigation |
 | 01-introduction.md | Frontier-LLM, Forschungsfragen |
-| 02-theoretical-foundation.md | System 1.42, Co-Intelligence |
+| 02-theoretical-foundation.md | Theoretische Grundlagen, Co-Intelligence |
 | 03-methodology.md | 6-Phasen-Modell (Artefakte), Prompting-Strategien, Savepoints |
 | 04-scholar-centered-design.md | UCD/SCD-Synthese |
 | 05-case-studies.md | 7 Praxisberichte mit Demo-Links |

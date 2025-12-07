@@ -148,6 +148,21 @@ export const glossary = {
     definition: 'Eine qualitative, intuitionsbasierte Evaluationsmethode für LLM-Outputs, bei der menschliche Experten die Plausibilität, den Ton und die Gesamtqualität einer Antwort subjektiv beurteilen – komplementär zu quantitativen Benchmarks.',
     tags: ['evaluation'],
     source: 'Praxisbegriff'
+  },
+  'system-142': {
+    term: 'System 1.42',
+    en: 'System 1.42',
+    definition: 'Eine heuristische Charakterisierung von LLMs als hybride Systeme zwischen Kahnemans System 1 (intuitiv) und System 2 (analytisch). Sie erzeugen plausible Antworten ohne verlässliche Selbstprüfung – "halluzinierende Reasoner".',
+    tags: ['fundamentals', 'theory'],
+    source: 'Pollin 2025',
+    link: 'https://dhcraft.org/excellence/blog/System1-42/'
+  },
+  'critical-expert': {
+    term: 'Critical Expert in the Loop',
+    en: 'Critical Expert in the Loop',
+    definition: 'Der Mensch als kritischer Validator im Promptotyping-Prozess, der aktiv Sycophancy und Konfabulationen erkennt und korrigiert. Domänenwissen ist essentiell für die Qualitätssicherung.',
+    tags: ['methodology'],
+    source: 'Pollin & Steiner 2025'
   }
 };
 
@@ -190,5 +205,9 @@ export const termToId = {
   'embedding': 'embedding',
   'embeddings': 'embedding',
   'vibe check': 'vibe-check',
-  'vibe-check': 'vibe-check'
+  'vibe-check': 'vibe-check',
+  'system 1.42': 'system-142',
+  'system142': 'system-142',
+  'critical expert': 'critical-expert',
+  'critical expert in the loop': 'critical-expert'
 };

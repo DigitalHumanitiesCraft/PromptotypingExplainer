@@ -10,10 +10,10 @@ Scrollytelling-Website zur Erklärung der **Promptotyping**-Methodik für LLM-ge
 
 Promptotyping ist eine vierphasige Methodik:
 
-1. **Vorbereitung** (Mise en place) – Sammlung aller Materialien
-2. **Exploration** (Kartierung) – Untersuchung der Datenstrukturen
-3. **Destillation** (Reduktion) – Kompakte Markdown-Dokumente
-4. **Iterative Implementation** (Ping-Pong) – Der eigentliche Dialog
+1. **Vorbereitung** – Materialsammlung
+2. **Exploration** – Datenanalyse
+3. **Destillation** – Wissenskomprimierung
+4. **Iterative Implementation** – Iterative Entwicklung
 
 ## Tech Stack
 

@@ -4,10 +4,10 @@
   // Phase metadata
   const phaseData = [
     { number: null, title: 'Promptotyping', subtitle: 'Einführung' },
-    { number: 1, title: 'Vorbereitung', subtitle: 'Mise en place' },
-    { number: 2, title: 'Exploration', subtitle: 'Kartierung' },
-    { number: 3, title: 'Destillation', subtitle: 'Reduktion' },
-    { number: 4, title: 'Implementation', subtitle: 'Ping-Pong' },
+    { number: 1, title: 'Vorbereitung', subtitle: 'Materialsammlung' },
+    { number: 2, title: 'Exploration', subtitle: 'Datenanalyse' },
+    { number: 3, title: 'Destillation', subtitle: 'Wissenskomprimierung' },
+    { number: 4, title: 'Implementation', subtitle: 'Iterative Entwicklung' },
     { number: null, title: 'Praxis', subtitle: 'Case Studies' },
   ];
 
