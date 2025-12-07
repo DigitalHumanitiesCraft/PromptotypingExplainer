@@ -46,7 +46,7 @@
   ];
 
   const researchGaps = [
-    { label: 'Empirie', text: 'Validierung durch Kontrollgruppen und messbare Metriken fehlt.' },
+    { label: 'Evaluierung', text: 'Bisher existieren nur einzelne Fallbeispiele. Systematische Bewertungskriterien fehlen – am ehesten über Vibe Checks und Reviews (vgl. RIDE).' },
     { label: 'Generalisierbarkeit', text: 'Übertragbarkeit auf externe Teams und andere Disziplinen unbewiesen.' },
     { label: 'Skills Atrophy', text: 'Gefahr des Verlernens von Coding-Skills muss untersucht werden.' },
     { label: 'Kosten-Nutzen', text: 'Zeitaufwand für Dokumentation vs. Effizienzgewinn ist offen.' }

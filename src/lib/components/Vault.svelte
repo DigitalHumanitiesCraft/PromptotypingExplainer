@@ -26,6 +26,10 @@
   function getCategoryStyle(category) {
     return categoryStyles[category] || categoryStyles.context;
   }
+
+  function isCaseStudy(file) {
+    return file.category === 'case-study';
+  }
 </script>
 
 <section class="vault-page" id="vault">
@@ -120,6 +124,14 @@
             </div>
           {/if}
 
+          <!-- Datenformat für Case Studies -->
+          {#if isCaseStudy(selectedFile) && selectedFile.dataFormat}
+            <div class="data-format-section">
+              <strong>Datenformat:</strong>
+              <code class="data-format">{selectedFile.dataFormat}</code>
+            </div>
+          {/if}
+
           {#if selectedFile.highlights}
             <div class="preview-highlights">
               <strong>Inhalte:</strong>
@@ -131,14 +143,40 @@
             </div>
           {/if}
 
-          <a
-            href="https://github.com/DigitalHumanitiesCraft/PromptotypingExplainer/blob/main/knowledge/{selectedFile.name}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="github-link"
-          >
-            Auf GitHub ansehen →
-          </a>
+          <!-- Links für Case Studies -->
+          {#if isCaseStudy(selectedFile)}
+            <div class="case-study-links">
+              {#if selectedFile.link}
+                <a
+                  href={selectedFile.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="demo-link"
+                >
+                  Demo ansehen →
+                </a>
+              {/if}
+              {#if selectedFile.github}
+                <a
+                  href={selectedFile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="github-link secondary"
+                >
+                  GitHub →
+                </a>
+              {/if}
+            </div>
+          {:else}
+            <a
+              href="https://github.com/DigitalHumanitiesCraft/PromptotypingExplainer/blob/main/knowledge/{selectedFile.name}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github-link"
+            >
+              Auf GitHub ansehen →
+            </a>
+          {/if}
         {:else}
           <div class="preview-placeholder">
             <span class="placeholder-icon" aria-hidden="true"></span>
@@ -471,6 +509,62 @@
   .github-link:hover {
     background: var(--color-terracotta);
     color: white;
+  }
+
+  .github-link.secondary {
+    background: transparent;
+    color: var(--color-slate);
+    border-color: var(--color-slate);
+  }
+
+  .github-link.secondary:hover {
+    background: var(--color-slate);
+    color: white;
+  }
+
+  /* Data Format Section */
+  .data-format-section {
+    margin-bottom: var(--space-md);
+    font-size: 0.9rem;
+  }
+
+  .data-format-section strong {
+    color: var(--color-black);
+  }
+
+  .data-format {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: rgba(96, 125, 139, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: var(--space-xs);
+  }
+
+  /* Case Study Links */
+  .case-study-links {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .demo-link {
+    display: inline-block;
+    color: white;
+    background: var(--color-terracotta);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-terracotta);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .demo-link:hover {
+    background: #a04a32;
+    border-color: #a04a32;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(191, 91, 62, 0.3);
   }
 
   .preview-placeholder {

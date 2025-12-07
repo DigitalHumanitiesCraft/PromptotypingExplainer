@@ -1,11 +1,5 @@
 <script>
   import { fade, fly, scale } from 'svelte/transition';
-  import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 </script>
 
 <div class="outro-zusammenfassung">
@@ -26,15 +20,6 @@
       <strong>Critical Expert in the Loop</strong>: Domänenexpert:innen bleiben unverzichtbar.
       Sie validieren Outputs, erkennen Halluzinationen und steuern die fachliche Qualität.
     </p>
-  </div>
-
-  <div class="limitations-trigger" in:fade={{ delay: 500, duration: 400 }}>
-    <DeepDiveTrigger
-      label="Grenzen & Limitationen"
-      deepDiveId="limitations"
-      variant="block"
-      on:open={handleDeepDive}
-    />
   </div>
 
   <div class="cta" in:scale={{ duration: 400, delay: 600 }}>
@@ -77,11 +62,6 @@
 
   .text-card {
     max-width: 700px;
-  }
-
-  .limitations-trigger {
-    max-width: 400px;
-    width: 100%;
   }
 
   .cta {

@@ -448,6 +448,293 @@ export const deepDives = {
         <strong>Quelle:</strong> Mollick, E. (2024): <em>Co-Intelligence: Living and Working with AI</em>. Portfolio.
       </div>
     `
+  },
+
+  // === CASE STUDY DEEP DIVES ===
+
+  'case-correspexplorer': {
+    id: 'case-correspexplorer',
+    title: 'Case Study: CorrespExplorer',
+    content: `
+      <h3>Explorationstool für Briefkorrespondenzen</h3>
+      <p>
+        Interaktives Visualisierungstool für Korrespondenznetzwerke basierend auf dem
+        <strong>CMIF-Metadatenstandard</strong> (Correspondence Metadata Interchange Format).
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> CMIF/XML – standardisiertes Austauschformat für Briefmetadaten</li>
+        <li><strong>Umfang:</strong> Variabel je nach Quelldatensatz</li>
+        <li><strong>Semantik:</strong> Personen, Orte, Datierungen, Briefbeziehungen</li>
+      </ul>
+
+      <h3>Visualisierungen</h3>
+      <ul>
+        <li><strong>Netzwerkgraph:</strong> Korrespondenzbeziehungen als interaktives Netzwerk</li>
+        <li><strong>Zeitachse:</strong> Chronologische Verteilung der Korrespondenz</li>
+        <li><strong>Kartenansicht:</strong> Geographische Visualisierung von Absende- und Empfangsorten</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <p>
+        Das Projekt diente als Basis-Case Study für die Entwicklung der Promptotyping-Methodik.
+        Es demonstriert, wie ein standardisiertes Metadatenformat (CMIF) direkt in ein
+        interaktives Explorationstool überführt werden kann.
+      </p>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://dhcraft.org/CorrespExplorer" target="_blank">Live Demo</a><br>
+        <a href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer" target="_blank">GitHub Repository</a>
+      </div>
+    `
+  },
+
+  'case-lucina': {
+    id: 'case-lucina',
+    title: 'Case Study: Lucina Edition',
+    content: `
+      <h3>Digitale Edition neulateinischer Gedichte</h3>
+      <p>
+        Wissenschaftliche digitale Edition von Madrid BN Mss. 6028 mit neulateinischen Gedichten
+        aus dem Jahr 1474. <strong>TEI P5-konforme</strong> Edition mit Text-Bild-Synchronisation.
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> TEI/XML – Text Encoding Initiative Standard</li>
+        <li><strong>Umfang:</strong> 128 Gedichte, 2.224 Verse</li>
+        <li><strong>Ursprung:</strong> .docx und .pdf als Datenursprung, konvertiert zu TEI</li>
+      </ul>
+
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Text-Bild-Synchronisation:</strong> Faksimile-Ansicht mit Transkription</li>
+        <li><strong>Prosopographische Datenbank:</strong> Identifikation historischer Personen und Orte</li>
+        <li><strong>Metrische Analyse:</strong> Elegische Distichen, Sapphische Strophen, Hendekasyllaben</li>
+        <li><strong>Kritischer Apparat:</strong> Fußnoten und Varianten</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <table>
+        <thead><tr><th>Aspekt</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Iterationen</strong></td><td>5 Promptotyping Iterationen (edition-2 bis edition-5)</td></tr>
+          <tr><td><strong>Zeitaufwand</strong></td><td>~25 Stunden</td></tr>
+          <tr><td><strong>LLMs</strong></td><td>Claude Opus 4.1, Gemini 2.5 Pro, GPT-5</td></tr>
+          <tr><td><strong>Besonderheit</strong></td><td>Multi-LLM-Workflow mit LLM as a Judge</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Metrische Analyse ohne Expertenwissen umgesetzt auf Basis einer Deep Research Ausarbeitung.
+        2 Meetings mit Domänenexpertin und Einarbeitung von Expertinnen-Feedback.
+      </p>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://chpollin.github.io/diged-neolat/edition-5/web/" target="_blank">Live Demo (Edition 5)</a><br>
+        <a href="https://github.com/chpollin/diged-neolat" target="_blank">GitHub Repository</a><br>
+        <a href="https://youtu.be/0DtX0pLv4TA" target="_blank">Video: TEI-Edition aus Word in 60 Minuten</a>
+      </div>
+    `
+  },
+
+  'case-kriminalmuseum': {
+    id: 'case-kriminalmuseum',
+    title: 'Case Study: Kriminalmuseum',
+    content: `
+      <h3>Digitales Archiv der kriminalistischen Sammlung</h3>
+      <p>
+        Sammlungsexplorer für das Hans Gross Kriminalmuseum Graz mit historischen Fallakten
+        und Beweisobjekten aus der Frühzeit der wissenschaftlichen Kriminologie.
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> TEI + LIDO/XML</li>
+        <li><strong>Umfang:</strong> 3.892 Objekte (1.657 Karteikarten + 2.235 Objekte)</li>
+        <li><strong>Semantik:</strong> TEI-kodierte Fallkarten + LIDO-kodierte Objektmetadaten</li>
+      </ul>
+
+      <h3>Interface-Paradigmen</h3>
+      <ul>
+        <li><strong>Traditionelle Suche:</strong> Facettierte Suche und Filterung</li>
+        <li><strong>Räumliche Exploration:</strong> Canvas-basierte 2D-Visualisierung</li>
+        <li><strong>Layout-Algorithmen:</strong> Verschiedene Anordnungsoptionen für intuitive Navigation</li>
+        <li><strong>Spatial Search:</strong> QuadTree-Optimierung für performante Exploration</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <table>
+        <thead><tr><th>Aspekt</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Iterationen</strong></td><td>2 Promptotyping Iterationen im Abstand von 2 Monaten</td></tr>
+          <tr><td><strong>Zeitaufwand</strong></td><td>~10 Stunden (8h + 2h)</td></tr>
+          <tr><td><strong>LLMs</strong></td><td>Claude Opus 4.0 (ohne Claude Code), Claude Sonnet 4.5 (Claude Code)</td></tr>
+          <tr><td><strong>Besonderheit</strong></td><td>Mehr Vibe Coding als Promptotyping; experimentelle Interfaces</td></tr>
+        </tbody>
+      </table>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://chpollin.github.io/km/collection-explorer.html" target="_blank">Collection Explorer</a><br>
+        <a href="https://github.com/chpollin/km" target="_blank">GitHub Repository</a>
+      </div>
+    `
+  },
+
+  'case-cvma': {
+    id: 'case-cvma',
+    title: 'Case Study: CVMA Glasmalerei',
+    content: `
+      <h3>Annotations-Tool für mittelalterliche Glasmalerei</h3>
+      <p>
+        Wissenschaftliches Annotations-Tool für Glasfenster-Artefakte aus dem
+        <strong>Corpus Vitrearum Medii Aevi</strong> (CVMA) mit Integration des NFDI4Culture Knowledge Graph.
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> JSON-LD/SPARQL</li>
+        <li><strong>Quelle:</strong> CVMA Datensatz via NFDI4Culture Knowledge Graph</li>
+        <li><strong>Umfang:</strong> 29MB CVMA Datensatz</li>
+        <li><strong>Semantik:</strong> Kontrolliertes Vokabular für ikonographische Subjekte</li>
+      </ul>
+
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Multi-Kriterien-Filterung:</strong> Periode, Geographie, Ikonographie, Elementtypen</li>
+        <li><strong>6 Annotationskategorien:</strong> Wissenschaftliche Klassifikation</li>
+        <li><strong>Export/Import:</strong> Für wissenschaftliche Auswertungen</li>
+        <li><strong>SPARQL-Integration:</strong> Direkte Abfragen aus dem Knowledge Graph</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <table>
+        <thead><tr><th>Aspekt</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Iterationen</strong></td><td>2 Promptotyping Iterationen (version-1, version-2)</td></tr>
+          <tr><td><strong>Zeitaufwand</strong></td><td>~8 Stunden</td></tr>
+          <tr><td><strong>LLMs</strong></td><td>Claude Opus 4.1 (Chat + Claude Code)</td></tr>
+          <tr><td><strong>Besonderheit</strong></td><td>Claude performte exzellent mit SPARQL-Queries</td></tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Co-Intelligence Beispiel:</strong> Iterative SPARQL-Query-Verfeinerung basierend auf
+        Claude's Output demonstriert Ethan Mollicks Co-Intelligence Konzept.
+      </p>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://chpollin.github.io/stained-glass-metadata-annotation-tool/docs/version-2/" target="_blank">Live Demo</a><br>
+        <a href="https://github.com/chpollin/stained-glass-metadata-annotation-tool" target="_blank">GitHub Repository</a><br>
+        <a href="https://docs.google.com/presentation/d/1wjVx-yLqZXBjw1me-Ap1q6agE_Vj0Te_5CFN3PmW0kk/edit?usp=sharing" target="_blank">Slides</a>
+      </div>
+    `
+  },
+
+  'case-aldersbach': {
+    id: 'case-aldersbach',
+    title: 'Case Study: Aldersbach',
+    content: `
+      <h3>Dashboard für historische Finanztransaktionen</h3>
+      <p>
+        Interaktives Web-Dashboard zur Exploration historischer Finanztransaktionen der
+        <strong>Zisterzienserabtei Aldersbach</strong> aus dem Jahr 1557.
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> RDF/XML + Bookkeeping-Ontologie</li>
+        <li><strong>Umfang:</strong> 1000+ Transaktionen, 2.3MB primärer Datensatz</li>
+        <li><strong>Semantik:</strong> Mittelalterliche Finanztransaktionen, Personen, Orte</li>
+      </ul>
+
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Multi-Währungssystem:</strong> Florin (f), Schilling (s), Denarius (d), Groschen (gr)</li>
+        <li><strong>Historische Konversion:</strong> Approximative Währungsumrechnung</li>
+        <li><strong>NER-Extraktion:</strong> Personen und Orte aus mittelhochdeutschen Texten</li>
+        <li><strong>Kategorisierung:</strong> Einnahmen/Ausgaben mit Fokus auf Getreidehandel</li>
+        <li><strong>Pagination:</strong> Performance-Optimierung (50 Transaktionen pro Seite)</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <table>
+        <thead><tr><th>Aspekt</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Iterationen</strong></td><td>1 Promptotyping Iteration</td></tr>
+          <tr><td><strong>Zeitaufwand</strong></td><td>~8 Stunden</td></tr>
+          <tr><td><strong>LLMs</strong></td><td>Claude Opus 4.0 (Chat + Implementation)</td></tr>
+          <tr><td><strong>Architektur</strong></td><td>Frontend-only mit Vanilla JavaScript</td></tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Besonderheit:</strong> Umfassende Dokumentationsstruktur mit FIXES.md für
+        systematische Fehlerkorrektur und testing-strategy.md für Test-driven Development.
+      </p>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://chpollin.github.io/depcha-aldersbach" target="_blank">Live Demo</a><br>
+        <a href="https://github.com/chpollin/depcha-aldersbach" target="_blank">GitHub Repository</a>
+      </div>
+    `
+  },
+
+  'case-szd': {
+    id: 'case-szd',
+    title: 'Case Study: SZD Annotation',
+    content: `
+      <h3>Timeline-basiertes Annotationstool</h3>
+      <p>
+        Annotationstool für die digitale Nachlassrekonstruktion
+        <strong>Stefan Zweig Digital</strong> des Literaturarchivs Salzburg.
+      </p>
+
+      <h3>Datengrundlage</h3>
+      <ul>
+        <li><strong>Format:</strong> XML/GAMS (Geisteswissenschaftliches Asset Management System)</li>
+        <li><strong>Quelle:</strong> Korrespondenzdaten aus Stefan Zweig Digital</li>
+        <li><strong>Semantik:</strong> Titel, Datum, Ersteller, Mitwirkende</li>
+      </ul>
+
+      <h3>Features</h3>
+      <ul>
+        <li><strong>Timeline-Visualisierung:</strong> Chronologische Darstellung der Korrespondenzen</li>
+        <li><strong>Annotation:</strong> Forschungsstatus, Tags und Notizen</li>
+        <li><strong>LocalStorage:</strong> Browserbasierte Datenhaltung</li>
+        <li><strong>Export/Import:</strong> JSON für individuelle Forschungsarbeit</li>
+      </ul>
+
+      <h3>Promptotyping-Prozess</h3>
+      <table>
+        <thead><tr><th>Aspekt</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Iterationen</strong></td><td>1 Promptotyping Iteration (experimentell)</td></tr>
+          <tr><td><strong>Zeitaufwand</strong></td><td>~2 Stunden</td></tr>
+          <tr><td><strong>LLMs</strong></td><td>Claude 4 Sonnet</td></tr>
+          <tr><td><strong>Ansatz</strong></td><td>"Critical Vibing" – strukturiertes Vibe Coding</td></tr>
+        </tbody>
+      </table>
+      <p>
+        <strong>Experimenteller Charakter:</strong> Keine separaten Promptotyping Documents erstellt.
+        Alle Anforderungen in einem strukturierten Prompt mit XML-Beispieldaten.
+        Screenshot der Original-Website als Design-Referenz verwendet.
+      </p>
+      <p>
+        <strong>Erkenntnis:</strong> Präzises technisches Grundverständnis (Begriffe wie "fetchen",
+        "Single Page Application") lenkt das LLM effektiv in die richtige Richtung.
+      </p>
+
+      <div class="reference">
+        <strong>Links:</strong><br>
+        <a href="https://dhcraft.org/excellence/promptotyping/szd-annotation-timeline/" target="_blank">Live Demo</a><br>
+        <a href="https://github.com/DigitalHumanitiesCraft/excellence/tree/main/promptotyping/szd-annotation-timeline" target="_blank">GitHub Repository</a><br>
+        <a href="https://dhcraft.org/excellence/blog/Critical-Vibing-Claude-4/" target="_blank">Blog: Critical Vibing</a>
+      </div>
+    `
   }
 };
 

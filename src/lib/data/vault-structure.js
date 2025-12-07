@@ -3,6 +3,8 @@
  * Dieses Projekt verwendet seinen eigenen Vault als Meta-Beispiel
  */
 
+import { caseStudies } from './case-studies.js';
+
 export const vaultStructure = {
   name: 'knowledge',
   type: 'folder',
@@ -126,6 +128,21 @@ export const vaultStructure = {
           description: 'Literaturverzeichnis'
         }
       ]
+    },
+    {
+      name: 'case-studies/',
+      type: 'folder',
+      description: 'Praxisbeispiele aus der Promptotyping-Methodik',
+      children: caseStudies.map(study => ({
+        name: `${study.id}.md`,
+        type: 'file',
+        category: 'case-study',
+        description: study.abstract,
+        purpose: `Case Study: ${study.name}`,
+        link: study.link,
+        github: study.github,
+        dataFormat: study.dataFormat
+      }))
     }
   ]
 };
@@ -156,7 +173,15 @@ export const categoryStyles = {
     color: '#9C27B0',
     icon: 'doc',
     label: 'Paper'
+  },
+  'case-study': {
+    color: '#2196F3',
+    icon: 'cs',
+    label: 'Case Study'
   }
 };
+
+// Re-export für einfachen Zugriff
+export { caseStudies };
 
 export default vaultStructure;

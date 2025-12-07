@@ -8,7 +8,10 @@
       "Bash(git commit:*)",
       "Bash(mkdir:*)",
       "Bash(timeout 10 npm run dev:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git push)",
+      "Bash(xcopy:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

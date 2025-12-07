@@ -1,56 +1,71 @@
 <script>
-  import { fade, fly } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
+  import { caseStudies } from '../../../data/case-studies.js';
+  import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import { openDeepDive } from '../../../stores/deepDive.js';
 
-  const examples = [
-    {
-      name: 'CorrespExplorer',
-      description: 'CMIF-Korrespondenzdaten → Netzwerk, Timeline, Karte',
-      link: 'https://dhcraft.org/CorrespExplorer',
-    },
-    {
-      name: 'Kriminalmuseum',
-      description: 'Sammlungsdaten → Dual-Interface Explorer',
-      link: 'https://chpollin.github.io/km/collection-explorer.html',
-    },
-    {
-      name: 'CVMA Glasmalerei',
-      description: 'Glasfenster-Metadaten → Annotations-Viewer',
-      link: 'https://chpollin.github.io/stained-glass-metadata-annotation-tool/docs/version-2/',
-    },
-    {
-      name: 'Aldersbach',
-      description: 'TEI-Klosterrechnungen → Annotations-Tool',
-      link: 'https://chpollin.github.io/depcha-aldersbach',
-    },
-  ];
+  // Map case study IDs to deep dive IDs
+  const deepDiveMap = {
+    'correspexplorer': 'case-correspexplorer',
+    'lucina': 'case-lucina',
+    'kriminalmuseum': 'case-kriminalmuseum',
+    'cvma-glasmalerei': 'case-cvma',
+    'aldersbach': 'case-aldersbach',
+    'szd-annotation': 'case-szd'
+  };
+
+  function handleDeepDive(event) {
+    openDeepDive(event.detail.id);
+  }
 </script>
 
 <div class="outro-beispiele">
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="section-label">Praxis</span>
     <h2>Case Studies</h2>
-    <p class="subtitle">Promptotyping in Aktion</p>
   </header>
 
   <div class="examples-grid">
-    {#each examples as example, i}
+    {#each caseStudies as study, i}
       <a
-        href={example.link}
+        href={study.link}
         target="_blank"
         rel="noopener"
         class="example-card"
         in:fly={{ y: 30, duration: 400, delay: 200 + i * 100 }}
       >
-        <h3>{example.name}</h3>
-        <p class="description">{example.description}</p>
+        <div class="card-thumbnail">
+          <img
+            src={study.thumbnail}
+            alt="{study.name} Screenshot"
+            loading="lazy"
+          />
+          <span class="type-badge">{study.type}</span>
+        </div>
+        <div class="card-content">
+          <h3>{study.name}</h3>
+          <p class="abstract">{study.abstract}</p>
+          <span class="data-format">{study.dataFormat}</span>
+        </div>
+
         <div class="card-footer">
-          <span class="link-arrow">Demo ansehen →</span>
+          <span class="link-arrow">Demo ansehen</span>
+          <span class="arrow-icon">→</span>
         </div>
       </a>
     {/each}
   </div>
 
+  <div class="deep-dive-triggers" in:fly={{ y: 20, duration: 400, delay: 800 }}>
+    {#each caseStudies as study}
+      <DeepDiveTrigger
+        label={study.name}
+        deepDiveId={deepDiveMap[study.id]}
+        on:open={handleDeepDive}
+      />
+    {/each}
   </div>
+</div>
 
 <style>
   .outro-beispiele {
@@ -78,56 +93,130 @@
     margin: var(--space-xs) 0;
   }
 
-  .subtitle {
-    color: var(--color-slate);
-    margin: 0;
-  }
-
   .examples-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-md);
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
   }
 
   .example-card {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
-    padding: var(--space-md);
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(96, 125, 139, 0.1) 0%, rgba(191, 91, 62, 0.05) 100%);
+  }
+
+  .card-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
+  }
+
+  .example-card:hover .card-thumbnail img {
+    transform: scale(1.05);
+  }
+
+  .card-thumbnail .type-badge {
+    position: absolute;
+    top: var(--space-xs);
+    left: var(--space-xs);
+  }
+
+  /* Subtiler Glow-Effekt bei Hover */
+  .example-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 100%,
+      rgba(191, 91, 62, 0.08) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
   .example-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     border-color: var(--color-terracotta);
   }
 
+  .example-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    padding-top: var(--space-sm);
+  }
+
+  .type-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    background: var(--color-terracotta);
+    color: white;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
   .example-card h3 {
-    color: var(--color-terracotta);
-    font-size: 1rem;
+    color: var(--color-black);
+    font-size: 0.95rem;
     margin: 0;
     text-align: left;
   }
 
-  .description {
+  .abstract {
     color: var(--color-slate);
     font-size: 0.8rem;
     margin: 0;
     text-align: left;
-    flex: 1;
-    line-height: 1.4;
+    line-height: 1.5;
+  }
+
+  /* Datenformat-Badge */
+  .data-format {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    background: rgba(96, 125, 139, 0.1);
+    border-radius: 3px;
+    color: var(--color-slate);
+    margin-top: auto;
   }
 
   .card-footer {
-    margin-top: var(--space-xs);
-    padding-top: var(--space-xs);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-xs) var(--space-md) var(--space-sm);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
@@ -139,14 +228,41 @@
     transition: opacity 0.2s;
   }
 
+  .arrow-icon {
+    color: var(--color-terracotta);
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.2s ease;
+  }
+
   .example-card:hover .link-arrow {
     opacity: 1;
   }
 
-  @media (max-width: 767px) {
+  .example-card:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .deep-dive-triggers {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--space-md);
+  }
+
+  @media (max-width: 900px) {
+    .examples-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
     .examples-grid {
       grid-template-columns: 1fr;
-      max-width: 320px;
+      max-width: 340px;
     }
   }
 </style>

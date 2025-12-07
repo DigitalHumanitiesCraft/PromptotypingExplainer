@@ -31,11 +31,6 @@
         deepDiveId="context-engineering"
         on:open={handleDeepDive}
       />
-      <DeepDiveTrigger
-        label="Critical Expert"
-        deepDiveId="critical-expert"
-        on:open={handleDeepDive}
-      />
     </div>
   </div>
 </div>

@@ -75,16 +75,6 @@
         deepDiveId="scholar-centered-design"
         on:open={handleDeepDive}
       />
-      <DeepDiveTrigger
-        label="Context Engineering"
-        deepDiveId="context-engineering"
-        on:open={handleDeepDive}
-      />
-      <DeepDiveTrigger
-        label="Grenzen & Limitationen"
-        deepDiveId="limitations"
-        on:open={handleDeepDive}
-      />
     </div>
   </div>
 </div>
