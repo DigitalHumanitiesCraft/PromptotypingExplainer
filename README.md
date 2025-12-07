@@ -18,14 +18,15 @@ Promptotyping ist eine vierphasige Methodik:
 ## Tech Stack
 
 - **Svelte 5** – Reaktives UI-Framework
-- **GSAP ScrollTrigger** – Scroll-basierte Animationen mit Pinning
 - **Vite 7** – Build-Tool und Dev-Server
+- **IntersectionObserver** – Native Scroll-Detection
 
 ## Features
 
-- **Scroll-gesteuerte Animationen** mit GSAP ScrollTrigger
+- **Step-basierte Navigation** mit IntersectionObserver
 - **Interaktives Glossar** mit Hover-Tooltips und Verbindungslinien
-- **Progress Indicator** mit gepunkteter Fortschrittslinie
+- **Deep Dives** für Vertiefungen (Scholar-Centered Design, Limitations)
+- **Progress Indicator** mit Sub-Step-Labels
 - **Responsive Design** (Desktop: Side-Panel, Mobile: Bottom-Sheet)
 - **Dynamischer Hintergrund-Gradient** basierend auf Scroll-Position
 
@@ -49,34 +50,36 @@ src/
 ├── App.svelte                    # Haupt-Layout, Hintergrund-Gradient
 ├── lib/
 │   ├── components/
-│   │   ├── Phase.svelte          # ScrollTrigger-Wrapper mit Pinning
-│   │   ├── ProgressIndicator.svelte  # Navigations-Dots
-│   │   ├── PhaseHeader.svelte    # Fixierter Header mit Fortschritt
+│   │   ├── Step.svelte           # IntersectionObserver-Wrapper
+│   │   ├── ProgressIndicator.svelte  # Navigations-Dots mit Sub-Steps
+│   │   ├── PhaseHeader.svelte    # Fixierter Header mit Phase/Step
 │   │   ├── GlossaryTerm.svelte   # Interaktive Glossar-Tooltips
-│   │   ├── scenes/               # Pro Phase eine Szene
-│   │   │   ├── IntroScene.svelte
-│   │   │   ├── Phase1Scene.svelte
-│   │   │   ├── Phase2Scene.svelte
-│   │   │   ├── Phase3Scene.svelte
-│   │   │   ├── Phase4Scene.svelte
-│   │   │   └── OutroScene.svelte
+│   │   ├── DeepDivePanel.svelte  # Modal für Vertiefungen
+│   │   ├── steps/                # Step-Komponenten pro Phase
+│   │   │   ├── intro/            # Definition, Kernprinzip, Methodik, Phasen
+│   │   │   ├── phase1/           # Titel, Rohdaten, Sammlung
+│   │   │   ├── phase2/           # Struktur, Entitäten, Fragen
+│   │   │   ├── phase3/           # Titel, Dokumente, Vault
+│   │   │   ├── phase4/           # Titel, Iteration, Vault-Update
+│   │   │   └── outro/            # Beispiele, Zusammenfassung
 │   │   ├── elements/             # Wiederverwendbare UI-Elemente
 │   │   │   ├── DocumentIcon.svelte
 │   │   │   ├── EntityIcon.svelte
 │   │   │   ├── VaultIcon.svelte
 │   │   │   ├── ChatBubble.svelte
-│   │   │   └── BrowserFrame.svelte
+│   │   │   ├── BrowserFrame.svelte
+│   │   │   └── DeepDiveTrigger.svelte
 │   │   └── blocks/               # Extrahierte Komponenten
 │   │       ├── SceneHeader.svelte
 │   │       └── AcademicBlock.svelte
 │   ├── data/
 │   │   ├── phases.js             # Phasen-Definitionen
 │   │   ├── glossary.js           # 20+ AI/LLM-Begriffe
+│   │   ├── deep-dives.js         # Deep Dive Inhalte
 │   │   └── prompts.js            # Chat-Dialoge für Phase 4
-│   ├── stores/
-│   │   └── scroll.js             # Svelte Stores für Progress/Phase
-│   └── utils/
-│       └── progressAnimations.js # fadeIn, fadeOut, lerp, etc.
+│   └── stores/
+│       ├── scroll.js             # Svelte Stores für Progress/Phase/Step
+│       └── deepDive.js           # Deep Dive State
 └── app.css                       # Design System (Slate/Terracotta)
 ```
 
