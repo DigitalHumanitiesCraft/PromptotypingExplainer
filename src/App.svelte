@@ -23,8 +23,12 @@
   import Phase2Entitaeten from './lib/components/steps/phase2/Phase2Entitaeten.svelte';
   import Phase2Fragen from './lib/components/steps/phase2/Phase2Fragen.svelte';
 
-  // Legacy Scene imports (Phase 3-4 + Outro to be migrated)
-  import Phase3Scene from './lib/components/scenes/Phase3Scene.svelte';
+  // Phase 3 Steps
+  import Phase3Titel from './lib/components/steps/phase3/Phase3Titel.svelte';
+  import Phase3Dokumente from './lib/components/steps/phase3/Phase3Dokumente.svelte';
+  import Phase3Vault from './lib/components/steps/phase3/Phase3Vault.svelte';
+
+  // Legacy Scene imports (Phase 4 + Outro to be migrated)
   import Phase4Scene from './lib/components/scenes/Phase4Scene.svelte';
   import OutroScene from './lib/components/scenes/OutroScene.svelte';
 
@@ -134,24 +138,17 @@
     <Phase2Fragen />
   </Step>
 
+  <!-- Phase 3: Destillation - 3 Steps -->
   <Step id="phase3-titel" phaseIndex={3} stepIndex={0}>
-    <div class="legacy-scene">
-      <Phase3Scene progress={0.5} />
-    </div>
+    <Phase3Titel />
   </Step>
 
   <Step id="phase3-dokumente" phaseIndex={3} stepIndex={1}>
-    <div class="placeholder-step">
-      <h2>Phase 3: .md Dokumente</h2>
-      <p>DATA.md, REQUIREMENTS.md, CONTEXT.md entstehen</p>
-    </div>
+    <Phase3Dokumente />
   </Step>
 
   <Step id="phase3-vault" phaseIndex={3} stepIndex={2}>
-    <div class="placeholder-step">
-      <h2>Phase 3: Vault</h2>
-      <p>Destilliertes Wissen für das LLM</p>
-    </div>
+    <Phase3Vault />
   </Step>
 
   <Step id="phase4-titel" phaseIndex={4} stepIndex={0}>
