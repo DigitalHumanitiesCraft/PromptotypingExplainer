@@ -347,6 +347,120 @@ project/
 
 ---
 
+## 3.7 Prompting-Strategien
+
+Promptotyping verwendet keine festgelegten Prompt-Templates, sondern **Meta-Strategien**, die situativ angewendet werden. Diese Strategien operationalisieren die Interaktion mit dem Frontier-LLM über alle Phasen hinweg.
+
+### Übersicht der Strategien
+
+| Strategie | Zweck | Anwendung |
+|-----------|-------|-----------|
+| **Reasoning** | Möglichkeitsraum öffnen | Token-Generierung zur Exploration von Optionen |
+| **LLM-Validierung** | Qualitätsprüfung | LLM zur Bewertung eigener Outputs nutzen |
+| **Expert-in-the-Loop** | Richtungskorrektur | Menschliche Intervention bei Abweichungen |
+| **LLM-as-Judge** | Unabhängige Bewertung | Zweites Frontier-LLM mit eigenem Kontext |
+| **Context Distillation** | Wissensakkumulation | Vault-Dokumentation nachziehen und kuratieren |
+| **Plan Generation** | Strukturierte Umsetzung | Pläne erzeugen und kritisch begleiten |
+
+---
+
+### Reasoning (Explorative Token-Generierung)
+
+Frontier-LLMs nutzen Token-Generierung als "Denkprozess". Das Anfordern von explizitem Reasoning öffnet den Möglichkeitsraum:
+
+```
+"Denke laut nach: Welche Ansätze gibt es für dieses Problem?"
+"Generiere drei unterschiedliche Lösungswege mit Vor- und Nachteilen"
+```
+
+**Zweck:** Vermeidung vorschneller Festlegung auf eine Lösung.
+
+---
+
+### LLM-Validierung
+
+Das LLM wird zur Prüfung seiner eigenen Outputs eingesetzt:
+
+```
+"Prüfe diesen Code auf Fehler und Inkonsistenzen"
+"Welche Edge Cases werden nicht behandelt?"
+"Sind die genannten Optionen vollständig?"
+```
+
+**Limitation:** LLMs können eigene systematische Fehler nicht zuverlässig erkennen.
+
+---
+
+### Expert-in-the-Loop Korrektur
+
+Der menschliche Experte greift aktiv ein, um das LLM in die richtige Richtung zu "schubsen":
+
+```
+"Deine Annahme X ist falsch. Im historischen Kontext gilt Y."
+"Ignoriere die moderne Kategorisierung. Verwende stattdessen..."
+```
+
+**Voraussetzung:** Domänenwissen, um falsche Annahmen überhaupt zu erkennen.
+
+---
+
+### LLM-as-Judge
+
+Ein zweites Frontier-LLM mit eigenem Kontext bewertet die Outputs des ersten:
+
+**Setup:**
+1. LLM A generiert Lösung
+2. LLM B erhält Aufgabenbeschreibung + Lösung (ohne Kontext von A)
+3. LLM B bewertet Qualität, Vollständigkeit, Korrektheit
+
+**Vorteil:** Unabhängige Perspektive, reduziert Bestätigungsfehler.
+
+---
+
+### Context Distillation
+
+Systematische Verdichtung und Kuratierung des Kontexts über Iterationen:
+
+1. **Nachziehen:** Erkenntnisse aus der aktuellen Sitzung in Vault-Dokumente übertragen
+2. **Kuratieren:** Veraltetes entfernen, Wichtiges hervorheben
+3. **Komprimieren:** Redundanzen eliminieren, auf Wesentliches fokussieren
+
+**Zweck:** Vermeidung von Context Rot, Erhalt des akkumulierten Wissens.
+
+---
+
+### Plan Generation
+
+Komplexe Aufgaben werden in explizite Pläne zerlegt:
+
+```
+"Erstelle einen Schritt-für-Schritt-Plan für die Implementierung"
+"Was sind die Abhängigkeiten zwischen den Schritten?"
+```
+
+**Kritisches Begleiten:**
+- Pläne nicht blind übernehmen
+- Jeden Schritt auf Plausibilität prüfen
+- Bei Abweichungen Plan anpassen
+
+---
+
+### Kombination der Strategien
+
+In der Praxis werden Strategien kombiniert:
+
+```
+1. Reasoning       → Optionen generieren
+2. LLM-Validierung → Optionen bewerten lassen
+3. Expert-in-the-Loop → Falsche Annahmen korrigieren
+4. Plan Generation → Gewählte Option strukturieren
+5. Context Distillation → Entscheidung dokumentieren
+```
+
+Diese Sequenz wiederholt sich iterativ über alle Phasen.
+
+---
+
 ## Kernaussagen dieses Kapitels
 
 1. Promptotyping integriert **drei Ebenen**: technisch, methodisch, epistemisch
@@ -355,6 +469,7 @@ project/
 4. Der **Critical Expert in the Loop** ist essentiell für Qualitätssicherung
 5. Das **Journal** institutionalisiert Reflexion und Nachvollziehbarkeit
 6. **Dokumentation** ist nicht Overhead, sondern Teil der Methode
+7. **Prompting-Strategien** sind Meta-Ansätze, keine festen Templates
 
 ---
 
