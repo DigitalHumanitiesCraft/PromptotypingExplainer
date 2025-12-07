@@ -253,6 +253,65 @@ export const deepDives = {
         Anthropic (2024): <em>Character Training</em>.
       </div>
     `
+  },
+
+  'limitations': {
+    id: 'limitations',
+    title: 'Grenzen, Skalierung & Overhead',
+    content: `
+      <h3>Methodische Ehrlichkeit</h3>
+      <p>
+        Promptotyping ist kein Allheilmittel. Wie jede Methode hat sie einen Sweet Spot und klare Grenzen.
+        Diese transparent zu machen, ist Teil des wissenschaftlichen Anspruchs.
+      </p>
+
+      <h3>1. Der Skalierungs-Schwellenwert</h3>
+      <p>
+        Die Methode glänzt bei fokussierten Tools und Prototypen (<strong>Sweet Spot: 1-20 Core-Files</strong>).
+        Bei großen Systemen (&gt;50 Markdown-Dateien im Vault) kippt die Effizienz:
+      </p>
+      <ul>
+        <li><strong>Koordinationsaufwand:</strong> Die Synchronisation zwischen Code und Dokumentation wird exponentiell aufwendiger.</li>
+        <li><strong>Context-Limit:</strong> Auch Frontier-LLMs verlieren bei zu vielen Referenzdateien den Fokus ("Lost in the Middle").</li>
+      </ul>
+
+      <h3>2. Der "Disziplin-Overhead"</h3>
+      <p>
+        Der größte Feind des Promptotyping ist die menschliche Bequemlichkeit.
+        Es ist verlockend, nur noch im Chat zu "fixen", ohne den Vault nachzuziehen.
+      </p>
+      <ul>
+        <li><strong>Gefahr:</strong> Der Vault veraltet (= Epistemische Schuld).</li>
+        <li><strong>Lösung:</strong> Der Mensch agiert nicht als Schreiber, sondern als Kurator.
+        Lassen Sie das LLM die Zusammenfassung für <code>DATA.md</code> schreiben, aber <em>prüfen</em> Sie sie penibel vor dem Commit.</li>
+      </ul>
+
+      <h3>3. Die Wartungslücke</h3>
+      <p>
+        Ein Prototyp ist kein Produktionssystem. Promptotyping optimiert auf <em>Erkenntnisgewinn</em>,
+        nicht auf langfristige Wartbarkeit oder Security-Compliance.
+      </p>
+      <ul>
+        <li>Prototypen sind <strong>Wegwerf-Code</strong> mit Absicht</li>
+        <li>Für Produktionssysteme: Traditionelle Software-Engineering-Prozesse</li>
+        <li>Der Wert liegt im <em>Wissen</em>, nicht im Code</li>
+      </ul>
+
+      <h3>4. Kompetenzvoraussetzungen</h3>
+      <p>
+        Promptotyping erfordert eine seltene Kombination:
+      </p>
+      <ul>
+        <li><strong>Domänenwissen:</strong> Um Konfabulationen zu erkennen</li>
+        <li><strong>Technisches Grundverständnis:</strong> Um LLM-Output zu validieren</li>
+        <li><strong>Methodische Reflexion:</strong> Um epistemische Risiken zu erkennen</li>
+      </ul>
+
+      <div class="reference">
+        <strong>Fazit:</strong> Promptotyping ist ein Werkzeug für <em>informierte</em> Nutzung,
+        nicht für blinde Delegation an KI.
+      </div>
+    `
   }
 };
 

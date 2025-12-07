@@ -1,5 +1,11 @@
 <script>
   import { fade, fly, scale } from 'svelte/transition';
+  import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import { openDeepDive } from '../../../stores/deepDive.js';
+
+  function handleDeepDive(event) {
+    openDeepDive(event.detail.id);
+  }
 </script>
 
 <div class="outro-zusammenfassung">
@@ -27,6 +33,15 @@
       <h4>Kritische Solidarität</h4>
       <p>Die Community entwickelt gemeinsam Standards</p>
     </div>
+  </div>
+
+  <div class="limitations-trigger" in:fade={{ delay: 700, duration: 400 }}>
+    <DeepDiveTrigger
+      label="Kritische Reflexion: Grenzen der Methode"
+      deepDiveId="limitations"
+      variant="block"
+      on:open={handleDeepDive}
+    />
   </div>
 
   <div class="cta" in:scale={{ duration: 400, delay: 800 }}>
@@ -111,6 +126,11 @@
     color: var(--color-slate);
     line-height: 1.4;
     margin: 0;
+  }
+
+  .limitations-trigger {
+    max-width: 400px;
+    width: 100%;
   }
 
   .cta {
