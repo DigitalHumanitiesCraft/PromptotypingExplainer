@@ -1,9 +1,15 @@
 # 1. Einleitung
 
+## 1.1 Problemstellung
+
 Die Übersetzung von Forschungsdaten in Forschungstools erfordert Zeit und technische Expertise. Frontier-LLMs können zwar Code generieren, produzieren aber ohne strukturierten Kontext generische Lösungen, die am Forschungsbedarf vorbeigehen. Das Phänomen des "Vibe Coding" (Karpathy, 2025) exemplifiziert diese Ambivalenz: intuitive Code-Generierung durch vage Prompts funktioniert, führt aber ohne Struktur zu technischen Schulden und Abhängigkeit statt Verständnis. Karpathys Mahnung, sich regelmäßig ehrlich zu fragen, ob man noch versteht, was gerade passiert, gewinnt für wissenschaftliche Kontexte besondere Bedeutung.
 
 Die Kernfrage lautet: Wie kommuniziert man Domänenwissen so an ein LLM, dass es passende Werkzeuge generiert? Nicht das Coden selbst ist die Kernkompetenz, sondern das Wissen darüber, was guter Code für Forschungszwecke ist, also Modellierung, Formalisierung, Domänenwissen und kritische Validierung.
 
+## 1.2 Forschungsfragen
+
 Diese Untersuchung adressiert drei praktische Fragenkomplexe. Erstens: Wie strukturiert man Forschungswissen für LLM-Dialoge, welche Dokumentformate funktionieren, wie viel Kontext ist optimal und wann ist Verdichtung nötig? Zweitens: Wie validiert man LLM-generierte Outputs, woran erkennt man Sycophancy, wie prüft man auf Konfabulationen und welche Rolle spielt Domänenwissen? Drittens: Wie iteriert man effektiv, wann braucht der Vault ein Update, wie dokumentiert man den Prozess und wie vermeidet man Context Rot?
 
-Promptotyping definiert sich als strukturierte Arbeitstechnik für LLM-gestützte Werkzeugentwicklung, die Context- und Requirements Engineering in einem vierphasigen Prozessmodell (Preparation, Exploration, Destillation, Implementation) synthetisiert. Es dient dazu, intuitiven Ansätzen wie dem Vibe Coding die für Forschungskontexte notwendige Strenge zu verleihen, ist jedoch explizit als exploratives Framework und nicht als bereits validierte Methode zu verstehen. Promptotyping ersetzt keine menschliche Expertise und garantiert keine Korrektheit, sondern fungiert als methodisches Gerüst für die systematische Annäherung an komplexe Problemstellungen.
+## 1.3 Promptotyping als Lösungsansatz
+
+Promptotyping ist eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-LLMs – eine strukturierte Arbeitstechnik, die Context- und Requirements Engineering in einem vierphasigen Prozessmodell (Preparation, Exploration, Destillation, Implementation) synthetisiert. Es dient dazu, intuitiven Ansätzen wie dem Vibe Coding die für Forschungskontexte notwendige Strenge zu verleihen, ist jedoch explizit als exploratives Framework zu verstehen. Promptotyping ersetzt keine menschliche Expertise, sondern macht den Experten zum kritischen Validator: Der "Critical Expert in the Loop" erkennt Sycophancy, prüft auf Konfabulationen und bringt das Domänenwissen ein, das LLMs fehlt.
