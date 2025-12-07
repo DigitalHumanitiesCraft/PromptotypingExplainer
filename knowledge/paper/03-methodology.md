@@ -465,6 +465,49 @@ Diese Sequenz wiederholt sich iterativ über alle Phasen.
 
 ---
 
+## 3.8 Savepoints und Baselines
+
+Promptotyping adaptiert Konzepte aus dem Requirements Engineering für die strukturierte Versionierung des Entwicklungsprozesses.
+
+### Begrifflichkeiten
+
+| Begriff | Herkunft | Bedeutung in Promptotyping |
+|---------|----------|---------------------------|
+| **Baseline** | Configuration Management (ISO/IEC 12207) | Eingefrorener, validierter Dokumentstand |
+| **Increment** | Iterative Entwicklung | Funktionsfähige Vorstufe des Endprodukts |
+| **Gate** | Stage-Gate (Cooper) | Validierungspunkt vor Phasenübergang |
+
+### Savepoint = Baseline + Increment + Gate
+
+Ein Savepoint markiert einen verifizierten Zustand, auf den bei Problemen zurückgegangen werden kann:
+
+```
+Phase N → [Artefakt erstellen] → [Gate: CEIL-Validierung] → [Baseline: Git-Commit] → Phase N+1
+                                         ↓
+                                    Bei Fehler: Rollback zu letzter Baseline
+```
+
+### Übergangskriterien pro Phase
+
+| Übergang | Kriterium |
+|----------|-----------|
+| CONTEXT → DATA | Projektziele und Constraints dokumentiert |
+| DATA → EXPLORATION | Datenstrukturen analysiert und spezifiziert |
+| EXPLORATION → REQUIREMENTS | Technische Machbarkeit geklärt |
+| REQUIREMENTS → IMPLEMENTATION | Anforderungen priorisiert und testbar |
+| IMPLEMENTATION → PROTOTYPE | Transformationslogik dokumentiert |
+
+### Praktische Umsetzung
+
+1. **Artefakt fertigstellen** – Dokument der aktuellen Phase abschließen
+2. **CEIL-Review** – Expertenvalidierung durchführen
+3. **Git-Commit** – Baseline einfrieren mit aussagekräftiger Message
+4. **Journal-Eintrag** – Savepoint dokumentieren
+
+> **Rollback-Prinzip:** Bei Problemen in späteren Phasen kann auf den letzten funktionierenden Savepoint zurückgegangen werden. Die Dokumentation ermöglicht das Nachvollziehen, welche Entscheidungen zur Abweichung geführt haben.
+
+---
+
 ## Kernaussagen dieses Kapitels
 
 1. Promptotyping integriert **drei Ebenen**: technisch, methodisch, epistemisch
@@ -474,6 +517,7 @@ Diese Sequenz wiederholt sich iterativ über alle Phasen.
 5. Das **Journal** institutionalisiert Reflexion und Nachvollziehbarkeit
 6. **Dokumentation** ist nicht Overhead, sondern Teil der Methode
 7. **Prompting-Strategien** sind Meta-Ansätze, keine festen Templates
+8. **Savepoints** ermöglichen strukturierte Versionierung und Rollback
 
 ---
 
