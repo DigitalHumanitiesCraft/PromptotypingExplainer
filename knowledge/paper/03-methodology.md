@@ -275,44 +275,45 @@ Objekte → Räume → Gebäude
 
 ### Funktion
 
-Das **Promptotyping Journal** dokumentiert nicht nur Entscheidungen, sondern auch Zweifel, Überraschungen und Lernprozesse. Es fungiert als Laborbuch der digitalen Geisteswissenschaften.
+Das **Promptotyping Journal** ist das Arbeitstagebuch des Projekts. Es dokumentiert Sessions mit Aufgaben und Erkenntnissen – nicht als bürokratischer Overhead, sondern als Gedächtnis des Entwicklungsprozesses.
 
 ### Struktur eines Journal-Eintrags
 
 ```markdown
-## [Datum] - [Phase] - [Sitzung Nr.]
+## [Datum] - Session [Nr.]
 
-### Kontext
-[Beschreibung der Ausgangssituation]
+### Tasks
+- [ ] Was wurde in dieser Session bearbeitet
+- [x] Was wurde abgeschlossen
 
-### Vorgehen
-**Modell:** [Verwendetes LLM]
-**Input:** [Bereitgestellte Dokumente]
-**Werkzeuge:** [Tools, IDEs, Libraries]
+### Learnings
+- Was funktioniert hat
+- Was nicht funktioniert hat
+- Überraschungen und neue Erkenntnisse
 
-### Hauptaktivität
-**Prompt:** [Prompt-Text]
-**Output:** [Zusammenfassung oder Verweis]
-
-### Validierung
-**Validator:** [Name und Rolle]
-**Methode:** [Technisch / Fachlich / LLM-as-Judge]
-**Entscheidung:** [Akzeptiert / Modifiziert / Verworfen]
-**Begründung:** [Detaillierte Einschätzung]
-
-### Probleme & Lösungen
-[Aufgetretene Schwierigkeiten]
-
-### Erkenntnisse
-- [Muster die sich bewährt haben]
-- [Was beim nächsten Mal anders]
+### Nächste Schritte
+- Was als nächstes ansteht
 
 ### Savepoint
-☐ Phase abgeschlossen
-☐ Dokumente erstellt: [Liste]
-☐ Expertenvalidierung erfolgt
-☐ Git-Commit: [Hash]
+Git-Commit: [Hash]
 ```
+
+### Skalierung für größere Projekte
+
+| Projektgröße | Journal-Struktur |
+|--------------|------------------|
+| **Klein** (1-2 Tage) | Ein JOURNAL.md |
+| **Mittel** (Wochen) | JOURNAL.md mit Phasen-Abschnitten |
+| **Groß** (Monate) | Separate Journals: JOURNAL-CONTEXT.md, JOURNAL-DATA.md, etc. |
+
+### Verdichtung
+
+Bei längeren Projekten kann das Journal destilliert werden:
+- Alte Sessions zusammenfassen
+- Nur relevante Learnings behalten
+- Redundanzen entfernen
+
+> **Prinzip:** Das Journal wächst mit dem Projekt und wird bei Bedarf verdichtet – wie die anderen Dokumente auch.
 
 ---
 
