@@ -114,6 +114,10 @@ Spacing: --space-xs bis --space-xl.
 
 Animationen: --duration-fast/normal/slow, --ease-out, --ease-in-out.
 
+Globale Utility-Klassen:
+- `.text-card` – Weiße Lesefläche mit Schatten, inkl. p-Styling und strong in Terracotta
+- `.promptotyping` – Marken-Wort-Styling (Mono, Bold, Terracotta)
+
 Bei prefers-reduced-motion werden Animationen minimiert.
 
 ---
@@ -143,6 +147,7 @@ GitHub Actions: Bei Push auf main wird gebaut und nach docs/ deployed.
 Siehe [journal.md](journal.md) für vollständiges Arbeitstagbuch.
 
 Letzte Updates:
+- 2025-12-07 Nacht: CSS-Refactoring (.text-card, .promptotyping global), Untertitel "Context Engineering: Vom Wissen zum Werkzeug"
 - 2025-12-07 Nacht: AnimatedChat für Phase 4, Meta-Beispiel, vollständiger Reasoning-Zyklus
 - 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, "Strange New Minds" im Intro, UI-Fixes
 - 2025-12-07: GSAP entfernt, Step-Architektur, ProgressIndicator redesign

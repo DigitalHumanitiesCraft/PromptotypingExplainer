@@ -71,17 +71,36 @@ body {
   backface-visibility: hidden;
 }
 
-/* Scene containers get isolation for better compositing */
-.intro-scene,
-.phase1-scene,
-.phase2-scene,
-.phase3-scene,
-.phase4-scene,
-.outro-scene {
-  contain: layout style;
-  isolation: isolate;
-  /* Smoother opacity/transform animations during scroll */
-  will-change: opacity;
+/* Reusable Content Blocks */
+.text-card {
+  background: white;
+  padding: var(--space-lg);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.text-card p {
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: var(--color-black);
+  line-height: 1.7;
+  text-align: justify;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.text-card p:last-child {
+  margin-bottom: 0;
+}
+
+.text-card strong {
+  color: var(--color-terracotta);
+}
+
+/* Promptotyping Brand Word */
+.promptotyping {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-terracotta);
+  letter-spacing: 0.02em;
 }
 
 #app {

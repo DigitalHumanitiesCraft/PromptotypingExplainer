@@ -162,9 +162,9 @@ Akzeptanzkriterien:
 
 ---
 
-## Offene Fragen
+## Beantwortete Fragen
 
-- [ ] Soll die URL unter dhcraft.org laufen oder eigenständig?
-- [ ] Soll es eine englische Version geben (v2)?
-- [ ] Wie viel echter Code wird in Phase 4 gezeigt?
-- [ ] Wird Obsidian explizit genannt oder abstrahiert ("Vault")?
+- URL: dhcraft.org/PromptotypingExplainer ✓
+- Englische Version: Nicht in v1, optional für v2
+- Phase 4 Code: AnimatedChat zeigt echten Reasoning-Zyklus als Meta-Beispiel
+- Obsidian: Abstrahiert als "Vault" (ohne Obsidian-Branding)

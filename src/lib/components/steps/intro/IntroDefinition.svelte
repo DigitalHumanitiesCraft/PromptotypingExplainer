@@ -7,7 +7,7 @@
   <div class="title-block">
     <img src={promptotypingLogo} alt="Promptotyping Logo" class="logo" />
     <h1 class="promptotyping-title">Promptotyping</h1>
-    <p class="subtitle">Strukturiertes Context Engineering mit Vibe-Coding-Elementen</p>
+    <p class="subtitle">Context Engineering: Vom Wissen zum Werkzeug</p>
   </div>
 
   <div class="definition-block">
@@ -66,13 +66,6 @@
     letter-spacing: 0.03em;
   }
 
-  .promptotyping {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    color: var(--color-terracotta);
-    letter-spacing: 0.02em;
-  }
-
   .subtitle {
     font-size: clamp(0.85rem, 1.8vw, 1.1rem);
     color: var(--color-slate);
@@ -96,10 +89,6 @@
     margin-bottom: var(--space-md);
   }
 
-  .definition strong {
-    color: var(--color-terracotta);
-  }
-
   .etymology {
     font-size: clamp(0.9rem, 1.5vw, 1rem);
     color: var(--color-slate);
@@ -113,7 +102,7 @@
     background: rgba(96, 125, 139, 0.1);
     padding: 2px 6px;
     border-radius: 3px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.9em;
   }
 

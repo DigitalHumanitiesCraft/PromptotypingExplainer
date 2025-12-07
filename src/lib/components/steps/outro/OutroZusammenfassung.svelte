@@ -11,7 +11,7 @@
 <div class="outro-zusammenfassung">
   <h3 in:fade={{ duration: 400 }}>Zusammenfassung</h3>
 
-  <div class="summary-content" in:fly={{ y: 20, duration: 500, delay: 200 }}>
+  <div class="text-card" in:fly={{ y: 20, duration: 500, delay: 200 }}>
     <p>
       <span class="promptotyping">Promptotyping</span> strukturiert die Zusammenarbeit zwischen Forscher:innen und LLMs
       durch einen vierphasigen Prozess: Materialsammlung, explorative Analyse, Wissensdestillation
@@ -75,35 +75,8 @@
     margin: 0;
   }
 
-  .summary-content {
+  .text-card {
     max-width: 700px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .summary-content p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: justify;
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .summary-content p:last-child {
-    margin-bottom: 0;
-  }
-
-  .summary-content strong {
-    color: var(--color-terracotta);
-  }
-
-  .promptotyping {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    color: var(--color-terracotta);
-    letter-spacing: 0.02em;
   }
 
   .limitations-trigger {

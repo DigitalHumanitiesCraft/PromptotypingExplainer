@@ -2,6 +2,35 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-07 Nacht: CSS-Refactoring & Untertitel
+
+### Tasks
+- CSS-Analyse des gesamten Projekts
+- Globale Klassen extrahiert
+- Untertitel überarbeitet
+
+### Ergebnisse
+**CSS-Refactoring** in app.css:
+- `.text-card` global extrahiert (white background, padding, border-radius, box-shadow, p-Styling, strong in terracotta)
+- `.promptotyping` global extrahiert (mono font, bold, terracotta, letter-spacing)
+- Veraltete Scene-Selektoren entfernt
+
+**Komponenten umgestellt:**
+- OutroZusammenfassung: nutzt jetzt globale `.text-card`
+- Phase4Iteration: `.explainer-side` nutzt `.text-card`
+- IntroDefinition: lokale `.promptotyping` entfernt, unused CSS entfernt
+
+**Untertitel geändert:**
+- Alt: "Strukturiertes Context Engineering mit Vibe-Coding-Elementen"
+- Neu: "Context Engineering: Vom Wissen zum Werkzeug"
+
+### Entscheidungen
+- Nur sichere Refactorings (klare Duplikate)
+- Komponenten mit Abweichungen (IntroKernprinzip) nicht umgestellt
+- Untertitel schließt narrativen Bogen zum Outro
+
+---
+
 ## 2025-12-07 Nacht: AnimatedChat & Reasoning-Zyklus
 
 ### Tasks

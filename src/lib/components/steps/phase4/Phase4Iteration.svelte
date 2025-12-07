@@ -14,7 +14,7 @@
       <AnimatedChat />
     </div>
 
-    <div class="explainer-side" in:fly={{ x: 30, duration: 500, delay: 400 }}>
+    <div class="text-card explainer-side" in:fly={{ x: 30, duration: 500, delay: 400 }}>
       <p>
         Der Zyklus beginnt mit dem <strong>Kontext</strong>: Vault-Dokumente werden dem LLM mitgegeben,
         damit es das Domänenwissen versteht. Im <strong>Reasoning</strong> analysiert das LLM den
@@ -75,27 +75,7 @@
   }
 
   .explainer-side {
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     max-width: 420px;
-  }
-
-  .explainer-side p {
-    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: justify;
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .explainer-side p:last-child {
-    margin-bottom: 0;
-  }
-
-  .explainer-side strong {
-    color: var(--color-terracotta);
   }
 
   @media (max-width: 900px) {
