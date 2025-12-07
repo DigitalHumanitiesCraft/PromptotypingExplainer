@@ -1,56 +1,40 @@
 <script>
   import { fade, fly } from 'svelte/transition';
+  import GlossaryTerm from '../../GlossaryTerm.svelte';
+  import explorationImg from '../../../../assets/images/exploration.png';
 </script>
 
 <div class="phase2-struktur" in:fade={{ duration: 400 }}>
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="phase-number">Phase 2</span>
     <h2>Exploration</h2>
-    <p class="subtitle">Datenstruktur verstehen</p>
+    <p class="subtitle">Datenstrukturen entdecken</p>
   </header>
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Die Rohdaten aus Phase 1 sind oft <strong>zu groß für das Context Window</strong>.
-      Das LLM generiert Analyse-Scripts, um Strukturen zu explorieren.
+      Forschungsdaten überschreiten häufig die Kapazität des <GlossaryTerm term="context-window">Context Window</GlossaryTerm>.
+      Eine vollständige Analyse großer Korpora in einem Durchgang ist daher nicht möglich.
+    </p>
+
+    <p class="solution">
+      Der methodische Ausweg: LLM-generierte Analyse-Scripts, die lokal auf den Rohdaten operieren
+      und deren Struktur systematisch erfassen.
     </p>
 
     <div class="example-box">
-      <div class="example-label">Beispiel</div>
+      <div class="example-label">Beispiel-Prompt</div>
       <p class="example-text">
-        "Schreibe ein Python-Script, das die Struktur dieser XML-Datei analysiert
-        und mir die wichtigsten Elemente und Attribute auflistet."
+        "Analysiere die Struktur dieser XML-Dateien: Welche Elemente und Attribute kommen vor?
+        Wie oft, in welcher Hierarchie? Erkläre mir das Datenmodell, das du erkennst."
       </p>
     </div>
   </div>
 
-  <div class="xml-preview" in:fly={{ y: 30, duration: 500, delay: 400 }}>
-    <div class="xml-document">
-      <div class="xml-header">&lt;TEI&gt;</div>
-      <div class="xml-content">
-        <div class="xml-line">
-          <span class="tag">&lt;correspDesc&gt;</span>
-        </div>
-        <div class="xml-line indent">
-          <span class="tag">&lt;persName</span>
-          <span class="attr">ref</span>=<span class="value highlight">"#person1"</span><span class="tag">&gt;</span>
-        </div>
-        <div class="xml-line indent">
-          <span class="tag">&lt;placeName</span>
-          <span class="attr">ref</span>=<span class="value">"#place1"</span><span class="tag">&gt;</span>
-        </div>
-        <div class="xml-line indent">
-          <span class="tag">&lt;date</span>
-          <span class="attr">when</span>=<span class="value">"1800-01-01"</span><span class="tag">/&gt;</span>
-        </div>
-        <div class="xml-line">
-          <span class="tag">&lt;/correspDesc&gt;</span>
-        </div>
-      </div>
-      <div class="xml-footer">&lt;/TEI&gt;</div>
-    </div>
-    <div class="xml-caption">Schema und Struktur werden sichtbar</div>
-  </div>
+  <figure class="exploration-visual" in:fly={{ y: 30, duration: 500, delay: 400 }}>
+    <img src={explorationImg} alt="Rohdaten werden durch LLM-generierte Scripts analysiert und Entitäten wie Personen, Orte und Zeitangaben werden extrahiert" />
+    <figcaption>Vom Datenberg zur Struktur: Scripts extrahieren das Datenmodell</figcaption>
+  </figure>
 </div>
 
 <style>
@@ -85,23 +69,31 @@
   }
 
   .content-block {
-    max-width: 600px;
+    max-width: 640px;
   }
 
   .lead {
     font-size: clamp(0.95rem, 1.8vw, 1.1rem);
     color: var(--color-slate);
-    line-height: 1.6;
-    margin: 0 0 var(--space-lg) 0;
+    line-height: 1.8;
+    margin: 0 0 var(--space-md) 0;
   }
 
   .lead strong {
     color: var(--color-terracotta);
+    font-weight: 600;
+  }
+
+  .solution {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    color: var(--color-black);
+    font-weight: 500;
+    margin: 0 0 var(--space-lg) 0;
   }
 
   .example-box {
     background: rgba(96, 125, 139, 0.08);
-    border-left: 3px solid var(--color-slate);
+    border-left: 3px solid var(--color-terracotta);
     padding: var(--space-md);
     border-radius: 0 8px 8px 0;
     text-align: left;
@@ -111,7 +103,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--color-slate);
+    color: var(--color-terracotta);
     margin-bottom: var(--space-xs);
     font-weight: 600;
   }
@@ -124,61 +116,35 @@
     line-height: 1.5;
   }
 
-  .xml-preview {
+  .exploration-visual {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-sm);
+    margin: 0;
+    max-width: 100%;
   }
 
-  .xml-document {
-    background: var(--color-white);
-    border: 2px solid var(--color-slate);
-    border-radius: 6px;
-    padding: var(--space-md) var(--space-lg);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  .exploration-visual img {
+    max-width: min(600px, 90vw);
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .xml-header, .xml-footer {
-    color: var(--color-slate);
-  }
-
-  .xml-content {
-    margin: var(--space-sm) 0;
-    padding-left: var(--space-sm);
-    border-left: 2px solid var(--color-terracotta);
-  }
-
-  .xml-line {
-    line-height: 1.8;
-  }
-
-  .xml-line.indent {
-    padding-left: var(--space-md);
-  }
-
-  .tag { color: var(--color-slate); }
-  .attr { color: var(--color-terracotta); }
-  .value { color: var(--color-success); }
-  .value.highlight {
-    background: rgba(191, 91, 62, 0.2);
-    padding: 0 2px;
-    border-radius: 2px;
-  }
-
-  .xml-caption {
+  .exploration-visual figcaption {
     font-size: 0.85rem;
     color: var(--color-slate);
     font-style: italic;
   }
 
   @media (max-width: 767px) {
-    .xml-document {
-      font-size: 0.7rem;
-      padding: var(--space-sm) var(--space-md);
+    .exploration-visual img {
+      max-width: 95vw;
+    }
+
+    .example-text {
+      font-size: 0.8rem;
     }
   }
 </style>
