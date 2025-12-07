@@ -10,9 +10,27 @@
 
 > **Promptotyping** ist ein dreiebenes Framework für die methodisch strukturierte KI-gestützte Entwicklung digitaler Forschungswerkzeuge. Es integriert technisches Prompt Engineering, methodisches Requirements Engineering und epistemische Reflexion systematisch.
 
-### Die drei Ebenen
+### Context Engineering: Eine Arbeitsdefinition
 
-#### Ebene 1: Technisch (Context Management)
+> **Context Engineering** bezeichnet die systematische Gestaltung, Verdichtung und Orchestrierung von Kontextinformationen, die einem Frontier-LLM zur Verfügung gestellt werden, um dessen Outputs auf spezifische Aufgaben, Domänen und Qualitätsanforderungen auszurichten.
+
+Der Begriff geht auf Mei et al. (2025) zurück und grenzt sich vom engeren **Prompt Engineering** ab: Während Prompt Engineering die Formulierung einzelner Anfragen optimiert, umfasst Context Engineering die strategische Strukturierung des gesamten Informationsraums über multiple Interaktionen hinweg.
+
+**Drei Kernoperationen:**
+
+| Operation | Beschreibung |
+|-----------|--------------|
+| **Creation** | Explizierung impliziten Wissens in maschinenlesbare Formate |
+| **Compression** | Verdichtung auf relevante Information unter Vermeidung von *Context Rot* |
+| **Orchestration** | Dynamische Steuerung des Kontextflusses über Iterationen |
+
+> **Context Rot** (Hong et al., 2025): Die Beobachtung, dass LLM-Leistung mit wachsender Kontextlänge degradiert. Mehr Tokens führen nicht zu besseren Ergebnissen – gezielte Verdichtung erhöht die Modellaufmerksamkeit auf wesentliche Aspekte.
+
+---
+
+### Die drei Ebenen von Promptotyping
+
+#### Ebene 1: Technisch (Context Engineering)
 
 | Komponente | Beschreibung |
 |------------|--------------|
