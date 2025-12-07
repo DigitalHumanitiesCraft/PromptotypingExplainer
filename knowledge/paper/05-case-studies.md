@@ -27,15 +27,19 @@ Die Fallbeispiele dienen dazu:
 
 ## 5.2 Übersicht der Fallbeispiele
 
-| Projekt | Kontext | Zeit | Dokumente | Beobachtungen |
-|---------|---------|------|-----------|---------------|
-| Stefan Zweig Digital | Archiv-Timeline | ~2h | 0 | Grenzen ohne Dokumentation |
-| REALonline v1 | Mittelalterliche Inventare | ~5h | 6 | Expertenintervention kritisch |
-| Aldersbach | Klosterrechnungen | ~8h | 7 | DATA-Phase zentral |
-| CVMA Glasfenster | Metadaten-Viewer | ~8h | 5 | Iterationsmuster sichtbar |
-| Kriminalmuseum | Dual-Interface | ~10h | 3 | Minimaldokumentation problematisch |
-| Lucina Edition | Digitale Edition | ~25h | 11+ | Koordination wird komplex |
-| REALonline v2 | Verbesserte Version | ~8h | 7 | JOURNAL.md wertvoll |
+> **Hinweis zu den Demos:** Die Live-Demos dokumentieren die Entwicklung über Zeit und zeigen, wie sich sowohl die Promptotyping-Methode als auch die Frontier-LLMs verbessert haben. Frühere Projekte spiegeln den Stand früherer Modellgenerationen wider.
+
+| Projekt | Kontext | Zeit | Dokumente | Demo |
+|---------|---------|------|-----------|------|
+| Stefan Zweig Digital | Archiv-Timeline | ~2h | 0 | [Demo](https://dhcraft.org/excellence/promptotyping/szd-annotation-timeline/) |
+| REALonline v1 | Mittelalterliche Inventare | ~5h | 6 | [Demo](https://chpollin.github.io/imareal-room-object) |
+| Aldersbach | Klosterrechnungen | ~8h | 7 | [Demo](https://chpollin.github.io/depcha-aldersbach) |
+| CVMA Glasfenster | Metadaten-Viewer | ~8h | 5 | [Demo](https://chpollin.github.io/stained-glass-metadata-annotation-tool/docs/version-2/) |
+| Kriminalmuseum | Dual-Interface | ~10h | 3 | [Demo](https://chpollin.github.io/km/collection-explorer.html) |
+| Lucina Edition | Digitale Edition | ~25h | 11+ | [Demo](https://chpollin.github.io/diged-neolat/edition-5/web/) |
+| REALonline v2 | Verbesserte Version | ~8h | 7 | [Demo](https://chpollin.github.io/imareal-room-object) |
+
+**Repositories:** Alle Projekte sind Open Source unter [github.com/chpollin](https://github.com/chpollin) und [github.com/DigitalHumanitiesCraft](https://github.com/DigitalHumanitiesCraft) verfügbar.
 
 ---
 
@@ -45,6 +49,8 @@ Die Fallbeispiele dienen dazu:
 
 **Kontext:**
 Entwicklung einer Timeline-Visualisierung für Archivdaten des Stefan Zweig Archivs.
+
+**Links:** [Demo](https://dhcraft.org/excellence/promptotyping/szd-annotation-timeline/) | [Repository](https://github.com/DigitalHumanitiesCraft/excellence)
 
 **Prozess:**
 - Keine strukturierte Dokumentation
@@ -63,6 +69,8 @@ Dieses Beispiel illustriert die Grenzen des undokumentierten Vorgehens. Es dient
 
 **Kontext:**
 Visualisierung mittelalterlicher Objektverteilungen in österreichischen Adelshäusern (1432–1602) basierend auf der REALonline-Datenbank.
+
+**Links:** [Demo](https://chpollin.github.io/imareal-room-object) | [Repository](https://github.com/chpollin/imareal-room-object)
 
 **Prozess:**
 
@@ -105,6 +113,8 @@ Die JSON-Datenstruktur aus Neo4j wies Inkonsistenzen auf: Felder erschienen mal 
 **Kontext:**
 Entwicklung eines Annotationstools für TEI-kodierte Klosterrechnungen des Zisterzienserklosters Aldersbach.
 
+**Links:** [Demo](https://chpollin.github.io/depcha-aldersbach) | [Repository](https://github.com/chpollin/depcha-aldersbach)
+
 **Besonderheit:**
 Integration heterogener Quelltypen aus verschiedenen Archivbeständen.
 
@@ -117,6 +127,8 @@ Die DATA-Phase erwies sich als besonders wertvoll für die Normalisierung inkons
 
 **Kontext:**
 Entwicklung eines Metadaten-Viewers für das Corpus Vitrearum Medii Aevi mit SPARQL-Abfragen gegen den NFDI4Culture Knowledge Graph.
+
+**Links:** [Demo](https://chpollin.github.io/stained-glass-metadata-annotation-tool/docs/version-2/) | [Repository](https://github.com/chpollin/stained-glass-metadata-annotation-tool)
 
 **Iterationsmuster:**
 Das Projekt durchlief drei dokumentierte Iterationsschleifen:
@@ -140,6 +152,8 @@ Die 29MB JSON-LD-Verarbeitung erforderte Python-Preprocessing, da die direkte Ve
 **Kontext:**
 Entwicklung eines digitalen Archivs für die Hans Gross Sammlung mit 3.892 Objekten und zwei Interface-Varianten (traditionelle Suche und Canvas Explorer).
 
+**Links:** [Demo](https://chpollin.github.io/km/collection-explorer.html) | [Repository](https://github.com/chpollin/km)
+
 **Prozess:**
 Nur drei Dokumente erstellt, IMPLEMENTATION.md fehlte.
 
@@ -155,6 +169,8 @@ Dieses Beispiel illustriert, dass ein funktionierendes Ergebnis nicht gleichbede
 
 **Kontext:**
 Entwicklung einer TEI-konformen digitalen Edition des Madrid BN Mss. 6028 mit 128 neulateinischen Gedichten, inklusive Prosopographie und metrischer Analyse.
+
+**Links:** [Demo](https://chpollin.github.io/diged-neolat/edition-5/web/) | [Repository](https://github.com/chpollin/diged-neolat)
 
 **Umfang:**
 - Entwicklungszeit: ca. 25 Stunden über mehrere Wochen
@@ -173,6 +189,8 @@ Ab einer gewissen Projektkomplexität stößt die einfache Dateistruktur an Gren
 
 **Kontext:**
 Verbesserte Version der REALonline-Visualisierung nach Anwendung der vollständigen Methodik.
+
+**Links:** [Demo](https://chpollin.github.io/imareal-room-object) | [Repository](https://github.com/chpollin/imareal-room-object)
 
 **Unterschied zu v1:**
 - Vollständiger Dokumentsatz von Beginn an
