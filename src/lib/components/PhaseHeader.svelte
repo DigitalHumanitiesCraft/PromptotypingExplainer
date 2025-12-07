@@ -1,18 +1,20 @@
 <script>
   import { currentPhase, phaseProgress, phaseBoundaries } from '../stores/scroll.js';
 
-  // Phase metadata
+  // Phase metadata with sub-steps
   const phaseData = [
-    { number: null, title: 'Promptotyping', subtitle: 'Einführung' },
-    { number: 1, title: 'Vorbereitung', subtitle: 'Materialsammlung' },
-    { number: 2, title: 'Exploration', subtitle: 'Datenanalyse' },
-    { number: 3, title: 'Destillation', subtitle: 'Wissenskomprimierung' },
-    { number: 4, title: 'Implementation', subtitle: 'Iterative Entwicklung' },
-    { number: null, title: 'Praxis', subtitle: 'Case Studies' },
+    { number: null, title: 'Promptotyping', subtitle: 'Einführung', steps: ['Definition', 'Kernprinzip', 'Methodik', 'Phasen'] },
+    { number: 1, title: 'Vorbereitung', subtitle: 'Materialsammlung', steps: ['Sammeln', 'Zusammenführen', 'Workspace'] },
+    { number: 2, title: 'Exploration', subtitle: 'Datenanalyse', steps: ['Struktur', 'Entitäten', 'Fragen'] },
+    { number: 3, title: 'Destillation', subtitle: 'Wissenskomprimierung', steps: ['Layout', 'Dokumente', 'Vault'] },
+    { number: 4, title: 'Implementation', subtitle: 'Iterative Entwicklung', steps: ['Dialog', 'Iteration', 'Rückschleifen'] },
+    { number: null, title: 'Praxis', subtitle: 'Case Studies', steps: ['Beispiele', 'Zusammenfassung'] },
   ];
 
   $: current = phaseData[$currentPhase] || phaseData[0];
-  $: progressPercent = Math.round($phaseProgress * 100);
+  $: steps = current.steps || [];
+  $: currentStepIndex = Math.min(Math.floor($phaseProgress * steps.length), steps.length - 1);
+  $: currentStep = steps[currentStepIndex] || '';
 </script>
 
 <header class="phase-header">
@@ -26,21 +28,14 @@
       {/if}
     </div>
 
-    <!-- Title -->
-    <h2 class="phase-title">{current.title}</h2>
-
-    <!-- Progress indicator -->
-    <div class="progress-wrapper">
-      <div class="progress-bar">
-        <div class="progress-fill" style="width: {progressPercent}%;"></div>
-      </div>
-      <span class="progress-text">{progressPercent}%</span>
+    <!-- Title + Current Step -->
+    <div class="title-group">
+      <h2 class="phase-title">{current.title}</h2>
+      {#if currentStep}
+        <span class="step-separator">—</span>
+        <span class="current-step">{currentStep}</span>
+      {/if}
     </div>
-  </div>
-
-  <!-- Full-width progress line at bottom -->
-  <div class="header-progress-line">
-    <div class="header-progress-fill" style="width: {progressPercent}%;"></div>
   </div>
 </header>
 
@@ -92,55 +87,29 @@
     border-radius: 10px;
   }
 
+  .title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-grow: 1;
+  }
+
   .phase-title {
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-black);
     margin: 0;
-    flex-grow: 1;
   }
 
-  .progress-wrapper {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    flex-shrink: 0;
-  }
-
-  .progress-bar {
-    width: 80px;
-    height: 4px;
-    background: rgba(96, 125, 139, 0.2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--color-terracotta);
-    border-radius: 2px;
-    transition: width 0.15s ease-out;
-  }
-
-  .progress-text {
-    font-size: 0.7rem;
-    font-weight: 600;
+  .step-separator {
     color: var(--color-slate);
-    min-width: 32px;
-    text-align: right;
-    font-variant-numeric: tabular-nums;
+    opacity: 0.5;
   }
 
-  /* Full-width progress line */
-  .header-progress-line {
-    height: 2px;
-    background: transparent;
-  }
-
-  .header-progress-fill {
-    height: 100%;
-    background: var(--color-terracotta);
-    transition: width 0.15s ease-out;
+  .current-step {
+    font-size: 0.9rem;
+    color: var(--color-terracotta);
+    font-weight: 500;
   }
 
   /* Mobile adjustments */
@@ -153,8 +122,8 @@
       font-size: 0.9rem;
     }
 
-    .progress-bar {
-      width: 50px;
+    .current-step {
+      font-size: 0.8rem;
     }
   }
 </style>
