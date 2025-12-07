@@ -71,6 +71,11 @@
         on:open={handleDeepDive}
       />
       <DeepDiveTrigger
+        label="Scholar-Centered Design"
+        deepDiveId="scholar-centered-design"
+        on:open={handleDeepDive}
+      />
+      <DeepDiveTrigger
         label="Context Engineering"
         deepDiveId="context-engineering"
         on:open={handleDeepDive}

@@ -45,7 +45,12 @@
               </svg>
             {/if}
           </span>
-          <span class="label">{phase.label}</span>
+          <span class="label-container">
+            <span class="label">{phase.label}</span>
+            {#if phase.number}
+              <span class="phase-number">Phase {phase.number}</span>
+            {/if}
+          </span>
         </button>
 
         <!-- Sub-steps (only for active phase) - vertical with labels -->
@@ -139,6 +144,13 @@
     box-shadow: 0 0 0 5px rgba(191, 91, 62, 0.25);
   }
 
+  .label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
   .label {
     font-size: 0.75rem;
     font-weight: 500;
@@ -147,6 +159,14 @@
     text-align: left;
     transition: all var(--duration-fast) var(--ease-out);
     white-space: nowrap;
+  }
+
+  .phase-number {
+    font-size: 0.6rem;
+    color: var(--color-slate);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .progress-dot:hover .label,
@@ -160,9 +180,19 @@
     font-weight: 600;
   }
 
+  .progress-dot.active .phase-number {
+    opacity: 0.8;
+    color: var(--color-terracotta);
+  }
+
   .progress-dot.completed .label {
     color: var(--color-terracotta);
     opacity: 0.7;
+  }
+
+  .progress-dot.completed .phase-number {
+    color: var(--color-terracotta);
+    opacity: 0.5;
   }
 
   .progress-dot:focus {
@@ -261,7 +291,7 @@
       gap: var(--space-md);
     }
 
-    .label {
+    .label-container {
       display: none;
     }
 

@@ -35,12 +35,6 @@
   import OutroBeispiele from './lib/components/steps/outro/OutroBeispiele.svelte';
   import OutroZusammenfassung from './lib/components/steps/outro/OutroZusammenfassung.svelte';
 
-  // Bibliography, Glossary, Vault & About
-  import About from './lib/components/About.svelte';
-  import Vault from './lib/components/Vault.svelte';
-  import Glossary from './lib/components/Glossary.svelte';
-  import Bibliography from './lib/components/Bibliography.svelte';
-
   onMount(() => {
     initReducedMotion();
 
@@ -173,18 +167,6 @@
   <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={1}>
     <OutroZusammenfassung />
   </Step>
-
-  <!-- About -->
-  <About />
-
-  <!-- Vault -->
-  <Vault />
-
-  <!-- Glossar -->
-  <Glossary />
-
-  <!-- Bibliographie -->
-  <Bibliography />
 </main>
 
 <!-- Deep Dive Panel -->

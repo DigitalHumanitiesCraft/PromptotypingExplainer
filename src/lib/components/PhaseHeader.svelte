@@ -27,10 +27,10 @@
 
     <!-- Navigation Links -->
     <nav class="header-nav">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#vault" class="nav-link">Vault</a>
-      <a href="#glossar" class="nav-link">Glossar</a>
-      <a href="#bibliographie" class="nav-link">Bibliographie</a>
+      <a href="/PromptotypingExplainer/about.html" class="nav-link">About</a>
+      <a href="/PromptotypingExplainer/vault.html" class="nav-link">Vault</a>
+      <a href="/PromptotypingExplainer/glossar.html" class="nav-link">Glossar</a>
+      <a href="/PromptotypingExplainer/bibliographie.html" class="nav-link">Bibliographie</a>
     </nav>
   </div>
 </header>
