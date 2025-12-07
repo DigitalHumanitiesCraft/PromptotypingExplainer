@@ -13,8 +13,12 @@
   import IntroMethodik from './lib/components/steps/intro/IntroMethodik.svelte';
   import IntroPhasen from './lib/components/steps/intro/IntroPhasen.svelte';
 
-  // Legacy Scene imports (to be replaced with steps)
-  import Phase1Scene from './lib/components/scenes/Phase1Scene.svelte';
+  // Phase 1 Steps
+  import Phase1Titel from './lib/components/steps/phase1/Phase1Titel.svelte';
+  import Phase1Rohdaten from './lib/components/steps/phase1/Phase1Rohdaten.svelte';
+  import Phase1Sammlung from './lib/components/steps/phase1/Phase1Sammlung.svelte';
+
+  // Legacy Scene imports (Phase 2-4 + Outro to be migrated)
   import Phase2Scene from './lib/components/scenes/Phase2Scene.svelte';
   import Phase3Scene from './lib/components/scenes/Phase3Scene.svelte';
   import Phase4Scene from './lib/components/scenes/Phase4Scene.svelte';
@@ -100,26 +104,17 @@
     <IntroPhasen />
   </Step>
 
-  <!-- Phase 1-4 and Outro: Temporary legacy placeholders -->
-  <!-- These will be split into steps in a later iteration -->
+  <!-- Phase 1: Vorbereitung - 3 Steps -->
   <Step id="phase1-titel" phaseIndex={1} stepIndex={0}>
-    <div class="legacy-scene">
-      <Phase1Scene progress={0.5} />
-    </div>
+    <Phase1Titel />
   </Step>
 
   <Step id="phase1-rohdaten" phaseIndex={1} stepIndex={1}>
-    <div class="placeholder-step">
-      <h2>Phase 1: Rohdaten</h2>
-      <p>XML, PDF, CSV, Notizen sammeln</p>
-    </div>
+    <Phase1Rohdaten />
   </Step>
 
   <Step id="phase1-sammlung" phaseIndex={1} stepIndex={2}>
-    <div class="placeholder-step">
-      <h2>Phase 1: Sammlung</h2>
-      <p>Alle Materialien bereit für Analyse</p>
-    </div>
+    <Phase1Sammlung />
   </Step>
 
   <Step id="phase2-struktur" phaseIndex={2} stepIndex={0}>
