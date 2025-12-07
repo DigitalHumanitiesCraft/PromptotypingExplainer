@@ -578,7 +578,7 @@ export const deepDives = {
 
       <div class="reference">
         <strong>Links:</strong><br>
-        <a href="https://chpollin.github.io/km/collection-explorer.html" target="_blank">Collection Explorer</a><br>
+        <a href="https://chpollin.github.io/km/index.html" target="_blank">Live Demo</a><br>
         <a href="https://github.com/chpollin/km" target="_blank">GitHub Repository</a>
       </div>
     `
@@ -687,11 +687,24 @@ export const deepDives = {
     id: 'case-szd',
     title: 'Case Study: SZD Annotation',
     content: `
-      <h3>Timeline-basiertes Annotationstool</h3>
+      <h3>Der Ursprung: Critical Vibing</h3>
       <p>
-        Annotationstool für die digitale Nachlassrekonstruktion
-        <strong>Stefan Zweig Digital</strong> des Literaturarchivs Salzburg.
+        Dieses Projekt markiert den <strong>Beginn der Promptotyping-Methodik</strong>.
+        In nur 2 Stunden entstand ein funktionsfähiges Timeline-Annotationstool für
+        <strong>Stefan Zweig Digital</strong> – ein Experiment, das zeigte, was möglich ist.
       </p>
+
+      <h3>Critical Expert in the Loop</h3>
+      <p>
+        Der Blogpost dokumentiert die zentrale Erkenntnis: Weder Human-in-the-Loop noch
+        Expert-in-the-Loop reichen aus. Erforderlich ist ein <strong>Critical-Expert-in-the-Loop</strong>,
+        der sowohl kritisch-epistemische als auch kritisch-technische Reflexion vereint.
+      </p>
+      <blockquote style="border-left: 3px solid var(--color-terracotta); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+        "Als Critical-Expert-and-Developer-in-the-Loop praktizierte ich eine Art strukturiertes
+        Vibe Coding als experimentelle Form des Promptotyping. Ich wusste genau, welche Fragen
+        zu stellen und wann einzugreifen war."
+      </blockquote>
 
       <h3>Datengrundlage</h3>
       <ul>
@@ -718,21 +731,24 @@ export const deepDives = {
           <tr><td><strong>Ansatz</strong></td><td>"Critical Vibing" – strukturiertes Vibe Coding</td></tr>
         </tbody>
       </table>
+
+      <h3>Warum kein "echtes" Promptotyping?</h3>
       <p>
-        <strong>Experimenteller Charakter:</strong> Keine separaten Promptotyping Documents erstellt.
-        Alle Anforderungen in einem strukturierten Prompt mit XML-Beispieldaten.
-        Screenshot der Original-Website als Design-Referenz verwendet.
+        Keine separaten Promptotyping Documents (DATA.md, REQUIREMENTS.md) erstellt.
+        Stattdessen: Ein strukturierter Prompt mit XML-Beispieldaten und ein Screenshot
+        der Original-Website als Design-Referenz.
       </p>
       <p>
         <strong>Erkenntnis:</strong> Präzises technisches Grundverständnis (Begriffe wie "fetchen",
         "Single Page Application") lenkt das LLM effektiv in die richtige Richtung.
+        Solche begrifflichen Nuancen bestimmen die Architektur der generierten Lösung.
       </p>
 
       <div class="reference">
         <strong>Links:</strong><br>
         <a href="https://dhcraft.org/excellence/promptotyping/szd-annotation-timeline/" target="_blank">Live Demo</a><br>
         <a href="https://github.com/DigitalHumanitiesCraft/excellence/tree/main/promptotyping/szd-annotation-timeline" target="_blank">GitHub Repository</a><br>
-        <a href="https://dhcraft.org/excellence/blog/Critical-Vibing-Claude-4/" target="_blank">Blog: Critical Vibing</a>
+        <a href="https://dhcraft.org/excellence/blog/Critical-Vibing-Claude-4/" target="_blank"><strong>Blogartikel: Critical Vibing mit Claude 4</strong></a>
       </div>
     `
   }

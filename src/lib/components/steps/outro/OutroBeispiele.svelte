@@ -41,6 +41,10 @@
             loading="lazy"
           />
           <span class="type-badge">{study.type}</span>
+          <span class="date-badge">{study.date}</span>
+          {#if study.hasBlog}
+            <span class="blog-badge">Blog</span>
+          {/if}
         </div>
         <div class="card-content">
           <h3>{study.name}</h3>
@@ -48,10 +52,6 @@
           <span class="data-format">{study.dataFormat}</span>
         </div>
 
-        <div class="card-footer">
-          <span class="link-arrow">Demo ansehen</span>
-          <span class="arrow-icon">→</span>
-        </div>
       </a>
     {/each}
   </div>
@@ -95,10 +95,10 @@
 
   .examples-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
   }
 
   .example-card {
@@ -116,7 +116,7 @@
   .card-thumbnail {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 160px;
     overflow: hidden;
     background: linear-gradient(135deg, rgba(96, 125, 139, 0.1) 0%, rgba(191, 91, 62, 0.05) 100%);
   }
@@ -137,6 +137,33 @@
     position: absolute;
     top: var(--space-xs);
     left: var(--space-xs);
+  }
+
+  .date-badge {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
+    font-size: 0.55rem;
+    font-weight: 500;
+    padding: 2px 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+  }
+
+  .blog-badge {
+    position: absolute;
+    bottom: var(--space-xs);
+    right: var(--space-xs);
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    background: var(--color-slate);
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* Subtiler Glow-Effekt bei Hover */
@@ -212,57 +239,23 @@
     margin-top: auto;
   }
 
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--space-xs) var(--space-md) var(--space-sm);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  .link-arrow {
-    color: var(--color-terracotta);
-    font-size: 0.8rem;
-    font-weight: 500;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-  }
-
-  .arrow-icon {
-    color: var(--color-terracotta);
-    font-size: 0.9rem;
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: all 0.2s ease;
-  }
-
-  .example-card:hover .link-arrow {
-    opacity: 1;
-  }
-
-  .example-card:hover .arrow-icon {
-    opacity: 1;
-    transform: translateX(0);
-  }
 
   .deep-dive-triggers {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     gap: var(--space-sm);
-    flex-wrap: wrap;
     justify-content: center;
     margin-top: var(--space-md);
   }
 
-  @media (max-width: 900px) {
-    .examples-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .examples-grid {
       grid-template-columns: 1fr;
-      max-width: 340px;
+      max-width: 380px;
+    }
+
+    .deep-dive-triggers {
+      grid-template-columns: repeat(2, auto);
     }
   }
 </style>
