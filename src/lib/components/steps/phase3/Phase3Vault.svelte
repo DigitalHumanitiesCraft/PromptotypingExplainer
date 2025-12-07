@@ -3,24 +3,25 @@
 </script>
 
 <div class="phase3-vault">
-  <h3 in:fade={{ duration: 400 }}>Der Vault ist bereit</h3>
+  <h3 in:fade={{ duration: 400 }}>Der <span class="promptotyping">Promptotyping</span> Vault</h3>
   <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Destilliertes Wissen, komprimiert und strukturiert für das LLM
+    Das destillierte Wissen aus Phase 2 wird in drei Markdown-Dateien organisiert –
+    optimiert für den LLM-Kontext
   </p>
 
   <div class="vault-visual">
     <!-- Incoming arrows from sources -->
     <div class="source-flow" in:fade={{ delay: 300, duration: 400 }}>
       <div class="source-item">
-        <span class="source-label">Rohdaten</span>
+        <span class="source-label">Datenstrukturen</span>
         <div class="arrow">→</div>
       </div>
       <div class="source-item">
-        <span class="source-label">Mapping</span>
+        <span class="source-label">Erkenntnisse</span>
         <div class="arrow">→</div>
       </div>
       <div class="source-item">
-        <span class="source-label">Fragen</span>
+        <span class="source-label">Anforderungen</span>
         <div class="arrow">→</div>
       </div>
     </div>
@@ -30,9 +31,18 @@
       <div class="vault-box">
         <div class="vault-header">VAULT</div>
         <div class="vault-files">
-          <span class="file">DATA.md</span>
-          <span class="file">REQUIREMENTS.md</span>
-          <span class="file">CONTEXT.md</span>
+          <div class="file-item">
+            <span class="file">DATA.md</span>
+            <span class="file-desc">Was haben wir?</span>
+          </div>
+          <div class="file-item">
+            <span class="file">REQUIREMENTS.md</span>
+            <span class="file-desc">Was wollen wir?</span>
+          </div>
+          <div class="file-item">
+            <span class="file">CONTEXT.md</span>
+            <span class="file-desc">Was wissen wir?</span>
+          </div>
         </div>
       </div>
     </div>
@@ -65,6 +75,13 @@
     color: var(--color-black);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     margin: 0;
+  }
+
+  .promptotyping {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-terracotta);
+    letter-spacing: 0.02em;
   }
 
   .description {
@@ -104,7 +121,7 @@
     background: rgba(96, 125, 139, 0.1);
     padding: var(--space-xs) var(--space-sm);
     border-radius: 4px;
-    min-width: 60px;
+    min-width: 90px;
     text-align: center;
   }
 
@@ -146,13 +163,28 @@
     gap: 4px;
   }
 
+  .file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
   .file {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: white;
     background: rgba(255, 255, 255, 0.15);
     padding: 4px 8px;
     border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .file-desc {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    white-space: nowrap;
   }
 
   .llm-flow {

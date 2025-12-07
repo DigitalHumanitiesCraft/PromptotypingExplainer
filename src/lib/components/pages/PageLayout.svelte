@@ -51,7 +51,7 @@
 
 <style>
   .page-layout {
-    min-height: 100vh;
+    min-height: 100dvh;
     background: linear-gradient(135deg, rgba(96, 125, 139, 0.05) 0%, rgba(232, 232, 232, 1) 50%);
   }
 

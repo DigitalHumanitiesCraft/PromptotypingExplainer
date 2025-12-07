@@ -9,51 +9,54 @@
 </script>
 
 <div class="outro-zusammenfassung">
-  <h3 in:fade={{ duration: 400 }}>Promptotyping</h3>
+  <h3 in:fade={{ duration: 400 }}>Zusammenfassung</h3>
 
-  <blockquote in:fly={{ y: 20, duration: 500, delay: 200 }}>
-    Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem
-    Forschungskontext auf funktionale Interfaces durch iterative
-    Mensch-LLM-Kollaboration.
-  </blockquote>
-
-  <div class="imperatives">
-    <div class="imperative" in:fly={{ y: 20, duration: 400, delay: 400 }}>
-      <div class="imp-icon">1</div>
-      <h4>Epistemische Wachsamkeit</h4>
-      <p>Jede LLM-Nutzung reflektiert ihre Implikationen</p>
-    </div>
-    <div class="imperative" in:fly={{ y: 20, duration: 400, delay: 500 }}>
-      <div class="imp-icon">2</div>
-      <h4>Methodische Transparenz</h4>
-      <p>Nachvollziehbare Dokumentation aller Entscheidungen</p>
-    </div>
-    <div class="imperative" in:fly={{ y: 20, duration: 400, delay: 600 }}>
-      <div class="imp-icon">3</div>
-      <h4>Kritische Solidarität</h4>
-      <p>Die Community entwickelt gemeinsam Standards</p>
-    </div>
+  <div class="summary-content" in:fly={{ y: 20, duration: 500, delay: 200 }}>
+    <p>
+      <span class="promptotyping">Promptotyping</span> strukturiert die Zusammenarbeit zwischen Forscher:innen und LLMs
+      durch einen vierphasigen Prozess: Materialsammlung, explorative Analyse, Wissensdestillation
+      im <span class="promptotyping">Promptotyping</span> Vault, und iterative Implementation.
+    </p>
+    <p>
+      Der <span class="promptotyping">Promptotyping</span> Vault besteht aus drei <strong>Promptotyping Documents</strong>
+      (DATA.md, REQUIREMENTS.md, CONTEXT.md) – sie machen implizites Domänenwissen für LLMs nutzbar
+      und wachsen mit jeder Iteration.
+    </p>
+    <p>
+      <strong>Critical Expert in the Loop</strong>: Domänenexpert:innen bleiben unverzichtbar.
+      Sie validieren Outputs, erkennen Halluzinationen und steuern die fachliche Qualität.
+    </p>
   </div>
 
-  <div class="limitations-trigger" in:fade={{ delay: 700, duration: 400 }}>
+  <div class="limitations-trigger" in:fade={{ delay: 500, duration: 400 }}>
     <DeepDiveTrigger
-      label="Kritische Reflexion: Grenzen der Methode"
+      label="Grenzen & Limitationen"
       deepDiveId="limitations"
       variant="block"
       on:open={handleDeepDive}
     />
   </div>
 
-  <div class="cta" in:scale={{ duration: 400, delay: 800 }}>
+  <div class="cta" in:scale={{ duration: 400, delay: 600 }}>
     <p class="final-text">Vom Wissen zum Werkzeug.</p>
-    <a
-      href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer"
-      target="_blank"
-      rel="noopener"
-      class="cta-btn"
-    >
-      CorrespExplorer auf GitHub erkunden
-    </a>
+    <div class="cta-links">
+      <a
+        href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer"
+        target="_blank"
+        rel="noopener"
+        class="cta-btn"
+      >
+        GitHub Repository
+      </a>
+      <a
+        href="https://dhcraft.org/CorrespExplorer"
+        target="_blank"
+        rel="noopener"
+        class="cta-btn cta-btn-secondary"
+      >
+        Live Demo
+      </a>
+    </div>
   </div>
 </div>
 
@@ -72,64 +75,35 @@
     margin: 0;
   }
 
-  blockquote {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    color: var(--color-black);
-    font-style: italic;
-    line-height: 1.7;
-    border-left: 3px solid var(--color-terracotta);
-    padding: var(--space-lg);
-    padding-left: var(--space-md);
-    margin: 0;
+  .summary-content {
     max-width: 700px;
-    text-align: justify;
     background: white;
-    border-radius: 0 8px 8px 0;
+    padding: var(--space-lg);
+    border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
-  .imperatives {
-    display: flex;
-    gap: var(--space-md);
-    max-width: 700px;
-    width: 100%;
-  }
-
-  .imperative {
-    flex: 1;
-    text-align: center;
-    padding: var(--space-md);
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    border-top: 3px solid var(--color-terracotta);
-  }
-
-  .imp-icon {
-    width: 32px;
-    height: 32px;
-    background: var(--color-terracotta);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin: 0 auto var(--space-sm) auto;
-  }
-
-  .imperative h4 {
-    font-size: 0.85rem;
+  .summary-content p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
-    margin: 0 0 var(--space-xs) 0;
+    line-height: 1.7;
+    text-align: justify;
+    margin: 0 0 var(--space-md) 0;
   }
 
-  .imperative p {
-    font-size: 0.75rem;
-    color: var(--color-slate);
-    line-height: 1.4;
-    margin: 0;
+  .summary-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .summary-content strong {
+    color: var(--color-terracotta);
+  }
+
+  .promptotyping {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-terracotta);
+    letter-spacing: 0.02em;
   }
 
   .limitations-trigger {
@@ -151,6 +125,13 @@
     margin: 0;
   }
 
+  .cta-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .cta-btn {
     display: inline-block;
     padding: var(--space-sm) var(--space-lg);
@@ -159,7 +140,7 @@
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
@@ -168,13 +149,22 @@
     box-shadow: 0 6px 20px rgba(191, 91, 62, 0.3);
   }
 
-  @media (max-width: 767px) {
-    .imperatives {
-      flex-direction: column;
-    }
+  .cta-btn-secondary {
+    background: transparent;
+    color: var(--color-terracotta);
+    border: 2px solid var(--color-terracotta);
+  }
 
-    .imperative {
-      padding: var(--space-sm);
+  .cta-btn-secondary:hover {
+    background: rgba(191, 91, 62, 0.1);
+    box-shadow: none;
+  }
+
+  @media (max-width: 767px) {
+    .cta-links {
+      flex-direction: column;
+      width: 100%;
+      max-width: 250px;
     }
   }
 </style>

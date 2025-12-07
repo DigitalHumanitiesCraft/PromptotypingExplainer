@@ -35,7 +35,7 @@
 
 <style>
   .bibliography {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding: var(--space-xl) var(--space-lg);
     max-width: 800px;
     margin: 0 auto;

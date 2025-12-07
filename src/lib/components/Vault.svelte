@@ -178,7 +178,7 @@
 
 <style>
   .vault-page {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding: var(--space-xl) var(--space-lg);
     max-width: 1000px;
     margin: 0 auto;

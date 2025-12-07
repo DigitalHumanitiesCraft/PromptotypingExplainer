@@ -191,7 +191,7 @@
 
   .scroll-container {
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     overflow-y: scroll;
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;

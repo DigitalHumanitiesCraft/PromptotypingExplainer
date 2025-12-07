@@ -1,16 +1,18 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
+  import promptotypingLogo from '../../../../assets/images/promptotyping-logo.png';
 </script>
 
 <div class="intro-definition">
   <div class="title-block">
-    <h1>Promptotyping</h1>
+    <img src={promptotypingLogo} alt="Promptotyping Logo" class="logo" />
+    <h1 class="promptotyping-title">Promptotyping</h1>
     <p class="subtitle">Strukturiertes Context Engineering mit Vibe-Coding-Elementen</p>
   </div>
 
   <div class="definition-block">
     <p class="definition">
-      <strong>Promptotyping</strong> ist eine Methode zur systematischen Entwicklung funktionaler
+      <span class="promptotyping">Promptotyping</span> ist eine Methode zur systematischen Entwicklung funktionaler
       Prototypen durch strukturierte Interaktion mit <GlossaryTerm id="llm">Large Language Models</GlossaryTerm>.
       Sie kombiniert die Intuition des "Vibe Codings" mit einem systematischen Framework zur
       Wissensaufbereitung, ein <GlossaryTerm id="context-engineering">Context Engineering</GlossaryTerm>-Prozess,
@@ -43,19 +45,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+  }
+
+  .logo {
+    width: clamp(180px, 25vw, 250px);
+    height: auto;
+    margin-bottom: var(--space-md);
   }
 
   h1 {
-    color: var(--color-black);
     margin: 0;
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+  }
+
+  .promptotyping-title {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-terracotta);
+    letter-spacing: 0.03em;
+  }
+
+  .promptotyping {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-terracotta);
+    letter-spacing: 0.02em;
   }
 
   .subtitle {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
     color: var(--color-slate);
     font-weight: 400;
+    margin-top: var(--space-xs);
   }
 
   .definition-block {

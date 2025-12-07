@@ -5,26 +5,22 @@
     {
       name: 'CorrespExplorer',
       description: 'CMIF-Korrespondenzdaten → Netzwerk, Timeline, Karte',
-      time: '2 Nachmittage',
       link: 'https://dhcraft.org/CorrespExplorer',
     },
     {
-      name: 'Lucina Digital Edition',
-      description: 'Neulateinische Gedichte → TEI-Edition',
-      time: '25 h',
-      link: 'https://chpollin.github.io/diged-neolat/edition-5/web/',
+      name: 'Kriminalmuseum',
+      description: 'Sammlungsdaten → Dual-Interface Explorer',
+      link: 'https://chpollin.github.io/km/collection-explorer.html',
     },
     {
-      name: 'REALonline Inventare',
-      description: 'Mittelalterliche Rauminventare → Dashboard',
-      time: '5 h',
-      link: 'https://chpollin.github.io/imareal-room-object/',
+      name: 'CVMA Glasmalerei',
+      description: 'Glasfenster-Metadaten → Annotations-Viewer',
+      link: 'https://chpollin.github.io/stained-glass-metadata-annotation-tool/docs/version-2/',
     },
     {
-      name: 'Stefan Zweig Digital',
-      description: 'GAMS-Metadaten → Timeline-Tool',
-      time: '2 h',
-      link: 'https://dhcraft.org/excellence/promptotyping/szd-annotation-timeline/',
+      name: 'Aldersbach',
+      description: 'TEI-Klosterrechnungen → Annotations-Tool',
+      link: 'https://chpollin.github.io/depcha-aldersbach',
     },
   ];
 </script>
@@ -48,22 +44,13 @@
         <h3>{example.name}</h3>
         <p class="description">{example.description}</p>
         <div class="card-footer">
-          <span class="time">
-            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
-              <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM7 3v5.5l4 2.5.5-.87-3.5-2.13V3H7z"/>
-            </svg>
-            {example.time}
-          </span>
-          <span class="link-arrow">→</span>
+          <span class="link-arrow">Demo ansehen →</span>
         </div>
       </a>
     {/each}
   </div>
 
-  <p class="insight" in:fade={{ delay: 800, duration: 400 }}>
-    Von <strong>2 Stunden</strong> bis <strong>25 Stunden</strong>, je nach Komplexität
-  </p>
-</div>
+  </div>
 
 <style>
   .outro-beispiele {
@@ -139,51 +126,21 @@
   }
 
   .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-top: var(--space-xs);
     padding-top: var(--space-xs);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  .time {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: var(--color-black);
-    font-weight: 600;
-    font-size: 0.8rem;
-  }
-
-  .time svg {
-    opacity: 0.6;
-  }
-
   .link-arrow {
     color: var(--color-terracotta);
-    font-size: 1.1rem;
-    opacity: 0.6;
-    transition: opacity 0.2s, transform 0.2s;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.2s;
   }
 
   .example-card:hover .link-arrow {
     opacity: 1;
-    transform: translateX(3px);
-  }
-
-  .insight {
-    color: var(--color-black);
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    margin: 0;
-    background: white;
-    padding: var(--space-md) var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .insight strong {
-    color: var(--color-terracotta);
   }
 
   @media (max-width: 767px) {

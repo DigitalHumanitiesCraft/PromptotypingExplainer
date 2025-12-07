@@ -20,7 +20,7 @@
           Reasoner" erfordern externe Verifikation durch Domänenexpert:innen.
         </p>
         <p>
-          Promptotyping nutzt das Konzept der <strong>Co-Intelligence</strong> nach Ethan Mollick (2024)
+          <span class="promptotyping">Promptotyping</span> nutzt das Konzept der <strong>Co-Intelligence</strong> nach Ethan Mollick (2024)
           für die produktive Zusammenarbeit zwischen menschlicher Expertise und KI-Fähigkeiten.
           Dabei wechseln wir zwischen zwei Modi. <strong>Centaur-Arbeit</strong> mit klarer Aufgabenteilung
           eignet sich für strukturierte Phasen wie die Dokumenterstellung. <strong>Cyborg-Arbeit</strong>
@@ -35,16 +35,6 @@
         </p>
       </div>
 
-      <div class="image-placeholder">
-        <div class="placeholder-box">
-          <span class="placeholder-icon">🖼️</span>
-          <span class="placeholder-text">Bild</span>
-        </div>
-        <p class="image-caption">
-          Weder Werkzeug noch Geist. LLMs als fremdartige Intelligenz,
-          die menschliche Verifikation erfordert.
-        </p>
-      </div>
     </div>
 
     <div class="deep-dive-triggers">
@@ -86,11 +76,7 @@
   }
 
   .main-layout {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: var(--space-xl);
     width: 100%;
-    align-items: start;
   }
 
   .text-card {
@@ -122,6 +108,13 @@
     color: var(--color-terracotta);
   }
 
+  .promptotyping {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--color-terracotta);
+    letter-spacing: 0.02em;
+  }
+
   .text-card .learn-more {
     font-size: 0.85rem;
     padding-top: var(--space-sm);
@@ -139,46 +132,6 @@
     text-decoration: underline;
   }
 
-  .image-placeholder {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .placeholder-box {
-    background: rgba(96, 125, 139, 0.08);
-    border: 2px dashed rgba(96, 125, 139, 0.3);
-    border-radius: 8px;
-    aspect-ratio: 3 / 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
-  }
-
-  .placeholder-icon {
-    font-size: 2rem;
-    opacity: 0.5;
-  }
-
-  .placeholder-text {
-    font-size: 0.8rem;
-    color: var(--color-slate);
-    opacity: 0.5;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .image-caption {
-    font-size: 0.8rem;
-    color: var(--color-slate);
-    line-height: 1.5;
-    text-align: center;
-    font-style: italic;
-    margin: 0;
-  }
-
   .deep-dive-triggers {
     display: flex;
     gap: var(--space-md);
@@ -186,17 +139,4 @@
     justify-content: center;
   }
 
-  @media (max-width: 767px) {
-    .main-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .image-placeholder {
-      order: -1;
-    }
-
-    .placeholder-box {
-      aspect-ratio: 16 / 9;
-    }
-  }
 </style>
