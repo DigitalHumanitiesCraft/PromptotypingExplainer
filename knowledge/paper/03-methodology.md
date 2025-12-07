@@ -415,6 +415,8 @@ Ein zweites Frontier-LLM mit eigenem Kontext bewertet die Outputs des ersten:
 
 **Vorteil:** Unabhängige Perspektive, reduziert Bestätigungsfehler.
 
+**Anmerkung zu Modellstärken:** Verschiedene Frontier-LLMs haben unterschiedliche Stärken. Große Kontextfenster, Videoverarbeitung, oder spezifische Reasoning-Fähigkeiten können die Wahl des Judge-Modells beeinflussen. Die genauen Stärken ändern sich mit jeder Modellgeneration.
+
 ---
 
 ### Context Distillation
