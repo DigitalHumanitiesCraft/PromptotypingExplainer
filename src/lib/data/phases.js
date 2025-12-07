@@ -24,8 +24,8 @@ export const phases = [
     id: 'phase2',
     number: 2,
     title: 'Exploration',
-    subtitle: 'Datenanalyse',
-    description: 'Untersuchung der Datenstrukturen.',
+    subtitle: 'Exploration & Mapping',
+    description: 'LLM-generierte Scripts explorieren Daten, die zu groß für das Context Window sind.',
     entities: [
       { type: 'person', label: 'Person' },
       { type: 'place', label: 'Ort' },

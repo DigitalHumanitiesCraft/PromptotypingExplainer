@@ -18,8 +18,12 @@
   import Phase1Rohdaten from './lib/components/steps/phase1/Phase1Rohdaten.svelte';
   import Phase1Sammlung from './lib/components/steps/phase1/Phase1Sammlung.svelte';
 
-  // Legacy Scene imports (Phase 2-4 + Outro to be migrated)
-  import Phase2Scene from './lib/components/scenes/Phase2Scene.svelte';
+  // Phase 2 Steps
+  import Phase2Struktur from './lib/components/steps/phase2/Phase2Struktur.svelte';
+  import Phase2Entitaeten from './lib/components/steps/phase2/Phase2Entitaeten.svelte';
+  import Phase2Fragen from './lib/components/steps/phase2/Phase2Fragen.svelte';
+
+  // Legacy Scene imports (Phase 3-4 + Outro to be migrated)
   import Phase3Scene from './lib/components/scenes/Phase3Scene.svelte';
   import Phase4Scene from './lib/components/scenes/Phase4Scene.svelte';
   import OutroScene from './lib/components/scenes/OutroScene.svelte';
@@ -117,24 +121,17 @@
     <Phase1Sammlung />
   </Step>
 
+  <!-- Phase 2: Exploration - 3 Steps -->
   <Step id="phase2-struktur" phaseIndex={2} stepIndex={0}>
-    <div class="legacy-scene">
-      <Phase2Scene progress={0.5} />
-    </div>
+    <Phase2Struktur />
   </Step>
 
   <Step id="phase2-entitaeten" phaseIndex={2} stepIndex={1}>
-    <div class="placeholder-step">
-      <h2>Phase 2: Entitäten</h2>
-      <p>Coming soon...</p>
-    </div>
+    <Phase2Entitaeten />
   </Step>
 
   <Step id="phase2-fragen" phaseIndex={2} stepIndex={2}>
-    <div class="placeholder-step">
-      <h2>Phase 2: Fragen</h2>
-      <p>Coming soon...</p>
-    </div>
+    <Phase2Fragen />
   </Step>
 
   <Step id="phase3-titel" phaseIndex={3} stepIndex={0}>
