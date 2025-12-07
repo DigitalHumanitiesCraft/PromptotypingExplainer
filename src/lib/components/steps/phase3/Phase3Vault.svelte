@@ -1,5 +1,15 @@
 <script>
   import { fade, fly, scale } from 'svelte/transition';
+
+  // GitHub repository base URL for raw files
+  const githubBase = 'https://github.com/DigitalHumanitiesCraft/PromptotypingExplainer/blob/main/knowledge';
+  const downloadBase = import.meta.env.BASE_URL + 'downloads';
+
+  const vaultFiles = [
+    { name: 'DATA.md', desc: 'Was haben wir?', github: `${githubBase}/knowledge.md` },
+    { name: 'REQUIREMENTS.md', desc: 'Was wollen wir?', github: `${githubBase}/requirements.md` },
+    { name: 'CONTEXT.md', desc: 'Was wissen wir?', github: `${githubBase}/implementation.md` },
+  ];
 </script>
 
 <div class="phase3-vault">
@@ -60,6 +70,30 @@
   <p class="conclusion" in:fade={{ delay: 900, duration: 400 }}>
     Das Wissen ist verdichtet und <strong>bereit für den LLM-Dialog</strong>
   </p>
+
+  <!-- Download Section -->
+  <div class="download-section" in:fade={{ delay: 1000, duration: 400 }}>
+    <p class="download-intro">Starte dein eigenes Projekt:</p>
+    <div class="download-buttons">
+      <a
+        href="{downloadBase}/VAULT-TEMPLATE-README.md"
+        download
+        class="download-btn primary"
+      >
+        <span class="btn-icon">&#8595;</span>
+        Vault-Template
+      </a>
+      <a
+        href="https://github.com/DigitalHumanitiesCraft/PromptotypingExplainer/tree/main/knowledge"
+        target="_blank"
+        rel="noopener"
+        class="download-btn secondary"
+      >
+        <span class="btn-icon">&#8599;</span>
+        Echtes Beispiel auf GitHub
+      </a>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -221,6 +255,69 @@
     color: var(--color-terracotta);
   }
 
+  /* Download Section */
+  .download-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: var(--space-sm);
+  }
+
+  .download-intro {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0;
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .download-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .download-btn.primary {
+    background: var(--color-terracotta);
+    color: white;
+  }
+
+  .download-btn.primary:hover {
+    box-shadow: 0 4px 12px rgba(191, 91, 62, 0.3);
+  }
+
+  .download-btn.secondary {
+    background: transparent;
+    color: var(--color-slate);
+    border: 1px solid var(--color-slate);
+  }
+
+  .download-btn.secondary:hover {
+    background: rgba(96, 125, 139, 0.1);
+  }
+
+  .btn-icon {
+    font-size: 0.9rem;
+  }
+
   @media (max-width: 767px) {
     .vault-visual {
       flex-direction: column;
@@ -249,6 +346,16 @@
 
     .llm-target {
       align-items: center;
+    }
+
+    .download-buttons {
+      flex-direction: column;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .download-btn {
+      justify-content: center;
     }
   }
 </style>

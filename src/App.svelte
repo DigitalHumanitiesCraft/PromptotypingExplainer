@@ -33,6 +33,7 @@
 
   // Outro Steps
   import OutroBeispiele from './lib/components/steps/outro/OutroBeispiele.svelte';
+  import OutroDiskussion from './lib/components/steps/outro/OutroDiskussion.svelte';
   import OutroZusammenfassung from './lib/components/steps/outro/OutroZusammenfassung.svelte';
 
   onMount(() => {
@@ -51,6 +52,15 @@
   // Update hash when phase/step changes
   $: if (typeof window !== 'undefined') {
     updateHash($currentPhase, $currentStep);
+  }
+
+  // Scroll indicator visibility - hide after first scroll
+  let showScrollIndicator = true;
+
+  function handleScroll(e) {
+    if (e.target.scrollTop > 100) {
+      showScrollIndicator = false;
+    }
   }
 
   // Color interpolation helper
@@ -95,7 +105,7 @@
 
 <PhaseHeader />
 
-<main class="scroll-container">
+<main class="scroll-container" on:scroll={handleScroll}>
   <ProgressIndicator />
 
   <!-- Intro Phase: 4 Steps -->
@@ -159,14 +169,26 @@
     <Phase4VaultUpdate />
   </Step>
 
-  <!-- Outro: Praxis - 2 Steps -->
+  <!-- Outro: Praxis - 3 Steps -->
   <Step id="outro-beispiele" phaseIndex={5} stepIndex={0}>
     <OutroBeispiele />
   </Step>
 
-  <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={1}>
+  <Step id="outro-diskussion" phaseIndex={5} stepIndex={1}>
+    <OutroDiskussion />
+  </Step>
+
+  <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={2}>
     <OutroZusammenfassung />
   </Step>
+
+  <!-- Scroll Indicator -->
+  {#if showScrollIndicator}
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-arrow"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
+  {/if}
 </main>
 
 <!-- Deep Dive Panel -->
@@ -196,5 +218,62 @@
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     padding-top: 50px; /* Space for fixed header */
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: fixed;
+    bottom: var(--space-xl);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    opacity: 0.6;
+    animation: fadeInOut 2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid var(--color-slate);
+    border-bottom: 2px solid var(--color-slate);
+    transform: rotate(45deg);
+    animation: bounceDown 1.5s ease-in-out infinite;
+  }
+
+  .scroll-text {
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% {
+      transform: rotate(45deg) translateY(0);
+    }
+    50% {
+      transform: rotate(45deg) translateY(6px);
+    }
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .scroll-indicator {
+      bottom: var(--space-lg);
+    }
   }
 </style>

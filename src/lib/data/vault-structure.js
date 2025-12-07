@@ -130,31 +130,31 @@ export const vaultStructure = {
   ]
 };
 
-// Kategorie-Farben und Icons
+// Kategorie-Farben und Icons (CSS-basiert, keine Emojis)
 export const categoryStyles = {
   context: {
     color: 'var(--color-terracotta)',
-    icon: '📋',
+    icon: 'ctx',
     label: 'Context'
   },
   requirements: {
     color: 'var(--color-slate)',
-    icon: '📝',
+    icon: 'req',
     label: 'Requirements'
   },
   implementation: {
     color: '#4CAF50',
-    icon: '⚙️',
+    icon: 'imp',
     label: 'Implementation'
   },
   journal: {
-    color: '#FF9800',
-    icon: '📓',
+    color: '#E65100',
+    icon: 'jrn',
     label: 'Journal'
   },
   paper: {
     color: '#9C27B0',
-    icon: '📄',
+    icon: 'doc',
     label: 'Paper'
   }
 };

@@ -66,9 +66,10 @@ export const stepStructure = [
     id: 'outro',
     label: 'Praxis',
     number: null,
-    subtitle: 'Case Studies',
+    subtitle: 'Case Studies & Reflexion',
     steps: [
       { id: 'beispiele', label: 'Beispiele' },
+      { id: 'diskussion', label: 'Diskussion' },
       { id: 'zusammenfassung', label: 'Zusammenfassung' },
     ]
   },

@@ -1,9 +1,18 @@
 <script>
+  import { onMount } from 'svelte';
   import PageLayout from './PageLayout.svelte';
   import { vaultStructure, categoryStyles } from '../../data/vault-structure.js';
 
   let expandedFolders = { 'knowledge': true };
   let selectedFile = null;
+
+  // Initiale Dateiauswahl - kein "Dead Space"
+  onMount(() => {
+    const firstFile = vaultStructure.children.find(item => item.type === 'file');
+    if (firstFile) {
+      selectedFile = firstFile;
+    }
+  });
 
   function toggleFolder(name) {
     expandedFolders[name] = !expandedFolders[name];
@@ -24,11 +33,12 @@
     <header class="vault-header">
       <h1>Promptotyping Vault</h1>
       <p class="vault-intro">
-        Dies ist der <strong>echte Vault</strong> dieses Projekts – die strukturierte Dokumentation,
-        die während der Entwicklung dieser Website mit Promptotyping entstanden ist.
+        Der <strong>Vault</strong> ist ein strukturierter Wissensspeicher aus vernetzten Markdown-Dateien –
+        ähnlich wie ein <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a>-Vault.
+        Dies ist der <strong>echte Vault</strong> dieses Projekts, der während der Entwicklung entstanden ist.
       </p>
       <div class="meta-note">
-        <span class="meta-icon">🔄</span>
+        <span class="meta-icon" aria-hidden="true"></span>
         <span>Meta-Beispiel: Diese Dokumentation erklärt Promptotyping und wurde selbst damit entwickelt.</span>
       </div>
     </header>
@@ -37,7 +47,7 @@
       <!-- File Tree -->
       <div class="file-tree">
         <div class="tree-header">
-          <span class="folder-icon">📁</span>
+          <span class="folder-icon-svg" aria-hidden="true"></span>
           <span class="folder-name">knowledge/</span>
         </div>
 
@@ -50,8 +60,8 @@
                   class:expanded={expandedFolders[item.name]}
                   on:click={() => toggleFolder(item.name)}
                 >
-                  <span class="expand-icon">{expandedFolders[item.name] ? '▼' : '▶'}</span>
-                  <span class="folder-icon">📁</span>
+                  <span class="expand-icon">{expandedFolders[item.name] ? '−' : '+'}</span>
+                  <span class="folder-icon-svg" aria-hidden="true"></span>
                   <span class="item-name">{item.name}</span>
                 </button>
 
@@ -131,8 +141,8 @@
           </a>
         {:else}
           <div class="preview-placeholder">
-            <span class="placeholder-icon">👆</span>
-            <p>Wähle eine Datei aus dem Vault, um Details zu sehen.</p>
+            <span class="placeholder-icon" aria-hidden="true"></span>
+            <p>Wähle eine Datei aus der Liste, um Details zu sehen.</p>
           </div>
         {/if}
       </div>
@@ -141,11 +151,15 @@
     <!-- Vault Explanation -->
     <div class="vault-explanation">
       <h2>Vault-Struktur erklärt</h2>
+      <p class="explanation-intro">
+        Alle Dateien im Vault haben die Endung <code>.md</code> – das steht für <strong>Markdown</strong>,
+        ein einfaches Textformat, das sich gut für strukturierte Dokumentation eignet.
+      </p>
 
       <div class="doc-types">
         {#each Object.entries(categoryStyles) as [key, style]}
           <div class="doc-type">
-            <span class="doc-icon" style="color: {style.color}">{style.icon}</span>
+            <span class="doc-icon" style="background: {style.color}">{style.icon}</span>
             <div class="doc-info">
               <strong>{style.label}</strong>
               <span class="doc-desc">
@@ -167,7 +181,7 @@
       </div>
 
       <div class="vault-tip">
-        <h3>💡 Tipp für eigene Projekte</h3>
+        <h3>Tipp für eigene Projekte</h3>
         <p>
           Ein minimaler Vault beginnt mit drei Dateien: <code>DATA.md</code>, <code>REQUIREMENTS.md</code>
           und <code>CONTEXT.md</code>. Das Journal (<code>JOURNAL.md</code>) wächst mit jeder Iteration.
@@ -277,9 +291,67 @@
   }
 
   .expand-icon {
-    font-size: 0.7rem;
-    width: 12px;
+    font-size: 0.8rem;
+    width: 14px;
     color: var(--color-slate);
+    font-weight: 600;
+  }
+
+  /* CSS-based folder icon */
+  .folder-icon-svg {
+    width: 16px;
+    height: 14px;
+    background: var(--color-slate);
+    border-radius: 2px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .folder-icon-svg::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 8px;
+    height: 4px;
+    background: var(--color-slate);
+    border-radius: 2px 2px 0 0;
+  }
+
+  /* CSS-based file icon */
+  .file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 16px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    border-radius: 3px;
+    color: white;
+    background: var(--color-slate);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* Meta icon */
+  .meta-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-terracotta);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .meta-icon::before {
+    content: 'i';
   }
 
   .item-name {
@@ -379,10 +451,15 @@
     text-align: center;
   }
 
+  /* CSS-based arrow icon */
   .placeholder-icon {
-    font-size: 2.5rem;
+    width: 24px;
+    height: 24px;
     margin-bottom: var(--space-sm);
-    opacity: 0.5;
+    opacity: 0.4;
+    border-left: 3px solid var(--color-slate);
+    border-bottom: 3px solid var(--color-slate);
+    transform: rotate(135deg);
   }
 
   /* Vault Explanation */
@@ -394,7 +471,21 @@
   .vault-explanation h2 {
     font-size: 1.3rem;
     color: var(--color-slate);
+    margin-bottom: var(--space-sm);
+  }
+
+  .explanation-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-black);
     margin-bottom: var(--space-lg);
+  }
+
+  .explanation-intro code {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(96, 125, 139, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
   }
 
   .doc-types {
@@ -414,7 +505,17 @@
   }
 
   .doc-icon {
-    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 20px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
   }
 
   .doc-info {

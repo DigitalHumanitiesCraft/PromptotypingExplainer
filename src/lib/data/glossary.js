@@ -163,6 +163,20 @@ export const glossary = {
     definition: 'Der Mensch als kritischer Validator im Promptotyping-Prozess, der aktiv Sycophancy und Konfabulationen erkennt und korrigiert. Domänenwissen ist essentiell für die Qualitätssicherung.',
     tags: ['methodology'],
     source: 'Pollin & Steiner 2025'
+  },
+  'promptotyping-vault': {
+    term: 'Promptotyping Vault',
+    en: 'Promptotyping Vault',
+    definition: 'Ein strukturierter Wissensspeicher aus vernetzten Markdown-Dateien, der das destillierte Domänenwissen für die LLM-Interaktion enthält. Der Vault wächst iterativ und dient als externes Gedächtnis für den Entwicklungsprozess.',
+    tags: ['methodology'],
+    source: 'Pollin & Steiner 2025'
+  },
+  'promptotyping-documents': {
+    term: 'Promptotyping Documents',
+    en: 'Promptotyping Documents',
+    definition: 'Die drei Kerndokumente im Promptotyping Vault: DATA.md (Datenstruktur und Semantik), REQUIREMENTS.md (User Stories und Anforderungen) und CONTEXT.md (Domänenwissen und Kontext). Sie bilden die Grundlage für effektive LLM-Dialoge.',
+    tags: ['methodology'],
+    source: 'Pollin & Steiner 2025'
   }
 };
 
@@ -209,5 +223,12 @@ export const termToId = {
   'system 1.42': 'system-142',
   'system142': 'system-142',
   'critical expert': 'critical-expert',
-  'critical expert in the loop': 'critical-expert'
+  'critical expert in the loop': 'critical-expert',
+  'vault': 'promptotyping-vault',
+  'promptotyping vault': 'promptotyping-vault',
+  'promptotyping documents': 'promptotyping-documents',
+  'promptotyping document': 'promptotyping-documents',
+  'data.md': 'promptotyping-documents',
+  'requirements.md': 'promptotyping-documents',
+  'context.md': 'promptotyping-documents'
 };

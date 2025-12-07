@@ -10,9 +10,10 @@
   </p>
 
   <div class="iteration-grid">
-    <div class="chat-side" in:fly={{ x: -30, duration: 500, delay: 300 }}>
+    <figure class="chat-side" in:fly={{ x: -30, duration: 500, delay: 300 }}>
       <AnimatedChat />
-    </div>
+      <figcaption>Der Reasoning-Zyklus: Fragen, Planen, Implementieren, Dokumentieren</figcaption>
+    </figure>
 
     <div class="text-card explainer-side" in:fly={{ x: 30, duration: 500, delay: 400 }}>
       <p>
@@ -71,7 +72,18 @@
 
   .chat-side {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-sm);
+    margin: 0;
+  }
+
+  .chat-side figcaption {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    font-style: italic;
+    text-align: center;
+    max-width: 380px;
   }
 
   .explainer-side {
@@ -85,7 +97,7 @@
     }
 
     .chat-side {
-      justify-content: center;
+      align-items: center;
     }
 
     .explainer-side {
