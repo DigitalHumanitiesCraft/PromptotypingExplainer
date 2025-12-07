@@ -24,6 +24,12 @@
         <span class="current-step">{step.label}</span>
       {/if}
     </div>
+
+    <!-- Navigation Links -->
+    <nav class="header-nav">
+      <a href="#glossar" class="nav-link">Glossar</a>
+      <a href="#bibliographie" class="nav-link">Bibliographie</a>
+    </nav>
   </div>
 </header>
 
@@ -82,6 +88,26 @@
     flex-grow: 1;
   }
 
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    text-decoration: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-terracotta);
+    background: rgba(191, 91, 62, 0.1);
+  }
+
   .phase-title {
     font-size: 1rem;
     font-weight: 600;
@@ -112,6 +138,10 @@
 
     .current-step {
       font-size: 0.8rem;
+    }
+
+    .header-nav {
+      display: none;
     }
   }
 </style>

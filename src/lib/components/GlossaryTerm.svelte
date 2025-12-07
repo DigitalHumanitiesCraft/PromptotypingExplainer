@@ -1,5 +1,6 @@
 <script>
   import { glossary } from '../data/glossary.js';
+  import { getBibEntry } from '../data/bibliography.js';
   import { onMount, tick } from 'svelte';
 
   export let id;
@@ -7,61 +8,99 @@
 
   let showTooltip = false;
   let termElement;
-  let termRect = { top: 0, left: 0, right: 0 };
-  let panelRect = { top: 0, left: 0 };
+  let popoverElement;
+  let hoverTimeout;
+  let position = { top: 0, left: 0, placement: 'above' };
 
   $: entry = glossary[id];
+  $: bibEntry = entry?.source ? getBibEntry(entry.source) : null;
 
-  // Update positions for connection line
-  async function updatePositions() {
+  // Calculate smart popover position
+  async function calculatePosition() {
     await tick();
-    if (termElement) {
-      const rect = termElement.getBoundingClientRect();
-      termRect = {
-        top: rect.top + rect.height / 2,
-        left: rect.left,
-        right: rect.right
-      };
+    if (!termElement) return;
+
+    const rect = termElement.getBoundingClientRect();
+    const popoverWidth = 280;
+    const popoverHeight = 200; // Approximate max height
+    const gap = 8; // Space between term and popover
+
+    let top, left;
+    let placement = 'above';
+
+    // Check if there's space above
+    if (rect.top > popoverHeight + gap) {
+      // Place above - position at bottom of where popover will be
+      top = rect.top - gap;
+      placement = 'above';
+    } else {
+      // Place below - position at top of popover
+      top = rect.bottom + gap;
+      placement = 'below';
     }
+
+    // Horizontal: center on the term
+    left = rect.left + rect.width / 2;
+
+    position = { top, left, placement };
+  }
+
+  function handleMouseEnter() {
+    // 300ms delay to prevent flicker
+    hoverTimeout = setTimeout(() => {
+      showTooltip = true;
+      calculatePosition();
+    }, 300);
+  }
+
+  function handleMouseLeave() {
+    clearTimeout(hoverTimeout);
+    showTooltip = false;
   }
 
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
+    clearTimeout(hoverTimeout);
     showTooltip = !showTooltip;
-    if (showTooltip) updatePositions();
+    if (showTooltip) calculatePosition();
   }
 
-  function handleMouseEnter() {
-    showTooltip = true;
-    updatePositions();
+  // Close on click outside (for mobile)
+  function handleClickOutside(event) {
+    if (showTooltip &&
+        termElement && !termElement.contains(event.target) &&
+        popoverElement && !popoverElement.contains(event.target)) {
+      showTooltip = false;
+    }
   }
 
-  // Panel bleibt offen bis explizit geschlossen (X-Button oder Klick außerhalb)
-
-  function closeTooltip() {
-    showTooltip = false;
-  }
-
-  // Close on scroll (after a delay to allow reading)
-  let scrollTimeout;
+  // Close on scroll
   function handleScroll() {
     if (showTooltip) {
-      updatePositions();
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        showTooltip = false;
-      }, 2000); // Close after 2s of scrolling
+      showTooltip = false;
+    }
+  }
+
+  // Close on Escape
+  function handleKeydown(event) {
+    if (event.key === 'Escape' && showTooltip) {
+      showTooltip = false;
     }
   }
 
   onMount(() => {
+    document.addEventListener('click', handleClickOutside);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updatePositions);
+    window.addEventListener('keydown', handleKeydown);
+    window.addEventListener('resize', calculatePosition);
+
     return () => {
+      document.removeEventListener('click', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updatePositions);
-      clearTimeout(scrollTimeout);
+      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('resize', calculatePosition);
+      clearTimeout(hoverTimeout);
     };
   });
 
@@ -74,7 +113,9 @@
     'safety': '#DC2626',
     'training': '#D97706',
     'agents': '#EC4899',
-    'evaluation': '#6366F1'
+    'evaluation': '#6366F1',
+    'methodology': '#14B8A6',
+    'theory': '#8B5CF6'
   };
 </script>
 
@@ -86,59 +127,39 @@
     bind:this={termElement}
     on:click={handleClick}
     on:mouseenter={handleMouseEnter}
+    on:mouseleave={handleMouseLeave}
     on:keydown={(e) => e.key === 'Enter' && handleClick(e)}
     role="button"
     tabindex="0"
-    aria-describedby="tooltip-{id}"
+    aria-describedby={showTooltip ? `tooltip-${id}` : undefined}
     aria-expanded={showTooltip}
   >
     <slot>{entry.term}</slot>
-    <span class="glossary-indicator">?</span>
   </span>
 
   {#if showTooltip}
-    <!-- Connection line from term to panel -->
-    <svg class="connection-line" aria-hidden="true">
-      <line
-        x1={termRect.right + 4}
-        y1={termRect.top}
-        x2={window.innerWidth - 180 - 280 - 32}
-        y2={window.innerHeight / 2}
-        stroke="var(--color-terracotta)"
-        stroke-width="1.5"
-        stroke-dasharray="4 3"
-        opacity="0.5"
-      />
-      <circle
-        cx={termRect.right + 4}
-        cy={termRect.top}
-        r="3"
-        fill="var(--color-terracotta)"
-      />
-    </svg>
-
-    <aside
+    <div
       id="tooltip-{id}"
-      class="glossary-panel"
-      aria-label="Glossar: {entry.term}"
+      class="glossary-popover"
+      class:above={position.placement === 'above'}
+      class:below={position.placement === 'below'}
+      style="top: {position.top}px; left: {position.left}px;"
+      bind:this={popoverElement}
+      role="tooltip"
     >
-      <button class="close-btn" on:click={closeTooltip} aria-label="Schließen">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6L6 18M6 6l12 12" />
-        </svg>
-      </button>
+      <div class="caret"></div>
 
-      <div class="panel-header">
-        <span class="panel-term">{entry.term}</span>
-        {#if entry.en !== entry.term}
-          <span class="panel-en">({entry.en})</span>
+      <div class="popover-header">
+        <span class="popover-term">{entry.term}</span>
+        {#if entry.en && entry.en !== entry.term}
+          <span class="popover-en">({entry.en})</span>
         {/if}
       </div>
 
-      <p class="panel-definition">{entry.definition}</p>
+      <p class="popover-definition">{entry.definition}</p>
 
-      <div class="panel-footer">
-        <div class="panel-tags">
+      <div class="popover-footer">
+        <div class="popover-tags">
           {#each entry.tags as tag}
             <span class="tag" style="background-color: {tagColors[tag] || '#607D8B'}">
               {tag}
@@ -146,10 +167,16 @@
           {/each}
         </div>
         {#if entry.source}
-          <span class="panel-source">{entry.source}</span>
+          <a
+            href="#bibliographie-{bibEntry?.id || ''}"
+            class="popover-source"
+            on:click|stopPropagation
+          >
+            {entry.source}
+          </a>
         {/if}
       </div>
-    </aside>
+    </div>
   {/if}
 {:else}
   <slot />
@@ -158,7 +185,7 @@
 <style>
   .glossary-term {
     position: relative;
-    cursor: pointer;
+    cursor: help;
     border-bottom: 1px dotted var(--color-terracotta);
     transition: all 0.2s ease;
   }
@@ -166,147 +193,127 @@
   .glossary-term:hover,
   .glossary-term:focus {
     color: var(--color-terracotta);
-    border-bottom-style: solid;
+    border-bottom-color: var(--color-terracotta);
   }
 
   .glossary-term.active {
     color: var(--color-terracotta);
     border-bottom-style: solid;
-    background: rgba(191, 91, 62, 0.1);
-    padding: 0 2px;
-    margin: 0 -2px;
-    border-radius: 2px;
   }
 
   .glossary-term.inline {
     display: inline;
   }
 
-  .glossary-indicator {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 14px;
-    height: 14px;
-    font-size: 9px;
-    font-weight: 700;
-    color: var(--color-white);
-    background: var(--color-terracotta);
-    border-radius: 50%;
-    margin-left: 2px;
-    vertical-align: super;
-    opacity: 0.8;
-  }
-
-  /* Connection line */
-  .connection-line {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 999;
-    overflow: visible;
-  }
-
-  /* Side panel - fixed right */
-  .glossary-panel {
+  /* Popover */
+  .glossary-popover {
     position: fixed;
     z-index: 1000;
-    top: 50%;
-    right: var(--space-lg);
-    transform: translateY(-50%);
     width: 280px;
-    max-width: calc(100vw - 2 * var(--space-lg));
-    max-height: 60vh;
-    overflow-y: auto;
     padding: var(--space-md);
     background: var(--color-white);
-    border: 2px solid var(--color-terracotta);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-    animation: panelSlideIn 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
 
-  @keyframes panelSlideIn {
+  .glossary-popover.above {
+    transform: translate(-50%, -100%);
+    animation: popoverFadeInAbove 0.2s ease;
+  }
+
+  .glossary-popover.below {
+    transform: translate(-50%, 0);
+    animation: popoverFadeInBelow 0.2s ease;
+  }
+
+  @keyframes popoverFadeInAbove {
     from {
       opacity: 0;
-      transform: translateY(-50%) translateX(20px);
+      transform: translate(-50%, calc(-100% + 8px));
     }
     to {
       opacity: 1;
-      transform: translateY(-50%) translateX(0);
+      transform: translate(-50%, -100%);
     }
   }
 
-  /* Close button */
-  .close-btn {
+  @keyframes popoverFadeInBelow {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -8px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  /* Caret/Arrow */
+  .caret {
     position: absolute;
-    top: var(--space-xs);
-    right: var(--space-xs);
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: var(--color-slate);
-    opacity: 0.6;
-    transition: all 0.2s ease;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateX(-50%) rotate(45deg);
   }
 
-  .close-btn:hover {
-    opacity: 1;
-    color: var(--color-terracotta);
+  .glossary-popover.above .caret {
+    bottom: -7px;
+    border-top: none;
+    border-left: none;
   }
 
-  .close-btn svg {
-    width: 16px;
-    height: 16px;
+  .glossary-popover.below .caret {
+    top: -7px;
+    border-bottom: none;
+    border-right: none;
   }
 
-  .panel-header {
+  .popover-header {
     display: flex;
     align-items: baseline;
     gap: var(--space-xs);
     margin-bottom: var(--space-sm);
-    padding-right: var(--space-lg);
+    text-align: left;
   }
 
-  .panel-term {
+  .popover-term {
     font-weight: 600;
     color: var(--color-terracotta);
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
-  .panel-en {
-    font-size: 0.8rem;
+  .popover-en {
+    font-size: 0.75rem;
     color: var(--color-slate);
     font-style: italic;
   }
 
-  .panel-definition {
+  .popover-definition {
     font-size: 0.85rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: var(--color-black);
     margin: 0 0 var(--space-sm) 0;
+    text-align: left;
   }
 
-  .panel-footer {
+  .popover-footer {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
   }
 
-  .panel-tags {
+  .popover-tags {
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
   }
 
   .tag {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     padding: 2px 6px;
     border-radius: 4px;
     color: white;
@@ -315,48 +322,25 @@
     letter-spacing: 0.3px;
   }
 
-  .panel-source {
+  .popover-source {
     font-size: 0.7rem;
     color: var(--color-slate);
     font-style: italic;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
   }
 
-  /* Adjust position when Progress Indicator is visible */
-  @media (min-width: 768px) {
-    .glossary-panel {
-      right: calc(var(--space-lg) + 180px); /* Space for ProgressIndicator */
-    }
+  .popover-source:hover {
+    color: var(--color-terracotta);
+    text-decoration: underline;
   }
 
-  /* Mobile: bottom sheet */
+  /* Mobile adjustments */
   @media (max-width: 767px) {
-    .connection-line {
-      display: none;
-    }
-
-    .glossary-panel {
-      top: auto;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      width: auto;
-      max-width: none;
-      max-height: 50vh;
-      transform: none;
-      border-radius: 16px 16px 0 0;
-      border-bottom: none;
-      animation: panelSlideUp 0.25s ease;
-    }
-
-    @keyframes panelSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .glossary-popover {
+      width: calc(100vw - 2 * var(--space-md));
+      max-width: 320px;
     }
   }
 </style>
