@@ -44,7 +44,7 @@
 
     <div class="deep-dive-triggers">
       <DeepDiveTrigger
-        label="System 1.42: Wie (Frontier-)LLMs „tatsächlich" funktionieren"
+        label="System 1.42: Wie (Frontier-)LLMs 'tatsächlich' funktionieren"
         deepDiveId="system-1-42"
         on:open={handleDeepDive}
       />
