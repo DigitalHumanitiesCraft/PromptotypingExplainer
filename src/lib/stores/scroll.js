@@ -62,6 +62,8 @@ export const stepStructure = [
     steps: [
       { id: 'titel', label: 'Übersicht' },
       { id: 'iteration', label: 'Iteration' },
+      { id: 'journal', label: 'Journal' },
+      { id: 'versionierung', label: 'Versionierung' },
       { id: 'vault-update', label: 'Vault-Update' },
     ]
   },

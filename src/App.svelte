@@ -32,6 +32,8 @@
   // Phase 4 Steps
   import Phase4Titel from './lib/components/steps/phase4/Phase4Titel.svelte';
   import Phase4Iteration from './lib/components/steps/phase4/Phase4Iteration.svelte';
+  import Phase4Journal from './lib/components/steps/phase4/Phase4Journal.svelte';
+  import Phase4Versionierung from './lib/components/steps/phase4/Phase4Versionierung.svelte';
   import Phase4VaultUpdate from './lib/components/steps/phase4/Phase4VaultUpdate.svelte';
 
   // Outro Steps
@@ -205,7 +207,15 @@
     <Phase4Iteration />
   </Step>
 
-  <Step id="phase4-vault-update" phaseIndex={4} stepIndex={2}>
+  <Step id="phase4-journal" phaseIndex={4} stepIndex={2}>
+    <Phase4Journal />
+  </Step>
+
+  <Step id="phase4-versionierung" phaseIndex={4} stepIndex={3}>
+    <Phase4Versionierung />
+  </Step>
+
+  <Step id="phase4-vault-update" phaseIndex={4} stepIndex={4}>
     <Phase4VaultUpdate />
   </Step>
 

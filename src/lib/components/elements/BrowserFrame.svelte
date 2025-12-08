@@ -1,6 +1,8 @@
 <script>
-  export let state = 'empty'; // empty, code, wireframe, network, success, error
+  export let state = 'empty'; // empty, code, wireframe, network, success, error, markdown
   export let showSpinner = false;
+  export let filename = 'localhost:3000'; // Custom filename for URL bar
+  export let content = ''; // Custom content for markdown state
 </script>
 
 <div class="browser-frame" class:success={state === 'success'} class:error={state === 'error'}>
@@ -10,7 +12,7 @@
       <span class="dot yellow"></span>
       <span class="dot green"></span>
     </div>
-    <div class="url-bar">localhost:3000</div>
+    <div class="url-bar">{filename}</div>
   </div>
 
   <div class="browser-content">
@@ -63,6 +65,10 @@
         <span class="status-icon">✕</span>
         <span class="status-text">Test fehlgeschlagen</span>
       </div>
+    {:else if state === 'markdown'}
+      <div class="markdown-view">
+        <pre>{content}</pre>
+      </div>
     {/if}
   </div>
 </div>
@@ -70,7 +76,7 @@
 <style>
   .browser-frame {
     width: 100%;
-    max-width: 280px;
+    max-width: 380px;
     border: 2px solid var(--color-slate);
     border-radius: 8px;
     overflow: hidden;
@@ -235,5 +241,23 @@
   .status-text {
     font-size: 0.75rem;
     color: var(--color-slate);
+  }
+
+  /* Markdown view */
+  .markdown-view {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    text-align: left;
+  }
+
+  .markdown-view pre {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    line-height: 1.5;
+    color: var(--color-black);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
   }
 </style>
