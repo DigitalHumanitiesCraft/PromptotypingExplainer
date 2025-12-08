@@ -2,6 +2,7 @@
   import { fade, fly } from 'svelte/transition';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
   import GlossaryTerm from '../../GlossaryTerm.svelte';
+  import Icon from '../../elements/Icon.svelte';
   import correspexplorerImg from '../../../../assets/images/correspexplorer.png';
   import lucinaImg from '../../../../assets/images/lucina.png';
 </script>
@@ -32,12 +33,18 @@
         <h4>Beispiel <GlossaryTerm id="correspexplorer">CorrespExplorer</GlossaryTerm></h4>
         <img src={correspexplorerImg} alt="CorrespExplorer Interface" class="example-image" />
         <p>
-          Im CorrespExplorer-Projekt wurden <GlossaryTerm id="cmif">CMIF-XML</GlossaryTerm>-Dateien aus <GlossaryTerm id="correspsearch">correspSearch</GlossaryTerm>,
-          die TEI-Correspondence-SIG-Dokumentation, Editionsrichtlinien der beteiligten Projekte und
-          Notizen aus Gesprächen mit Briefeditor:innen gesammelt. Die Daten lagen bereits strukturiert vor.
+          Im CorrespExplorer-Projekt wurde das <GlossaryTerm id="cmif">CMIF</GlossaryTerm> des
+          Hugo Schuchardt Archivs organisiert, der <GlossaryTerm id="cmif">CMIF</GlossaryTerm>-Standard
+          studiert und Erfahrungen aus einer Dissertation zu explorativen Tools für historische
+          Rechnungen (Ontologie-basiert) eingebracht. Die Daten lagen bereits strukturiert vor.
         </p>
         <p class="example-links">
-          <a href="https://github.com/DHCraft/CorrespExplorer" target="_blank" rel="noopener" class="link-repo">Repo</a>
+          <a href="https://dhcraft.org/CorrespExplorer" target="_blank" rel="noopener" class="link-demo">
+            <Icon name="external-link" size={12} /> Demo
+          </a>
+          <a href="https://github.com/DHCraft/CorrespExplorer" target="_blank" rel="noopener" class="link-repo">
+            <Icon name="github" size={12} /> Repo
+          </a>
         </p>
       </div>
 
@@ -52,8 +59,12 @@
           mit 128 Gedichten.
         </p>
         <p class="example-links">
-          <a href="https://chpollin.github.io/diged-neolat/edition-5/web/" target="_blank" rel="noopener" class="link-demo">Demo</a>
-          <a href="https://github.com/chpollin/diged-neolat" target="_blank" rel="noopener" class="link-repo">Repo</a>
+          <a href="https://chpollin.github.io/diged-neolat/edition-5/web/" target="_blank" rel="noopener" class="link-demo">
+            <Icon name="external-link" size={12} /> Demo
+          </a>
+          <a href="https://github.com/chpollin/diged-neolat" target="_blank" rel="noopener" class="link-repo">
+            <Icon name="github" size={12} /> Repo
+          </a>
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { initReducedMotion, globalProgress, scrollToHash, updateHash, currentPhase, currentStep } from './lib/stores/scroll.js';
+  import { initReducedMotion, globalProgress, scrollToHash, updateHash, currentPhase, currentStep, globalStepIndex, totalSteps, stepStructure } from './lib/stores/scroll.js';
   import { isDeepDiveOpen, currentDeepDive, closeDeepDive } from './lib/stores/deepDive.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
@@ -18,6 +18,7 @@
 
   // Phase 1 Steps
   import Phase1Titel from './lib/components/steps/phase1/Phase1Titel.svelte';
+  import Phase1Datenqualitaet from './lib/components/steps/phase1/Phase1Datenqualitaet.svelte';
   import Phase1Rohdaten from './lib/components/steps/phase1/Phase1Rohdaten.svelte';
   import Phase1Sammlung from './lib/components/steps/phase1/Phase1Sammlung.svelte';
 
@@ -57,12 +58,37 @@
     updateHash($currentPhase, $currentStep);
   }
 
-  // Scroll indicator visibility - hide after first scroll
-  let showScrollIndicator = true;
+  // Check if we're at the last step
+  $: isLastStep = $globalStepIndex >= totalSteps - 1;
 
   function handleScroll(e) {
-    if (e.target.scrollTop > 100) {
-      showScrollIndicator = false;
+    // Could track scroll position for other purposes
+  }
+
+  // Get the ID of the next step
+  function getNextStepId() {
+    const currentGlobalIndex = $globalStepIndex;
+    let stepCounter = 0;
+
+    for (let phaseIdx = 0; phaseIdx < stepStructure.length; phaseIdx++) {
+      const phase = stepStructure[phaseIdx];
+      for (let stepIdx = 0; stepIdx < phase.steps.length; stepIdx++) {
+        if (stepCounter === currentGlobalIndex + 1) {
+          return `${phase.id}-${phase.steps[stepIdx].id}`;
+        }
+        stepCounter++;
+      }
+    }
+    return null;
+  }
+
+  function scrollToNextSection() {
+    const nextId = getNextStepId();
+    if (nextId) {
+      const element = document.getElementById(nextId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 
@@ -140,16 +166,20 @@
     <IntroPhasen />
   </Step>
 
-  <!-- Phase 1: Vorbereitung - 3 Steps -->
+  <!-- Phase 1: Vorbereitung - 4 Steps -->
   <Step id="phase1-titel" phaseIndex={1} stepIndex={0}>
     <Phase1Titel />
   </Step>
 
-  <Step id="phase1-rohdaten" phaseIndex={1} stepIndex={1}>
+  <Step id="phase1-datenqualitaet" phaseIndex={1} stepIndex={1}>
+    <Phase1Datenqualitaet />
+  </Step>
+
+  <Step id="phase1-rohdaten" phaseIndex={1} stepIndex={2}>
     <Phase1Rohdaten />
   </Step>
 
-  <Step id="phase1-sammlung" phaseIndex={1} stepIndex={2}>
+  <Step id="phase1-sammlung" phaseIndex={1} stepIndex={3}>
     <Phase1Sammlung />
   </Step>
 
@@ -197,12 +227,15 @@
     <OutroZusammenfassung />
   </Step>
 
-  <!-- Scroll Indicator -->
-  {#if showScrollIndicator}
-    <div class="scroll-indicator" aria-hidden="true">
+  <!-- Scroll Navigation Button -->
+  {#if !isLastStep}
+    <button
+      class="scroll-nav-button"
+      on:click={scrollToNextSection}
+      aria-label="Zum nächsten Abschnitt scrollen"
+    >
       <div class="scroll-arrow"></div>
-      <span class="scroll-text">Scroll</span>
-    </div>
+    </button>
   {/if}
 </main>
 
@@ -235,60 +268,83 @@
     padding-top: 50px; /* Space for fixed header */
   }
 
-  /* Scroll Indicator */
-  .scroll-indicator {
+  /* Scroll Navigation Button - persistent */
+  .scroll-nav-button {
     position: fixed;
     bottom: var(--space-xl);
-    left: 50%;
-    transform: translateX(-50%);
+    right: var(--space-lg);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: var(--space-xs);
-    opacity: 0.6;
-    animation: fadeInOut 2s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 10;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--color-slate);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+  }
+
+  .scroll-nav-button:hover {
+    border-color: var(--color-terracotta);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 16px rgba(191, 91, 62, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .scroll-nav-button:hover .scroll-arrow {
+    border-color: var(--color-terracotta);
+    animation: bounceDown 0.6s ease-in-out infinite;
+  }
+
+  .scroll-nav-button:focus {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+  }
+
+  .scroll-nav-button:active {
+    transform: translateY(0);
   }
 
   .scroll-arrow {
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     border-right: 2px solid var(--color-slate);
     border-bottom: 2px solid var(--color-slate);
-    transform: rotate(45deg);
-    animation: bounceDown 1.5s ease-in-out infinite;
-  }
-
-  .scroll-text {
-    font-size: 0.75rem;
-    color: var(--color-slate);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
+    transform: rotate(45deg) translateY(-2px);
+    transition: border-color 0.3s ease;
   }
 
   @keyframes bounceDown {
     0%, 100% {
-      transform: rotate(45deg) translateY(0);
+      transform: rotate(45deg) translateY(-2px);
     }
     50% {
-      transform: rotate(45deg) translateY(6px);
+      transform: rotate(45deg) translateY(2px);
     }
   }
 
-  @keyframes fadeInOut {
-    0%, 100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-nav-button:hover .scroll-arrow {
+      animation: none;
     }
   }
 
+  /* Mobile positioning */
   @media (max-width: 767px) {
-    .scroll-indicator {
-      bottom: var(--space-lg);
+    .scroll-nav-button {
+      bottom: var(--space-md);
+      right: var(--space-md);
+      width: 44px;
+      height: 44px;
+    }
+    .scroll-arrow {
+      width: 10px;
+      height: 10px;
     }
   }
 </style>

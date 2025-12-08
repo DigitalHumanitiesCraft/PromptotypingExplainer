@@ -2,6 +2,7 @@
   import { fly } from 'svelte/transition';
   import { caseStudies } from '../../../data/case-studies.js';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import Icon from '../../elements/Icon.svelte';
 
   // Map case study IDs to deep dive IDs
   const deepDiveMap = {
@@ -32,10 +33,7 @@
 
   <div class="examples-grid">
     {#each caseStudies as study, i}
-      <a
-        href={study.link}
-        target="_blank"
-        rel="noopener"
+      <div
         class="example-card"
         in:fly={{ y: 30, duration: 400, delay: 200 + i * 100 }}
       >
@@ -54,10 +52,19 @@
         <div class="card-content">
           <h3>{study.name}</h3>
           <p class="abstract">{study.abstract}</p>
-          <span class="data-format">{study.dataFormat}</span>
+          <div class="card-footer">
+            <span class="data-format">{study.dataFormat}</span>
+            <div class="card-links">
+              <a href={study.link} target="_blank" rel="noopener" class="link-demo">
+                <Icon name="external-link" size={12} /> Demo
+              </a>
+              <a href={study.github} target="_blank" rel="noopener" class="link-repo">
+                <Icon name="github" size={12} /> Repo
+              </a>
+            </div>
+          </div>
         </div>
-
-      </a>
+      </div>
     {/each}
   </div>
 
@@ -126,7 +133,6 @@
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 12px;
-    text-decoration: none;
     display: flex;
     flex-direction: column;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -203,9 +209,7 @@
   }
 
   .example-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: var(--color-terracotta);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   }
 
   .example-card:hover::before {
@@ -248,16 +252,58 @@
     line-height: 1.5;
   }
 
+  /* Card Footer mit Links */
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: var(--space-xs);
+  }
+
   /* Datenformat-Badge */
   .data-format {
-    align-self: flex-start;
     font-family: var(--font-mono);
     font-size: 0.6rem;
     padding: 2px 6px;
     background: rgba(96, 125, 139, 0.1);
     border-radius: 3px;
     color: var(--color-slate);
-    margin-top: auto;
+  }
+
+  .card-links {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .card-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.25em 0.5em;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .link-demo {
+    background: var(--color-terracotta);
+    color: white;
+  }
+
+  .link-demo:hover {
+    background: #a84a35;
+  }
+
+  .link-repo {
+    background: var(--color-slate);
+    color: white;
+  }
+
+  .link-repo:hover {
+    background: #4a5568;
   }
 
 

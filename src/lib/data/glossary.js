@@ -2,6 +2,15 @@
 // Nur die für Promptotyping relevantesten Begriffe
 
 export const glossary = {
+  'fair': {
+    term: 'FAIR-Prinzipien',
+    en: 'FAIR Principles',
+    definition: 'Leitlinien für wissenschaftliches Datenmanagement: Findable, Accessible, Interoperable, Reusable. FAIR-konforme Daten haben explizite Metadaten, standardisierte Formate und klare Zugangsbedingungen.',
+    tags: ['methodology', 'fundamentals'],
+    source: 'Wilkinson et al. 2016',
+    link: 'https://www.go-fair.org/fair-principles/',
+    linkLabel: 'GO FAIR'
+  },
   'frontier-model': {
     term: 'Frontier Model',
     en: 'Frontier Model',

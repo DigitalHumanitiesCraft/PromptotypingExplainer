@@ -203,60 +203,101 @@ export const deepDives = {
     content: `
       <h3>Was ist Context Engineering?</h3>
       <p>
-        Context Engineering beschreibt die systematische Gestaltung und Optimierung des Kontexts,
-        der einem Large Language Model zur Verfügung gestellt wird.
+        Context Engineering ist eine formale Disziplin, die über einfaches Prompt Design hinausgeht.
+        Sie umfasst die <strong>systematische Optimierung der Informationspakete</strong>, die einem
+        LLM zur Inferenzzeit bereitgestellt werden (Mei et al., 2025).
+      </p>
+      <p>
+        Der Begriff markiert einen Paradigmenwechsel. Prompt Engineering behandelte Kontext als
+        statischen Textstring. Context Engineering versteht Kontext als <strong>dynamisches,
+        strukturiertes, multimodales Informationssystem</strong>.
       </p>
 
-      <h3>Die drei Komponenten</h3>
+      <h3>Die Taxonomie nach Mei et al. (2025)</h3>
+      <p>
+        Die Survey analysiert über 1400 Papers und etabliert eine zweigliedrige Taxonomie.
+      </p>
+
+      <h4>Foundational Components</h4>
+      <p>
+        <strong>Context Retrieval and Generation</strong> umfasst die systematische Beschaffung und
+        Konstruktion relevanter Information. Dazu gehören Prompting-Strategien (Zero-Shot, Few-Shot,
+        Chain-of-Thought), Reasoning-Frameworks (Tree-of-Thoughts, Graph-of-Thoughts) und
+        Self-Refinement-Mechanismen.
+      </p>
+      <p>
+        <strong>Context Processing</strong> behandelt die Transformation und Aufbereitung von Kontext.
+        Techniken wie FlashAttention optimieren die Verarbeitung langer Kontexte durch effiziente
+        GPU-Speichernutzung.
+      </p>
+      <p>
+        <strong>Context Management</strong> organisiert Information innerhalb begrenzter Context Windows.
+        Hier greifen Kompressionsstrategien, Priorisierung und dynamische Kontextauswahl.
+      </p>
+
+      <h4>System Implementations</h4>
+      <p>Die Komponenten integrieren sich zu komplexen Systemen:</p>
       <ul>
-        <li>
-          <strong>Context Creation:</strong> Formalisierung impliziten Domänenwissens
-          in maschinenlesbare Strukturen
-        </li>
-        <li>
-          <strong>Context Compression:</strong> Verdichtung auf relevante Information.
-          Das "Compression-als-Amplification" Paradox: Weniger Tokens → bessere Modellaufmerksamkeit
-        </li>
-        <li>
-          <strong>Context Orchestration:</strong> Strategische Steuerung über multiple
-          Iterationen mit dynamischer Anpassung
-        </li>
+        <li><strong>Retrieval-Augmented Generation (RAG):</strong> Holt relevante Dokumente zur Laufzeit aus externen Wissensbasen</li>
+        <li><strong>Memory Systems:</strong> Speichern Konversationshistorie und Nutzerprofile über Sessions hinweg</li>
+        <li><strong>Tool-Integrated Reasoning:</strong> Verbindet LLMs mit externen Werkzeugen und APIs. MCP (Model Context Protocol) standardisiert diese Integration</li>
+        <li><strong>Multi-Agent Systems:</strong> Koordinieren multiple LLM-Instanzen für komplexe Aufgaben</li>
       </ul>
 
-      <h3>Context Rot vermeiden</h3>
+      <h3>Das Problem der Context Degradation</h3>
       <p>
-        Je mehr Tokens im Context Window, desto schlechter die Modellleistung
-        (Hong et al., 2025). Destillation bedeutet: <strong>maximale Information mit minimalen Tokens</strong>.
+        LLMs zeigen ein fundamentales Skalierungsproblem. Die Self-Attention-Berechnung wächst
+        <strong>quadratisch</strong> mit der Kontextlänge. 128K Tokens erfordern 122-mal mehr
+        Rechenleistung als 4K Tokens.
+      </p>
+      <p>
+        Mehr Kontext bedeutet nicht automatisch bessere Ergebnisse. Hong et al. (2025) dokumentieren
+        <strong>"Context Rot"</strong>, bei dem die Modellleistung mit wachsender Kontextlänge
+        degradiert. Gezielte Verdichtung kann die Modellaufmerksamkeit auf wesentliche Aspekte erhöhen.
       </p>
 
-      <h3>Die drei Kerndokumente</h3>
+      <h3>Promptotyping als Context-Engineering-Methode</h3>
+      <p>
+        Promptotyping implementiert Context Engineering durch <strong>manuelle Wissensverdichtung</strong>
+        für einen spezifischen Anwendungsfall: die forschungsdatengetriebene Prototypentwicklung.
+      </p>
       <table>
         <thead>
           <tr>
-            <th>Dokument</th>
-            <th>Inhalt</th>
+            <th>Context Engineering (allgemein)</th>
+            <th>Promptotyping (spezifisch)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><code>data.md</code></td>
-            <td>Struktur und Semantik der Forschungsdaten</td>
+            <td>RAG, Memory, Tool Use, Multi-Agent</td>
+            <td>Manuelle Vault-Dokumente</td>
           </tr>
           <tr>
-            <td><code>user-story.md</code></td>
-            <td>Anforderungen aus Forschungsperspektive</td>
+            <td>Dynamische Kontextgenerierung</td>
+            <td>Statische, kuratierte Dokumente</td>
           </tr>
           <tr>
-            <td><code>context.md</code></td>
-            <td>Relevantes Domänenwissen</td>
+            <td>Automatisierte Retrieval-Pipelines</td>
+            <td>Expert-kuratierte Verdichtung</td>
+          </tr>
+          <tr>
+            <td>Skaliert auf Millionen Dokumente</td>
+            <td>Skaliert auf Projektgröße</td>
           </tr>
         </tbody>
       </table>
+      <p>
+        Der Promptotyping Vault (DATA.md, REQUIREMENTS.md, CONTEXT.md) ist eine Form von
+        <strong>Context Creation</strong> und <strong>Context Compression</strong>. Die iterative
+        Entwicklung mit Vault-Updates entspricht dem Self-Refinement-Paradigma.
+      </p>
 
       <div class="reference">
         <strong>Referenzen:</strong><br>
-        Hong, K. et al. (2025): <em>Context rot: How increasing input tokens impacts LLM performance</em>.<br>
-        Mei et al. (2025): <em>Context Engineering</em>.
+        Mei, L., Yao, J., Ge, Y., et al. (2025): <em>A Survey of Context Engineering for Large Language Models</em>. arXiv preprint arXiv:2507.13334.
+        <a href="https://doi.org/10.48550/arXiv.2507.13334" target="_blank">DOI</a><br>
+        Hong, K. et al. (2025): <em>Context Rot in Long-Context Language Models</em>. arXiv preprint.
       </div>
     `
   },

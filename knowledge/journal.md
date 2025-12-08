@@ -2,6 +2,53 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Nacht: Icon-System, Scroll-Navigation & Case Study Links
+
+### Tasks
+- Icon.svelte Komponente erstellt (SVG-basiert)
+- Demo/Repo-Buttons mit Icons für Phase1Titel und OutroBeispiele
+- Context Engineering Deep Dive erweitert (Mei et al. 2025)
+- Scroll-Navigation-Button komplett überarbeitet
+- CorrespExplorer-Beschreibung korrigiert (HSA CMIF)
+
+### Ergebnisse
+**Neue Icon.svelte Komponente:**
+- 8 Icons: github, external-link, arrow-left, arrow-right, book-open, file-text, info, lock
+- Props: name, size, color
+- Unterstützt filled und stroked Icons
+
+**Demo/Repo-Buttons:**
+- Phase1Titel: Beide Beispiele mit Demo + Repo Links
+- OutroBeispiele: Alle 6 Case Studies mit Demo + Repo Links
+- Card-Struktur geändert (div statt a, Footer mit Links)
+
+**Scroll-Navigation-Button:**
+- Persistent während gesamtem Scrollen (nicht mehr nach 100px ausgeblendet)
+- Dynamische Navigation zum nächsten Step (nutzt globalStepIndex + stepStructure)
+- Verschwindet automatisch am letzten Step
+- Position: rechts unten (vorher Mitte)
+- Design: weißer Hintergrund mit Blur + Shadow
+
+**Content-Updates:**
+- Context Engineering Deep Dive: Mei et al. Taxonomie, Context Degradation, Promptotyping-Vergleichstabelle
+- CorrespExplorer: "CMIF des Hugo Schuchardt Archivs" statt correspSearch
+- Dissertationserfahrung als Domänenwissen erwähnt
+
+**Neuer Step Phase1Datenqualitaet:**
+- "Nicht alle Daten sind gleich" - Datenqualität als Voraussetzung
+- Drei Kriterien: Struktur, Dokumentation, Zugänglichkeit
+- FAIR-Prinzipien als Glossareintrag hinzugefügt
+- Lucina-Beispiel als Gegenbeispiel (unstrukturierte Daten → Datenaufbereitung)
+
+### Entscheidungen
+- Inline SVGs statt Font Awesome (kleineres Bundle, keine externe Dependency)
+- Scroll-Button rechts unten (überlappt Content weniger)
+- Bounce-Animation nur bei Hover (subtiler als dauerhaftes Pulsieren)
+- prefers-reduced-motion respektiert
+- Datenqualität-Step nach Phase1Titel, vor Rohdaten (logische Reihenfolge)
+
+---
+
 ## 2025-12-08 Abend: Content-Synchronisation & Referenzen
 
 ### Tasks

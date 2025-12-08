@@ -22,7 +22,7 @@ Lindsey, J. et al. (2025). On the Biology of a Large Language Model. *Anthropic 
 
 Malmqvist, L. (2024). Sycophancy in Language Models: Causes and Mitigations. *arXiv preprint*.
 
-Mei, K. et al. (2025). Context Engineering for AI Agents. *arXiv preprint*.
+Mei, L., Yao, J., Ge, Y., et al. (2025). A Survey of Context Engineering for Large Language Models. *arXiv preprint arXiv:2507.13334*. https://doi.org/10.48550/arXiv.2507.13334
 
 OpenAI. (2022–2023). InstructGPT and RLHF Research. *OpenAI Technical Reports*.
 
@@ -33,6 +33,8 @@ Shanahan, M. (2024). Talking About Large Language Models. *Communications of the
 tante. (2025). On "Vibe Coding". *Smashing Frames Blog*. https://tante.cc/2025/05/23/on-vibe-coding/
 
 Vaswani, A. et al. (2017). Attention Is All You Need. *Advances in Neural Information Processing Systems*, 30.
+
+Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data*, 3, 160018. https://doi.org/10.1038/sdata.2016.18
 
 ---
 

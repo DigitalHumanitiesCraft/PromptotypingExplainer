@@ -1,5 +1,6 @@
 <script>
   import { openDeepDive } from '../../stores/deepDive.js';
+  import Icon from './Icon.svelte';
 
   export let label = 'Mehr erfahren';
   export let deepDiveId = '';
@@ -15,7 +16,7 @@
   on:click={handleClick}
   aria-label="Deep Dive öffnen: {label}"
 >
-  <span class="trigger-icon">←</span>
+  <span class="trigger-icon"><Icon name="arrow-left" size={16} /></span>
   <span class="trigger-label">{label}</span>
   <span class="trigger-hint">Deep Dive</span>
 </button>
