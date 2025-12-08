@@ -63,7 +63,7 @@ src/
 │   │   ├── Glossary.svelte       # Glossar-Übersicht (alphabetisch)
 │   │   ├── Bibliography.svelte   # Bibliographie mit APA-Zitaten
 │   │   ├── steps/                # Step-Komponenten pro Phase
-│   │   │   ├── intro/            # Definition, Kernprinzip, Methodik, Phasen
+│   │   │   ├── intro/            # Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Phasen
 │   │   │   ├── phase1/           # Titel, Rohdaten, Sammlung
 │   │   │   ├── phase2/           # Struktur, Entitäten, Fragen
 │   │   │   ├── phase3/           # Titel, Dokumente, Vault

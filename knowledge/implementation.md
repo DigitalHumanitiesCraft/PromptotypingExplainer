@@ -31,8 +31,8 @@ src/
     │   ├── About.svelte          # Methodenfokussierte About-Seite
     │   ├── Glossary.svelte       # Alphabetische Glossar-Übersicht
     │   ├── Bibliography.svelte   # APA-Bibliographie
-    │   ├── steps/                # 18 Step-Komponenten
-    │   │   ├── intro/            # 4 Steps (inkl. Strange New Minds)
+    │   ├── steps/                # 19 Step-Komponenten
+    │   │   ├── intro/            # 6 Steps (Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Phasen)
     │   │   ├── phase1/           # 3 Steps
     │   │   ├── phase2/           # 3 Steps
     │   │   ├── phase3/           # 3 Steps
@@ -96,7 +96,7 @@ phases.js definiert stepStructure mit 6 Phasen (intro, phase1-4, outro), jeweils
 
 glossary.js enthält 20+ AI/LLM-Begriffe mit term, en (englisch), definition, tags und source.
 
-deep-dives.js enthält HTML-Strings für Vertiefungen: system-1-42 (LLM-Grundlagen), scholar-centered-design, knowledge-acquisition, limitations.
+deep-dives.js enthält HTML-Strings für Vertiefungen: system-1-42 (LLM-Grundlagen), vibe-coding-critique (Karpathy/tante), scholar-centered-design, context-engineering, llm-retrieval (Chollet/Hochreiter/Kambhampati), prompting-strategies, critical-expert, limitations.
 
 bibliography.js enthält Bibliographie-Einträge mit APA-Format (authors, year, title, source, url). Inkl. Summerfield 2025 ("Strange New Minds"), Pollin 2025 (System 1.42).
 

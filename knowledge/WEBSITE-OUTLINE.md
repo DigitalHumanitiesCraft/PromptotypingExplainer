@@ -21,7 +21,7 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 2. **Vibe Coding**: Frontier-LLMs, Benchmarks, Karpathy, tante-Kritik
    - Deep Dive: Vibe Coding Kritik
 3. **Strange New Minds**: LLMs als kognitive Systeme, Summerfield, Lindsey et al., System 1.42, Co-Intelligence (Centaur/Cyborg), Sycophancy
-   - Deep Dives: System 1.42, Co-Intelligence
+   - Deep Dive: System 1.42
 4. **Kernprinzip**: Rhetorische Frage, Mollick-Shift, fundamentale Spannung (gute Ergebnisse + keine Verlässlichkeit), Critical Expert
 5. **Methodik**: Critical Expert in the Loop, Strategien gegen Sycophancy
 6. **Phasen**: 4-Phasen-Übersicht mit Diagramm
@@ -96,7 +96,6 @@ Optionale Vertiefungen, die vom Hauptfluss abzweigen:
 ### Intro
 - Vibe Coding → **Vibe Coding Kritik**: Karpathy, tante, wann es funktioniert/scheitert
 - Strange New Minds → **System 1.42**: Kahneman, Douglas Adams, Retrieval statt Reasoning
-- Strange New Minds → **Co-Intelligence**: Mollick, Centaur/Cyborg, epistemische Partnerschaft
 
 ### Phasen
 - Phase 1 → Scholar-Centered Design: UCD/SCD-Synthese, akademische Fundierung

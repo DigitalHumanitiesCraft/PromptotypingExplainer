@@ -162,14 +162,6 @@ export const bibliography = {
     source: 'Informelle Verwendung',
     url: null
   },
-  'Pollin 2025': {
-    id: 'pollin-2025',
-    authors: 'Pollin, C.',
-    year: 2025,
-    title: 'System 1.42: LLMs als halluzinierende Reasoner',
-    source: 'DHCraft Blog',
-    url: 'https://dhcraft.org/excellence/blog/System1-42/'
-  },
   'Pollin & Steiner 2025': {
     id: 'pollin-steiner-2025',
     authors: 'Pollin, C. & Steiner, E.',

@@ -68,7 +68,7 @@ Die unklare epistemologische Natur von LLMs erfordert abgestufte Validierungsstr
 - Die **Fehlerwahrscheinlichkeit** steigt exponentiell mit der Projektdauer
 - Nur **8,5%** aller Großprojekte erreichen ihre ursprünglichen Ziele aufgrund unterschätzter Emergenzeffekte
 
-Promptotyping adressiert diese Herausforderungen durch eine sechsphasige Struktur mit Zwischenvalidierung. Jede Phase fungiert als Kontrollpunkt zur Risikoreduktion.
+Promptotyping adressiert diese Herausforderungen durch eine vierphasige Struktur mit Zwischenvalidierung. Jede Phase fungiert als Kontrollpunkt zur Risikoreduktion.
 
 ---
 
