@@ -2,6 +2,49 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Mittag: Code-Refactoring & CSS-Globalisierung
+
+### Tasks
+- DeepDiveTrigger vereinfacht (Handler intern)
+- Duplicate Handler aus 8 Komponenten entfernt
+- CSS-Duplikation eliminiert (research-blog-block, deep-dive-triggers)
+- Globale CSS-Klassen in app.css konsolidiert
+
+### Ergebnisse
+**DeepDiveTrigger.svelte vereinfacht:**
+- `openDeepDive` wird jetzt intern importiert und aufgerufen
+- Kein `on:open` Event mehr nötig
+- Parent-Komponenten brauchen keinen Handler mehr
+
+**Handler aus 8 Komponenten entfernt:**
+- Phase1Titel.svelte
+- IntroMethodik.svelte
+- IntroScholarCentered.svelte
+- IntroStrangeNewMinds.svelte
+- IntroVibeCoding.svelte
+- Phase4Iteration.svelte
+- OutroBeispiele.svelte
+- OutroDiskussion.svelte
+
+**Globale CSS-Klassen in app.css:**
+- `.research-blog-block` mit p, strong Styling
+- `.example-block` für hervorgehobene Beispiele
+- `.context-rot-box` / `.warning-box` für Terracotta-Hinweise
+- `.deep-dive-row` und `.deep-dive-triggers` für Trigger-Container
+
+**CSS aus Komponenten entfernt:**
+- IntroVibeCoding: research-blog-block, deep-dive-triggers
+- IntroStrangeNewMinds: alle Block-Styles
+- IntroMethodik: alle Block-Styles
+- IntroScholarCentered: research-blog-block, deep-dive-triggers
+
+### Entscheidungen
+- DeepDiveTrigger kapselt openDeepDive intern (sauberer API)
+- Globale Styles für wiederverwendbare Block-Patterns
+- Komponenten-spezifische Styles (h2, figure) bleiben lokal
+
+---
+
 ## 2025-12-08 Nacht (2): Diagramm-Verschiebung & Content-Verbesserungen
 
 ### Tasks

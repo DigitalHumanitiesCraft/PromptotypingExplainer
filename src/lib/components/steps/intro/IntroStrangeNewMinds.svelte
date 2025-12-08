@@ -1,11 +1,6 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 </script>
 
 <div class="intro-strange-minds">
@@ -39,7 +34,6 @@
       <DeepDiveTrigger
         label="System 1.42: Wie (Frontier-)LLMs 'tatsächlich' funktionieren"
         deepDiveId="system-1-42"
-        on:open={handleDeepDive}
       />
     </div>
   </div>
@@ -60,37 +54,4 @@
     text-align: center;
   }
 
-  .research-blog-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .research-blog-block p {
-    font-size: clamp(0.95rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .research-blog-block p:last-child {
-    margin-bottom: 0;
-  }
-
-  .research-blog-block strong {
-    color: var(--color-terracotta);
-  }
-
-  .deep-dive-triggers {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
 </style>

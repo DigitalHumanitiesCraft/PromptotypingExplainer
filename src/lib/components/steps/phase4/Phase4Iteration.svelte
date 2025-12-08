@@ -3,11 +3,6 @@
   import AnimatedChat from '../../elements/AnimatedChat.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
   import GlossaryTerm from '../../GlossaryTerm.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 </script>
 
 <div class="phase4-iteration">
@@ -68,7 +63,6 @@
         <DeepDiveTrigger
           label="LLMs als Retrieval-Systeme"
           deepDiveId="llm-retrieval"
-          on:open={handleDeepDive}
         />
       </div>
     </div>

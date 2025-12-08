@@ -1,14 +1,12 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { openDeepDive } from '../../stores/deepDive.js';
 
   export let label = 'Mehr erfahren';
   export let deepDiveId = '';
   export let variant = 'inline'; // 'inline' | 'block' | 'icon'
 
-  const dispatch = createEventDispatcher();
-
   function handleClick() {
-    dispatch('open', { id: deepDiveId });
+    openDeepDive(deepDiveId);
   }
 </script>
 

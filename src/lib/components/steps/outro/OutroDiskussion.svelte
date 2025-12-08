@@ -1,11 +1,6 @@
 <script>
   import { fade, fly } from 'svelte/transition';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 
   const contraPoints = [
     {
@@ -120,7 +115,6 @@
       label="Grenzen & Limitationen im Detail"
       deepDiveId="limitations"
       variant="block"
-      on:open={handleDeepDive}
     />
   </div>
 </div>

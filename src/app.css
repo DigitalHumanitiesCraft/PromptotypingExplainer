@@ -252,3 +252,114 @@ code, .mono {
     order: -1;
   }
 }
+
+/* ============================================
+   Research Blog Block
+   Standard content block for text-heavy sections
+   ============================================ */
+
+.research-blog-block {
+  max-width: 750px;
+  background: white;
+  padding: var(--space-lg);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.research-blog-block p {
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: var(--color-black);
+  line-height: 1.7;
+  text-align: left;
+  margin: 0;
+}
+
+.research-blog-block p + p {
+  margin-top: var(--space-md);
+}
+
+.research-blog-block strong {
+  color: var(--color-terracotta);
+}
+
+/* ============================================
+   Example Block
+   Highlighted example sections within content
+   ============================================ */
+
+.example-block {
+  margin-top: var(--space-lg);
+  background: rgba(96, 125, 139, 0.06);
+  padding: var(--space-md);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-slate);
+  text-align: left;
+}
+
+.example-block h4 {
+  font-size: 0.85rem;
+  color: var(--color-slate);
+  margin: 0 0 var(--space-xs) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.example-block p {
+  font-size: 0.85rem !important;
+  color: var(--color-slate) !important;
+  line-height: 1.6;
+}
+
+/* ============================================
+   Context Rot / Warning Box
+   Terracotta-accented information blocks
+   ============================================ */
+
+.context-rot-box,
+.warning-box {
+  max-width: 650px;
+  background: rgba(191, 91, 62, 0.06);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-terracotta);
+  text-align: left;
+}
+
+.context-rot-box h4,
+.warning-box h4 {
+  font-size: 0.85rem;
+  color: var(--color-terracotta);
+  margin: 0 0 var(--space-sm) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.context-rot-box p,
+.warning-box p {
+  font-size: 0.85rem;
+  color: var(--color-black);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   Deep Dive Row
+   Container for deep dive trigger buttons
+   ============================================ */
+
+.deep-dive-row {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.deep-dive-triggers {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}

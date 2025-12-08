@@ -2,7 +2,6 @@
   import { fly } from 'svelte/transition';
   import { caseStudies } from '../../../data/case-studies.js';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
 
   // Map case study IDs to deep dive IDs
   const deepDiveMap = {
@@ -13,10 +12,6 @@
     'aldersbach': 'case-aldersbach',
     'szd-annotation': 'case-szd'
   };
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 </script>
 
 <div class="outro-beispiele">
@@ -71,7 +66,6 @@
       <DeepDiveTrigger
         label={study.name}
         deepDiveId={deepDiveMap[study.id]}
-        on:open={handleDeepDive}
       />
     {/each}
   </div>

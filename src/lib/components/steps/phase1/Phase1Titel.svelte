@@ -2,11 +2,6 @@
   import { fade, fly } from 'svelte/transition';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
   import GlossaryTerm from '../../GlossaryTerm.svelte';
-  import { openDeepDive } from '../../../stores/deepDive.js';
-
-  function handleDeepDive(event) {
-    openDeepDive(event.detail.id);
-  }
 </script>
 
 <div class="phase1-titel" in:fade={{ duration: 400 }}>
@@ -44,7 +39,6 @@
     <DeepDiveTrigger
       label="Context Engineering"
       deepDiveId="context-engineering"
-      on:open={handleDeepDive}
     />
   </div>
 </div>
@@ -105,33 +99,4 @@
     font-weight: 600;
   }
 
-  .example-block {
-    margin-top: var(--space-lg);
-    background: rgba(96, 125, 139, 0.06);
-    padding: var(--space-md);
-    border-radius: 8px;
-    border-left: 3px solid var(--color-slate);
-    text-align: left;
-  }
-
-  .example-block h4 {
-    font-size: 0.85rem;
-    color: var(--color-slate);
-    margin: 0 0 var(--space-xs) 0;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  .example-block p {
-    font-size: 0.85rem !important;
-    color: var(--color-slate) !important;
-    line-height: 1.6;
-  }
-
-  .deep-dive-row {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 </style>
