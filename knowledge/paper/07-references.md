@@ -12,7 +12,13 @@ Anthropic. (2024). *The Claude Model Spec*. https://www.anthropic.com/research/c
 
 Hong, R. et al. (2025). Context Rot in Long-Context Language Models. *arXiv preprint*.
 
-Lindsey, J. et al. (2025). On the Biology of a Large Language Model. *Anthropic Research*.
+Jimenez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O. & Narasimhan, K. R. (2024). SWE-bench: Can Language Models Resolve Real-World GitHub Issues? *Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)*. https://openreview.net/forum?id=VTF8yNQM66
+
+Karpathy, A. [@karpathy]. (2025, 2. Februar). There's a new kind of coding I call "vibe coding" [Tweet]. X. https://x.com/karpathy/status/1886192184808149383
+
+Laude Institute. (2025). Terminal-Bench: A Benchmark for LLMs on Complicated Tasks in the Terminal. GitHub. https://github.com/laude-institute/terminal-bench
+
+Lindsey, J. et al. (2025). On the Biology of a Large Language Model. *Anthropic Research*. https://transformer-circuits.pub/2025/attribution-graphs/biology.html
 
 Malmqvist, L. (2024). Sycophancy in Language Models: Causes and Mitigations. *arXiv preprint*.
 
@@ -23,6 +29,8 @@ OpenAI. (2022–2023). InstructGPT and RLHF Research. *OpenAI Technical Reports*
 OpenAI. (2023). Let's Verify Step by Step. *arXiv preprint*.
 
 Shanahan, M. (2024). Talking About Large Language Models. *Communications of the ACM*, 67(2), 68–79.
+
+tante. (2025). On "Vibe Coding". *Smashing Frames Blog*. https://tante.cc/2025/05/23/on-vibe-coding/
 
 Vaswani, A. et al. (2017). Attention Is All You Need. *Advances in Neural Information Processing Systems*, 30.
 
@@ -83,6 +91,12 @@ Star, S. L. & Griesemer, J. R. (1989). Institutional Ecology, 'Translations' and
 Flyvbjerg, B. (2021). *How Big Things Get Done*. Currency.
 
 Mollick, E. (2024). *Co-Intelligence: Living and Working with AI*. Portfolio.
+
+Mollick, E. (2025, 18. November). Three Years from GPT-3 to Gemini 3. *One Useful Thing*. https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini
+
+Pollin, C. (2025). Haters gonna hate: Warum die Kritik an Vibe Coding berechtigt ist. *DHCraft Blog*. https://dhcraft.org/excellence/blog/Vibe-Coding/
+
+Pollin, C. (2025). System 1.42 – Wie Frontier-LLMs funktionieren. *DHCraft Blog*. https://dhcraft.org/excellence/blog/System1-42/
 
 ---
 

@@ -150,6 +150,14 @@ code, .mono {
   align-items: center;
   justify-content: center;
   padding: var(--space-lg);
+  padding-right: 180px; /* Space for right navigation */
+}
+
+@media (max-width: 767px) {
+  .phase {
+    padding-right: var(--space-lg);
+    padding-bottom: 80px; /* Space for bottom navigation on mobile */
+  }
 }
 
 /* Utility Classes */

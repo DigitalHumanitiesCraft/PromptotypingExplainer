@@ -291,10 +291,6 @@
       gap: var(--space-md);
     }
 
-    .label-container {
-      display: none;
-    }
-
     .sub-steps {
       display: none;
     }

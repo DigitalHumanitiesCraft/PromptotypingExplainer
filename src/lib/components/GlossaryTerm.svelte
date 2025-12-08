@@ -7,10 +7,15 @@
   export let inline = true;
 
   let showTooltip = false;
+  let isLocked = false;
+  let isLocking = false;
   let termElement;
   let popoverElement;
   let hoverTimeout;
+  let lockTimeout;
   let position = { top: 0, left: 0, placement: 'above' };
+
+  const LOCK_DELAY = 800; // ms to wait before locking
 
   $: entry = glossary[id];
   $: bibEntry = entry?.source ? getBibEntry(entry.source) : null;
@@ -22,63 +27,101 @@
 
     const rect = termElement.getBoundingClientRect();
     const popoverWidth = 280;
-    const popoverHeight = 200; // Approximate max height
-    const gap = 8; // Space between term and popover
+    const popoverHeight = 200;
+    const gap = 8;
 
     let top, left;
     let placement = 'above';
 
-    // Check if there's space above
     if (rect.top > popoverHeight + gap) {
-      // Place above - position at bottom of where popover will be
       top = rect.top - gap;
       placement = 'above';
     } else {
-      // Place below - position at top of popover
       top = rect.bottom + gap;
       placement = 'below';
     }
 
-    // Horizontal: center on the term
     left = rect.left + rect.width / 2;
-
     position = { top, left, placement };
   }
 
   function handleMouseEnter() {
-    // 300ms delay to prevent flicker
+    if (isLocked) return;
+
+    // Show tooltip after short delay
     hoverTimeout = setTimeout(() => {
       showTooltip = true;
+      isLocking = true;
       calculatePosition();
-    }, 300);
+
+      // Start lock timer
+      lockTimeout = setTimeout(() => {
+        isLocked = true;
+        isLocking = false;
+      }, LOCK_DELAY);
+    }, 200);
   }
 
   function handleMouseLeave() {
     clearTimeout(hoverTimeout);
-    showTooltip = false;
+    clearTimeout(lockTimeout);
+
+    if (!isLocked) {
+      showTooltip = false;
+      isLocking = false;
+    }
   }
 
   function handleClick(event) {
     event.preventDefault();
     event.stopPropagation();
     clearTimeout(hoverTimeout);
-    showTooltip = !showTooltip;
-    if (showTooltip) calculatePosition();
+    clearTimeout(lockTimeout);
+
+    if (isLocked) {
+      // Unlock and close
+      isLocked = false;
+      showTooltip = false;
+      isLocking = false;
+    } else {
+      // Instant lock on click
+      showTooltip = true;
+      isLocked = true;
+      isLocking = false;
+      calculatePosition();
+    }
   }
 
-  // Close on click outside (for mobile)
+  function handlePopoverMouseEnter() {
+    // Keep open when hovering popover
+    clearTimeout(hoverTimeout);
+    clearTimeout(lockTimeout);
+  }
+
+  function handlePopoverMouseLeave() {
+    if (!isLocked) {
+      showTooltip = false;
+      isLocking = false;
+    }
+  }
+
+  // Close on click outside
   function handleClickOutside(event) {
     if (showTooltip &&
         termElement && !termElement.contains(event.target) &&
         popoverElement && !popoverElement.contains(event.target)) {
       showTooltip = false;
+      isLocked = false;
+      isLocking = false;
     }
   }
 
-  // Close on scroll
+  // Close on scroll (only if not locked)
   function handleScroll() {
-    if (showTooltip) {
+    if (showTooltip && !isLocked) {
       showTooltip = false;
+      isLocking = false;
+      clearTimeout(lockTimeout);
     }
   }
 
@@ -86,6 +129,8 @@
   function handleKeydown(event) {
     if (event.key === 'Escape' && showTooltip) {
       showTooltip = false;
+      isLocked = false;
+      isLocking = false;
     }
   }
 
@@ -101,6 +146,7 @@
       window.removeEventListener('keydown', handleKeydown);
       window.removeEventListener('resize', calculatePosition);
       clearTimeout(hoverTimeout);
+      clearTimeout(lockTimeout);
     };
   });
 
@@ -119,11 +165,11 @@
   };
 </script>
 
-{#if entry}
-  <span
+{#if entry}<span
     class="glossary-term"
     class:inline
     class:active={showTooltip}
+    class:locked={isLocked}
     bind:this={termElement}
     on:click={handleClick}
     on:mouseenter={handleMouseEnter}
@@ -133,25 +179,40 @@
     tabindex="0"
     aria-describedby={showTooltip ? `tooltip-${id}` : undefined}
     aria-expanded={showTooltip}
-  >
-    <slot>{entry.term}</slot>
-  </span>
-
-  {#if showTooltip}
+  ><slot>{entry.term}</slot></span>{#if showTooltip}
     <div
       id="tooltip-{id}"
       class="glossary-popover"
       class:above={position.placement === 'above'}
       class:below={position.placement === 'below'}
+      class:locked={isLocked}
+      class:locking={isLocking}
       style="top: {position.top}px; left: {position.left}px;"
       bind:this={popoverElement}
+      on:mouseenter={handlePopoverMouseEnter}
+      on:mouseleave={handlePopoverMouseLeave}
       role="tooltip"
     >
       <div class="caret"></div>
 
+      <!-- Lock progress indicator -->
+      {#if isLocking}
+        <div class="lock-progress"></div>
+      {/if}
+
+      <!-- Lock indicator -->
+      {#if isLocked}
+        <button class="lock-indicator" on:click={handleClick} title="Klicken zum Schließen">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </button>
+      {/if}
+
       <div class="popover-header">
         <span class="popover-term">{entry.term}</span>
-        {#if entry.en && entry.en !== entry.term}
+        {#if entry.en && entry.en !== entry.term && !entry.term.includes(entry.en)}
           <span class="popover-en">({entry.en})</span>
         {/if}
       </div>
@@ -168,7 +229,7 @@
         </div>
         {#if entry.source}
           <a
-            href="#bibliographie-{bibEntry?.id || ''}"
+            href="bibliographie.html#bibliographie-{bibEntry?.id || ''}"
             class="popover-source"
             on:click|stopPropagation
           >
@@ -177,10 +238,7 @@
         {/if}
       </div>
     </div>
-  {/if}
-{:else}
-  <slot />
-{/if}
+  {/if}{:else}<slot />{/if}
 
 <style>
   .glossary-term {
@@ -201,6 +259,10 @@
     border-bottom-style: solid;
   }
 
+  .glossary-term.locked {
+    border-bottom-width: 2px;
+  }
+
   .glossary-term.inline {
     display: inline;
   }
@@ -215,6 +277,12 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .glossary-popover.locked {
+    border-color: var(--color-terracotta);
+    box-shadow: 0 4px 24px rgba(191, 91, 62, 0.25);
   }
 
   .glossary-popover.above {
@@ -249,6 +317,49 @@
     }
   }
 
+  /* Lock progress bar */
+  .lock-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-terracotta);
+    animation: lockProgress 0.8s linear forwards;
+    border-radius: 8px 8px 0 0;
+  }
+
+  @keyframes lockProgress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  /* Lock indicator */
+  .lock-indicator {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: var(--color-terracotta);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .lock-indicator:hover {
+    background: #a04a2e;
+  }
+
   /* Caret/Arrow */
   .caret {
     position: absolute;
@@ -258,6 +369,10 @@
     background: var(--color-white);
     border: 1px solid rgba(0, 0, 0, 0.1);
     transform: translateX(-50%) rotate(45deg);
+  }
+
+  .glossary-popover.locked .caret {
+    border-color: var(--color-terracotta);
   }
 
   .glossary-popover.above .caret {
@@ -278,6 +393,7 @@
     gap: var(--space-xs);
     margin-bottom: var(--space-sm);
     text-align: left;
+    padding-right: 24px;
   }
 
   .popover-term {

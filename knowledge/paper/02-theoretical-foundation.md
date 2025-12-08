@@ -74,7 +74,7 @@ Promptotyping adressiert diese Herausforderungen durch eine sechsphasige Struktu
 
 ## 2.4 Co-Intelligence und epistemische Partnerschaft
 
-### Mollicks Konzept (2024)
+### Mollicks Konzept (2024, 2025)
 
 Mollicks Konzept der **Co-Intelligence** bietet einen produktiven theoretischen Rahmen für die Mensch-KI-Kollaboration:
 
@@ -90,6 +90,14 @@ Klare Aufgabenteilung:
 Enge kognitive Verschränkung:
 - Mensch und Maschine entwickeln in iterativen Dialogschleifen gemeinsam Lösungen
 - Die Grenze zwischen menschlichem und maschinellem Beitrag verschwimmt
+
+### Die fundamentale Spannung
+
+Mollick (2025) beobachtet, dass sich die Rolle des Menschen verschiebt: vom Korrigieren von KI-Fehlern zum Steuern von KI-Arbeit. Dies greift für Forschungskontexte zu kurz. Der Mensch prüft nicht nur, ob die KI-Arbeit richtig ist, sondern ob sie fachlich angemessen ist.
+
+> **LLMs liefern oft sehr gute Ergebnisse und können gleichzeitig nie Verlässlichkeit garantieren. Diese Spannung ist nicht auflösbar, nur durch fachliche Prüfung handhabbar.**
+
+Diese epistemische Asymmetrie – hohe Qualität bei struktureller Unzuverlässigkeit – ist das zentrale Problem, das Promptotyping adressiert.
 
 ### Das Problem der Sycophancy
 

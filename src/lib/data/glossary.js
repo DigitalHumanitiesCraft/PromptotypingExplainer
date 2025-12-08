@@ -2,6 +2,34 @@
 // Nur die für Promptotyping relevantesten Begriffe
 
 export const glossary = {
+  'frontier-model': {
+    term: 'Frontier Model',
+    en: 'Frontier Model',
+    definition: 'Modelle, die zum Zeitpunkt ihrer Veröffentlichung die bisherigen Leistungsgrenzen in zentralen Benchmarks übertreffen. Der Begriff bezeichnet keine feste Kategorie, sondern eine relative Position im Entwicklungsstand.',
+    tags: ['fundamentals'],
+    source: null
+  },
+  'vibe-coding': {
+    term: 'Vibe Coding',
+    en: 'Vibe Coding',
+    definition: 'Ein von Andrej Karpathy geprägter Begriff für Code-Generierung durch natürlichsprachliche Anweisungen, bei der Entwickler den Output akzeptieren, ohne den generierten Code zu prüfen. Für Prototypen produktiv, führt ohne Struktur zu technischen Schulden.',
+    tags: ['prompting', 'methodology'],
+    source: 'Karpathy 2025'
+  },
+  'prompt': {
+    term: 'Prompt',
+    en: 'Prompt',
+    definition: 'Die Eingabe an ein Large Language Model – eine Anweisung, Frage oder Kontext, die das Modell zur Generierung einer Antwort veranlasst.',
+    tags: ['prompting', 'fundamentals'],
+    source: 'Schulhoff et al. 2024'
+  },
+  'prototyping': {
+    term: 'Prototyping',
+    en: 'Prototyping',
+    definition: 'Iterative Entwicklung von Funktionsmustern vor der vollständigen Spezifikation. Nach Floyd (1984) geleitet von der Einsicht, dass man erst durch das Bauen versteht, was man bauen sollte.',
+    tags: ['methodology'],
+    source: 'Floyd 1984'
+  },
   'context-engineering': {
     term: 'Context Engineering',
     en: 'Context Engineering',
@@ -96,7 +124,7 @@ export const glossary = {
   'tool-use': {
     term: 'Tool Use / Function Calling',
     en: 'Tool Use',
-    definition: 'Die Fähigkeit eines Modells, zu erkennen, dass eine Anfrage externe Werkzeuge erfordert, und strukturierte Befehle zu generieren.',
+    definition: 'Die Fähigkeit eines Modells, zu erkennen, dass eine Anfrage externe Werkzeuge erfordert, und strukturierte Befehle zu generieren. Beispiele: Websuche, Code-Ausführung, Terminal-Befehle, API-Aufrufe oder Datenbankabfragen.',
     tags: ['agents', 'ai-engineering'],
     source: 'Schick et al. 2023'
   },
@@ -239,5 +267,14 @@ export const termToId = {
   'promptotyping document': 'promptotyping-documents',
   'data.md': 'promptotyping-documents',
   'requirements.md': 'promptotyping-documents',
-  'context.md': 'promptotyping-documents'
+  'context.md': 'promptotyping-documents',
+  'prompt': 'prompt',
+  'prototyping': 'prototyping',
+  'frontier model': 'frontier-model',
+  'frontier-model': 'frontier-model',
+  'frontier models': 'frontier-model',
+  'frontier-llm': 'frontier-model',
+  'frontier-llms': 'frontier-model',
+  'vibe coding': 'vibe-coding',
+  'vibe-coding': 'vibe-coding'
 };

@@ -15,6 +15,8 @@ export const stepStructure = [
     subtitle: 'Einführung',
     steps: [
       { id: 'definition', label: 'Definition' },
+      { id: 'vibecoding', label: 'Vibe Coding' },
+      { id: 'strangeminds', label: 'Strange New Minds' },
       { id: 'kernprinzip', label: 'Kernprinzip' },
       { id: 'methodik', label: 'Methodik' },
       { id: 'phasen', label: 'Phasen' },

@@ -759,6 +759,56 @@ export const deepDives = {
     `
   },
 
+  'vibe-coding-critique': {
+    id: 'vibe-coding-critique',
+    title: 'Vibe Coding – Kritik und Kontext',
+    content: `
+      <p>
+        Andrej Karpathy prägte den Begriff im Februar 2025. Er beschreibt Code-Generierung durch
+        natürlichsprachliche Anweisungen, bei der Entwickler den Output akzeptieren, ohne den
+        generierten Code zu prüfen.
+      </p>
+
+      <blockquote style="border-left: 3px solid var(--color-terracotta); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+        "There's a new kind of coding I call 'vibe coding', where you fully give in to the vibes,
+        embrace exponentials, and forget that the code even exists."
+        <br><small>– Andrej Karpathy, Februar 2025</small>
+      </blockquote>
+
+      <p>
+        Jürgen Geuter (tante, 2025) argumentiert, dass Vibe Coding fundamentale Aspekte der
+        Softwareentwicklung ignoriert. Anforderungsanalyse setzt voraus, dass Verständnis erst
+        durch die Arbeit am Code entsteht. Architekturentscheidungen erfordern Domänenwissen.
+        Und Vibe Coding nimmt den Raum für Kompetenzentwicklung. Output ohne Verständnis
+        verhindert Lernen.
+      </p>
+
+      <p>
+        Vibe Coding funktioniert für schnelle Prototypen, bekannte Domains wie CRUD-Apps und
+        explorative Phasen, in denen Ideen getestet werden. Es scheitert bei Forschungswerkzeugen
+        mit domänenspezifischen Anforderungen, bei langlebigen Systemen, in denen technische
+        Schulden akkumulieren, und bei sicherheitskritischen Anwendungen, in denen unverstandener
+        Code riskant ist.
+      </p>
+
+      <p>
+        Promptotyping gibt Vibe Coding Struktur. Die intuitive, explorative Arbeitsweise bleibt
+        erhalten, ergänzt durch systematische Dokumentation im Vault, kritische fachliche Prüfung
+        durch den Critical Expert in the Loop und explizites Domänenwissen durch Context Engineering.
+      </p>
+
+      <div class="reference">
+        <strong>Referenzen:</strong><br>
+        Karpathy, A. [@karpathy]. (2025, 2. Februar). <em>There's a new kind of coding I call "vibe coding"</em> [Tweet]. X.
+        <a href="https://x.com/karpathy/status/1886192184808149383" target="_blank">Link</a><br>
+        tante (2025). <em>On "Vibe Coding"</em>. Smashing Frames Blog.
+        <a href="https://tante.cc/2025/05/23/on-vibe-coding/" target="_blank">Link</a><br>
+        Pollin, C. (2025). <em>Haters gonna hate: Warum die Kritik an Vibe Coding berechtigt ist</em>. DHCraft Blog.
+        <a href="https://dhcraft.org/excellence/blog/Vibe-Coding/" target="_blank">Link</a>
+      </div>
+    `
+  },
+
   'case-szd': {
     id: 'case-szd',
     title: 'Case Study: SZD Annotation',

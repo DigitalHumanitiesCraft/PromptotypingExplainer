@@ -4,9 +4,9 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 
 ---
 
-## Gesamtstruktur (18 Steps)
+## Gesamtstruktur (19 Steps)
 
-- Intro (4): Definition, Kernprinzip, Methodik, Phasen
+- Intro (6): Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Phasen
 - Phase 1: Preparation (3): Übersicht, Rohdaten, Sammlung
 - Phase 2: Exploration (3): Struktur, Entitäten, Fragen
 - Phase 3: Destillation (3): Übersicht, .md-Files, Vault
@@ -15,12 +15,16 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 
 ---
 
-## Intro (4 Steps)
+## Intro (6 Steps)
 
-1. Definition: Was ist Promptotyping?
-2. Kernprinzip: Mapping von Forschungsdaten auf Interfaces
-3. Methodik: Verhältnis zu Vibe Coding (komplementär)
-4. Phasen: 4-Phasen-Übersicht mit Diagramm
+1. **Definition**: Was ist Promptotyping?
+2. **Vibe Coding**: Frontier-LLMs, Benchmarks, Karpathy, tante-Kritik
+   - Deep Dive: Vibe Coding Kritik
+3. **Strange New Minds**: LLMs als kognitive Systeme, Summerfield, Lindsey et al., System 1.42, Co-Intelligence (Centaur/Cyborg), Sycophancy
+   - Deep Dives: System 1.42, Co-Intelligence
+4. **Kernprinzip**: Rhetorische Frage, Mollick-Shift, fundamentale Spannung (gute Ergebnisse + keine Verlässlichkeit), Critical Expert
+5. **Methodik**: Critical Expert in the Loop, Strategien gegen Sycophancy
+6. **Phasen**: 4-Phasen-Übersicht mit Diagramm
 
 ---
 
@@ -89,11 +93,18 @@ Deep Dives:
 
 Optionale Vertiefungen, die vom Hauptfluss abzweigen:
 
+### Intro
+- Vibe Coding → **Vibe Coding Kritik**: Karpathy, tante, wann es funktioniert/scheitert
+- Strange New Minds → **System 1.42**: Kahneman, Douglas Adams, Retrieval statt Reasoning
+- Strange New Minds → **Co-Intelligence**: Mollick, Centaur/Cyborg, epistemische Partnerschaft
+
+### Phasen
 - Phase 1 → Scholar-Centered Design: UCD/SCD-Synthese, akademische Fundierung
 - Phase 2 → Context Engineering: Mei et al., Context Rot, Verdichtung
 - Phase 3 → Dokumentenstruktur: Flexibilität, Skalierung, Beispiele
 - Phase 4 → Prompting-Strategien: Reasoning, LLM-as-Judge, etc.
 - Phase 4 → Critical Expert in the Loop: Sycophancy, Validierung, Korrektur
+- Phase 4 → LLM-Retrieval: Chollet, Hochreiter, Kambhampati - LLMs als approximative Datenbanken
 
 ---
 

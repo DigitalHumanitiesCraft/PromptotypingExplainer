@@ -177,6 +177,86 @@ export const bibliography = {
     title: 'Promptotyping: Eine Methodik für LLM-gestützte Werkzeugentwicklung in den Digital Humanities',
     source: 'In Vorbereitung',
     url: null
+  },
+  'Floyd 1984': {
+    id: 'floyd-1984',
+    authors: 'Floyd, C.',
+    year: 1984,
+    title: 'A Systematic Look at Prototyping',
+    source: 'In: Budde, R., Kuhlenkamp, K., Mathiassen, L., Züllighoven, H. (eds) Approaches to Prototyping. Springer',
+    url: 'https://doi.org/10.1007/978-3-642-69796-8_1'
+  },
+  'Liu et al. 2023': {
+    id: 'liu-2023',
+    authors: 'Liu, Z., et al.',
+    year: 2023,
+    title: 'Understanding Latent Space in Language Models',
+    source: 'Preprint',
+    url: null
+  },
+  'Jimenez et al. 2024': {
+    id: 'jimenez-2024',
+    authors: 'Jimenez, C. E., Yang, J., Wettig, A., Yao, S., Pei, K., Press, O. & Narasimhan, K. R.',
+    year: 2024,
+    title: 'SWE-bench: Can Language Models Resolve Real-World GitHub Issues?',
+    source: 'Proceedings of the Twelfth International Conference on Learning Representations (ICLR 2024)',
+    url: 'https://openreview.net/forum?id=VTF8yNQM66'
+  },
+  'Karpathy 2025': {
+    id: 'karpathy-2025',
+    authors: 'Karpathy, A.',
+    year: 2025,
+    title: 'There\'s a new kind of coding I call "vibe coding"',
+    source: 'X (Twitter)',
+    url: 'https://x.com/karpathy/status/1886192184808149383'
+  },
+  'Laude Institute 2025': {
+    id: 'laude-2025',
+    authors: 'Laude Institute',
+    year: 2025,
+    title: 'Terminal-Bench: A Benchmark for LLMs on Complicated Tasks in the Terminal',
+    source: 'GitHub',
+    url: 'https://github.com/laude-institute/terminal-bench'
+  },
+  'tante 2025': {
+    id: 'tante-2025',
+    authors: 'tante',
+    year: 2025,
+    title: 'On "Vibe Coding"',
+    source: 'Smashing Frames Blog',
+    url: 'https://tante.cc/2025/05/23/on-vibe-coding/'
+  },
+  'Pollin 2025b': {
+    id: 'pollin-2025b',
+    authors: 'Pollin, C.',
+    year: 2025,
+    title: 'Haters gonna hate: Warum die Kritik an Vibe Coding berechtigt ist',
+    source: 'DHCraft Blog',
+    url: 'https://dhcraft.org/excellence/blog/Vibe-Coding/'
+  },
+  'Lindsey et al. 2025': {
+    id: 'lindsey-2025',
+    authors: 'Lindsey, J., et al.',
+    year: 2025,
+    title: 'On the Biology of a Large Language Model',
+    source: 'Anthropic Research',
+    url: 'https://transformer-circuits.pub/2025/attribution-graphs/biology.html'
+  },
+  'Mollick 2024': {
+    id: 'mollick-2024',
+    authors: 'Mollick, E.',
+    year: 2024,
+    title: 'Co-Intelligence: Living and Working with AI',
+    source: 'Portfolio/Penguin',
+    url: null
+  },
+  'Mollick 2025': {
+    id: 'mollick-2025',
+    authors: 'Mollick, E.',
+    year: 2025,
+    title: 'Three Years from GPT-3 to Gemini 3',
+    source: 'One Useful Thing',
+    url: 'https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini'
   }
 };
 

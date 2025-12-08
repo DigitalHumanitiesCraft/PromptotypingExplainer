@@ -9,6 +9,8 @@
 
   // Intro Steps
   import IntroDefinition from './lib/components/steps/intro/IntroDefinition.svelte';
+  import IntroVibeCoding from './lib/components/steps/intro/IntroVibeCoding.svelte';
+  import IntroStrangeNewMinds from './lib/components/steps/intro/IntroStrangeNewMinds.svelte';
   import IntroKernprinzip from './lib/components/steps/intro/IntroKernprinzip.svelte';
   import IntroMethodik from './lib/components/steps/intro/IntroMethodik.svelte';
   import IntroPhasen from './lib/components/steps/intro/IntroPhasen.svelte';
@@ -108,20 +110,28 @@
 <main class="scroll-container" on:scroll={handleScroll}>
   <ProgressIndicator />
 
-  <!-- Intro Phase: 4 Steps -->
+  <!-- Intro Phase: 5 Steps -->
   <Step id="intro-definition" phaseIndex={0} stepIndex={0}>
     <IntroDefinition />
   </Step>
 
-  <Step id="intro-kernprinzip" phaseIndex={0} stepIndex={1}>
+  <Step id="intro-vibecoding" phaseIndex={0} stepIndex={1}>
+    <IntroVibeCoding />
+  </Step>
+
+  <Step id="intro-strangeminds" phaseIndex={0} stepIndex={2}>
+    <IntroStrangeNewMinds />
+  </Step>
+
+  <Step id="intro-kernprinzip" phaseIndex={0} stepIndex={3}>
     <IntroKernprinzip />
   </Step>
 
-  <Step id="intro-methodik" phaseIndex={0} stepIndex={2}>
+  <Step id="intro-methodik" phaseIndex={0} stepIndex={4}>
     <IntroMethodik />
   </Step>
 
-  <Step id="intro-phasen" phaseIndex={0} stepIndex={3}>
+  <Step id="intro-phasen" phaseIndex={0} stepIndex={5}>
     <IntroPhasen />
   </Step>
 

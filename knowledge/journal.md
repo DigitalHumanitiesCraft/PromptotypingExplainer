@@ -2,6 +2,51 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Abend: Intro-Struktur, Mollick 2025, Deep Dives
+
+### Tasks
+- Intro-Seiten neu strukturiert (Vibe Coding → Strange New Minds → Kernprinzip)
+- Neue Referenzen eingearbeitet (Mollick 2025, Karpathy 2025, tante 2025, Jimenez et al. 2024)
+- Deep Dives auf Fließtext umgestellt
+- Fundamentale Spannung formuliert
+
+### Ergebnisse
+**Intro-Struktur erweitert (4 → 6 Steps):**
+1. Definition
+2. **Vibe Coding** (NEU): Frontier-LLMs, Benchmarks, Karpathy, tante-Kritik
+3. **Strange New Minds** (NEU): Summerfield, Lindsey, System 1.42, Co-Intelligence, Sycophancy
+4. Kernprinzip: Mollick-Shift, fundamentale Spannung
+5. Methodik
+6. Phasen
+
+**Neue Referenzen:**
+- Mollick 2025: "Three Years from GPT-3 to Gemini 3" (One Useful Thing)
+- Karpathy 2025: Vibe Coding Tweet
+- tante 2025: "On Vibe Coding" (Kritik)
+- Jimenez et al. 2024: SWE-bench
+- Laude Institute 2025: Terminal-bench
+
+**Fundamentale Spannung formuliert:**
+> LLMs liefern oft sehr gute Ergebnisse und können gleichzeitig nie Verlässlichkeit garantieren. Diese Spannung ist nicht auflösbar, nur durch fachliche Prüfung handhabbar.
+
+**Deep Dive Vibe Coding:** Auf Fließtext umgestellt (war Bullet-Points). Referenzen mit Links.
+
+**Deep Dive Trigger:** Co-Intelligence entfernt (redundant), System 1.42 mit Blog-Titel.
+
+### Entscheidungen
+- Mollick-Shift sachlich statt "Dirigent/Validator" (vermeidet Management-Sprech)
+- tante-Kritik als Ergänzung zu Karpathy (differenzierte Sicht)
+- Deep Dives in Prosa statt Bullet-Point-Listen (bessere Lesbarkeit)
+- Co-Intelligence bleibt im Text, Deep Dive entfernt (nicht genug eigenständiger Inhalt)
+
+### Paper-Updates
+- 01-introduction.md: Neue Einleitung mit Benchmarks, Mollick, Karpathy, tante
+- 02-theoretical-foundation.md: "Fundamentale Spannung" als Kernproblem
+- 07-references.md: Alle neuen Referenzen
+- WEBSITE-OUTLINE.md: 19 Steps, Deep Dive Struktur
+
+---
+
 ## 2025-12-08: Terminologie, Phase 2 & LLM-Retrieval
 
 ### Tasks
