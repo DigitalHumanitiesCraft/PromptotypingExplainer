@@ -2,6 +2,57 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08: Terminologie, Phase 2 & LLM-Retrieval
+
+### Tasks
+- "Epistemische Spielwiese" entfernt
+- Phase 2 neu definiert
+- Vault-Flexibilität betont
+- LLM-Retrieval Deep Dive erstellt
+- Latent Space und Context Rot erweitert
+
+### Ergebnisse
+**Terminologie bereinigt:** "Epistemische Spielwiese" aus 9 Quelldateien entfernt, ersetzt durch "Datenanalyse".
+
+**Phase 2 verfeinert:**
+- Neuer Subtitle: "Daten-Kontext-Relationen"
+- Narrativ: Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext
+- Sackgassen als positive Erkenntnisse geframt
+- User-Story-Validierung als Kernfunktion
+
+**Vault als flexibles System:**
+- Glossar: Promptotyping Documents "bilden den Ausgangspunkt, können aber je nach Domäne erweitert werden"
+- IntroMethodik: "Flexible Markdown-Dokumente"
+- OutroZusammenfassung: Erweiterbarkeit explizit genannt
+
+**Neuer Deep Dive "LLMs als Retrieval-Systeme":**
+- Chollet: "vector programs", keine Reasoning-Engines
+- Hochreiter: LLMs als approximative Datenbanken
+- Kambhampati: "approximate retrieval – not reasoning"
+- Latent Space als Abrufraum erklärt
+
+**Phase 4 aktualisiert:**
+- "Reasoning" in Anführungszeichen (approximatives Retrieval)
+- "Gezielte Auswahl" statt nur "Vault übergeben"
+- Deep Dive Trigger in Phase4Iteration
+
+**Glossar erweitert:**
+- Latent Space hinzugefügt (Liu et al. 2023)
+- Context Rot: Rauschen/Aufmerksamkeits-Mechanismus ergänzt
+
+### Entscheidungen
+- Chollet/Hochreiter/Kambhampati statt System 1.42 für Retrieval-Erklärung (konkreter, zitierfähig)
+- Latent Space als Brücke zwischen Retrieval und Vektorarithmetik
+- Phase 2 bleibt artefaktfrei, Output ist Wissen über Datenqualität
+
+### Commits
+- `a80c7e7` Remove 'epistemische Spielwiese' terminology
+- `a1c9347` Refine Phase 2: Daten-Kontext-Relationen
+- `87af87f` Add LLM-Retrieval Deep Dive and update Phase 4
+- `cb2359d` Add Latent Space concept and enhance Context Rot definition
+
+---
+
 ## 2025-12-07 Nacht: CSS-Refactoring & Untertitel
 
 ### Tasks
