@@ -23,7 +23,7 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 3. **Strange New Minds**: LLMs als kognitive Systeme, Summerfield, Lindsey et al., System 1.42, Co-Intelligence (Centaur/Cyborg), Sycophancy
    - Deep Dive: System 1.42
 4. **Kernprinzip**: Rhetorische Frage, Mollick-Shift, fundamentale Spannung (gute Ergebnisse + keine Verlässlichkeit)
-5. **Critical Expert**: Critical Expert in the Loop, Strategien gegen Sycophancy, Reflective Practice
+5. **Critical Expert**: Critical Expert in the Loop, Zwei-Ebenen-Validierung, Strategien gegen Sycophancy
    - Deep Dive: Critical Expert
 6. **Scholar-Centered**: UCD vs. SCD, Knowledge Acquisition, User Stories (Tabelle)
    - Deep Dive: Scholar-Centered Design
@@ -98,7 +98,7 @@ Optionale Vertiefungen, die vom Hauptfluss abzweigen:
 ### Intro
 - Vibe Coding → **Vibe Coding Kritik**: Karpathy, tante, wann es funktioniert/scheitert
 - Strange New Minds → **System 1.42**: Kahneman, Douglas Adams, Retrieval statt Reasoning
-- Critical Expert → **Critical Expert**: Reflective Practice, Sycophancy-Strategien
+- Critical Expert → **Critical Expert**: Zwei-Ebenen-Validierung, Sycophancy-Strategien
 - Scholar-Centered → **Scholar-Centered Design**: UCD/SCD-Vergleich, hermeneutischer Zirkel
 
 ### Phasen

@@ -21,26 +21,17 @@
     </p>
 
     <p>
-      Der Critical-Expert-Ansatz operationalisiert Schöns <strong>Reflective Practice</strong> für die
-      KI-gestützte Forschung: Reflection-in-action bedeutet kritische Prüfung während des
-      LLM-Dialogs; Reflection-on-action ist die nachträgliche Analyse und Dokumentation
-      im Journal. Polanyis Konzept des <strong>impliziten Wissens</strong> ("We can know more than we
-      can tell") ist zentral: Der Prozess der Explizierung taciten Wissens in formale Strukturen
-      bildet einen Kernaspekt der Methodik.
+      Die Validierung findet auf zwei Ebenen statt. <strong>Während des LLM-Dialogs</strong> prüft der Expert
+      jeden Output auf fachliche Angemessenheit und korrigiert falsche Annahmen sofort. <strong>Nach der
+      Session</strong> dokumentiert er Erkenntnisse und Entscheidungen im Journal, um den Prozess
+      nachvollziehbar zu machen.
     </p>
 
     <p>
-      <strong>Strategien gegen <GlossaryTerm id="sycophancy">Sycophancy</GlossaryTerm>:</strong>
+      Drei Strategien adressieren das Problem der <strong><GlossaryTerm id="sycophancy">Sycophancy</GlossaryTerm></strong>.
       Critical Questioning fordert das LLM explizit zur Kritik auf ("Was sind Schwächen in diesem Ansatz?").
       Alternative Exploration verlangt verschiedene Ansätze und gegenteilige Standpunkte.
-      Assumption Surfacing macht implizite Annahmen im Code oder Voraussetzungen bewusst.
-    </p>
-
-    <p>
-      Promptotyping ist kein Gegenentwurf zu Vibe Coding, sondern gibt ihm Struktur für
-      Forschungskontexte. Die intuitive, explorative Arbeitsweise bleibt erhalten, ergänzt
-      durch systematische Dokumentation, die <GlossaryTerm id="context-rot">Context Rot</GlossaryTerm>
-      verhindert und die Informationsdichte maximiert.
+      Assumption Surfacing macht implizite Annahmen im Code bewusst.
     </p>
 
     <div class="deep-dive-triggers">

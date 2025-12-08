@@ -227,15 +227,22 @@
             </span>
           {/each}
         </div>
-        {#if entry.source}
-          <a
-            href="bibliographie.html#bibliographie-{bibEntry?.id || ''}"
-            class="popover-source"
-            on:click|stopPropagation
-          >
-            {entry.source}
-          </a>
-        {/if}
+        <div class="popover-meta">
+          {#if entry.source}
+            <span class="popover-source">{entry.source}</span>
+          {/if}
+          {#if entry.link}
+            <a
+              href={entry.link}
+              class="popover-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              on:click|stopPropagation
+            >
+              Mehr →
+            </a>
+          {/if}
+        </div>
       </div>
     </div>
   {/if}{:else}<slot />{/if}
@@ -438,17 +445,29 @@
     letter-spacing: 0.3px;
   }
 
+  .popover-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
   .popover-source {
     font-size: 0.7rem;
     color: var(--color-slate);
     font-style: italic;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.2s ease;
   }
 
-  .popover-source:hover {
+  .popover-link {
+    font-size: 0.75rem;
     color: var(--color-terracotta);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+  }
+
+  .popover-link:hover {
+    opacity: 0.8;
     text-decoration: underline;
   }
 

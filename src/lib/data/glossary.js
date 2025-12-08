@@ -212,6 +212,30 @@ export const glossary = {
     definition: 'Die Markdown-Dokumente im Vault. Die drei Kerndokumente DATA.md, REQUIREMENTS.md und CONTEXT.md bilden den Ausgangspunkt. Je nach Domänenkomplexität können beliebige weitere Dokumente ergänzt werden, etwa SCHEMA.md oder JOURNAL.md. Ziel ist maximale Informationsdichte bei minimaler Token-Anzahl, um Context Rot zu vermeiden.',
     tags: ['methodology'],
     source: 'Pollin & Steiner 2025'
+  },
+  'correspexplorer': {
+    term: 'CorrespExplorer',
+    en: 'CorrespExplorer',
+    definition: 'Ein mit Promptotyping entwickelter Prototyp zur Exploration von Briefkorrespondenzen. Basiert auf CMIF-Daten aus correspSearch und ermöglicht die visuelle Analyse von Korrespondenznetzwerken.',
+    tags: ['case-study'],
+    source: 'Pollin 2025',
+    link: 'https://dhcraft.org/CorrespExplorer/'
+  },
+  'cmif': {
+    term: 'CMIF',
+    en: 'Correspondence Metadata Interchange Format',
+    definition: 'Ein auf TEI-XML basierendes Austauschformat für Briefmetadaten, entwickelt von der TEI Correspondence SIG. CMIF standardisiert Angaben zu Absender, Empfänger, Datum und Ort von Korrespondenzen für den projektübergreifenden Datenaustausch.',
+    tags: ['data-format', 'dh'],
+    source: 'TEI Correspondence SIG',
+    link: 'https://correspsearch.net/en/documentation.html'
+  },
+  'correspsearch': {
+    term: 'correspSearch',
+    en: 'correspSearch',
+    definition: 'Ein Webservice der BBAW, der Metadaten zu Briefeditionen aggregiert und durchsuchbar macht. Über 200.000 Briefe aus über 150 Editionen sind erfasst. Die API liefert CMIF-XML-Daten für Weiterverarbeitung.',
+    tags: ['infrastructure', 'dh'],
+    source: 'BBAW',
+    link: 'https://correspsearch.net/'
   }
 };
 
@@ -276,5 +300,12 @@ export const termToId = {
   'frontier-llm': 'frontier-model',
   'frontier-llms': 'frontier-model',
   'vibe coding': 'vibe-coding',
-  'vibe-coding': 'vibe-coding'
+  'vibe-coding': 'vibe-coding',
+  'correspexplorer': 'correspexplorer',
+  'corresp explorer': 'correspexplorer',
+  'cmif': 'cmif',
+  'cmif-xml': 'cmif',
+  'correspondence metadata interchange format': 'cmif',
+  'correspsearch': 'correspsearch',
+  'corresp search': 'correspsearch'
 };

@@ -1,5 +1,6 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
+  import overviewImg from '../../../../assets/images/promptotyping-overview.png';
 </script>
 
 <div class="intro-kernprinzip">
@@ -38,6 +39,10 @@
       ist, sondern ob es fachlich angemessen ist. LLMs liefern oft sehr gute Ergebnisse und können gleichzeitig
       nie Verlässlichkeit garantieren. Diese Spannung ist nicht auflösbar, nur durch fachliche Prüfung handhabbar.
     </p>
+
+    <figure class="overview-diagram">
+      <img src={overviewImg} alt="Promptotyping Workflow: Preparation → Exploration → Distillation → Implementation" />
+    </figure>
   </div>
 </div>
 
@@ -94,5 +99,16 @@
     font-weight: 700;
     color: var(--color-terracotta);
     letter-spacing: 0.02em;
+  }
+
+  .overview-diagram {
+    margin: var(--space-lg) 0 0 0;
+    padding: 0;
+  }
+
+  .overview-diagram img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
   }
 </style>

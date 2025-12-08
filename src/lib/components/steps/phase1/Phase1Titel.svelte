@@ -1,6 +1,7 @@
 <script>
   import { fade, fly } from 'svelte/transition';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import GlossaryTerm from '../../GlossaryTerm.svelte';
   import { openDeepDive } from '../../../stores/deepDive.js';
 
   function handleDeepDive(event) {
@@ -11,31 +12,30 @@
 <div class="phase1-titel" in:fade={{ duration: 400 }}>
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="phase-number">Phase 1</span>
-    <h2>Vorbereitung</h2>
+    <h2>Preparation</h2>
     <p class="subtitle">Materialsammlung</p>
   </header>
 
   <div class="content" in:fade={{ delay: 200, duration: 400 }}>
     <p>
-      Die Vorbereitungsphase hat ein klares Ziel: <strong>alle relevanten Rohmaterialien zusammentragen</strong>,
+      In der Preparation-Phase werden <strong>alle relevanten Rohmaterialien zusammengetragen</strong>,
       bevor technische Entscheidungen getroffen werden. Diese Sammlung umfasst Forschungsdaten in
       verschiedenen Formaten, Dokumentation zu Standards und Datenmodellen, erste Forschungsfragen
       und implizites Domänenwissen aus Expertengesprächen.
     </p>
 
     <p>
-      Diese Phase verhindert ein häufiges Problem in der Softwareentwicklung für Forschung: die
-      unkritische Übernahme technischer Lösungen, die am tatsächlichen Forschungsbedarf vorbeigehen.
-      Die Materialsammlung zwingt zur präzisen Artikulation der Projektziele, bevor überhaupt
-      ein LLM-Dialog beginnt.
+      Die Materialsammlung zwingt zur präzisen Artikulation der Projektziele, bevor ein LLM-Dialog
+      beginnt. Das verhindert die unkritische Übernahme technischer Lösungen, die am tatsächlichen
+      Forschungsbedarf vorbeigehen.
     </p>
 
     <div class="example-block">
-      <h4>Beispiel: CorrespExplorer</h4>
+      <h4>Beispiel <GlossaryTerm id="correspexplorer">CorrespExplorer</GlossaryTerm></h4>
       <p>
-        Im CorrespExplorer-Projekt wurden in dieser Phase gesammelt: CMIF-XML-Dateien aus correspSearch,
-        die TEI-Correspondence-SIG-Dokumentation, Editionsrichtlinien der beteiligten Projekte, und
-        Notizen aus Gesprächen mit Briefeditor:innen über ihre Arbeitsabläufe und Forschungsfragen.
+        Im CorrespExplorer-Projekt wurden <GlossaryTerm id="cmif">CMIF-XML</GlossaryTerm>-Dateien aus <GlossaryTerm id="correspsearch">correspSearch</GlossaryTerm>,
+        die TEI-Correspondence-SIG-Dokumentation, Editionsrichtlinien der beteiligten Projekte und
+        Notizen aus Gesprächen mit Briefeditor:innen gesammelt.
       </p>
     </div>
   </div>

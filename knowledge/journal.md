@@ -2,6 +2,31 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Nacht (2): Diagramm-Verschiebung & Content-Verbesserungen
+
+### Tasks
+- Promptotyping-Overview-Diagramm nach IntroKernprinzip verschoben
+- Diagramm aus IntroPhasen entfernt (war dupliziert)
+- IntroMethodik Text überarbeitet
+
+### Ergebnisse
+**IntroKernprinzip mit Diagramm:**
+- Diagramm zeigt die 4 Phasen als visuelle Zusammenfassung
+- Passt inhaltlich besser zu "Das Kernprinzip" als zu "Das vierphasige Prozessmodell"
+
+**IntroPhasen ohne Diagramm:**
+- Behält Erklärungstext (Design Science Research Framework)
+- Behält Phasenliste mit Details
+- Kein dupliziertes Bild mehr
+
+**IntroMethodik verbessert:**
+- Zwei-Ebenen-Validierung explizit beschrieben (während Dialog + nach Session)
+- Polanyi und Schöns Reflective Practice entfernt (zu akademisch für Haupttext)
+- "Drei Strategien gegen Sycophancy" klarer strukturiert
+- Letzten Absatz (Promptotyping ≠ Gegenentwurf) entfernt
+
+---
+
 ## 2025-12-08 Nacht: Scholar-Centered Design Step
 
 ### Tasks
