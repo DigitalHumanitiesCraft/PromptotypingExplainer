@@ -25,7 +25,7 @@ Promptotyping operiert primär im Cyborg-Modus: Der iterative Dialog ist keine s
 | Phase | Fokus | Ergebnis |
 |-------|-------|----------|
 | **Vorbereitung** | Materialsammlung | Rohdaten, Quellen, Dokumentation |
-| **Exploration** | Datenanalyse | Strukturverständnis, erste Experimente |
+| **Exploration** | Daten-Kontext-Relationen | Machbarkeitsvalidierung, User-Story-Prüfung |
 | **Destillation** | Wissenskomprimierung | Der Vault: DATA.md, REQUIREMENTS.md, CONTEXT.md |
 | **Implementation** | Iterative Entwicklung | Funktionales Werkzeug + Vault-Updates |
 

@@ -24,8 +24,8 @@ export const phases = [
     id: 'phase2',
     number: 2,
     title: 'Exploration',
-    subtitle: 'Datenanalyse',
-    description: 'Freies Experimentieren mit dem Rohmaterial. Keine formalen Artefakte – die Erkenntnisse fließen in Phase 3.',
+    subtitle: 'Daten-Kontext-Relationen',
+    description: 'Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext. Validierung der Machbarkeit.',
   },
   {
     id: 'phase3',

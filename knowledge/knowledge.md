@@ -137,10 +137,12 @@ Rohdateien - keine .md Dokumente. Das Rohmaterial ist der Input für die später
 ### Phase 2: Exploration
 
 Narrativ:
-Analyse und Experimentieren mit dem Rohmaterial. Strukturen verstehen, erste LLM-Experimente. Z.B. ein Python-Script schreiben lassen, das die Struktur eines .doc extrahiert und analysiert.
+Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext. Ziel ist die Validierung der Machbarkeit: Geben die Daten das her, was der Kontext verlangt? Wir prüfen, ob sich abstrakte Forschungsfragen konkret auf die vorhandene Datenstruktur abbilden lassen.
+
+Hier entstehen mental bereits die ersten User Stories (z.B. „Als Historiker will ich X filtern..."), indem getestet wird, ob das technische Substrat diese Story überhaupt tragen kann. Sackgassen (z.B. „Die Daten geben diese Netzwerkanalyse nicht her") sind positive Erkenntnisse, keine Fehler.
 
 Artefakte:
-Keine formalen Dokumente. Das freie Experimentieren ermöglicht das Entdecken unerwarteter Möglichkeiten ohne Dokumentations-Overhead.
+Keine formalen Dokumente. Das Ergebnis ist Wissen über die Beschaffenheit der Daten und die Validität der geplanten User Stories. Dieses destillierte Wissen ist die zwingende Voraussetzung für die Präzision der darauf folgenden Phase 3 (Destillation).
 
 ---
 

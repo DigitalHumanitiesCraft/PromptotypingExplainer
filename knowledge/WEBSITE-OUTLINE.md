@@ -39,12 +39,12 @@ Deep Dive: Scholar-Centered Design
 
 ## Phase 2: Exploration (3 Steps)
 
-Untertitel: Datenanalyse
-Artefakte: Keine formalen Dokumente
+Untertitel: Daten-Kontext-Relationen
+Artefakte: Keine formalen Dokumente, aber Wissen über Datenqualität und User-Story-Validität
 
 1. Struktur: Zoom auf Dokument, Farbcodierung zeigt Aufbau
-2. Entitäten: Elemente lösen sich (Person, Ort, Zeit, Relation)
-3. Fragen: Interface-Skizzen, "Welche Fragen stellen wir?"
+2. Relationen: Prüfung der Daten-Kontext-Schnittstelle
+3. Validierung: Machbarkeitsprüfung der User Stories
 
 Deep Dive: Context Engineering
 

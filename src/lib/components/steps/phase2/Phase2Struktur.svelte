@@ -8,37 +8,37 @@
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="phase-number">Phase 2</span>
     <h2>Exploration</h2>
-    <p class="subtitle">Datenanalyse</p>
+    <p class="subtitle">Daten-Kontext-Relationen</p>
   </header>
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Freies Experimentieren mit dem Rohmaterial. LLM-gestützte Analyse der Daten,
-      erste Prompt-Versuche, Erkundung der Möglichkeitsräume, <strong>ohne Dokumentationszwang</strong>.
+      Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext.
+      Wir prüfen: Lässt sich die abstrakte Forschungsfrage konkret auf diese Datenstruktur abbilden?
     </p>
 
     <div class="key-point">
-      <span class="key-label">Kennzeichen</span>
-      <p>Diese Phase produziert <strong>keine formalen Artefakte</strong>. Die Erkenntnisse fließen informell in die Destillation (Phase 3) ein.</p>
+      <span class="key-label">Ziel</span>
+      <p><strong>Validierung der Machbarkeit</strong>: Geben die Daten das her, was der Forschungskontext verlangt? Sackgassen sind hier positive Erkenntnisse, keine Fehler.</p>
     </div>
 
     <div class="example-box">
-      <div class="example-label">Beispiel-Prompts</div>
+      <div class="example-label">Typische Fragen</div>
       <p class="example-text">
-        "Analysiere die Struktur dieser XML-Dateien: Welche Elemente kommen vor?"<br><br>
-        "Erkläre mir das Datenmodell, das du in diesen Dokumenten erkennst."<br><br>
-        "Welche Entitäten (Personen, Orte, Zeiten) sind in den Daten enthalten?"
+        "Lässt sich diese Netzwerkanalyse mit den vorhandenen Relationen umsetzen?"<br><br>
+        "Welche Felder in der XML-Struktur tragen die gewünschte Filterlogik?"<br><br>
+        "Können wir 'Als Historiker will ich nach Datum filtern...' mit diesen Daten realisieren?"
       </p>
     </div>
   </div>
 
   <figure class="exploration-visual" in:fly={{ y: 30, duration: 500, delay: 400 }}>
-    <img src={explorationImg} alt="LLM-gestützte Exploration der Rohdaten" />
-    <figcaption>Verstehen durch Experimentieren – keine Dokumentation, nur Erkenntnis</figcaption>
+    <img src={explorationImg} alt="Sondierung der Daten-Kontext-Schnittstelle" />
+    <figcaption>Brücken identifizieren – mental entstehen hier die ersten User Stories</figcaption>
   </figure>
 
   <p class="transition-hint" in:fade={{ delay: 600, duration: 400 }}>
-    Was hier verstanden wird, wird in Phase 3 <strong>destilliert</strong>
+    Ergebnis: Wissen über Datenqualität und User-Story-Validität → Voraussetzung für Phase 3
   </p>
 </div>
 

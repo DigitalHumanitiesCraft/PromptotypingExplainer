@@ -35,7 +35,7 @@ export const stepStructure = [
     id: 'phase2',
     label: 'Exploration',
     number: 2,
-    subtitle: 'Datenanalyse',
+    subtitle: 'Daten-Kontext-Relationen',
     steps: [
       { id: 'exploration', label: 'Exploration' },
     ]

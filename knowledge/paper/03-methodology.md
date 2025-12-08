@@ -78,18 +78,18 @@ Im CorrespExplorer-Projekt: CMIF-XML-Dateien + correspSearch-Dokumentation + Edi
 
 Artefakt: Keines (bewusst undokumentiert)
 
-Ziel: Kreatives Experimentieren ohne vorzeitige Festlegung.
+Ziel: Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext. Validierung der Machbarkeit: Geben die Daten das her, was der Kontext verlangt?
 
 Funktion:
-Das freie Experimentieren ermöglicht das Entdecken unerwarteter Möglichkeiten und Grenzen, ohne den Overhead formaler Dokumentation.
+Diese Phase prüft, ob sich abstrakte Forschungsfragen konkret auf die vorhandene Datenstruktur abbilden lassen. Hier werden Brücken identifiziert: Mental entstehen bereits die ersten User Stories (z.B. „Als Historiker will ich X filtern..."), indem getestet wird, ob das technische Substrat diese Story überhaupt tragen kann.
 
 Charakteristika:
-- Freies Experimentieren mit dem LLM
-- Erste Prompt-Versuche
-- Erkundung der Möglichkeitsräume
-- Kein Dokumentationszwang
+- Prüfung der Daten-Kontext-Relationen
+- Identifikation tragfähiger User Stories
+- Erkennung von Sackgassen als positive Erkenntnisse
+- Kein formaler Dokumentationszwang
 
-> Wichtig: Die Ergebnisse dieser Phase fließen in die nachfolgende REQUIREMENTS-Phase ein, werden aber nicht formal dokumentiert.
+> Wichtig: Das Ergebnis ist Wissen über Datenqualität und User-Story-Validität. Dieses destillierte Wissen ist die zwingende Voraussetzung für die Präzision der Phase 3 (Destillation).
 
 ---
 
