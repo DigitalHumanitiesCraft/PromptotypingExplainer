@@ -6,43 +6,36 @@
 <div class="phase1-datenqualitaet" in:fade={{ duration: 400 }}>
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="phase-number">Phase 1</span>
-    <h2>Nicht alle Daten sind gleich</h2>
+    <h2>Mit den "guten" Forschungsdaten geht es besser</h2>
   </header>
 
   <div class="content" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Promptotyping funktioniert am besten mit Daten, die <strong>drei Eigenschaften</strong> haben.
+      Promptotyping funktioniert am besten mit Daten, die <strong>zwei Anforderungen</strong> erfüllen.
     </p>
 
     <div class="criteria-grid">
       <div class="criterion">
-        <h3>Struktur</h3>
+        <h3>Syntax & Tokens</h3>
         <p>
-          Das LLM muss die Datenstruktur erkennen können. <strong>XML, JSON und CSV</strong> sind
-          ideal, weil ihre Hierarchien und Felder explizit sind. Freitext-PDFs, Scans oder
-          Word-Dokumente erfordern einen zusätzlichen Aufbereitungsschritt, bevor die eigentliche
-          Prototypentwicklung beginnen kann.
+          Das LLM muss die Datenstruktur erkennen können. <strong>Tokeneffizienz</strong> ist
+          entscheidend. Markdown und JSON sind ideal, XML benötigt durch seine Syntax deutlich
+          mehr Tokens. <strong>CSV statt Excel</strong> (Excel ist intern ein großes XML-Dokument),
+          <strong>LaTeX statt PDF</strong> (besonders bei Formeln, PDF ist grundsätzlich ein
+          schlechtes Format für LLMs). Für den programmatischen Output eignen sich dann XML, RDF,
+          CSV oder andere algorithmisch verarbeitbare Formate.
         </p>
       </div>
 
       <div class="criterion">
-        <h3>Dokumentation</h3>
+        <h3>Semantik & Kontext</h3>
         <p>
           Ohne Schema-Beschreibung oder README rät das LLM. Dokumentierte Standards wie
           <GlossaryTerm id="tei">TEI</GlossaryTerm>, <GlossaryTerm id="cmif">CMIF</GlossaryTerm>
-          oder LIDO liefern nicht nur Struktur, sondern auch <strong>Semantik</strong>. Das LLM
+          oder LIDO liefern nicht nur Struktur, sondern auch <strong>Bedeutung</strong>. Das LLM
           versteht dann nicht nur <em>dass</em> ein Feld existiert, sondern <em>was</em> es bedeutet.
-          Undokumentierte Datenbanken oder proprietäre Formate erzeugen Halluzinationen.
-        </p>
-      </div>
-
-      <div class="criterion">
-        <h3>Zugänglichkeit</h3>
-        <p>
-          Die Daten müssen tatsächlich vorliegen, nicht nur theoretisch existieren. Ein Archiv,
-          das erst digitalisiert werden muss, ein Server ohne API-Zugang, eine Datenbank hinter
-          institutionellen Hürden. Diese Probleme müssen in Phase 1 erkannt werden, nicht erst
-          wenn der Prototype scheitert.
+          Alternativ kann man sich <strong>Pseudo-Semantik in Markdown</strong> erzeugen lassen,
+          etwa eine Ontologie in eigener Notation statt OWL/RDF.
         </p>
       </div>
     </div>
@@ -50,16 +43,17 @@
     <div class="implications">
       <p>
         Wenn die Ausgangsdaten diese Kriterien nicht erfüllen, verschiebt sich die Arbeit.
-        Statt Interface-Entwicklung wird <strong>Datenaufbereitung zum Hauptproblem</strong>.
+        Statt Interface-Entwicklung wird <strong>Datenaufbereitung und Modellierung zum Hauptproblem</strong>.
         Das kann sinnvoll sein. Im Lucina-Projekt entstanden aus Word-Dokumenten und PDFs
-        über fünf Iterationen TEI-konforme Forschungsdaten. Aber diese Entscheidung muss
-        <em>bewusst</em> getroffen werden, nicht zufällig.
+        TEI-konforme Forschungsdaten. Promptotyping eignet sich auch für diese Datenaufbereitung.
       </p>
 
       <p class="fair-note">
         <GlossaryTerm id="fair">FAIR</GlossaryTerm>-konforme Daten (Wilkinson et al., 2016)
-        erfüllen diese Kriterien typischerweise bereits. Wer mit FAIR-Daten startet, spart
-        Zeit in Phase 1.
+        erfüllen diese Kriterien typischerweise. <em>Findable</em> bedeutet Auffindbarkeit, <em>Accessible</em> bedeutet
+        Zugänglichkeit. <em>Interoperable</em> bedeutet dokumentierte Standards. <em>Reusable</em>
+        setzt Struktur voraus. Wer mit FAIR-Daten startet, hat die Voraussetzungen für Promptotyping
+        bereits erfüllt.
       </p>
     </div>
   </div>
@@ -109,7 +103,7 @@
 
   .criteria-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
     margin-bottom: var(--space-lg);
   }

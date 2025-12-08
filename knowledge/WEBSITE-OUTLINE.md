@@ -7,7 +7,7 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 ## Gesamtstruktur (20 Steps)
 
 - Intro (7): Definition, Vibe Coding, Strange New Minds, Kernprinzip, Critical Expert, Scholar-Centered, Phasen
-- Phase 1: Preparation (3): Übersicht, Rohdaten, Sammlung
+- Phase 1: Preparation (3): Übersicht, Gute Daten, Sammlung
 - Phase 2: Exploration (1): Exploration
 - Phase 3: Destillation (3): Übersicht, .md-Files, Vault
 - Phase 4: Implementation (3): Übersicht, Iteration, Vault-Update
@@ -37,7 +37,7 @@ Untertitel: Materialsammlung
 Artefakte: Rohdateien (.doc, .xml, PDFs) – keine .md
 
 1. Übersicht: Titel, was passiert in dieser Phase
-2. Rohdaten: Quellen erscheinen (XML, PDF, CSV, Notizen)
+2. Gute Daten: Syntax & Tokens, Semantik & Kontext, FAIR-Prinzipien
 3. Sammlung: Stapel formiert sich → "Bereit für Analyse"
 
 Deep Dive: Scholar-Centered Design

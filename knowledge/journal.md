@@ -35,17 +35,21 @@ Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 - Dissertationserfahrung als Domänenwissen erwähnt
 
 **Neuer Step Phase1Datenqualitaet:**
-- "Nicht alle Daten sind gleich" - Datenqualität als Voraussetzung
-- Drei Kriterien: Struktur, Dokumentation, Zugänglichkeit
+- "Mit den guten Forschungsdaten geht es besser" - Datenqualität als Voraussetzung
+- Zwei Kriterien: Syntax & Tokens (Tokeneffizienz, Formate), Semantik & Kontext (Dokumentation, Bedeutung)
 - FAIR-Prinzipien als Glossareintrag hinzugefügt
 - Lucina-Beispiel als Gegenbeispiel (unstrukturierte Daten → Datenaufbereitung)
+- Pseudo-Semantik in Markdown als Alternative zu formalen Standards
 
 ### Entscheidungen
 - Inline SVGs statt Font Awesome (kleineres Bundle, keine externe Dependency)
 - Scroll-Button rechts unten (überlappt Content weniger)
 - Bounce-Animation nur bei Hover (subtiler als dauerhaftes Pulsieren)
 - prefers-reduced-motion respektiert
-- Datenqualität-Step nach Phase1Titel, vor Rohdaten (logische Reihenfolge)
+- Datenqualität-Step nach Phase1Titel (logische Reihenfolge)
+- Phase1Rohdaten entfernt (redundant, rein dekorativ)
+- Phase1Sammlung: Bild mit Icons entfernt (kein didaktischer Wert)
+- Phase 1 jetzt 3 Steps: Übersicht → Gute Daten → Sammlung
 
 ---
 

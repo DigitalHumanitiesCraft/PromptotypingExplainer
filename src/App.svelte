@@ -19,7 +19,6 @@
   // Phase 1 Steps
   import Phase1Titel from './lib/components/steps/phase1/Phase1Titel.svelte';
   import Phase1Datenqualitaet from './lib/components/steps/phase1/Phase1Datenqualitaet.svelte';
-  import Phase1Rohdaten from './lib/components/steps/phase1/Phase1Rohdaten.svelte';
   import Phase1Sammlung from './lib/components/steps/phase1/Phase1Sammlung.svelte';
 
   // Phase 2 Steps
@@ -175,11 +174,7 @@
     <Phase1Datenqualitaet />
   </Step>
 
-  <Step id="phase1-rohdaten" phaseIndex={1} stepIndex={2}>
-    <Phase1Rohdaten />
-  </Step>
-
-  <Step id="phase1-sammlung" phaseIndex={1} stepIndex={3}>
+  <Step id="phase1-sammlung" phaseIndex={1} stepIndex={2}>
     <Phase1Sammlung />
   </Step>
 

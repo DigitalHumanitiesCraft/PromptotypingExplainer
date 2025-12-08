@@ -30,8 +30,7 @@ export const stepStructure = [
     subtitle: 'Materialsammlung',
     steps: [
       { id: 'titel', label: 'Übersicht' },
-      { id: 'datenqualitaet', label: 'Datenqualität' },
-      { id: 'rohdaten', label: 'Rohdaten' },
+      { id: 'datenqualitaet', label: 'Gute Daten' },
       { id: 'sammlung', label: 'Sammlung' },
     ]
   },
