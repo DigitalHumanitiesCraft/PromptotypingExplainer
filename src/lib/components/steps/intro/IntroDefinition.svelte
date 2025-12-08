@@ -1,6 +1,7 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
   import promptotypingLogo from '../../../../assets/images/promptotyping-logo.png';
+  import vibecodingImage from '../../../../assets/images/vibecoding.png';
 </script>
 
 <div class="intro-definition">
@@ -9,36 +10,37 @@
     <h1 class="promptotyping-title">Promptotyping</h1>
   </div>
 
-  <div class="definition-block">
-    <p class="definition">
+  <div class="research-blog-block">
+    <p>
       <span class="promptotyping">Promptotyping</span> ist eine <GlossaryTerm id="context-engineering">Context Engineering</GlossaryTerm>-Methode
       für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows
       und Modelle mittels Frontier-<GlossaryTerm id="llm">LLMs</GlossaryTerm>. Die Methode synthetisiert
       Context- und Requirements Engineering in einem vierphasigen Prozessmodell.
     </p>
 
-    <p class="etymology">
+    <p>
       Der Name setzt sich zusammen aus <em>Prompt</em> (die Eingabe an ein LLM) und
       <em>Prototyping</em> (iterative Entwicklung von Funktionsmustern).
     </p>
-  </div>
 
-  <div class="problem-block">
-    <h4>Die Kernfrage</h4>
     <p>
       Frontier-LLMs können zwar Code generieren, produzieren aber ohne strukturierten Kontext
       generische Lösungen, die am Forschungsbedarf vorbeigehen. Das Phänomen des "Vibe Coding"
       (Karpathy, 2025) exemplifiziert diese Ambivalenz: Intuitive Code-Generierung durch vage Prompts
       funktioniert, führt aber ohne Struktur zu technischen Schulden und Abhängigkeit statt Verständnis.
     </p>
-    <p class="core-question">
+
+    <figure class="vibecoding-figure">
+      <img src={vibecodingImage} alt="Andrej Karpathy Tweet über Vibe Coding" class="vibecoding-image" />
+      <figcaption>Andrej Karpathy prägt den Begriff "Vibe Coding" (Februar 2025)</figcaption>
+    </figure>
+
+    <p>
       <strong>Wie kommuniziert man Domänenwissen so an ein LLM, dass es passende Werkzeuge generiert?</strong>
       Nicht das Coden selbst ist die Kernkompetenz, sondern das Wissen darüber, was guter Code für
       Forschungszwecke ist: Modellierung, Formalisierung, Domänenwissen und kritische Validierung.
     </p>
-  </div>
 
-  <div class="scope-block">
     <p>
       Obwohl die Methodik ihren Ursprung in den Digital Humanities hat, sind ihre Mechanismen
       universell auf datenintensive Forschungsprozesse übertragbar. Die Methode dient dazu,
@@ -54,7 +56,6 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-lg);
-    text-align: center;
   }
 
   .title-block {
@@ -62,6 +63,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-xs);
+    text-align: center;
   }
 
   .logo {
@@ -82,7 +84,7 @@
     letter-spacing: 0.03em;
   }
 
-  .definition-block {
+  .research-blog-block {
     max-width: 750px;
     background: white;
     padding: var(--space-lg);
@@ -90,23 +92,19 @@
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
-  .definition {
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
+  .research-blog-block p {
+    font-size: clamp(0.95rem, 1.6vw, 1rem);
     color: var(--color-black);
     line-height: 1.7;
     text-align: left;
-    margin-bottom: var(--space-md);
+    margin: 0 0 var(--space-md) 0;
   }
 
-  .etymology {
-    font-size: clamp(0.9rem, 1.5vw, 0.95rem);
-    color: var(--color-slate);
-    line-height: 1.6;
-    text-align: left;
-    margin: 0;
+  .research-blog-block p:last-child {
+    margin-bottom: 0;
   }
 
-  .etymology em {
+  .research-blog-block em {
     font-style: normal;
     background: rgba(96, 125, 139, 0.1);
     padding: 2px 6px;
@@ -115,53 +113,26 @@
     font-size: 0.9em;
   }
 
-  .problem-block {
-    max-width: 750px;
-    background: rgba(191, 91, 62, 0.06);
-    padding: var(--space-lg);
-    border-radius: 8px;
-    border-left: 3px solid var(--color-terracotta);
-    text-align: left;
-  }
-
-  .problem-block h4 {
-    font-size: 0.85rem;
-    color: var(--color-terracotta);
-    margin: 0 0 var(--space-sm) 0;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  .problem-block p {
-    font-size: clamp(0.9rem, 1.5vw, 0.95rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .problem-block .core-question {
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid rgba(191, 91, 62, 0.2);
-  }
-
-  .problem-block strong {
+  .research-blog-block strong {
     color: var(--color-terracotta);
   }
 
-  .scope-block {
-    max-width: 700px;
-    background: rgba(96, 125, 139, 0.06);
-    padding: var(--space-md) var(--space-lg);
-    border-radius: 8px;
+  .vibecoding-figure {
+    margin: var(--space-md) 0;
+    text-align: center;
   }
 
-  .scope-block p {
-    font-size: clamp(0.85rem, 1.4vw, 0.9rem);
+  .vibecoding-image {
+    max-width: 100%;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .vibecoding-figure figcaption {
+    font-size: 0.8rem;
     color: var(--color-slate);
-    line-height: 1.6;
-    text-align: left;
-    margin: 0;
+    margin-top: var(--space-xs);
+    font-style: italic;
   }
 </style>
