@@ -40,7 +40,7 @@ Deep Dive: Scholar-Centered Design
 ## Phase 2: Exploration (3 Steps)
 
 Untertitel: Datenanalyse
-Artefakte: Keine formalen Dokumente (epistemische Spielwiese)
+Artefakte: Keine formalen Dokumente
 
 1. Struktur: Zoom auf Dokument, Farbcodierung zeigt Aufbau
 2. Entitäten: Elemente lösen sich (Person, Ort, Zeit, Relation)

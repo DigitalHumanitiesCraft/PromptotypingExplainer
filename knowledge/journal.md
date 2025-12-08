@@ -132,7 +132,7 @@ Phasenmodell korrigiert. Alle .md-Files entstehen ausschließlich in Destillatio
 | Phase | Input | Output |
 |-|-|--|
 | Preparation | Rohdateien (.doc, .xml, PDF) | – |
-| Exploration | – | – (epistemische Spielwiese) |
+| Exploration | – | – |
 | Destillation | Analyse-Ergebnisse | DATA.md, REQUIREMENTS.md, CONTEXT.md |
 | Implementation | .md-Files | Prototype(n) + Vault-Updates |
 

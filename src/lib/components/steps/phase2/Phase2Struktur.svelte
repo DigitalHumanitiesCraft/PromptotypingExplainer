@@ -8,7 +8,7 @@
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="phase-number">Phase 2</span>
     <h2>Exploration</h2>
-    <p class="subtitle">Die epistemische Spielwiese</p>
+    <p class="subtitle">Datenanalyse</p>
   </header>
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>

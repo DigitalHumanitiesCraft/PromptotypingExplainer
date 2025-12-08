@@ -140,7 +140,7 @@ Narrativ:
 Analyse und Experimentieren mit dem Rohmaterial. Strukturen verstehen, erste LLM-Experimente. Z.B. ein Python-Script schreiben lassen, das die Struktur eines .doc extrahiert und analysiert.
 
 Artefakte:
-Keine formalen Dokumente - diese "epistemische Spielwiese" ermöglicht das Entdecken unerwarteter Möglichkeiten ohne Dokumentations-Overhead.
+Keine formalen Dokumente. Das freie Experimentieren ermöglicht das Entdecken unerwarteter Möglichkeiten ohne Dokumentations-Overhead.
 
 ---
 

@@ -24,7 +24,7 @@ export const phases = [
     id: 'phase2',
     number: 2,
     title: 'Exploration',
-    subtitle: 'Epistemische Spielwiese',
+    subtitle: 'Datenanalyse',
     description: 'Freies Experimentieren mit dem Rohmaterial. Keine formalen Artefakte – die Erkenntnisse fließen in Phase 3.',
   },
   {

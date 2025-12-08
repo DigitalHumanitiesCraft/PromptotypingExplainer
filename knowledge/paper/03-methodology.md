@@ -81,7 +81,7 @@ Artefakt: Keines (bewusst undokumentiert)
 Ziel: Kreatives Experimentieren ohne vorzeitige Festlegung.
 
 Funktion:
-Diese „epistemische Spielwiese" ermöglicht das Entdecken unerwarteter Möglichkeiten und Grenzen, ohne den Overhead formaler Dokumentation.
+Das freie Experimentieren ermöglicht das Entdecken unerwarteter Möglichkeiten und Grenzen, ohne den Overhead formaler Dokumentation.
 
 Charakteristika:
 - Freies Experimentieren mit dem LLM
