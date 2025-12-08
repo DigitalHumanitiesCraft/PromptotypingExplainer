@@ -2,6 +2,29 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Abend: Content-Synchronisation & Referenzen
+
+### Tasks
+- Content-Analyse Frontend vs. Paper durchgeführt
+- Vault-Dokument-Benennung in IntroKernprinzip korrigiert
+- Fehlende Literaturverweise im Paper ergänzt
+
+### Ergebnisse
+**IntroKernprinzip.svelte korrigiert:**
+- `REQUIREMENT.md, RESEARCH.md` → `REQUIREMENTS.md, CONTEXT.md`
+- Entspricht jetzt der offiziellen Vault-Struktur
+
+**07-references.md erweitert:**
+- Neue Sektion "LLM-Kritik und Reasoning-Debatte"
+- Chollet (ARC-AGI), Hochreiter (Datenbank-Analogie), Kambhampati (Reasoning-Kritik)
+- Diese Quellen werden in deep-dives.js verwendet
+
+### Verifikation
+- Hong et al. (Context Rot) war bereits im Paper vorhanden
+- CorrespExplorer: Unterschiedliche Verwendung in Phase 1 (strukturierte Daten) vs. Paper-Fallstudien ist bewusst
+
+---
+
 ## 2025-12-08 Mittag: Code-Refactoring & CSS-Globalisierung
 
 ### Tasks

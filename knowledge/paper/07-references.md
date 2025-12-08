@@ -36,6 +36,16 @@ Vaswani, A. et al. (2017). Attention Is All You Need. *Advances in Neural Inform
 
 ---
 
+## LLM-Kritik und Reasoning-Debatte
+
+Chollet, F. (2024). On Chain of Thought and LLM Reasoning. X/Twitter-Thread und ARC-AGI-Forschung.
+
+Hochreiter, S. (2024). LLMs als approximative Datenbanken. Interview zur KI-Forschung.
+
+Kambhampati, S. (2024). Can LLMs Really Reason and Plan? *Arizona State University Lecture Series*. https://rakaposhi.eas.asu.edu/llm-reasoning/
+
+---
+
 ## Kognitionswissenschaft und Psychologie
 
 Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.

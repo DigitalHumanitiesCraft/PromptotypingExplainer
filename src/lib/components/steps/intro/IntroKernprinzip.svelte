@@ -29,7 +29,7 @@
     <p>
       Die <strong>Exploration</strong> prüft, ob sich Forschungsfragen auf die Datenstruktur abbilden lassen.
       Die <strong>Distillation</strong> verdichtet das gesammelte Material zu strukturierten Dokumenten
-      (DATA.md, REQUIREMENT.md, RESEARCH.md). Die <strong>Implementation</strong> nutzt diese Dokumente
+      (DATA.md, REQUIREMENTS.md, CONTEXT.md). Die <strong>Implementation</strong> nutzt diese Dokumente
       für iterative Arbeit mit dem <GlossaryTerm id="llm">LLM</GlossaryTerm> und der Codeerzeugung, wobei
       neues Wissen zurück in die Dokumentation fließt.
     </p>
