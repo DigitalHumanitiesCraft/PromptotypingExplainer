@@ -93,7 +93,7 @@
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
     margin: 0;
-    text-align: justify;
+    text-align: left;
   }
 
   .content p + p {

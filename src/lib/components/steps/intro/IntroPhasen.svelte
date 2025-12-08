@@ -84,7 +84,7 @@
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
     line-height: 1.7;
-    text-align: justify;
+    text-align: left;
     margin: 0;
   }
 
@@ -192,7 +192,7 @@
     color: var(--color-black);
     line-height: 1.6;
     margin: 0;
-    text-align: justify;
+    text-align: left;
   }
 
   .process-flow strong {

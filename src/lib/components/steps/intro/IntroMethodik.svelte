@@ -121,7 +121,7 @@
     font-size: clamp(0.9rem, 1.5vw, 0.95rem);
     color: var(--color-black);
     line-height: 1.7;
-    text-align: justify;
+    text-align: left;
     margin: 0;
   }
 
@@ -204,7 +204,7 @@
     color: var(--color-black);
     line-height: 1.7;
     margin: 0;
-    text-align: justify;
+    text-align: left;
   }
 
   .example-block strong {
@@ -230,7 +230,7 @@
     color: var(--color-slate);
     line-height: 1.6;
     margin: 0;
-    text-align: justify;
+    text-align: left;
   }
 
   .deep-dive-triggers {

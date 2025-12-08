@@ -94,7 +94,7 @@
     font-size: clamp(1rem, 1.8vw, 1.1rem);
     color: var(--color-black);
     line-height: 1.7;
-    text-align: justify;
+    text-align: left;
     margin-bottom: var(--space-md);
   }
 
@@ -102,7 +102,7 @@
     font-size: clamp(0.9rem, 1.5vw, 0.95rem);
     color: var(--color-slate);
     line-height: 1.6;
-    text-align: justify;
+    text-align: left;
     margin: 0;
   }
 
@@ -136,7 +136,7 @@
     font-size: clamp(0.9rem, 1.5vw, 0.95rem);
     color: var(--color-black);
     line-height: 1.7;
-    text-align: justify;
+    text-align: left;
     margin: 0;
   }
 
@@ -161,7 +161,7 @@
     font-size: clamp(0.85rem, 1.4vw, 0.9rem);
     color: var(--color-slate);
     line-height: 1.6;
-    text-align: justify;
+    text-align: left;
     margin: 0;
   }
 </style>
