@@ -239,7 +239,7 @@
               rel="noopener noreferrer"
               on:click|stopPropagation
             >
-              Mehr →
+              {entry.linkLabel || 'Mehr'} →
             </a>
           {/if}
         </div>
@@ -417,10 +417,12 @@
 
   .popover-definition {
     font-size: 0.85rem;
+    font-weight: 400;
     line-height: 1.5;
     color: var(--color-black);
     margin: 0 0 var(--space-sm) 0;
     text-align: left;
+    text-transform: none;
   }
 
   .popover-footer {

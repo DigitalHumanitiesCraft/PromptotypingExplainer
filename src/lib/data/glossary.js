@@ -219,7 +219,8 @@ export const glossary = {
     definition: 'Ein mit Promptotyping entwickelter Prototyp zur Exploration von Briefkorrespondenzen. Basiert auf CMIF-Daten aus correspSearch und ermöglicht die visuelle Analyse von Korrespondenznetzwerken.',
     tags: ['case-study'],
     source: 'Pollin 2025',
-    link: 'https://dhcraft.org/CorrespExplorer/'
+    link: 'https://dhcraft.org/CorrespExplorer/',
+    linkLabel: 'Live-Demo'
   },
   'cmif': {
     term: 'CMIF',
@@ -227,7 +228,8 @@ export const glossary = {
     definition: 'Ein auf TEI-XML basierendes Austauschformat für Briefmetadaten, entwickelt von der TEI Correspondence SIG. CMIF standardisiert Angaben zu Absender, Empfänger, Datum und Ort von Korrespondenzen für den projektübergreifenden Datenaustausch.',
     tags: ['data-format', 'dh'],
     source: 'TEI Correspondence SIG',
-    link: 'https://correspsearch.net/en/documentation.html'
+    link: 'https://correspsearch.net/en/documentation.html',
+    linkLabel: 'Dokumentation'
   },
   'correspsearch': {
     term: 'correspSearch',
@@ -235,7 +237,8 @@ export const glossary = {
     definition: 'Ein Webservice der BBAW, der Metadaten zu Briefeditionen aggregiert und durchsuchbar macht. Über 200.000 Briefe aus über 150 Editionen sind erfasst. Die API liefert CMIF-XML-Daten für Weiterverarbeitung.',
     tags: ['infrastructure', 'dh'],
     source: 'BBAW',
-    link: 'https://correspsearch.net/'
+    link: 'https://correspsearch.net/',
+    linkLabel: 'Website'
   }
 };
 
