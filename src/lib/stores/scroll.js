@@ -18,7 +18,8 @@ export const stepStructure = [
       { id: 'vibecoding', label: 'Vibe Coding' },
       { id: 'strangeminds', label: 'Strange New Minds' },
       { id: 'kernprinzip', label: 'Kernprinzip' },
-      { id: 'methodik', label: 'Methodik' },
+      { id: 'methodik', label: 'Critical Expert' },
+      { id: 'scholar-centered', label: 'Scholar-Centered' },
       { id: 'phasen', label: 'Phasen' },
     ]
   },

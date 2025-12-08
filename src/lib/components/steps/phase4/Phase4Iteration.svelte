@@ -2,6 +2,7 @@
   import { fade, fly } from 'svelte/transition';
   import AnimatedChat from '../../elements/AnimatedChat.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import GlossaryTerm from '../../GlossaryTerm.svelte';
   import { openDeepDive } from '../../../stores/deepDive.js';
 
   function handleDeepDive(event) {
@@ -44,6 +45,13 @@
         zurück in den Vault. Der Kontext wächst – und der nächste Zyklus startet mit besserem
         Retrieval-Material. Dieser Feedback-Loop ist das, was Promptotyping von einmaligen
         Prompt-Versuchen unterscheidet.
+      </p>
+      <p>
+        Diese enge Verschränkung wirft das Problem der <GlossaryTerm id="sycophancy">Sycophancy</GlossaryTerm> auf.
+        LLMs tendieren zur unkritischen Bestätigung von Nutzerannahmen, weil RLHF Antworten belohnt, die
+        Nutzer als hilfreich bewerten. Anthropics Character Training adressiert dies durch die Verankerung
+        epistemischer Tugenden wie Neugier und intellektuelle Ehrlichkeit. Für Forschungskontexte reicht
+        das nicht. Der Critical Expert in the Loop muss Sycophancy aktiv erkennen und korrigieren.
       </p>
 
       <div class="prompting-strategies">

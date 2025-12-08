@@ -63,12 +63,12 @@ src/
 │   │   ├── Glossary.svelte       # Glossar-Übersicht (alphabetisch)
 │   │   ├── Bibliography.svelte   # Bibliographie mit APA-Zitaten
 │   │   ├── steps/                # Step-Komponenten pro Phase
-│   │   │   ├── intro/            # Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Phasen
+│   │   │   ├── intro/            # Definition, Vibe Coding, Strange New Minds, Kernprinzip, Critical Expert, Scholar-Centered, Phasen
 │   │   │   ├── phase1/           # Titel, Rohdaten, Sammlung
-│   │   │   ├── phase2/           # Struktur, Entitäten, Fragen
+│   │   │   ├── phase2/           # Exploration
 │   │   │   ├── phase3/           # Titel, Dokumente, Vault
 │   │   │   ├── phase4/           # Titel, Iteration, Vault-Update
-│   │   │   └── outro/            # Beispiele, Zusammenfassung
+│   │   │   └── outro/            # Beispiele, Diskussion, Zusammenfassung
 │   │   ├── elements/             # Wiederverwendbare UI-Elemente
 │   │   │   ├── DocumentIcon.svelte
 │   │   │   ├── EntityIcon.svelte

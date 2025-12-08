@@ -4,27 +4,30 @@ Struktur der Scrollytelling-Website für Promptotyping. Synchron mit scroll.js.
 
 ---
 
-## Gesamtstruktur (19 Steps)
+## Gesamtstruktur (20 Steps)
 
-- Intro (6): Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Phasen
+- Intro (7): Definition, Vibe Coding, Strange New Minds, Kernprinzip, Critical Expert, Scholar-Centered, Phasen
 - Phase 1: Preparation (3): Übersicht, Rohdaten, Sammlung
-- Phase 2: Exploration (3): Struktur, Entitäten, Fragen
+- Phase 2: Exploration (1): Exploration
 - Phase 3: Destillation (3): Übersicht, .md-Files, Vault
 - Phase 4: Implementation (3): Übersicht, Iteration, Vault-Update
-- Outro (2): Beispiele, Zusammenfassung
+- Outro (3): Beispiele, Diskussion, Zusammenfassung
 
 ---
 
-## Intro (6 Steps)
+## Intro (7 Steps)
 
 1. **Definition**: Was ist Promptotyping?
 2. **Vibe Coding**: Frontier-LLMs, Benchmarks, Karpathy, tante-Kritik
    - Deep Dive: Vibe Coding Kritik
 3. **Strange New Minds**: LLMs als kognitive Systeme, Summerfield, Lindsey et al., System 1.42, Co-Intelligence (Centaur/Cyborg), Sycophancy
    - Deep Dive: System 1.42
-4. **Kernprinzip**: Rhetorische Frage, Mollick-Shift, fundamentale Spannung (gute Ergebnisse + keine Verlässlichkeit), Critical Expert
-5. **Methodik**: Critical Expert in the Loop, Strategien gegen Sycophancy
-6. **Phasen**: 4-Phasen-Übersicht mit Diagramm
+4. **Kernprinzip**: Rhetorische Frage, Mollick-Shift, fundamentale Spannung (gute Ergebnisse + keine Verlässlichkeit)
+5. **Critical Expert**: Critical Expert in the Loop, Strategien gegen Sycophancy, Reflective Practice
+   - Deep Dive: Critical Expert
+6. **Scholar-Centered**: UCD vs. SCD, Knowledge Acquisition, User Stories (Tabelle)
+   - Deep Dive: Scholar-Centered Design
+7. **Phasen**: 4-Phasen-Übersicht mit Diagramm
 
 ---
 
@@ -41,14 +44,12 @@ Deep Dive: Scholar-Centered Design
 
 ---
 
-## Phase 2: Exploration (3 Steps)
+## Phase 2: Exploration (1 Step)
 
 Untertitel: Daten-Kontext-Relationen
 Artefakte: Keine formalen Dokumente, aber Wissen über Datenqualität und User-Story-Validität
 
-1. Struktur: Zoom auf Dokument, Farbcodierung zeigt Aufbau
-2. Relationen: Prüfung der Daten-Kontext-Schnittstelle
-3. Validierung: Machbarkeitsprüfung der User Stories
+1. Exploration: Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext
 
 Deep Dive: Context Engineering
 
@@ -82,10 +83,11 @@ Deep Dives:
 
 ---
 
-## Outro (2 Steps)
+## Outro (3 Steps)
 
 1. Beispiele: Links zu Live-Demos (CorrespExplorer, Aldersbach, etc.)
-2. Zusammenfassung: 4 Phasen kompakt, Ressourcen, Call to Action
+2. Diskussion: Kritische Reflexion der Methodik
+3. Zusammenfassung: 4 Phasen kompakt, Ressourcen, Call to Action
 
 ---
 
@@ -96,13 +98,13 @@ Optionale Vertiefungen, die vom Hauptfluss abzweigen:
 ### Intro
 - Vibe Coding → **Vibe Coding Kritik**: Karpathy, tante, wann es funktioniert/scheitert
 - Strange New Minds → **System 1.42**: Kahneman, Douglas Adams, Retrieval statt Reasoning
+- Critical Expert → **Critical Expert**: Reflective Practice, Sycophancy-Strategien
+- Scholar-Centered → **Scholar-Centered Design**: UCD/SCD-Vergleich, hermeneutischer Zirkel
 
 ### Phasen
-- Phase 1 → Scholar-Centered Design: UCD/SCD-Synthese, akademische Fundierung
 - Phase 2 → Context Engineering: Mei et al., Context Rot, Verdichtung
 - Phase 3 → Dokumentenstruktur: Flexibilität, Skalierung, Beispiele
 - Phase 4 → Prompting-Strategien: Reasoning, LLM-as-Judge, etc.
-- Phase 4 → Critical Expert in the Loop: Sycophancy, Validierung, Korrektur
 - Phase 4 → LLM-Retrieval: Chollet, Hochreiter, Kambhampati - LLMs als approximative Datenbanken
 
 ---

@@ -2,6 +2,53 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-08 Nacht: Scholar-Centered Design Step
+
+### Tasks
+- Neuen Intro-Step "Scholar-Centered Design" erstellt
+- User Stories als HTML-Tabelle implementiert
+- Layout-Experimente (zwei-Spalten vs. single-column)
+- IntroMethodik auf research-blog-block refactored
+- Deep Dive scholar-centered-design aktualisiert
+
+### Ergebnisse
+**Neuer Step IntroScholarCentered.svelte:**
+- Vergleich UCD vs. SCD (User-Centered vs. Scholar-Centered Design)
+- Knowledge Acquisition und User Stories Section
+- HTML-Tabelle mit 6 User Stories für Sozialhistorikerin
+- Deep Dive Trigger für Scholar-Centered Design
+
+**Intro-Struktur erweitert (6 → 7 Steps):**
+1. Definition
+2. Vibe Coding
+3. Strange New Minds
+4. Kernprinzip
+5. Critical Expert (war: Methodik)
+6. **Scholar-Centered** (NEU)
+7. Phasen
+
+**Layout-Entscheidung:**
+- Zwei-Spalten-Layout getestet (Text links, Tabelle rechts)
+- Probleme: Unausgewogene Proportionen, Tabelle zu gedrängt
+- Finale Entscheidung: Single-Column Layout für Konsistenz
+
+**IntroMethodik refactored:**
+- REALonline-Beispiel entfernt
+- Auf einheitliches research-blog-block Design umgestellt
+- War vorher: Mehrere Block-Typen (strategies-block, example-block)
+
+**Deep Dive aktualisiert:**
+- Dissertation-Referenz hinzugefügt (Pollin 2025, Uni Graz)
+- Hermeneutischer Zirkel als Iterationsmodell erklärt
+
+### Entscheidungen
+- Single-Column für Konsistenz mit anderen Intro-Steps
+- HTML-Tabelle statt Bild (Barrierefreiheit, Responsivität)
+- User Stories auf Englisch belassen (Originalquelle)
+- research-blog-block als Standard für alle Intro-Steps
+
+---
+
 ## 2025-12-08 Abend: Intro-Struktur, Mollick 2025, Deep Dives
 
 ### Tasks

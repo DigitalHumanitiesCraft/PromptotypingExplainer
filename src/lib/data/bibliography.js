@@ -242,6 +242,14 @@ export const bibliography = {
     source: 'Portfolio/Penguin',
     url: null
   },
+  'Mollick 2023': {
+    id: 'mollick-2023',
+    authors: 'Mollick, E.',
+    year: 2023,
+    title: 'Centaurs and Cyborgs on the Jagged Frontier',
+    source: 'One Useful Thing',
+    url: 'https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged'
+  },
   'Mollick 2025': {
     id: 'mollick-2025',
     authors: 'Mollick, E.',
@@ -249,6 +257,14 @@ export const bibliography = {
     title: 'Three Years from GPT-3 to Gemini 3',
     source: 'One Useful Thing',
     url: 'https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini'
+  },
+  'Pollin 2025c': {
+    id: 'pollin-2025c',
+    authors: 'Pollin, C.',
+    year: 2025,
+    title: 'Promptotyping mit Claude Sonnet 4. Vibe-Coding erfordert den Critical-Expert-in-the-Loop',
+    source: 'DHCraft Blog',
+    url: 'https://dhcraft.org/excellence/blog/Critical-Vibing-Claude-4/'
   }
 };
 

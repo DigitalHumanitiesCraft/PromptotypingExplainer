@@ -82,75 +82,55 @@ export const deepDives = {
 
   'scholar-centered-design': {
     id: 'scholar-centered-design',
-    title: 'Scholar-Centered Design & Requirements Engineering',
+    title: 'Scholar-Centered Design',
     content: `
       <h3>User-Centered Design (UCD) Requirements Engineering</h3>
       <p>
         UCD Requirements Engineering bezeichnet die systematische Erhebung, Dokumentation und
         Verwaltung von Anforderungen, bei der die <strong>Bedürfnisse, Fähigkeiten und
-        Einschränkungen der zukünftigen Nutzer</strong> im Mittelpunkt stehen.
+        Einschränkungen der zukünftigen Nutzer</strong> im Mittelpunkt stehen. Das Kernziel ist
+        die Maximierung von Usability und User Experience. Das Leitprinzip ist die Anpassung
+        der Technologie an den Menschen.
       </p>
-      <ul>
-        <li><strong>Kernziel:</strong> Maximierung von Usability und User Experience (UX)</li>
-        <li><strong>Leitprinzip:</strong> Anpassung der Technologie an den Menschen</li>
-      </ul>
 
       <h3>Scholar-Centered Design (SCD)</h3>
       <p>
         Scholar-Centered Design ist eine spezialisierte Weiterentwicklung des UCD für den
-        <strong>wissenschaftlichen Kontext</strong> (Digital Humanities, Data Science). Es adressiert
-        die spezifischen Arbeitsweisen von Forschenden.
+        <strong>wissenschaftlichen Kontext</strong>. Es adressiert die spezifischen Arbeitsweisen
+        von Forschenden in den Digital Humanities und verwandten Feldern. Das Kernziel ist die
+        Unterstützung komplexer hermeneutischer Prozesse und Erkenntnisgewinnung. Das Leitprinzip
+        ist die Unterstützung von Komplexität statt reiner Vereinfachung sowie Transparenz
+        der Datenherkunft.
       </p>
-      <ul>
-        <li><strong>Kernziel:</strong> Unterstützung komplexer hermeneutischer Prozesse und Erkenntnisgewinnung</li>
-        <li><strong>Leitprinzip:</strong> Unterstützung von Komplexität statt reiner Vereinfachung. Transparenz der Datenherkunft (Provenienz)</li>
-      </ul>
 
-      <h3>Synthese im Phasenmodell</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Phase</th>
-            <th>UCD-Perspektive</th>
-            <th>SCD-Perspektive</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Analyse</strong></td>
-            <td>Personas, User Stories</td>
-            <td>Forschungsmethodik analysieren</td>
-          </tr>
-          <tr>
-            <td><strong>Design</strong></td>
-            <td>Kognitive Last reduzieren</td>
-            <td>Exploration ermöglichen</td>
-          </tr>
-          <tr>
-            <td><strong>Prototyping</strong></td>
-            <td>Low/High-Fidelity</td>
-            <td>Echte Forschungsdaten</td>
-          </tr>
-          <tr>
-            <td><strong>Evaluation</strong></td>
-            <td>Usability-Tests (ISO 9241)</td>
-            <td>Wissenschaftliche Utility</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Der hermeneutische Zirkel</h3>
+      <h3>Wo UCD und SCD sich unterscheiden</h3>
       <p>
-        In der Wissenschaft verändert oft das erste Sichten von Ergebnissen die Fragestellung selbst.
-        Der Forscher erkennt neue Muster und muss die Anforderungen ändern. Dies ist nicht
-        Fehlerbehebung, sondern <strong>Teil des Erkenntnisgewinns</strong>.
+        UCD reduziert kognitive Last und versteckt Komplexität. SCD macht Komplexität navigierbar,
+        ohne sie zu verstecken. UCD akzeptiert Platzhalter im Prototyp. SCD braucht echte
+        Forschungsdaten, weil wissenschaftliche Arbeit inhaltsgetrieben ist. UCD misst Effizienz
+        und Zufriedenheit. SCD fragt, ob das Tool zu neuen Erkenntnissen führt.
+      </p>
+
+      <h3>Der hermeneutische Zirkel als Iterationsmodell</h3>
+      <p>
+        In der wissenschaftlichen Praxis verändert oft das erste Sichten von Ergebnissen die
+        Fragestellung selbst. Der Forscher erkennt neue Muster in den Daten und muss die
+        Anforderungen anpassen. Dies ist nicht Fehlerbehebung, sondern <strong>Teil des
+        Erkenntnisgewinns</strong>.
+      </p>
+      <p>
+        Der hermeneutische Zirkel beschreibt dieses Wechselspiel zwischen dem Verstehen von Teilen
+        und dem Verstehen des Ganzen. Promptotyping integriert diesen Zirkel durch die
+        Rückflussschleife von der Implementation zurück zur Dokumentation.
       </p>
 
       <div class="reference">
         <strong>Referenzen:</strong><br>
-        Warwick, C. (2012): <em>Studying Users in Digital Humanities</em>. Facet Publishing.<br>
+        Pollin, C. (2025): <em>Modelling, Operationalising and Exploring Historical Information. Using Historical Financial Sources as an Example</em>. Dissertation, Universität Graz.
+        <a href="http://unipub.uni-graz.at/obvugrhs/12127700" target="_blank">Link</a><br>
         Kemman, M. (2021): <em>Trading Zones of Digital History</em>. De Gruyter.<br>
-        Pohl, K. & Rupp, C. (2015): <em>Basiswissen Requirements Engineering</em>. dpunkt.
+        Pohl, K. & Rupp, C. (2015): <em>Basiswissen Requirements Engineering</em>. dpunkt.<br>
+        Warwick, C. (2012): <em>Studying Users in Digital Humanities</em>. In C. Warwick, M. Terras & J. Nyhan (Eds.), Digital Humanities in Practice. Facet Publishing.
       </div>
     `
   },
@@ -285,15 +265,31 @@ export const deepDives = {
     id: 'critical-expert',
     title: 'Critical Expert in the Loop',
     content: `
-      <h3>Die Rolle des Critical Expert</h3>
+      <h3>Kritisch-epistemische Reflexion</h3>
       <p>
-        Der Mensch ist nicht passiver Empfänger, sondern <strong>kritischer Validator</strong>.
-        Domänenexpert:innen bringen ihr Fachwissen kontinuierlich in den Dialog ein.
+        Weder der <strong>Human-in-the-Loop</strong> noch der <strong>Expert-in-the-Loop</strong>-Ansatz
+        sind ausreichend. Erforderlich ist eine kritisch-epistemische Reflexion: der
+        <strong>Critical Expert in the Loop</strong>.
+      </p>
+      <p>
+        Der Critical Expert vereint kritisch-epistemische <em>und</em> kritisch-technische Reflexion.
+        Er weiß, welche Fragen zu stellen sind und wann einzugreifen ist.
       </p>
 
-      <h3>Sycophancy erkennen</h3>
+      <h3>Die doppelte Reflexionsschleife</h3>
       <p>
-        LLMs neigen zur unkritischen Bestätigung von Nutzerannahmen (Sycophancy).
+        Da LLMs ihre eigenen Ausgaben nicht verstehen, aber zur nachträglichen Verifikation
+        fähig sind, erfordert der Critical Expert eine <strong>doppelte Reflexionsschleife</strong>:
+      </p>
+      <ul>
+        <li><strong>Menschliche Prüfung:</strong> Domänenwissen, fachliche Angemessenheit</li>
+        <li><strong>Maschinelle Selbstkritik:</strong> "Critical Questioning" oder "Poking" – das LLM explizit auffordern, die eigene Lösung zu hinterfragen</li>
+      </ul>
+
+      <h3>Das Sycophancy-Problem</h3>
+      <p>
+        LLMs neigen zur unkritischen Zustimmung (<strong>Yes-Man-Problem</strong>). Da sie
+        auf Nutzerzufriedenheit trainiert wurden, belohnt das Training Gefälligkeit statt Wahrheit.
         Der Critical Expert muss aktiv gegensteuern:
       </p>
       <ul>
@@ -312,6 +308,14 @@ export const deepDives = {
         <li><strong>Quellenvalidierung:</strong> Behauptungen nachprüfen</li>
       </ul>
 
+      <h3>Keine Demokratisierung des Programmierens</h3>
+      <p>
+        Promptotyping ist <em>keine</em> Demokratisierung des Programmierens. Man muss wissen,
+        wie Programmierung und Softwareentwicklung funktionieren – und, noch wichtiger,
+        <strong>was man wirklich als Workflow, Modell oder Tool haben möchte</strong>.
+        Aber ein LLM kann genau dabei helfen.
+      </p>
+
       <h3>Beispiel: REALonline Projekt</h3>
       <p>
         Der Historiker korrigierte die technische Annahme, Objekte nach modernen Kategorien
@@ -325,6 +329,8 @@ export const deepDives = {
 
       <div class="reference">
         <strong>Referenzen:</strong><br>
+        Pollin, C. (2025): <em>Promptotyping mit Claude Sonnet 4. Vibe-Coding erfordert den Critical-Expert-in-the-Loop</em>. DHCraft Blog.
+        <a href="https://dhcraft.org/excellence/blog/Critical-Vibing-Claude-4/" target="_blank">Link</a><br>
         Malmqvist, L. (2024): <em>Sycophancy in Large Language Models</em>.<br>
         Anthropic (2024): <em>Character Training</em>.
       </div>

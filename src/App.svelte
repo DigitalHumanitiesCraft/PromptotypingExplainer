@@ -13,6 +13,7 @@
   import IntroStrangeNewMinds from './lib/components/steps/intro/IntroStrangeNewMinds.svelte';
   import IntroKernprinzip from './lib/components/steps/intro/IntroKernprinzip.svelte';
   import IntroMethodik from './lib/components/steps/intro/IntroMethodik.svelte';
+  import IntroScholarCentered from './lib/components/steps/intro/IntroScholarCentered.svelte';
   import IntroPhasen from './lib/components/steps/intro/IntroPhasen.svelte';
 
   // Phase 1 Steps
@@ -131,7 +132,11 @@
     <IntroMethodik />
   </Step>
 
-  <Step id="intro-phasen" phaseIndex={0} stepIndex={5}>
+  <Step id="intro-scholar-centered" phaseIndex={0} stepIndex={5}>
+    <IntroScholarCentered />
+  </Step>
+
+  <Step id="intro-phasen" phaseIndex={0} stepIndex={6}>
     <IntroPhasen />
   </Step>
 

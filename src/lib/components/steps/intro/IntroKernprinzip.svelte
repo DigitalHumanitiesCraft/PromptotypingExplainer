@@ -7,34 +7,36 @@
 
   <div class="research-blog-block">
     <p class="core-question">
-      <strong>Wie kommuniziert man Domänenwissen so an ein LLM, dass es passende Werkzeuge generiert?</strong>
+      <strong>Wie strukturiert man Forschungsdaten, explizites und implizites Domänenwissen so, dass ein LLM fachlich angemessene Forschungsartefakte erzeugt?</strong>
     </p>
 
     <p>
       Nicht das Coden selbst ist die Kernkompetenz, sondern das Wissen darüber, was guter Code für
-      Forschungszwecke ist: Modellierung, Formalisierung, Domänenwissen und kritische Validierung.
+      Forschungszwecke ist. Modellierung, Formalisierung, Domänenwissen und kritische Validierung sind
+      die eigentlichen Anforderungen. <span class="promptotyping">Promptotyping</span> ist eine Methode,
+      diese Anforderungen systematisch umzusetzen.
     </p>
 
     <p>
-      Die unklare epistemologische Natur von <GlossaryTerm id="llm">LLMs</GlossaryTerm> erfordert abgestufte
-      Validierungsstrategien. Für komplexe Aufgaben wie die Entwicklung von Forschungswerkzeugen sind
-      strukturierte Workflows, explizite Dokumentation und kontinuierliche Expertenvalidierung nötig.
+      Der Prozess des <span class="promptotyping">Promptotyping</span> verläuft in vier Phasen. In der
+      <strong>Preparation</strong> werden zwei Arten von Material gesammelt. Erstens die zu verarbeitenden
+      Daten in strukturierter oder semi-strukturierter Form wie XML, CSV, Excel oder Textdateien. Zweitens
+      das Kontextwissen, also Literatur, Dokumentationen, implizites Wissen der Forschenden sowie der
+      Forschungskontext mit Forschungsdesign und Forschungsfragen.
     </p>
 
     <p>
-      Mollick beobachtet, dass sich die Rolle des Menschen verschiebt: vom Korrigieren von KI-Fehlern zum Steuern
-      von KI-Arbeit (Mollick, 2025). Der <GlossaryTerm id="critical-expert">"Critical Expert in the Loop"</GlossaryTerm>
-      geht einen Schritt weiter. Der Mensch prüft nicht nur, ob das Ergebnis korrekt ist, sondern ob es fachlich
-      angemessen ist. Er erkennt <GlossaryTerm id="sycophancy">Sycophancy</GlossaryTerm>, prüft auf
-      <GlossaryTerm id="halluzinationen">Konfabulationen</GlossaryTerm> und bringt das Domänenwissen ein, das LLMs
-      strukturell fehlt. LLMs liefern oft sehr gute Ergebnisse und können gleichzeitig nie Verlässlichkeit garantieren.
-      Diese Spannung ist nicht auflösbar, nur durch fachliche Prüfung handhabbar.
+      Die <strong>Exploration</strong> prüft, ob sich Forschungsfragen auf die Datenstruktur abbilden lassen.
+      Die <strong>Distillation</strong> verdichtet das gesammelte Material zu strukturierten Dokumenten
+      (DATA.md, REQUIREMENT.md, RESEARCH.md). Die <strong>Implementation</strong> nutzt diese Dokumente
+      für iterative Arbeit mit dem <GlossaryTerm id="llm">LLM</GlossaryTerm> und der Codeerzeugung, wobei
+      neues Wissen zurück in die Dokumentation fließt.
     </p>
 
     <p>
-      <span class="promptotyping">Promptotyping</span> ist ein Weg, diese Anforderungen methodisch umzusetzen.
-      Die Methode verbindet <GlossaryTerm id="context-engineering">Context Engineering</GlossaryTerm> mit
-      Scholar-Centered Design.
+      Der <GlossaryTerm id="critical-expert">Critical Expert in the Loop</GlossaryTerm> begleitet diesen Prozess. Er prüft nicht nur, ob ein Ergebnis korrekt
+      ist, sondern ob es fachlich angemessen ist. LLMs liefern oft sehr gute Ergebnisse und können gleichzeitig
+      nie Verlässlichkeit garantieren. Diese Spannung ist nicht auflösbar, nur durch fachliche Prüfung handhabbar.
     </p>
   </div>
 </div>

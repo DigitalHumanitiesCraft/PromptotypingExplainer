@@ -90,6 +90,8 @@ Star, S. L. & Griesemer, J. R. (1989). Institutional Ecology, 'Translations' and
 
 Flyvbjerg, B. (2021). *How Big Things Get Done*. Currency.
 
+Mollick, E. (2023, 16. September). Centaurs and Cyborgs on the Jagged Frontier. *One Useful Thing*. https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged
+
 Mollick, E. (2024). *Co-Intelligence: Living and Working with AI*. Portfolio.
 
 Mollick, E. (2025, 18. November). Three Years from GPT-3 to Gemini 3. *One Useful Thing*. https://www.oneusefulthing.org/p/three-years-from-gpt-3-to-gemini
