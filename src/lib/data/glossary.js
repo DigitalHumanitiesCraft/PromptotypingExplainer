@@ -26,7 +26,7 @@ export const glossary = {
   'context-rot': {
     term: 'Context Rot',
     en: 'Context Rot',
-    definition: 'Ein Phänomen, bei dem die Leistungsfähigkeit von LLMs mit zunehmender Länge des Eingabekontexts und sinkender Informationsdichte abnimmt.',
+    definition: 'Ein Phänomen, bei dem die Leistungsfähigkeit von LLMs mit zunehmender Länge des Eingabekontexts und sinkender Informationsdichte abnimmt. Unstrukturierte Begleittexte wirken als Rauschen, das die Aufmerksamkeit von relevanten Instruktionen ablenkt.',
     tags: ['architecture'],
     source: 'Hong et al. 2025'
   },
@@ -142,6 +142,13 @@ export const glossary = {
     tags: ['architecture', 'ai-engineering'],
     source: 'Mikolov et al. 2013'
   },
+  'latent-space': {
+    term: 'Latent Space',
+    en: 'Latent Space',
+    definition: 'Der hochdimensionale, abstrakte Vektorraum, in dem ein Modell Informationen repräsentiert. Während wir Text sehen, "denkt" das Modell in Koordinaten innerhalb dieses Raums. Semantisch ähnliche Konzepte liegen räumlich nahe beieinander. Das erklärt, warum Modelle Analogien bilden können: Sie führen Vektorarithmetik mit Bedeutungen durch.',
+    tags: ['architecture', 'advanced'],
+    source: 'Liu et al. 2023'
+  },
   'vibe-check': {
     term: 'Vibe Check',
     en: 'Vibe Check',
@@ -218,6 +225,8 @@ export const termToId = {
   'finetuning': 'fine-tuning',
   'embedding': 'embedding',
   'embeddings': 'embedding',
+  'latent space': 'latent-space',
+  'latenter raum': 'latent-space',
   'vibe check': 'vibe-check',
   'vibe-check': 'vibe-check',
   'system 1.42': 'system-142',

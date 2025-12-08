@@ -727,6 +727,20 @@ export const deepDives = {
         bereits Gelerntem</strong>.
       </p>
 
+      <h3>Der Latent Space als Abrufraum</h3>
+      <p>
+        LLMs "denken" nicht in Wörtern, sondern in Koordinaten eines hochdimensionalen
+        <strong>Latent Space</strong>. Dieser abstrakte Vektorraum enthält das während des
+        Trainings komprimierte Weltwissen. Semantisch ähnliche Konzepte liegen räumlich
+        nahe beieinander.
+      </p>
+      <p>
+        Wenn ein LLM "antwortet", navigiert es durch diesen Raum und interpoliert zwischen
+        gelernten Mustern. Es führt <strong>Vektorarithmetik mit Bedeutungen</strong> durch,
+        nicht logisches Schließen. Das erklärt sowohl die beeindruckenden Analogiefähigkeiten
+        als auch die systematischen Fehler bei neuartigen Problemen.
+      </p>
+
       <h3>Konsequenzen für Promptotyping</h3>
       <ul>
         <li><strong>Vault als Retrieval-Grundlage:</strong> Je präziser die Dokumente, desto besser der Abruf</li>
@@ -739,7 +753,8 @@ export const deepDives = {
         <strong>Referenzen:</strong><br>
         Chollet, F. (2024): <em>On Chain of Thought and LLM Reasoning</em>. X/Twitter.<br>
         Hochreiter, S. (2024): <em>Interview zur KI-Forschung</em>.<br>
-        Kambhampati, S. (2024): <em>Can LLMs Really Reason?</em>. Lecture Series.
+        Kambhampati, S. (2024): <em>Can LLMs Really Reason?</em>. Lecture Series.<br>
+        Liu, Z. et al. (2023): <em>Physics of Language Models: Part 1, Context-Free Grammar</em>. arXiv.
       </div>
     `
   },
