@@ -174,7 +174,7 @@ export const glossary = {
   'promptotyping-documents': {
     term: 'Promptotyping Documents',
     en: 'Promptotyping Documents',
-    definition: 'Die drei Kerndokumente im Promptotyping Vault: DATA.md (Datenstruktur und Semantik), REQUIREMENTS.md (User Stories und Anforderungen) und CONTEXT.md (Domänenwissen und Kontext). Sie bilden die Grundlage für effektive LLM-Dialoge.',
+    definition: 'Die Markdown-Dokumente im Vault. Die drei Kerndokumente DATA.md, REQUIREMENTS.md und CONTEXT.md bilden den Ausgangspunkt. Je nach Domänenkomplexität können beliebige weitere Dokumente ergänzt werden, etwa SCHEMA.md oder JOURNAL.md. Ziel ist maximale Informationsdichte bei minimaler Token-Anzahl, um Context Rot zu vermeiden.',
     tags: ['methodology'],
     source: 'Pollin & Steiner 2025'
   }

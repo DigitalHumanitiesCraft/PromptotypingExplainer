@@ -683,6 +683,67 @@ export const deepDives = {
     `
   },
 
+  'llm-retrieval': {
+    id: 'llm-retrieval',
+    title: 'LLMs als Retrieval-Systeme',
+    content: `
+      <h3>Warum "Reasoning" in Anführungszeichen?</h3>
+      <p>
+        Der Begriff "Reasoning" suggeriert logisches Denken und analytische Problemlösung.
+        Führende KI-Forscher betonen jedoch, dass LLMs fundamental anders arbeiten als
+        menschliches Denken. Sie <strong>rufen ab, was sie trainiert haben</strong> –
+        in approximativer, nicht exakter Form.
+      </p>
+
+      <h3>François Chollet (Google DeepMind)</h3>
+      <blockquote style="border-left: 3px solid var(--color-terracotta); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+        "It is my professional opinion that LLMs are not reasoning engines, and that
+        chain-of-thought does not change this picture."
+      </blockquote>
+      <p>
+        Chollet charakterisiert LLMs als <strong>"vector programs"</strong>, die Lösungen
+        interpolieren. Auch Chain-of-Thought produziert nur Folgen von
+        abgerufenen Mustern, keine genuine Analyse.
+      </p>
+
+      <h3>Sepp Hochreiter (LSTM-Erfinder)</h3>
+      <blockquote style="border-left: 3px solid var(--color-terracotta); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+        "Alles, was eine Datenbanktechnologie kann, das kann ein LLM auch, denn es ist eine Datenbank."
+      </blockquote>
+      <p>
+        Hochreiter sieht LLMs als <strong>approximative Datenbanken</strong>, bei denen
+        Wissen eingebrannt ist. Die Stärke liegt im Retrieval aus riesigen Korpora,
+        nicht im Schlussfolgern.
+      </p>
+
+      <h3>Subbarao Kambhampati (Arizona State University)</h3>
+      <blockquote style="border-left: 3px solid var(--color-terracotta); padding-left: 1rem; margin: 1rem 0; font-style: italic;">
+        "What LLMs do is approximate retrieval – not reasoning. [...] LLMs are
+        universal approximate knowledge retrievers."
+      </blockquote>
+      <p>
+        Kambhampati betont den Unterschied zwischen tatsächlichem Schlussfolgern und
+        dem, was LLMs tun: Sie liefern eine <strong>approximierte Version von etwas
+        bereits Gelerntem</strong>.
+      </p>
+
+      <h3>Konsequenzen für Promptotyping</h3>
+      <ul>
+        <li><strong>Vault als Retrieval-Grundlage:</strong> Je präziser die Dokumente, desto besser der Abruf</li>
+        <li><strong>Gezielte Auswahl:</strong> Nicht alles mitgeben, sondern relevante Teile selektieren</li>
+        <li><strong>Expert Validation:</strong> Approximative Antworten erfordern kritische Prüfung</li>
+        <li><strong>Iteration:</strong> Schrittweises Verfeinern des Kontexts für besseren Abruf</li>
+      </ul>
+
+      <div class="reference">
+        <strong>Referenzen:</strong><br>
+        Chollet, F. (2024): <em>On Chain of Thought and LLM Reasoning</em>. X/Twitter.<br>
+        Hochreiter, S. (2024): <em>Interview zur KI-Forschung</em>.<br>
+        Kambhampati, S. (2024): <em>Can LLMs Really Reason?</em>. Lecture Series.
+      </div>
+    `
+  },
+
   'case-szd': {
     id: 'case-szd',
     title: 'Case Study: SZD Annotation',

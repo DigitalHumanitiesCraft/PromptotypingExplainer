@@ -12,9 +12,9 @@
       im <span class="promptotyping">Promptotyping</span> Vault, und iterative Implementation.
     </p>
     <p>
-      Der <span class="promptotyping">Promptotyping</span> Vault besteht aus drei <strong>Promptotyping Documents</strong>
-      (DATA.md, REQUIREMENTS.md, CONTEXT.md) – sie machen implizites Domänenwissen für LLMs nutzbar
-      und wachsen mit jeder Iteration.
+      Der <span class="promptotyping">Promptotyping</span> Vault ist ein flexibler Wissensspeicher aus <strong>Promptotyping Documents</strong>.
+      Die Kerndokumente DATA.md, REQUIREMENTS.md und CONTEXT.md bilden den Ausgangspunkt, können aber je nach Domäne erweitert werden.
+      Sie machen implizites Domänenwissen für LLMs nutzbar und wachsen mit jeder Iteration.
     </p>
     <p>
       <strong>Critical Expert in the Loop</strong>: Domänenexpert:innen bleiben unverzichtbar.

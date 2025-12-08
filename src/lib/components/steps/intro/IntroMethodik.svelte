@@ -40,7 +40,7 @@
           </svg>
         </div>
         <h4>Vault-Dokumentation</h4>
-        <p>DATA.md, REQUIREMENTS.md, CONTEXT.md – strukturiertes Wissen als LLM-Input</p>
+        <p>Flexible Markdown-Dokumente, die strukturiertes Wissen als LLM-Input bereitstellen</p>
       </div>
       <div class="method-card">
         <div class="card-icon">

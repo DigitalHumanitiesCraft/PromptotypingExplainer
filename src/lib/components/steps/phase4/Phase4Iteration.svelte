@@ -1,6 +1,12 @@
 <script>
   import { fade, fly } from 'svelte/transition';
   import AnimatedChat from '../../elements/AnimatedChat.svelte';
+  import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import { openDeepDive } from '../../../stores/deepDive.js';
+
+  function handleDeepDive(event) {
+    openDeepDive(event.detail.id);
+  }
 </script>
 
 <div class="phase4-iteration">
@@ -17,19 +23,28 @@
 
     <div class="text-card explainer-side" in:fly={{ x: 30, duration: 500, delay: 400 }}>
       <p>
-        Der Zyklus beginnt mit dem <strong>Kontext</strong>: Vault-Dokumente werden dem LLM mitgegeben,
-        damit es das Domänenwissen versteht. Im <strong>Reasoning</strong> analysiert das LLM den
-        Kontext und identifiziert Probleme, bevor es einen konkreten <strong>Plan</strong> erstellt.
+        Der Zyklus beginnt mit dem <strong>Kontext</strong>: Der gesamte Vault oder eine gezielte Auswahl
+        relevanter Dokumente wird dem LLM mitgegeben. Im <strong>"Reasoning"</strong> ruft das LLM
+        passende Muster aus seinem Training ab und interpoliert eine Lösung. Es analysiert nicht,
+        es retrievet approximativ.
       </p>
       <p>
-        Erst dann folgt die <strong>Implementation</strong>. Der generierte Code wird direkt
-        <strong>getestet</strong> – Fehler werden sofort sichtbar. Kritisches <strong>Feedback</strong>
+        Der generierte <strong>Plan</strong> wird implementiert und direkt <strong>getestet</strong>.
+        Fehler werden sofort sichtbar. Kritisches <strong>Feedback</strong> durch den Critical Expert
         gibt die Richtung für die nächste Iteration vor.
       </p>
       <p>
-        Am Ende jedes Zyklus steht die <strong>Dokumentation</strong>: Neues Wissen fließt zurück
-        in den Vault. Der Kontext wächst – und der nächste Zyklus startet mit besserem Ausgangsmaterial.
+        Am Ende jedes Zyklus steht die <strong>Dokumentation</strong>: Neues Wissen fließt sofort
+        zurück in den Vault. Der Kontext wächst – und der nächste Zyklus startet mit besserem
+        Retrieval-Material.
       </p>
+      <div class="deep-dive-trigger-wrapper">
+        <DeepDiveTrigger
+          label="LLMs als Retrieval-Systeme"
+          deepDiveId="llm-retrieval"
+          on:open={handleDeepDive}
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -90,6 +105,12 @@
     max-width: 420px;
   }
 
+  .deep-dive-trigger-wrapper {
+    margin-top: var(--space-md);
+    display: flex;
+    justify-content: flex-start;
+  }
+
   @media (max-width: 900px) {
     .iteration-grid {
       grid-template-columns: 1fr;
@@ -103,6 +124,10 @@
     .explainer-side {
       max-width: 100%;
       margin: 0 auto;
+    }
+
+    .deep-dive-trigger-wrapper {
+      justify-content: center;
     }
   }
 </style>

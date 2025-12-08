@@ -11,8 +11,8 @@
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Der Vault wird dem LLM übergeben und die <strong>Cyborg-Arbeit</strong> beginnt.
-      Mensch und KI entwickeln gemeinsam, validieren iterativ und aktualisieren den Vault mit neuem Wissen.
+      Der Vault oder eine gezielte Auswahl wird dem LLM übergeben und die <strong>Cyborg-Arbeit</strong> beginnt.
+      Mensch und KI entwickeln gemeinsam, validieren iterativ und aktualisieren den Vault sofort mit neuem Wissen.
     </p>
 
     <div class="cycle-preview" in:fly={{ y: 20, duration: 400, delay: 400 }}>
@@ -23,7 +23,7 @@
       <div class="cycle-arrow">→</div>
       <div class="cycle-step">
         <span class="cycle-icon">2</span>
-        <span class="cycle-label">LLM generiert</span>
+        <span class="cycle-label">LLM "reasoned"</span>
       </div>
       <div class="cycle-arrow">→</div>
       <div class="cycle-step">
