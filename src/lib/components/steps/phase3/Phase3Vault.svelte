@@ -14,10 +14,22 @@
 
 <div class="phase3-vault">
   <h3 in:fade={{ duration: 400 }}>Der <span class="promptotyping">Promptotyping</span> Vault</h3>
-  <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Das destillierte Wissen aus Phase 2 wird in drei Markdown-Dateien organisiert –
-    optimiert für den LLM-Kontext
-  </p>
+
+  <div class="explanation-block" in:fade={{ delay: 150, duration: 400 }}>
+    <p>
+      Der Vault fungiert als <strong>Boundary Object</strong> (Star & Griesemer, 1989) – ein Artefakt,
+      das zwischen verschiedenen sozialen Welten vermittelt: zwischen technischer Implementation und
+      fachlicher Anforderung, zwischen Entwickler:in und Domänenexpert:in, zwischen Mensch und LLM.
+      Er ist strukturiert genug für maschinelle Verarbeitung und gleichzeitig verständlich für
+      menschliche Leser:innen.
+    </p>
+    <p>
+      Die Dokumentstruktur ist <strong>flexibel und erweiterbar</strong>. Die drei Kerndokumente
+      (DATA.md, REQUIREMENTS.md, CONTEXT.md) bilden den Ausgangspunkt. Je nach Domäne können
+      weitere Dokumente ergänzt werden: SCHEMA.md für komplexe Datenmodelle, VALIDATION.md für
+      Qualitätskriterien, API-NOTES.md für Schnittstellendokumentation.
+    </p>
+  </div>
 
   <div class="vault-visual">
     <!-- Incoming arrows from sources -->
@@ -67,10 +79,7 @@
     </div>
   </div>
 
-  <p class="conclusion" in:fade={{ delay: 900, duration: 400 }}>
-    Das Wissen ist verdichtet und <strong>bereit für den LLM-Dialog</strong>
-  </p>
-
+  
   <!-- Download Section -->
   <div class="download-section" in:fade={{ delay: 1000, duration: 400 }}>
     <p class="download-intro">Starte dein eigenes Projekt:</p>
@@ -118,16 +127,28 @@
     letter-spacing: 0.02em;
   }
 
-  .description {
-    color: var(--color-black);
-    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 600px;
-    margin: 0;
+  .explanation-block {
+    max-width: 750px;
     background: white;
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-lg);
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .explanation-block p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
     text-align: justify;
+    margin: 0;
+  }
+
+  .explanation-block p + p {
+    margin-top: var(--space-md);
+  }
+
+  .explanation-block strong {
+    color: var(--color-terracotta);
   }
 
   .vault-visual {

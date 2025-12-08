@@ -25,6 +25,16 @@
     <h2>Case Studies</h2>
   </header>
 
+  <div class="intro-text" in:fly={{ y: 20, duration: 400, delay: 100 }}>
+    <p>
+      Die folgenden Fallstudien dokumentieren die Anwendung von Promptotyping in verschiedenen
+      DH-Kontexten. Jedes Projekt wurde mit einem LLM als Entwicklungspartner umgesetzt und
+      demonstriert unterschiedliche Aspekte der Methodik: von der Netzwerkvisualisierung über
+      Bildanalyse bis zur Annotationsunterstützung. Die Projekte sind als Open Source verfügbar
+      und können als Ausgangspunkt für eigene Entwicklungen dienen.
+    </p>
+  </div>
+
   <div class="examples-grid">
     {#each caseStudies as study, i}
       <a
@@ -91,6 +101,23 @@
   h2 {
     color: var(--color-black);
     margin: var(--space-xs) 0;
+  }
+
+  .intro-text {
+    max-width: 750px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    margin-bottom: var(--space-md);
+  }
+
+  .intro-text p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
+    margin: 0;
   }
 
   .examples-grid {

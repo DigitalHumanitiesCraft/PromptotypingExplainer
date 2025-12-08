@@ -13,33 +13,53 @@
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
-      Systematische Sondierung der Schnittstelle zwischen Rohdaten und Forschungskontext.
-      Wir prüfen: Lässt sich die abstrakte Forschungsfrage konkret auf diese Datenstruktur abbilden?
+      Die Explorationsphase ist eine systematische Sondierung der Schnittstelle zwischen Rohdaten
+      und Forschungskontext. Die zentrale Frage: <strong>Lässt sich die abstrakte Forschungsfrage
+      konkret auf diese Datenstruktur abbilden?</strong> Diese Phase produziert bewusst keine formalen
+      Dokumente – das Ergebnis ist Wissen, nicht Artefakte.
+    </p>
+
+    <p>
+      Das Wissen umfasst: Datenqualität und ihre Grenzen, technische Machbarkeit von Visualisierungen,
+      und die Validität potentieller User Stories. Dieses destillierte Wissen ist zwingende
+      Voraussetzung für die Präzision in Phase 3. Wichtig: <strong>Sackgassen sind positive Erkenntnisse,
+      keine Fehler.</strong> Zu verstehen, was die Daten nicht hergeben, ist genauso wertvoll wie
+      zu wissen, was möglich ist.
     </p>
 
     <div class="key-point">
       <span class="key-label">Ziel</span>
-      <p><strong>Validierung der Machbarkeit</strong>: Geben die Daten das her, was der Forschungskontext verlangt? Sackgassen sind hier positive Erkenntnisse, keine Fehler.</p>
+      <p><strong>Validierung der Machbarkeit</strong>: Geben die Daten das her, was der Forschungskontext verlangt?</p>
+    </div>
+
+    <div class="user-story-box">
+      <div class="box-label">User Story Format</div>
+      <p>
+        User Stories folgen dem Format: <em>"Als [Rolle] will ich [Funktion], um [Nutzen] zu erreichen."</em>
+      </p>
+      <p class="example">
+        Beispiel: "Als Historikerin will ich Korrespondenznetzwerke nach Zeitraum filtern,
+        um Kommunikationsmuster in Exilgemeinschaften zu rekonstruieren."
+      </p>
+      <p class="validation">
+        Die Exploration prüft: Können wir diese Story mit den vorhandenen Daten realisieren?
+        Welche Felder tragen die Filterlogik? Sind die Relationen vollständig genug?
+      </p>
     </div>
 
     <div class="example-box">
-      <div class="example-label">Typische Fragen</div>
+      <div class="example-label">Typische Explorationsfragen</div>
       <p class="example-text">
         "Lässt sich diese Netzwerkanalyse mit den vorhandenen Relationen umsetzen?"<br><br>
         "Welche Felder in der XML-Struktur tragen die gewünschte Filterlogik?"<br><br>
-        "Können wir 'Als Historiker will ich nach Datum filtern...' mit diesen Daten realisieren?"
+        "Sind die Datumsangaben konsistent genug für eine Timeline-Visualisierung?"
       </p>
     </div>
   </div>
 
   <figure class="exploration-visual" in:fly={{ y: 30, duration: 500, delay: 400 }}>
     <img src={explorationImg} alt="Sondierung der Daten-Kontext-Schnittstelle" />
-    <figcaption>Brücken identifizieren – mental entstehen hier die ersten User Stories</figcaption>
   </figure>
-
-  <p class="transition-hint" in:fade={{ delay: 600, duration: 400 }}>
-    Ergebnis: Wissen über Datenqualität und User-Story-Validität → Voraussetzung für Phase 3
-  </p>
 </div>
 
 <style>
@@ -75,7 +95,7 @@
   }
 
   .content-block {
-    max-width: 700px;
+    max-width: 750px;
     background: white;
     padding: var(--space-lg);
     border-radius: 8px;
@@ -83,14 +103,27 @@
   }
 
   .lead {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
-    line-height: 1.8;
+    line-height: 1.7;
     text-align: justify;
-    margin: 0 0 var(--space-md) 0;
+    margin: 0;
   }
 
-  .lead strong {
+  .content-block p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
+    margin: 0;
+  }
+
+  .content-block p + p {
+    margin-top: var(--space-md);
+  }
+
+  .lead strong,
+  .content-block strong {
     color: var(--color-terracotta);
   }
 
@@ -100,7 +133,7 @@
     padding: var(--space-md);
     border-radius: 0 8px 8px 0;
     text-align: left;
-    margin-bottom: var(--space-md);
+    margin-top: var(--space-md);
   }
 
   .key-label {
@@ -112,13 +145,55 @@
   }
 
   .key-point p {
-    margin: var(--space-xs) 0 0 0;
-    font-size: 0.95rem;
-    color: var(--color-black);
+    margin: var(--space-xs) 0 0 0 !important;
+    font-size: 0.95rem !important;
   }
 
   .key-point strong {
     color: var(--color-terracotta);
+  }
+
+  .user-story-box {
+    background: rgba(96, 125, 139, 0.06);
+    border-left: 3px solid var(--color-slate);
+    padding: var(--space-md);
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+    margin-top: var(--space-md);
+  }
+
+  .box-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-slate);
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+  }
+
+  .user-story-box p {
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+  }
+
+  .user-story-box em {
+    font-style: italic;
+    color: var(--color-terracotta);
+  }
+
+  .user-story-box .example {
+    font-family: var(--font-mono);
+    font-size: 0.8rem !important;
+    background: rgba(255, 255, 255, 0.7);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    margin-top: var(--space-sm) !important;
+  }
+
+  .user-story-box .validation {
+    margin-top: var(--space-sm) !important;
+    font-size: 0.85rem !important;
+    color: var(--color-slate) !important;
   }
 
   .example-box {
@@ -127,6 +202,7 @@
     padding: var(--space-md);
     border-radius: 0 8px 8px 0;
     text-align: left;
+    margin-top: var(--space-md);
   }
 
   .example-label {
@@ -140,9 +216,9 @@
 
   .example-text {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--color-black);
-    margin: 0;
+    font-size: 0.8rem !important;
+    color: var(--color-black) !important;
+    margin: 0 !important;
     line-height: 1.6;
   }
 
@@ -162,29 +238,13 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .exploration-visual figcaption {
-    font-size: 0.85rem;
-    color: var(--color-slate);
-    font-style: italic;
-  }
-
-  .transition-hint {
-    color: var(--color-slate);
-    font-size: 0.95rem;
-    margin: 0;
-  }
-
-  .transition-hint strong {
-    color: var(--color-terracotta);
-  }
-
   @media (max-width: 767px) {
     .exploration-visual img {
       max-width: 95vw;
     }
 
     .example-text {
-      font-size: 0.8rem;
+      font-size: 0.75rem !important;
     }
   }
 </style>

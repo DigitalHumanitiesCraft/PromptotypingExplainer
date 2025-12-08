@@ -10,9 +10,18 @@
   </header>
 
   <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
-    <p class="lead">
-      Der Vault oder eine gezielte Auswahl wird dem LLM übergeben und die <strong>Cyborg-Arbeit</strong> beginnt.
-      Mensch und KI entwickeln gemeinsam, validieren iterativ und aktualisieren den Vault sofort mit neuem Wissen.
+    <p>
+      Mit der Übergabe des Vault an das LLM beginnt die <strong>Cyborg-Arbeit</strong>. Im Unterschied
+      zur Centaur-Arbeit (klare Aufgabenteilung) bedeutet Cyborg-Arbeit enge kognitive Verschränkung:
+      Mensch und Maschine entwickeln in iterativen Dialogschleifen gemeinsam Lösungen. Die Grenze
+      zwischen menschlichem und maschinellem Beitrag verschwimmt bewusst.
+    </p>
+
+    <p>
+      Jede Iteration folgt demselben Muster: Der Vault (oder eine gezielte Auswahl relevanter Dokumente)
+      wird dem LLM als Kontext mitgegeben. Das LLM generiert einen Prototype, der Critical Expert
+      validiert das Ergebnis, und neues Wissen fließt zurück in den Vault. Dieser Zyklus wiederholt
+      sich bis zur gewünschten Qualität.
     </p>
 
     <div class="cycle-preview" in:fly={{ y: 20, duration: 400, delay: 400 }}>
@@ -23,7 +32,7 @@
       <div class="cycle-arrow">→</div>
       <div class="cycle-step">
         <span class="cycle-icon">2</span>
-        <span class="cycle-label">LLM "reasoned"</span>
+        <span class="cycle-label">LLM generiert</span>
       </div>
       <div class="cycle-arrow">→</div>
       <div class="cycle-step">
@@ -33,9 +42,13 @@
     </div>
   </div>
 
-  <p class="insight" in:fade={{ delay: 600, duration: 400 }}>
-    Jede Iteration = <strong>neuer Prototype</strong> + potentielles Vault-Update
-  </p>
+  <div class="output-box" in:fade={{ delay: 500, duration: 400 }}>
+    <h4>Typischer Output</h4>
+    <p>
+      Single HTML File mit inline CSS/JS, keine externen Dependencies außer CDN-verfügbare Bibliotheken,
+      kommentierter Code an kritischen Stellen für spätere Wartung und Anpassung.
+    </p>
+  </div>
 </div>
 
 <style>
@@ -43,7 +56,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
     text-align: center;
   }
 
@@ -70,22 +83,26 @@
   }
 
   .content-block {
-    max-width: 700px;
+    max-width: 750px;
     background: white;
     padding: var(--space-lg);
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   }
 
-  .lead {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  .content-block p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
     line-height: 1.7;
     text-align: justify;
-    margin: 0 0 var(--space-lg) 0;
+    margin: 0;
   }
 
-  .lead strong {
+  .content-block p + p {
+    margin-top: var(--space-md);
+  }
+
+  .content-block strong {
     color: var(--color-terracotta);
   }
 
@@ -95,6 +112,7 @@
     justify-content: center;
     gap: var(--space-sm);
     flex-wrap: wrap;
+    margin-top: var(--space-lg);
   }
 
   .cycle-step {
@@ -134,14 +152,28 @@
     opacity: 0.5;
   }
 
-  .insight {
-    color: var(--color-slate);
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    margin: 0;
+  .output-box {
+    max-width: 600px;
+    background: rgba(96, 125, 139, 0.06);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+    text-align: left;
   }
 
-  .insight strong {
-    color: var(--color-terracotta);
+  .output-box h4 {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-xs) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .output-box p {
+    font-size: 0.85rem;
+    color: var(--color-black);
+    line-height: 1.6;
+    margin: 0;
   }
 
   @media (max-width: 767px) {

@@ -4,9 +4,15 @@
 
 <div class="phase4-vault-update">
   <h3 in:fade={{ duration: 400 }}>Vault-Update</h3>
-  <p class="description" in:fade={{ delay: 150, duration: 400 }}>
-    Neues Wissen fließt zurück und der Vault wächst mit jeder Iteration
-  </p>
+
+  <div class="intro-text" in:fade={{ delay: 150, duration: 400 }}>
+    <p>
+      Der Vault ist kein statisches Dokument, sondern ein <strong>lebendiger Wissensspeicher</strong>.
+      Mit jeder Iteration fließt neues Wissen zurück: Erkannte Datenlücken, präzisierte Anforderungen,
+      und Einsichten aus der Implementierung. Dieser kontinuierliche Update-Prozess unterscheidet
+      Promptotyping von einmaligen Prompt-Versuchen.
+    </p>
+  </div>
 
   <div class="update-visual">
     <!-- Prototype box -->
@@ -48,7 +54,17 @@
     </div>
   </div>
 
-  <div class="loop-indicator" in:fade={{ delay: 900, duration: 400 }}>
+  <div class="update-triggers" in:fade={{ delay: 900, duration: 400 }}>
+    <h4>Wann wird der Vault aktualisiert?</h4>
+    <ul>
+      <li><strong>Fehlende Datenfelder:</strong> Der Prototype zeigt, dass ein benötigtes Feld nicht dokumentiert ist</li>
+      <li><strong>Unklare Anforderungen:</strong> Eine User Story war zu vage für die Implementierung</li>
+      <li><strong>Neue Erkenntnisse:</strong> Die Exploration im Code deckt bisher unbekannte Zusammenhänge auf</li>
+      <li><strong>Geänderte Prioritäten:</strong> Das Feedback verschiebt die MoSCoW-Gewichtung</li>
+    </ul>
+  </div>
+
+  <div class="loop-indicator" in:fade={{ delay: 1000, duration: 400 }}>
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M17 1l4 4-4 4"/>
       <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
@@ -57,10 +73,6 @@
     </svg>
     <span>Verbesserter Vault → besserer Prototype → nächste Iteration</span>
   </div>
-
-  <p class="conclusion" in:fade={{ delay: 1000, duration: 400 }}>
-    <strong>Vom Wissen zum Werkzeug</strong>
-  </p>
 </div>
 
 <style>
@@ -78,16 +90,24 @@
     margin: 0;
   }
 
-  .description {
-    color: var(--color-black);
-    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-    max-width: 600px;
-    margin: 0;
+  .intro-text {
+    max-width: 700px;
     background: white;
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-lg);
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .intro-text p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
     text-align: justify;
+    margin: 0;
+  }
+
+  .intro-text strong {
+    color: var(--color-terracotta);
   }
 
   .update-visual {
@@ -185,6 +205,45 @@
     font-weight: 600;
   }
 
+  .update-triggers {
+    max-width: 600px;
+    background: rgba(96, 125, 139, 0.06);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+    text-align: left;
+  }
+
+  .update-triggers h4 {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-sm) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .update-triggers ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .update-triggers li {
+    font-size: 0.85rem;
+    color: var(--color-black);
+    line-height: 1.5;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(96, 125, 139, 0.1);
+  }
+
+  .update-triggers li:last-child {
+    border-bottom: none;
+  }
+
+  .update-triggers li strong {
+    color: var(--color-terracotta);
+  }
+
   .loop-indicator {
     display: flex;
     align-items: center;
@@ -198,12 +257,6 @@
 
   .loop-indicator svg {
     flex-shrink: 0;
-  }
-
-  .conclusion {
-    color: var(--color-terracotta);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    margin: 0;
   }
 
   @media (max-width: 767px) {

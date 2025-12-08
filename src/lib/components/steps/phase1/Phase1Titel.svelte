@@ -17,21 +17,35 @@
 
   <div class="content" in:fade={{ delay: 200, duration: 400 }}>
     <p>
-      Die <strong>Preparation</strong>-Phase sammelt alle relevanten Rohmaterialien, darunter
-      Forschungsdaten, Dokumentation zu Standards und Modellen,
-      Forschungsfragen und Domänenwissen.
+      Die Vorbereitungsphase hat ein klares Ziel: <strong>alle relevanten Rohmaterialien zusammentragen</strong>,
+      bevor technische Entscheidungen getroffen werden. Diese Sammlung umfasst Forschungsdaten in
+      verschiedenen Formaten, Dokumentation zu Standards und Datenmodellen, erste Forschungsfragen
+      und implizites Domänenwissen aus Expertengesprächen.
     </p>
-    <p class="highlight">
-      Diese Phase verhindert die unkritische Übernahme technischer Lösungen
-      für wissenschaftliche Probleme und zwingt zur präzisen Artikulation der Projektziele.
+
+    <p>
+      Diese Phase verhindert ein häufiges Problem in der Softwareentwicklung für Forschung: die
+      unkritische Übernahme technischer Lösungen, die am tatsächlichen Forschungsbedarf vorbeigehen.
+      Die Materialsammlung zwingt zur präzisen Artikulation der Projektziele, bevor überhaupt
+      ein LLM-Dialog beginnt.
     </p>
-    <div class="deep-dive-row">
-      <DeepDiveTrigger
-        label="Context Engineering"
-        deepDiveId="context-engineering"
-        on:open={handleDeepDive}
-      />
+
+    <div class="example-block">
+      <h4>Beispiel: CorrespExplorer</h4>
+      <p>
+        Im CorrespExplorer-Projekt wurden in dieser Phase gesammelt: CMIF-XML-Dateien aus correspSearch,
+        die TEI-Correspondence-SIG-Dokumentation, Editionsrichtlinien der beteiligten Projekte, und
+        Notizen aus Gesprächen mit Briefeditor:innen über ihre Arbeitsabläufe und Forschungsfragen.
+      </p>
     </div>
+  </div>
+
+  <div class="deep-dive-row" in:fade={{ delay: 400, duration: 400 }}>
+    <DeepDiveTrigger
+      label="Context Engineering"
+      deepDiveId="context-engineering"
+      on:open={handleDeepDive}
+    />
   </div>
 </div>
 
@@ -40,7 +54,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
     text-align: center;
   }
 
@@ -67,7 +81,7 @@
   }
 
   .content {
-    max-width: 700px;
+    max-width: 750px;
     line-height: 1.7;
     background: white;
     padding: var(--space-lg);
@@ -76,10 +90,14 @@
   }
 
   .content p {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
-    margin-bottom: var(--space-md);
+    margin: 0;
     text-align: justify;
+  }
+
+  .content p + p {
+    margin-top: var(--space-md);
   }
 
   .content strong {
@@ -87,16 +105,33 @@
     font-weight: 600;
   }
 
-  .content .highlight {
-    color: var(--color-black);
-    font-weight: 500;
+  .example-block {
+    margin-top: var(--space-lg);
+    background: rgba(96, 125, 139, 0.06);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+    text-align: left;
+  }
+
+  .example-block h4 {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-xs) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .example-block p {
+    font-size: 0.85rem !important;
+    color: var(--color-slate) !important;
+    line-height: 1.6;
   }
 
   .deep-dive-row {
     display: flex;
     gap: var(--space-sm);
     flex-wrap: wrap;
-    margin-top: var(--space-lg);
     justify-content: center;
   }
 </style>

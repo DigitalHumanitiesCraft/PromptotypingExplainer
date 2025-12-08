@@ -22,8 +22,35 @@
     </p>
   </div>
 
+  <div class="three-levels" in:fly={{ y: 20, duration: 500, delay: 400 }}>
+    <h4>Drei Ebenen der Methodik</h4>
+    <div class="levels-grid">
+      <div class="level-item">
+        <span class="level-label">Technisch</span>
+        <p>Vault-Dokumente, Context Engineering, iterative Prototypen</p>
+      </div>
+      <div class="level-item">
+        <span class="level-label">Methodisch</span>
+        <p>Phasenmodell, Critical Expert, Cyborg-Kollaboration</p>
+      </div>
+      <div class="level-item">
+        <span class="level-label">Epistemisch</span>
+        <p>Validierung, Sycophancy-Bewusstsein, Grenzen der Automation</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="savepoint-box" in:fly={{ y: 20, duration: 500, delay: 500 }}>
+    <h4>Der Vault als Savepoint</h4>
+    <p>
+      Der Vault funktioniert wie ein Savepoint in einem Computerspiel: Der akkumulierte Wissensstand
+      bleibt erhalten, auch wenn die Entwicklung unterbrochen wird. Neue Teammitglieder können den
+      Vault lesen und den Projektstand verstehen. Bei Modellwechseln oder nach längeren Pausen
+      ermöglicht der Vault einen nahtlosen Wiedereinstieg.
+    </p>
+  </div>
+
   <div class="cta" in:scale={{ duration: 400, delay: 600 }}>
-    <p class="final-text">Vom Wissen zum Werkzeug.</p>
     <div class="cta-links">
       <a
         href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer"
@@ -62,6 +89,95 @@
 
   .text-card {
     max-width: 700px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .text-card p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
+    margin: 0;
+  }
+
+  .text-card p + p {
+    margin-top: var(--space-md);
+  }
+
+  .text-card strong {
+    color: var(--color-terracotta);
+  }
+
+  .three-levels {
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .three-levels h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-md) 0;
+    text-align: center;
+  }
+
+  .levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .level-item {
+    background: white;
+    padding: var(--space-md);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+
+  .level-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-terracotta);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .level-item p {
+    font-size: 0.85rem;
+    color: var(--color-black);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .savepoint-box {
+    max-width: 700px;
+    background: rgba(96, 125, 139, 0.06);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-slate);
+    text-align: left;
+  }
+
+  .savepoint-box h4 {
+    font-size: 0.85rem;
+    color: var(--color-slate);
+    margin: 0 0 var(--space-sm) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .savepoint-box p {
+    font-size: 0.9rem;
+    color: var(--color-black);
+    line-height: 1.6;
+    margin: 0;
   }
 
   .cta {
@@ -69,13 +185,6 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-md);
-  }
-
-  .final-text {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
-    color: var(--color-terracotta);
-    font-weight: 600;
-    margin: 0;
   }
 
   .cta-links {
@@ -118,6 +227,10 @@
       flex-direction: column;
       width: 100%;
       max-width: 250px;
+    }
+
+    .levels-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

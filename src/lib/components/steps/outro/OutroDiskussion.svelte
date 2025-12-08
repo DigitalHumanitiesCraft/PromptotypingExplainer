@@ -48,8 +48,9 @@
   const researchGaps = [
     { label: 'Evaluierung', text: 'Bisher existieren nur einzelne Fallbeispiele. Systematische Bewertungskriterien fehlen – am ehesten über Vibe Checks und Reviews (vgl. RIDE).' },
     { label: 'Generalisierbarkeit', text: 'Übertragbarkeit auf externe Teams und andere Disziplinen unbewiesen.' },
-    { label: 'Skills Atrophy', text: 'Gefahr des Verlernens von Coding-Skills muss untersucht werden.' },
-    { label: 'Kosten-Nutzen', text: 'Zeitaufwand für Dokumentation vs. Effizienzgewinn ist offen.' }
+    { label: 'Skills Atrophy', text: 'Die Gefahr des Verlernens von Coding-Skills ist real: Wer nur noch mit LLM-Unterstützung programmiert, verliert möglicherweise die Fähigkeit zur eigenständigen Problemlösung.' },
+    { label: 'Kosten-Nutzen', text: 'Zeitaufwand für Dokumentation vs. Effizienzgewinn ist offen.' },
+    { label: 'Epistemische Gerechtigkeit', text: 'Zugang zu LLM-Tools ist ungleich verteilt. Die Kosten (~200$/Monat für Premium-Modelle) schaffen neue Ungleichheiten in der Forschungslandschaft.' }
   ];
 </script>
 
@@ -57,8 +58,16 @@
   <header class="scene-header" in:fly={{ y: -20, duration: 500 }}>
     <span class="section-label">Reflexion</span>
     <h2>Sollten wir LLMs in der Forschung einsetzen?</h2>
-    <p class="subtitle">Eine offene Diskussion</p>
   </header>
+
+  <div class="intro-text" in:fly={{ y: 20, duration: 400, delay: 100 }}>
+    <p>
+      Der Einsatz von LLMs in der Forschung ist keine rein technische, sondern eine
+      <strong>epistemisch-politische Entscheidung</strong>. Die Frage lautet nicht nur "Können wir?",
+      sondern auch "Sollten wir?" und "Unter welchen Bedingungen?". Diese Reflexion ist integraler
+      Bestandteil einer verantwortungsvollen Promptotyping-Praxis.
+    </p>
+  </div>
 
   <div class="discussion-grid">
     <!-- Contra Column -->
@@ -145,10 +154,24 @@
     font-size: clamp(1.25rem, 3vw, 1.75rem);
   }
 
-  .subtitle {
-    color: var(--color-slate);
+  .intro-text {
+    max-width: 750px;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .intro-text p {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--color-black);
+    line-height: 1.7;
+    text-align: justify;
     margin: 0;
-    font-size: 0.95rem;
+  }
+
+  .intro-text strong {
+    color: var(--color-terracotta);
   }
 
   /* Discussion Grid */

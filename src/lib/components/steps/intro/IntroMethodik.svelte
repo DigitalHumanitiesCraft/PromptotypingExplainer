@@ -14,54 +14,61 @@
 
     <div class="explanation">
       <p>
-        Ein zentrales Prinzip von Promptotyping: <strong>Domänenexpert:innen bleiben unverzichtbar</strong>.
-        LLMs können technisch korrekte, aber fachlich inadäquate Lösungen produzieren. Nur Expert:innen
-        erkennen, ob eine Visualisierung historisch sinnvoll ist oder ob Kategorisierungen dem
-        Forschungsgegenstand gerecht werden.
+        Der Critical Expert in the Loop ist nicht passiver Empfänger, sondern <strong>kritischer Validator</strong>.
+        Domänenexpert:innen bringen ihr Fachwissen kontinuierlich in den Dialog ein. LLMs können technisch
+        korrekte, aber fachlich inadäquate Lösungen produzieren. Nur Expert:innen erkennen, ob eine
+        Visualisierung historisch sinnvoll ist oder ob Kategorisierungen dem Forschungsgegenstand
+        gerecht werden.
       </p>
 
-      <p class="vibe-coding-note">
-        <strong>Verhältnis zu Vibe Coding</strong>
-        Promptotyping ist kein Gegenentwurf zu Vibe Coding,
-        sondern gibt ihm Struktur für Forschungskontexte. Die intuitive, explorative Arbeitsweise
-        bleibt erhalten, ergänzt durch systematische Dokumentation, die <GlossaryTerm id="context-rot">Context Rot</GlossaryTerm>
-        verhindert und die Informationsdichte maximiert.
+      <p>
+        Der Critical-Expert-Ansatz operationalisiert Schöns <strong>Reflective Practice</strong> für die
+        KI-gestützte Forschung: <em>Reflection-in-action</em> bedeutet kritische Prüfung während des
+        LLM-Dialogs; <em>Reflection-on-action</em> ist die nachträgliche Analyse und Dokumentation
+        im Journal. Polanyis Konzept des <strong>impliziten Wissens</strong> ("We can know more than we
+        can tell") ist zentral: Der Prozess der Explizierung taciten Wissens in formale Strukturen
+        bildet einen Kernaspekt der Methodik.
       </p>
     </div>
 
-    <div class="method-cards">
-      <div class="method-card">
-        <div class="card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14,2 14,8 20,8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
+    <div class="strategies-block">
+      <h4>Strategien gegen Sycophancy</h4>
+      <div class="strategy-list">
+        <div class="strategy-item">
+          <span class="strategy-name">Critical Questioning</span>
+          <span class="strategy-desc">Explizites Auffordern zur Kritik: "Was sind Schwächen in diesem Ansatz?" "Welche Fehler könnten in meinen Annahmen stecken?"</span>
         </div>
-        <h4>Vault-Dokumentation</h4>
-        <p>Flexible Markdown-Dokumente, die strukturiertes Wissen als LLM-Input bereitstellen</p>
-      </div>
-      <div class="method-card">
-        <div class="card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
+        <div class="strategy-item">
+          <span class="strategy-name">Alternative Exploration</span>
+          <span class="strategy-desc">Einfordern von Alternativen: Verschiedene Ansätze generieren lassen, gegenteilige Standpunkte erfragen</span>
         </div>
-        <h4>Iterative Updates</h4>
-        <p>Der Vault wächst mit jeder Iteration – neues Wissen fließt zurück</p>
-      </div>
-      <div class="method-card">
-        <div class="card-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+        <div class="strategy-item">
+          <span class="strategy-name">Assumption Surfacing</span>
+          <span class="strategy-desc">Explizitmachen von Annahmen: Implizite Annahmen im Code oder Voraussetzungen bewusst machen</span>
         </div>
-        <h4>Expert Validation</h4>
-        <p>Domänenexpert:innen validieren jeden Output kritisch</p>
       </div>
+    </div>
+
+    <div class="example-block">
+      <h4>Beispiel: REALonline-Projekt</h4>
+      <p>
+        Der Historiker korrigierte die technische Annahme, Objekte nach modernen funktionalen Kategorien
+        (Möbel, Textilien, Gefäße) zu strukturieren. Die historisch adäquate Lösung: Objekte werden
+        über Räume und Gebäude organisiert, mit historischen Begriffen aus dem Originalvokabular.
+        <strong>Räumliche Organisation war im Mittelalter primärer Bedeutungsträger für soziale Hierarchien.</strong>
+        Diese Korrektur transformierte das Datenmodell von einer anachronistischen zu einer
+        historisch adäquaten Repräsentation.
+      </p>
+    </div>
+
+    <div class="vibe-coding-note">
+      <strong>Verhältnis zu Vibe Coding</strong>
+      <p>
+        Promptotyping ist kein Gegenentwurf zu Vibe Coding, sondern gibt ihm Struktur für
+        Forschungskontexte. Die intuitive, explorative Arbeitsweise bleibt erhalten, ergänzt
+        durch systematische Dokumentation, die <GlossaryTerm id="context-rot">Context Rot</GlossaryTerm>
+        verhindert und die Informationsdichte maximiert.
+      </p>
     </div>
 
     <div class="deep-dive-triggers">
@@ -103,7 +110,7 @@
   }
 
   .explanation {
-    max-width: 750px;
+    max-width: 800px;
     background: white;
     padding: var(--space-lg);
     border-radius: 8px;
@@ -111,82 +118,119 @@
   }
 
   .explanation p {
-    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    font-size: clamp(0.9rem, 1.5vw, 0.95rem);
     color: var(--color-black);
     line-height: 1.7;
     text-align: justify;
-    margin: 0 0 var(--space-md);
+    margin: 0;
   }
 
-  .explanation p strong {
+  .explanation p + p {
+    margin-top: var(--space-md);
+  }
+
+  .explanation strong {
+    color: var(--color-terracotta);
+  }
+
+  .explanation em {
+    font-style: italic;
+    color: var(--color-slate);
+  }
+
+  .strategies-block {
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    padding: var(--space-lg);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .strategies-block h4 {
+    font-size: 0.9rem;
+    color: var(--color-terracotta);
+    margin: 0 0 var(--space-md) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .strategy-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .strategy-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(96, 125, 139, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid var(--color-slate);
+  }
+
+  .strategy-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .strategy-desc {
+    font-size: 0.8rem;
+    color: var(--color-slate);
+    line-height: 1.5;
+  }
+
+  .example-block {
+    max-width: 750px;
+    background: rgba(191, 91, 62, 0.06);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-terracotta);
+  }
+
+  .example-block h4 {
+    font-size: 0.85rem;
+    color: var(--color-terracotta);
+    margin: 0 0 var(--space-sm) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .example-block p {
+    font-size: 0.9rem;
+    color: var(--color-black);
+    line-height: 1.7;
+    margin: 0;
+    text-align: justify;
+  }
+
+  .example-block strong {
     color: var(--color-terracotta);
   }
 
   .vibe-coding-note {
+    max-width: 700px;
     background: rgba(96, 125, 139, 0.06);
-    padding: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
     border-radius: 8px;
-    font-size: clamp(0.9rem, 1.4vw, 0.95rem) !important;
-    color: var(--color-slate) !important;
-    text-align: justify;
   }
 
   .vibe-coding-note strong {
-    color: var(--color-black) !important;
     display: block;
+    font-size: 0.85rem;
+    color: var(--color-black);
     margin-bottom: var(--space-xs);
   }
 
-  .method-cards {
-    display: flex;
-    gap: var(--space-lg);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .method-card {
-    background: var(--color-white);
-    border: 1px solid rgba(96, 125, 139, 0.2);
-    border-radius: 8px;
-    padding: var(--space-lg);
-    text-align: center;
-    width: 200px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .method-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--color-terracotta);
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto var(--space-md);
-  }
-
-  .card-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .method-card h4 {
-    color: var(--color-black);
-    margin: 0 0 var(--space-xs);
-    font-size: 0.95rem;
-  }
-
-  .method-card p {
-    color: var(--color-slate);
-    margin: 0;
+  .vibe-coding-note p {
     font-size: 0.85rem;
-    line-height: 1.5;
+    color: var(--color-slate);
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
   }
 
   .deep-dive-triggers {
@@ -197,14 +241,8 @@
   }
 
   @media (max-width: 767px) {
-    .method-cards {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .method-card {
-      width: 100%;
-      max-width: 280px;
+    .strategy-item {
+      padding: var(--space-sm);
     }
   }
 </style>
