@@ -5,7 +5,7 @@
 <div class="phase1-sammlung">
   <h3 in:fade={{ duration: 400 }}>Materialsammlung abgeschlossen</h3>
 
-  <div class="explanation-block" in:fade={{ delay: 150, duration: 400 }}>
+  <div class="text-card" in:fade={{ delay: 150, duration: 400 }}>
     <p>
       Mit dem Abschluss der Materialsammlung ist die Basis für alle weiteren Phasen gelegt.
       Die gesammelten Materialien werden in dieser Phase <strong>noch nicht strukturiert oder destilliert</strong> –
@@ -43,30 +43,6 @@
     color: var(--color-black);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     margin: 0;
-  }
-
-  .explanation-block {
-    max-width: 700px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .explanation-block p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .explanation-block p + p {
-    margin-top: var(--space-md);
-  }
-
-  .explanation-block strong {
-    color: var(--color-terracotta);
   }
 
   .quality-criteria {

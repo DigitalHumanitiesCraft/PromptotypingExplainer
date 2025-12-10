@@ -5,7 +5,7 @@
 <div class="intro-scholar-centered">
   <h2>Scholar-Centered Design</h2>
 
-  <div class="research-blog-block">
+  <div class="text-card">
     <p>
       <strong>User-Centered Design (UCD)</strong> bezeichnet die systematische Erhebung, Dokumentation
       und Verwaltung von Anforderungen, bei der die Bedürfnisse, Fähigkeiten und Einschränkungen der

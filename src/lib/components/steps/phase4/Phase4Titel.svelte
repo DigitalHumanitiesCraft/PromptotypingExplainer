@@ -9,7 +9,7 @@
     <p class="subtitle">Iterative Entwicklung</p>
   </header>
 
-  <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
+  <div class="text-card" in:fade={{ delay: 200, duration: 400 }}>
     <p>
       Mit der Übergabe des Vault an das LLM beginnt die <strong>Cyborg-Arbeit</strong>. Im Unterschied
       zur Centaur-Arbeit (klare Aufgabenteilung) bedeutet Cyborg-Arbeit enge kognitive Verschränkung:
@@ -82,29 +82,6 @@
     margin: 0;
   }
 
-  .content-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .content-block p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .content-block p + p {
-    margin-top: var(--space-md);
-  }
-
-  .content-block strong {
-    color: var(--color-terracotta);
-  }
 
   .cycle-preview {
     display: flex;

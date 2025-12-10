@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { initReducedMotion, globalProgress, scrollToHash, updateHash, currentPhase, currentStep, globalStepIndex, totalSteps, stepStructure } from './lib/stores/scroll.js';
+  import { initReducedMotion, globalProgress, scrollToHash, updateHash, currentPhase, currentStep } from './lib/stores/scroll.js';
   import { isDeepDiveOpen, currentDeepDive, closeDeepDive } from './lib/stores/deepDive.js';
   import ProgressIndicator from './lib/components/ProgressIndicator.svelte';
   import PhaseHeader from './lib/components/PhaseHeader.svelte';
@@ -59,38 +59,8 @@
     updateHash($currentPhase, $currentStep);
   }
 
-  // Check if we're at the last step
-  $: isLastStep = $globalStepIndex >= totalSteps - 1;
-
   function handleScroll(e) {
     // Could track scroll position for other purposes
-  }
-
-  // Get the ID of the next step
-  function getNextStepId() {
-    const currentGlobalIndex = $globalStepIndex;
-    let stepCounter = 0;
-
-    for (let phaseIdx = 0; phaseIdx < stepStructure.length; phaseIdx++) {
-      const phase = stepStructure[phaseIdx];
-      for (let stepIdx = 0; stepIdx < phase.steps.length; stepIdx++) {
-        if (stepCounter === currentGlobalIndex + 1) {
-          return `${phase.id}-${phase.steps[stepIdx].id}`;
-        }
-        stepCounter++;
-      }
-    }
-    return null;
-  }
-
-  function scrollToNextSection() {
-    const nextId = getNextStepId();
-    if (nextId) {
-      const element = document.getElementById(nextId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
   }
 
   // Color interpolation helper
@@ -231,17 +201,6 @@
   <Step id="outro-zusammenfassung" phaseIndex={5} stepIndex={2}>
     <OutroZusammenfassung />
   </Step>
-
-  <!-- Scroll Navigation Button -->
-  {#if !isLastStep}
-    <button
-      class="scroll-nav-button"
-      on:click={scrollToNextSection}
-      aria-label="Zum nächsten Abschnitt scrollen"
-    >
-      <div class="scroll-arrow"></div>
-    </button>
-  {/if}
 </main>
 
 <!-- Deep Dive Panel -->
@@ -271,85 +230,5 @@
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
     padding-top: 50px; /* Space for fixed header */
-  }
-
-  /* Scroll Navigation Button - persistent */
-  .scroll-nav-button {
-    position: fixed;
-    bottom: var(--space-xl);
-    right: var(--space-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid var(--color-slate);
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-  }
-
-  .scroll-nav-button:hover {
-    border-color: var(--color-terracotta);
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 16px rgba(191, 91, 62, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .scroll-nav-button:hover .scroll-arrow {
-    border-color: var(--color-terracotta);
-    animation: bounceDown 0.6s ease-in-out infinite;
-  }
-
-  .scroll-nav-button:focus {
-    outline: 2px solid var(--color-terracotta);
-    outline-offset: 2px;
-  }
-
-  .scroll-nav-button:active {
-    transform: translateY(0);
-  }
-
-  .scroll-arrow {
-    width: 12px;
-    height: 12px;
-    border-right: 2px solid var(--color-slate);
-    border-bottom: 2px solid var(--color-slate);
-    transform: rotate(45deg) translateY(-2px);
-    transition: border-color 0.3s ease;
-  }
-
-  @keyframes bounceDown {
-    0%, 100% {
-      transform: rotate(45deg) translateY(-2px);
-    }
-    50% {
-      transform: rotate(45deg) translateY(2px);
-    }
-  }
-
-  /* Respect reduced motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-nav-button:hover .scroll-arrow {
-      animation: none;
-    }
-  }
-
-  /* Mobile positioning */
-  @media (max-width: 767px) {
-    .scroll-nav-button {
-      bottom: var(--space-md);
-      right: var(--space-md);
-      width: 44px;
-      height: 44px;
-    }
-    .scroll-arrow {
-      width: 10px;
-      height: 10px;
-    }
   }
 </style>

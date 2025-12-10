@@ -10,7 +10,7 @@
     <p class="subtitle">Vom Rohmaterial zum Vault</p>
   </header>
 
-  <div class="content-block" in:fade={{ delay: 200, duration: 400 }}>
+  <div class="text-card" in:fade={{ delay: 200, duration: 400 }}>
     <p class="lead">
       Die Erkenntnisse aus der Exploration werden nun zu strukturierten, LLM-optimierten
       Dokumenten <strong>destilliert</strong>. Das Kernprinzip heißt <strong>Context Compression</strong>:
@@ -82,14 +82,6 @@
     margin: 0;
   }
 
-  .content-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
   .lead {
     font-size: clamp(0.9rem, 1.6vw, 1rem);
     color: var(--color-black);
@@ -98,20 +90,7 @@
     margin: 0;
   }
 
-  .content-block p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .content-block p + p {
-    margin-top: var(--space-md);
-  }
-
-  .lead strong,
-  .content-block strong {
+  .lead strong {
     color: var(--color-terracotta);
   }
 

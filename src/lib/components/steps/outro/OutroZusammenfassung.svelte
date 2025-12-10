@@ -1,5 +1,18 @@
 <script>
   import { fade, fly, scale } from 'svelte/transition';
+  import Icon from '../../elements/Icon.svelte';
+
+  const baseUrl = import.meta.env.BASE_URL;
+
+  function downloadVaultTemplate() {
+    // Direct download of pre-built ZIP
+    const link = document.createElement('a');
+    link.href = `${baseUrl}downloads/vault-template.zip`;
+    link.download = 'promptotyping-vault-template.zip';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 </script>
 
 <div class="outro-zusammenfassung">
@@ -51,23 +64,40 @@
   </div>
 
   <div class="cta" in:scale={{ duration: 400, delay: 600 }}>
-    <div class="cta-links">
-      <a
-        href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer"
-        target="_blank"
-        rel="noopener"
-        class="cta-btn"
+    <div class="cta-section">
+      <h4>Selbst ausprobieren</h4>
+      <button
+        class="cta-btn cta-btn-download"
+        on:click={downloadVaultTemplate}
       >
-        GitHub Repository
-      </a>
-      <a
-        href="https://dhcraft.org/CorrespExplorer"
-        target="_blank"
-        rel="noopener"
-        class="cta-btn cta-btn-secondary"
-      >
-        Live Demo
-      </a>
+        <Icon name="file-text" size={18} />
+        Vault-Template herunterladen
+      </button>
+      <p class="cta-hint">Enthält DATA.md, REQUIREMENTS.md, CONTEXT.md und JOURNAL.md</p>
+    </div>
+
+    <div class="cta-section">
+      <h4>Beispielprojekt ansehen</h4>
+      <div class="cta-links">
+        <a
+          href="https://github.com/DigitalHumanitiesCraft/CorrespExplorer"
+          target="_blank"
+          rel="noopener"
+          class="cta-btn"
+        >
+          <Icon name="github" size={18} />
+          GitHub Repository
+        </a>
+        <a
+          href="https://dhcraft.org/CorrespExplorer"
+          target="_blank"
+          rel="noopener"
+          class="cta-btn cta-btn-secondary"
+        >
+          <Icon name="external-link" size={18} />
+          Live Demo
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -182,9 +212,37 @@
 
   .cta {
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .cta-section {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-sm);
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .cta-section h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-slate);
+    margin: 0;
+  }
+
+  .cta-hint {
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    margin: 0;
+    opacity: 0.8;
   }
 
   .cta-links {
@@ -195,7 +253,9 @@
   }
 
   .cta-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
     padding: var(--space-sm) var(--space-lg);
     background: var(--color-terracotta);
     color: var(--color-white);
@@ -203,7 +263,18 @@
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-btn-download {
+    background: var(--color-slate);
+  }
+
+  .cta-btn-download:hover {
+    box-shadow: 0 6px 20px rgba(96, 125, 139, 0.3);
   }
 
   .cta-btn:hover {

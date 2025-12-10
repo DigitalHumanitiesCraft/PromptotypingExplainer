@@ -1,12 +1,17 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import strangeMindsImg from '../../../../assets/images/system1-42.png';
 </script>
 
 <div class="intro-strange-minds">
   <h2>Strange New Minds</h2>
 
-  <div class="research-blog-block">
+  <figure class="strange-minds-figure">
+    <img src={strangeMindsImg} alt="Strange New Minds: Ein Monitor mit abstraktem Gesicht auf einer Pyramide - Metapher für fremde Intelligenzen" />
+  </figure>
+
+  <div class="text-card">
     <p>
       <GlossaryTerm id="frontier-model">Frontier-LLMs</GlossaryTerm> basieren auf der Transformer-Architektur, deren
       Attention-Mechanismus Beziehungen zwischen <GlossaryTerm id="token">Tokens</GlossaryTerm> über große Distanzen
@@ -52,6 +57,18 @@
     font-size: clamp(1.5rem, 4vw, 2rem);
     color: var(--color-terracotta);
     text-align: center;
+  }
+
+  .strange-minds-figure {
+    margin: 0;
+    padding: 0;
+  }
+
+  .strange-minds-figure img {
+    max-width: min(350px, 80vw);
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   }
 
 </style>

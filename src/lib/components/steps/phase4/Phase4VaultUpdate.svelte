@@ -5,7 +5,7 @@
 <div class="phase4-vault-update">
   <h3 in:fade={{ duration: 400 }}>Vault-Update</h3>
 
-  <div class="intro-text" in:fade={{ delay: 150, duration: 400 }}>
+  <div class="text-card" in:fade={{ delay: 150, duration: 400 }}>
     <p>
       Der Vault ist kein statisches Dokument, sondern ein <strong>lebendiger Wissensspeicher</strong>.
       Mit jeder Iteration fließt neues Wissen zurück: Erkannte Datenlücken, präzisierte Anforderungen,
@@ -88,26 +88,6 @@
     color: var(--color-black);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     margin: 0;
-  }
-
-  .intro-text {
-    max-width: 700px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .intro-text p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .intro-text strong {
-    color: var(--color-terracotta);
   }
 
   .update-visual {

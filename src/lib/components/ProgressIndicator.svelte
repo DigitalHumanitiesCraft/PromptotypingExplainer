@@ -1,5 +1,8 @@
 <script>
-  import { currentPhase, currentStep, stepStructure, scrollToStep } from '../stores/scroll.js';
+  import { currentPhase, currentStep, stepStructure, scrollToStep, globalStepIndex, totalSteps } from '../stores/scroll.js';
+
+  // Check if we're at the last step
+  $: isLastStep = $globalStepIndex >= totalSteps - 1;
 
   function handlePhaseClick(phaseIndex) {
     const phase = stepStructure[phaseIndex];
@@ -18,6 +21,33 @@
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       handlePhaseClick(phaseIndex);
+    }
+  }
+
+  // Get the ID of the next step
+  function getNextStepId() {
+    const currentGlobalIndex = $globalStepIndex;
+    let stepCounter = 0;
+
+    for (let phaseIdx = 0; phaseIdx < stepStructure.length; phaseIdx++) {
+      const phase = stepStructure[phaseIdx];
+      for (let stepIdx = 0; stepIdx < phase.steps.length; stepIdx++) {
+        if (stepCounter === currentGlobalIndex + 1) {
+          return `${phase.id}-${phase.steps[stepIdx].id}`;
+        }
+        stepCounter++;
+      }
+    }
+    return null;
+  }
+
+  function scrollToNextSection() {
+    const nextId = getNextStepId();
+    if (nextId) {
+      const element = document.getElementById(nextId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 </script>
@@ -75,22 +105,40 @@
       </li>
     {/each}
   </ul>
+
+  <!-- Scroll to next section button -->
+  {#if !isLastStep}
+    <button
+      class="scroll-nav-button"
+      on:click={scrollToNextSection}
+      aria-label="Zum nächsten Abschnitt scrollen"
+    >
+      <span class="scroll-arrow"></span>
+    </button>
+  {/if}
 </nav>
 
 <style>
   .progress-indicator {
     position: fixed;
-    right: var(--space-xl);
+    right: var(--space-lg);
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: var(--space-md) var(--space-md) var(--space-md) var(--space-sm);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(96, 125, 139, 0.1);
   }
 
   ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-lg);
+    gap: var(--space-md);
     position: relative;
     padding: 0;
     margin: 0;
@@ -114,8 +162,8 @@
   }
 
   .dot {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: var(--color-slate);
     transition: all var(--duration-fast) var(--ease-out);
@@ -125,11 +173,12 @@
     position: relative;
     z-index: 1;
     flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
   .check-icon {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     color: var(--color-white);
   }
 
@@ -152,7 +201,7 @@
   }
 
   .label {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-slate);
     opacity: 0.7;
@@ -162,7 +211,7 @@
   }
 
   .phase-number {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: var(--color-slate);
     opacity: 0.5;
     text-transform: uppercase;
@@ -222,8 +271,8 @@
   }
 
   .step-dot-marker {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     background: var(--color-slate);
     opacity: 0.4;
@@ -254,7 +303,7 @@
   }
 
   .step-label {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--color-slate);
     opacity: 0.6;
     white-space: nowrap;
@@ -276,6 +325,65 @@
     opacity: 0.6;
   }
 
+  /* Scroll to next button - integrated */
+  .scroll-nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 36px;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(96, 125, 139, 0.15);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-nav-button:hover {
+    background: rgba(191, 91, 62, 0.08);
+    border-radius: 8px;
+  }
+
+  .scroll-nav-button:hover .scroll-arrow {
+    border-color: var(--color-terracotta);
+    animation: bounceDown 0.6s ease-in-out infinite;
+  }
+
+  .scroll-nav-button:focus {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  .scroll-arrow {
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid var(--color-slate);
+    border-bottom: 2px solid var(--color-slate);
+    transform: rotate(45deg) translateY(-2px);
+    transition: border-color 0.3s ease;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% {
+      transform: rotate(45deg) translateY(-2px);
+    }
+    50% {
+      transform: rotate(45deg) translateY(2px);
+    }
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-nav-button:hover .scroll-arrow {
+      animation: none;
+    }
+  }
+
   /* Mobile: horizontal at bottom */
   @media (max-width: 767px) {
     .progress-indicator {
@@ -284,11 +392,17 @@
       top: auto;
       bottom: var(--space-md);
       transform: translateX(-50%);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 24px;
     }
 
     ul {
       flex-direction: row;
-      gap: var(--space-md);
+      gap: var(--space-sm);
+    }
+
+    .label-container {
+      display: none;
     }
 
     .sub-steps {

@@ -1,13 +1,12 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
-  import vibecodingImage from '../../../../assets/images/vibecoding.png';
 </script>
 
 <div class="intro-vibecoding">
   <h2>Frontier-LLMs und Vibe Coding</h2>
 
-  <div class="research-blog-block">
+  <div class="text-card">
     <p>
       <GlossaryTerm id="frontier-model">Frontier-LLMs</GlossaryTerm> haben ihre Fähigkeiten in Coding und <GlossaryTerm id="tool-use">Tool Use</GlossaryTerm> deutlich verbessert. Modelle wie Claude Opus 4.5, GPT-5.1-Codex und Gemini 3 Pro erreichen auf Benchmarks
       wie SWE-bench Verified (Jimenez et al., 2024), τ2-bench und Terminal-bench 2.0 (Laude Institute, 2025)
@@ -24,10 +23,34 @@
       sein. Ohne Struktur führt es jedoch zu technischen Schulden und Abhängigkeit statt Verständnis.
     </p>
 
-    <figure class="vibecoding-figure">
-      <img src={vibecodingImage} alt="Andrej Karpathy Tweet über Vibe Coding" class="vibecoding-image" />
-      <figcaption>Andrej Karpathy prägt den Begriff "Vibe Coding" (Februar 2025)</figcaption>
-    </figure>
+    <!-- Tweet-style quote -->
+    <a href="https://x.com/karpathy/status/1886192184808149383" target="_blank" rel="noopener noreferrer" class="tweet-card">
+      <div class="tweet-header">
+        <div class="tweet-avatar">AK</div>
+        <div class="tweet-author">
+          <span class="tweet-name">Andrej Karpathy</span>
+          <span class="tweet-handle">@karpathy</span>
+        </div>
+        <svg class="tweet-logo" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </div>
+      <p class="tweet-text">
+        There's a new kind of coding I call <strong>"vibe coding"</strong>, where you fully give in to the vibes,
+        embrace exponentials, and forget that the code even exists. It's possible because the LLMs (e.g. Cursor
+        Composer w Sonnet) are getting too good. Also I just talk to Composer with SuperWhisper so I barely even
+        touch the keyboard. I ask for the dumbest things like "decrease the padding on the sidebar by half" because
+        I'm too lazy to find it. I "Accept All" always, I don't read the diffs anymore. When I get error messages
+        I just copy paste them in with no comment, usually that fixes it. The code grows beyond my usual comprehension,
+        I'd have to really read through it for a while. Sometimes the LLMs can't fix a bug so I just work around it
+        or ask for random changes until it goes away. It's not too bad for throwaway weekend projects, but still
+        quite amusing. I'm building a project or webapp, but it's not really coding - I just see stuff, say stuff,
+        run stuff, and copy paste stuff, and it mostly works.
+      </p>
+      <div class="tweet-footer">
+        <span class="tweet-date">6:51 AM · Feb 2, 2025</span>
+      </div>
+    </a>
 
     <div class="deep-dive-triggers">
       <DeepDiveTrigger
@@ -53,22 +76,89 @@
     text-align: center;
   }
 
-  .vibecoding-figure {
-    margin: var(--space-md) 0;
-    text-align: center;
+  /* Tweet Card Styles */
+  .tweet-card {
+    display: block;
+    margin: var(--space-lg) 0 var(--space-md);
+    padding: var(--space-md);
+    background: #f7f9fa;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
   }
 
-  .vibecoding-image {
-    max-width: 100%;
-    width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  .tweet-card:hover {
+    background: #eff3f4;
+    border-color: #cfd9de;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
 
-  .vibecoding-figure figcaption {
+  .tweet-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .tweet-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-slate), var(--color-terracotta));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .tweet-author {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .tweet-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0f1419;
+  }
+
+  .tweet-handle {
+    font-size: 0.85rem;
+    color: #536471;
+  }
+
+  .tweet-logo {
+    width: 20px;
+    height: 20px;
+    fill: #0f1419;
+    flex-shrink: 0;
+  }
+
+  .tweet-text {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    color: #0f1419 !important;
+    margin: 0 !important;
+  }
+
+  .tweet-text strong {
+    color: var(--color-terracotta) !important;
+  }
+
+  .tweet-footer {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid #e1e8ed;
+  }
+
+  .tweet-date {
     font-size: 0.8rem;
-    color: var(--color-slate);
-    margin-top: var(--space-xs);
-    font-style: italic;
+    color: #536471;
   }
 </style>

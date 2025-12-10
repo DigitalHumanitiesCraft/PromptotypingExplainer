@@ -11,7 +11,13 @@
       "Bash(npm install:*)",
       "Bash(git push)",
       "Bash(xcopy:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(tree:*)",
+      "Bash(xargs:*)",
+      "Bash(wc:*)",
+      "Bash(cmd /c copy:*)",
+      "Bash(zip:*)",
+      "Bash(powershell -Command:*)"
     ],
     "deny": [],
     "ask": []

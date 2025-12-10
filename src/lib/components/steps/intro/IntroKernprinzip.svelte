@@ -6,7 +6,7 @@
 <div class="intro-kernprinzip">
   <h2>Das Kernprinzip</h2>
 
-  <div class="research-blog-block">
+  <div class="text-card">
     <p class="core-question">
       <strong>Wie strukturiert man Forschungsdaten, explizites und implizites Domänenwissen so, dass ein LLM fachlich angemessene Forschungsartefakte erzeugt?</strong>
     </p>
@@ -59,26 +59,6 @@
     font-size: clamp(1.5rem, 4vw, 2rem);
     color: var(--color-terracotta);
     text-align: center;
-  }
-
-  .research-blog-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .research-blog-block p {
-    font-size: clamp(0.95rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .research-blog-block p:last-child {
-    margin-bottom: 0;
   }
 
   .core-question {

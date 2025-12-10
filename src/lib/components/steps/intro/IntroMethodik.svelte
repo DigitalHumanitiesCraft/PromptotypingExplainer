@@ -1,12 +1,17 @@
 <script>
   import GlossaryTerm from '../../GlossaryTerm.svelte';
   import DeepDiveTrigger from '../../elements/DeepDiveTrigger.svelte';
+  import expertLoopImg from '../../../../assets/images/slides/expert-loop.png';
 </script>
 
 <div class="intro-methodik">
   <h2>Critical Expert in the Loop</h2>
 
-  <div class="research-blog-block">
+  <figure class="expert-loop-figure">
+    <img src={expertLoopImg} alt="Critical Expert in the Loop: Validierung und Steuerung des LLM-Dialogs" />
+  </figure>
+
+  <div class="text-card">
     <p>
       Der Critical Expert in the Loop ist nicht passiver Empfänger, sondern <strong>kritischer Validator</strong>.
       Domänenexpert:innen bringen ihr Fachwissen kontinuierlich in den Dialog ein. LLMs können technisch
@@ -51,6 +56,18 @@
     font-size: clamp(1.5rem, 4vw, 2rem);
     color: var(--color-terracotta);
     text-align: center;
+  }
+
+  .expert-loop-figure {
+    margin: 0;
+    padding: 0;
+  }
+
+  .expert-loop-figure img {
+    max-width: min(400px, 80vw);
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
 </style>

@@ -65,9 +65,9 @@
     display: inline-block;
     background: var(--color-terracotta);
     color: var(--color-white);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -77,9 +77,9 @@
     display: inline-block;
     background: var(--color-slate);
     color: var(--color-white);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 10px;
   }
 
@@ -97,10 +97,10 @@
   }
 
   .nav-link {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--color-slate);
     text-decoration: none;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 4px;
     transition: all 0.2s ease;
   }
@@ -111,7 +111,7 @@
   }
 
   .phase-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-black);
     margin: 0;
@@ -123,7 +123,7 @@
   }
 
   .current-step {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-terracotta);
     font-weight: 500;
   }

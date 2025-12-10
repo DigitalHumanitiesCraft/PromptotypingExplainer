@@ -9,7 +9,7 @@
     <h1 class="promptotyping-title">Promptotyping</h1>
   </div>
 
-  <div class="research-blog-block">
+  <div class="text-card">
     <p>
       <span class="promptotyping">Promptotyping</span> ist eine strukturierte Methode zur forschungsdatengetriebenen
       Entwicklung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-<GlossaryTerm id="llm">LLMs</GlossaryTerm>. Das vierphasige Prozessmodell formalisiert, wie Domänenwissen für die LLM-gestützte Iteration aufbereitet und validiert wird.
@@ -57,23 +57,4 @@
     letter-spacing: 0.03em;
   }
 
-  .research-blog-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .research-blog-block p {
-    font-size: clamp(0.95rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0 0 var(--space-md) 0;
-  }
-
-  .research-blog-block p:last-child {
-    margin-bottom: 0;
-  }
 </style>

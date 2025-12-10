@@ -15,7 +15,7 @@
 <div class="phase3-vault">
   <h3 in:fade={{ duration: 400 }}>Der <span class="promptotyping">Promptotyping</span> Vault</h3>
 
-  <div class="explanation-block" in:fade={{ delay: 150, duration: 400 }}>
+  <div class="text-card" in:fade={{ delay: 150, duration: 400 }}>
     <p>
       Der Vault fungiert als <strong>Boundary Object</strong> (Star & Griesemer, 1989) – ein Artefakt,
       das zwischen verschiedenen sozialen Welten vermittelt: zwischen technischer Implementation und
@@ -125,30 +125,6 @@
     font-weight: 700;
     color: var(--color-terracotta);
     letter-spacing: 0.02em;
-  }
-
-  .explanation-block {
-    max-width: 750px;
-    background: white;
-    padding: var(--space-lg);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .explanation-block p {
-    font-size: clamp(0.9rem, 1.6vw, 1rem);
-    color: var(--color-black);
-    line-height: 1.7;
-    text-align: left;
-    margin: 0;
-  }
-
-  .explanation-block p + p {
-    margin-top: var(--space-md);
-  }
-
-  .explanation-block strong {
-    color: var(--color-terracotta);
   }
 
   .vault-visual {
