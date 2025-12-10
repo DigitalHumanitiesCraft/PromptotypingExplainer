@@ -121,17 +121,12 @@
 <style>
   .progress-indicator {
     position: fixed;
-    right: var(--space-lg);
+    right: 80px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: transparent;
     padding: var(--space-md) var(--space-md) var(--space-md) var(--space-sm);
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(96, 125, 139, 0.1);
   }
 
   ul {
@@ -162,10 +157,10 @@
   }
 
   .dot {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background-color: var(--color-slate);
+    background-color: rgba(96, 125, 139, 0.4);
     transition: all var(--duration-fast) var(--ease-out);
     display: flex;
     align-items: center;
@@ -173,7 +168,6 @@
     position: relative;
     z-index: 1;
     flex-shrink: 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
   .check-icon {
@@ -183,14 +177,13 @@
   }
 
   .progress-dot.completed .dot {
-    background-color: var(--color-terracotta);
-    opacity: 0.7;
+    background-color: rgba(191, 91, 62, 0.5);
   }
 
   .progress-dot.active .dot {
     background-color: var(--color-terracotta);
-    transform: scale(1.4);
-    box-shadow: 0 0 0 5px rgba(191, 91, 62, 0.25);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(191, 91, 62, 0.15);
   }
 
   .label-container {
@@ -201,47 +194,41 @@
   }
 
   .label {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 500;
-    color: var(--color-slate);
-    opacity: 0.7;
+    color: rgba(96, 125, 139, 0.7);
     text-align: left;
     transition: all var(--duration-fast) var(--ease-out);
     white-space: nowrap;
   }
 
   .phase-number {
-    font-size: 0.65rem;
-    color: var(--color-slate);
-    opacity: 0.5;
+    font-size: 0.6rem;
+    color: rgba(96, 125, 139, 0.5);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   .progress-dot:hover .label,
   .progress-dot:focus .label {
-    opacity: 1;
+    color: rgba(96, 125, 139, 0.9);
   }
 
   .progress-dot.active .label {
-    opacity: 1;
     color: var(--color-terracotta);
     font-weight: 600;
   }
 
   .progress-dot.active .phase-number {
-    opacity: 0.8;
-    color: var(--color-terracotta);
+    color: rgba(191, 91, 62, 0.7);
   }
 
   .progress-dot.completed .label {
-    color: var(--color-terracotta);
-    opacity: 0.7;
+    color: rgba(191, 91, 62, 0.6);
   }
 
   .progress-dot.completed .phase-number {
-    color: var(--color-terracotta);
-    opacity: 0.5;
+    color: rgba(191, 91, 62, 0.4);
   }
 
   .progress-dot:focus {
@@ -271,58 +258,52 @@
   }
 
   .step-dot-marker {
-    width: 11px;
-    height: 11px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: var(--color-slate);
-    opacity: 0.4;
+    background: rgba(96, 125, 139, 0.35);
     transition: all 0.2s ease;
     flex-shrink: 0;
   }
 
   .step-dot:hover .step-dot-marker {
-    transform: scale(1.2);
-    opacity: 0.7;
+    transform: scale(1.15);
+    background: rgba(96, 125, 139, 0.5);
   }
 
   .step-dot:focus {
-    outline: 2px solid var(--color-terracotta);
+    outline: 2px solid rgba(191, 91, 62, 0.5);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
   .step-dot.completed .step-dot-marker {
-    background: var(--color-terracotta);
-    opacity: 0.6;
+    background: rgba(191, 91, 62, 0.45);
   }
 
   .step-dot.active .step-dot-marker {
     background: var(--color-terracotta);
-    opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 
   .step-label {
-    font-size: 0.8rem;
-    color: var(--color-slate);
-    opacity: 0.6;
+    font-size: 1rem;
+    color: rgba(96, 125, 139, 0.6);
     white-space: nowrap;
     transition: all 0.2s ease;
   }
 
   .step-dot:hover .step-label {
-    opacity: 0.9;
+    color: rgba(96, 125, 139, 0.8);
   }
 
   .step-dot.active .step-label {
     color: var(--color-terracotta);
-    opacity: 1;
     font-weight: 500;
   }
 
   .step-dot.completed .step-label {
-    color: var(--color-terracotta);
-    opacity: 0.6;
+    color: rgba(191, 91, 62, 0.55);
   }
 
   /* Scroll to next button - integrated */
@@ -331,21 +312,16 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 36px;
+    height: 32px;
     margin-top: var(--space-sm);
-    padding-top: var(--space-sm);
-    border-top: 1px solid rgba(96, 125, 139, 0.15);
     background: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+    border: none;
     cursor: pointer;
     transition: all 0.3s ease;
   }
 
   .scroll-nav-button:hover {
-    background: rgba(191, 91, 62, 0.08);
-    border-radius: 8px;
+    transform: translateY(2px);
   }
 
   .scroll-nav-button:hover .scroll-arrow {
@@ -354,16 +330,16 @@
   }
 
   .scroll-nav-button:focus {
-    outline: 2px solid var(--color-terracotta);
+    outline: 2px solid rgba(191, 91, 62, 0.5);
     outline-offset: 2px;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .scroll-arrow {
-    width: 12px;
-    height: 12px;
-    border-right: 2px solid var(--color-slate);
-    border-bottom: 2px solid var(--color-slate);
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid rgba(96, 125, 139, 0.5);
+    border-bottom: 2px solid rgba(96, 125, 139, 0.5);
     transform: rotate(45deg) translateY(-2px);
     transition: border-color 0.3s ease;
   }
@@ -384,6 +360,21 @@
     }
   }
 
+  /* Tablet */
+  @media (max-width: 1100px) {
+    .progress-indicator {
+      right: 16px;
+    }
+
+    .label {
+      font-size: 0.85rem;
+    }
+
+    .step-label {
+      font-size: 0.8rem;
+    }
+  }
+
   /* Mobile: horizontal at bottom */
   @media (max-width: 767px) {
     .progress-indicator {
@@ -394,11 +385,26 @@
       transform: translateX(-50%);
       padding: var(--space-sm) var(--space-md);
       border-radius: 24px;
+      max-width: calc(100vw - 32px);
     }
 
     ul {
       flex-direction: row;
-      gap: var(--space-sm);
+      gap: var(--space-xs);
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+    }
+
+    .check-icon {
+      width: 9px;
+      height: 9px;
+    }
+
+    .progress-dot.active .dot {
+      transform: scale(1.3);
     }
 
     .label-container {
@@ -406,6 +412,10 @@
     }
 
     .sub-steps {
+      display: none;
+    }
+
+    .scroll-nav-button {
       display: none;
     }
   }

@@ -248,6 +248,19 @@
     margin: var(--space-md, 1rem) 0;
   }
 
+  .panel-content :global(.reference a),
+  .panel-content :global(a) {
+    color: var(--color-terracotta, #BF5B3E);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .panel-content :global(.reference a:hover),
+  .panel-content :global(a:hover) {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
   .panel-footer {
     padding: var(--space-md, 1rem) var(--space-lg, 1.5rem);
     border-top: 1px solid rgba(96, 125, 139, 0.2);

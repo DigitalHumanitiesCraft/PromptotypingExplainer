@@ -150,18 +150,18 @@
     };
   });
 
-  // Tag colors
+  // Tag colors - harmonisches Farbspektrum basierend auf Design-Farben
   const tagColors = {
-    'prompting': '#3B82F6',
-    'ai-engineering': '#8B5CF6',
-    'fundamentals': '#607D8B',
-    'architecture': '#059669',
-    'safety': '#DC2626',
-    'training': '#D97706',
-    'agents': '#EC4899',
-    'evaluation': '#6366F1',
-    'methodology': '#14B8A6',
-    'theory': '#8B5CF6'
+    'prompting': '#7A9BA8',      // helles slate-blau
+    'ai-engineering': '#8B7355', // warmes braun
+    'fundamentals': '#607D8B',   // slate (Hauptfarbe)
+    'architecture': '#5D8A7D',   // gedämpftes grün
+    'safety': '#A67C7C',         // gedämpftes rot
+    'training': '#9A8B7A',       // sandfarben
+    'agents': '#8B7B8B',         // gedämpftes lila
+    'evaluation': '#7B8B9A',     // blaugrau
+    'methodology': '#7A9A8B',    // graugrün
+    'theory': '#8A7B6A'          // erdbraun
   };
 </script>
 
@@ -229,7 +229,17 @@
         </div>
         <div class="popover-meta">
           {#if entry.source}
-            <span class="popover-source">{entry.source}</span>
+            <a
+              href="/bibliographie#{entry.source.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}"
+              class="popover-source-link"
+              on:click|stopPropagation
+            >
+              <svg class="source-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              {entry.source}
+            </a>
           {/if}
           {#if entry.link}
             <a
@@ -454,10 +464,25 @@
     gap: var(--space-sm);
   }
 
-  .popover-source {
+  .popover-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-size: 0.7rem;
     color: var(--color-slate);
     font-style: italic;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .popover-source-link:hover {
+    color: var(--color-terracotta);
+  }
+
+  .source-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
   }
 
   .popover-link {

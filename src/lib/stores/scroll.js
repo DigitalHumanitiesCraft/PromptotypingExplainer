@@ -1,10 +1,15 @@
 import { writable, derived } from 'svelte/store';
 
+// Konstanten
+const SCROLL_DELAY_MS = 100;
+const INITIAL_PHASE = 0;
+const INITIAL_STEP = 0;
+
 // Aktuelle Phase (0-5: Intro, Phase1, Phase2, Phase3, Phase4, Outro)
-export const currentPhase = writable(0);
+export const currentPhase = writable(INITIAL_PHASE);
 
 // Aktueller Step innerhalb der Phase
-export const currentStep = writable(0);
+export const currentStep = writable(INITIAL_STEP);
 
 // Step-Struktur: Definiert alle Steps pro Phase
 export const stepStructure = [
@@ -176,7 +181,7 @@ export function scrollToHash() {
   if (element) {
     setTimeout(() => {
       element.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    }, SCROLL_DELAY_MS);
     return;
   }
 
@@ -208,7 +213,7 @@ export function scrollToHash() {
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
-  }, 100);
+  }, SCROLL_DELAY_MS);
 }
 
 /**

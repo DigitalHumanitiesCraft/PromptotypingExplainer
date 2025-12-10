@@ -2,6 +2,56 @@
 
 Arbeitstagbuch zur Entwicklung der Scrollytelling-Website.
 
+## 2025-12-10: CSS-Refactoring, JS-Refactoring & Build-Optimierungen
+
+### Tasks
+- CSS-Variablen in app.css konsolidiert und erweitert
+- JavaScript-Refactoring in glossary.js und scroll.js
+- Vite Build-Konfiguration optimiert
+- Tag-Farben in GlossaryTerm harmonisiert
+- Hyperlink-Farben in DeepDivePanel korrigiert
+- ProgressIndicator Positionierung und Textgröße angepasst
+
+### Ergebnisse
+
+**CSS-Refactoring (app.css):**
+- Neue Variablen: `--color-slate-light`, `--color-slate-muted`, `--color-terracotta-dark`, `--color-terracotta-light`, `--color-background`
+- Shadow-System: `--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--shadow-xl`
+- Breakpoint-Dokumentation: `--breakpoint-mobile` (767px), `--breakpoint-tablet` (1100px)
+- Syntax Highlighting: `--color-syntax-keyword`, `--color-syntax-function`, `--color-syntax-string`
+- Duplikate entfernt, hardcoded Werte durch Variablen ersetzt
+
+**JS-Refactoring (glossary.js):**
+- `termToId` wird jetzt automatisch aus `glossary`-Objekt generiert
+- 70+ Zeilen manuelle Mappings durch Auto-Generierung ersetzt
+- Nur Sonderfälle (Aliase wie "sprachmodell" → "llm") bleiben manuell
+
+**JS-Refactoring (scroll.js):**
+- Magic Numbers als Konstanten: `SCROLL_DELAY_MS = 100`, `INITIAL_PHASE = 0`, `INITIAL_STEP = 0`
+
+**Vite Build-Optimierungen (vite.config.js):**
+- `minify: 'esbuild'` für schnellere Builds
+- `sourcemap: false` für kleinere Production-Bundles
+- `manualChunks`: vendor (svelte), data (glossary.js, bibliography.js) für besseres Caching
+
+**GlossaryTerm Tag-Farben:**
+- Neue harmonische Farbpalette basierend auf Slate/Terracotta
+- prompting: #7A9BA8, ai-engineering: #8B7355, agents: #8B7B8B, etc.
+
+**DeepDivePanel Hyperlinks:**
+- Links in `.reference` und `.panel-content` jetzt in Terracotta statt Browser-Blau
+
+**ProgressIndicator:**
+- Position: `right: 80px` (war variabel)
+- Textgröße: `.label` und `.step-label` auf `1rem`
+
+### Entscheidungen
+- Auto-Generierung für termToId reduziert Wartungsaufwand
+- Harmonische Tag-Farben statt zufällige Farben für bessere visuelle Konsistenz
+- Vite Chunk-Splitting verbessert Caching bei wiederholten Besuchen
+
+---
+
 ## 2025-12-08 Nacht: Icon-System, Scroll-Navigation & Case Study Links
 
 ### Tasks

@@ -86,6 +86,10 @@ Der scroll.js Store exportiert:
 - scrollToStep(stepId) – Navigation zu einem Step
 - updateHash() – URL-Synchronisation
 
+Konstanten:
+- SCROLL_DELAY_MS = 100 (Verzögerung für smooth scroll)
+- INITIAL_PHASE = 0, INITIAL_STEP = 0 (Startwerte)
+
 URL-Format: #intro-definition, #phase1-rohdaten etc.
 
 ---
@@ -94,7 +98,7 @@ URL-Format: #intro-definition, #phase1-rohdaten etc.
 
 phases.js definiert stepStructure mit 6 Phasen (intro, phase1-4, outro), jeweils mit id, label und steps-Array. Jeder Step hat id und label.
 
-glossary.js enthält 20+ AI/LLM-Begriffe mit term, en (englisch), definition, tags und source.
+glossary.js enthält 20+ AI/LLM-Begriffe mit term, en (englisch), definition, tags und source. Das termToId-Mapping wird automatisch aus dem glossary-Objekt generiert, mit zusätzlichen manuellen Aliasen für Sonderfälle (z.B. "sprachmodell" → "llm").
 
 deep-dives.js enthält HTML-Strings für Vertiefungen: system-1-42 (LLM-Grundlagen), vibe-coding-critique (Karpathy/tante), scholar-centered-design, context-engineering, llm-retrieval (Chollet/Hochreiter/Kambhampati), prompting-strategies, critical-expert, limitations.
 
@@ -108,6 +112,13 @@ prompts.js enthält Chat-Dialoge für Phase 4 mit type (human/llm/error) und tex
 
 Farben: Slate (#607D8B) für kaltes Gegebenes, Terracotta (#BF5B3E) für Prozesshitze.
 
+Zusätzliche CSS-Variablen:
+- `--color-slate-light`, `--color-slate-muted` – Transparente Slate-Varianten
+- `--color-terracotta-dark`, `--color-terracotta-light` – Terracotta-Varianten
+- `--color-background` (#E8E8E8) – Hintergrundfarbe
+- `--shadow-sm/md/lg/xl` – Schattenabstufungen
+- `--color-syntax-*` – Code Syntax Highlighting
+
 Typografie: Inter (Sans), JetBrains Mono (Mono).
 
 Spacing: --space-xs bis --space-xl.
@@ -117,6 +128,10 @@ Animationen: --duration-fast/normal/slow, --ease-out, --ease-in-out.
 Globale Utility-Klassen:
 - `.text-card` – Weiße Lesefläche mit Schatten, inkl. p-Styling und strong in Terracotta
 - `.promptotyping` – Marken-Wort-Styling (Mono, Bold, Terracotta)
+- `.example-block` – Slate-akzentuierte Beispielboxen
+- `.context-rot-box`, `.warning-box` – Terracotta-akzentuierte Hinweisboxen
+- `.deep-dive-row`, `.deep-dive-triggers` – Container für Deep Dive Buttons
+- `.side-by-side` – Grid-Layout für Text-Bild-Kombinationen
 
 Bei prefers-reduced-motion werden Animationen minimiert.
 
@@ -124,7 +139,13 @@ Bei prefers-reduced-motion werden Animationen minimiert.
 
 ## Build-Konfiguration
 
-vite.config.js: svelte Plugin, base: /PromptotypingExplainer/, outDir: docs.
+vite.config.js:
+- svelte Plugin
+- base: /PromptotypingExplainer/
+- outDir: docs
+- minify: esbuild (schnellere Builds)
+- sourcemap: false (kleinere Bundles)
+- manualChunks: vendor (svelte), data (glossary.js, bibliography.js) für besseres Caching
 
 package.json: dev, build, preview Scripts. Dependencies: Svelte (Runtime), marked (Markdown-Rendering für About).
 
@@ -147,8 +168,9 @@ GitHub Actions: Bei Push auf main wird gebaut und nach docs/ deployed.
 Siehe [journal.md](journal.md) für vollständiges Arbeitstagbuch.
 
 Letzte Updates:
-- 2025-12-07 Nacht: CSS-Refactoring (.text-card, .promptotyping global), Untertitel "Context Engineering: Vom Wissen zum Werkzeug"
-- 2025-12-07 Nacht: AnimatedChat für Phase 4, Meta-Beispiel, vollständiger Reasoning-Zyklus
-- 2025-12-07 Abend: About-Seite, System 1.42 Deep Dive, "Strange New Minds" im Intro, UI-Fixes
-- 2025-12-07: GSAP entfernt, Step-Architektur, ProgressIndicator redesign
+- 2025-12-10: CSS-Refactoring (neue Variablen, Shadows, Breakpoints), JS-Refactoring (auto-generiertes termToId, Konstanten in scroll.js), Vite Build-Optimierungen (manualChunks, esbuild)
+- 2025-12-08 Nacht: Icon-System, Scroll-Navigation, Phase1Datenqualitaet Step
+- 2025-12-08: Scholar-Centered Design Step, Content-Synchronisation, Deep Dives
+- 2025-12-07 Nacht: CSS-Refactoring (.text-card, .promptotyping global), AnimatedChat
+- 2025-12-07: About-Seite, System 1.42 Deep Dive, Step-Architektur
 - 2025-12-06: Svelte + GSAP Setup, alle Szenen implementiert

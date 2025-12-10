@@ -8,6 +8,8 @@ export default defineConfig({
   build: {
     outDir: 'docs',
     emptyOutDir: true,
+    minify: 'esbuild',
+    sourcemap: false,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
@@ -16,6 +18,15 @@ export default defineConfig({
         glossar: resolve(__dirname, 'glossar.html'),
         bibliographie: resolve(__dirname, 'bibliographie.html'),
       },
+      output: {
+        manualChunks: {
+          'vendor': ['svelte'],
+          'data': [
+            './src/lib/data/glossary.js',
+            './src/lib/data/bibliography.js'
+          ]
+        }
+      }
     },
   },
 })

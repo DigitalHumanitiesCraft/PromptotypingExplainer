@@ -4,20 +4,27 @@
    ============================================ */
 
 :root {
-  /* Farben */
+  /* Farben - Hauptpalette */
   --color-slate: #607D8B;
+  --color-slate-light: rgba(96, 125, 139, 0.1);
+  --color-slate-muted: rgba(96, 125, 139, 0.6);
   --color-terracotta: #BF5B3E;
+  --color-terracotta-dark: #a04d34;
+  --color-terracotta-light: rgba(191, 91, 62, 0.1);
   --color-white: #FFFFFF;
   --color-black: #1A1A1A;
+  --color-background: #E8E8E8;
+
+  /* Semantische Farben */
   --color-success: #4CAF50;
   --color-error: #E53935;
   --color-progress: #FF9800;
 
   /* Code Syntax Highlighting */
-  --color-code-keyword: #7c3aed;
-  --color-code-function: #2563eb;
-  --color-code-string: #16a34a;
-  --color-code-bg: #f5f5f5;
+  --color-syntax-keyword: #7c3aed;
+  --color-syntax-function: #2563eb;
+  --color-syntax-string: #16a34a;
+  --color-syntax-bg: #f5f5f5;
 
   /* Typografie */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -29,6 +36,16 @@
   --space-md: 1rem;
   --space-lg: 2rem;
   --space-xl: 4rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 4px 24px rgba(0, 0, 0, 0.15);
+
+  /* Breakpoints (für Dokumentation, in @media nicht als var nutzbar) */
+  --breakpoint-mobile: 767px;
+  --breakpoint-tablet: 1100px;
 
   /* Animation */
   --duration-fast: 300ms;
@@ -58,26 +75,20 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-black);
-  background-color: #E8E8E8;
+  background-color: var(--color-background);
   overflow-x: hidden;
   /* GPU acceleration for smoother scrolling */
   -webkit-overflow-scrolling: touch;
 }
 
-/* Force GPU compositing for phase containers */
-.phase {
-  contain: layout style paint;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
 
 /* Reusable Content Blocks */
 .text-card {
-  background: white;
+  background: var(--color-white);
   padding: var(--space-lg);
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  max-width: 900px;
+  box-shadow: var(--shadow-md);
+  max-width: 1050px;
 }
 
 .text-card p {
@@ -151,14 +162,10 @@ code, .mono {
   align-items: center;
   justify-content: center;
   padding: var(--space-lg);
-  padding-right: 220px; /* Space for right navigation panel */
-}
-
-@media (max-width: 767px) {
-  .phase {
-    padding-right: var(--space-lg);
-    padding-bottom: 80px; /* Space for bottom navigation on mobile */
-  }
+  /* GPU compositing for smoother scrolling */
+  contain: layout style paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Utility Classes */
@@ -226,7 +233,7 @@ code, .mono {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .side-by-side figcaption {
@@ -261,7 +268,7 @@ code, .mono {
 
 .example-block {
   margin-top: var(--space-lg);
-  background: rgba(96, 125, 139, 0.06);
+  background: var(--color-slate-light);
   padding: var(--space-md);
   border-radius: 8px;
   border-left: 3px solid var(--color-slate);
@@ -277,9 +284,10 @@ code, .mono {
 }
 
 .example-block p {
-  font-size: 0.85rem !important;
-  color: var(--color-slate) !important;
+  font-size: 0.85rem;
+  color: var(--color-slate);
   line-height: 1.6;
+  margin: 0;
 }
 
 /* ============================================
@@ -290,7 +298,7 @@ code, .mono {
 .context-rot-box,
 .warning-box {
   max-width: 650px;
-  background: rgba(191, 91, 62, 0.06);
+  background: var(--color-terracotta-light);
   padding: var(--space-md) var(--space-lg);
   border-radius: 8px;
   border-left: 3px solid var(--color-terracotta);

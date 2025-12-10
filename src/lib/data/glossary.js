@@ -251,73 +251,51 @@ export const glossary = {
   }
 };
 
-// Mapping von Begriffen zu IDs für einfacheres Matching
-export const termToId = {
-  'context engineering': 'context-engineering',
-  'llm': 'llm',
-  'large language model': 'llm',
+// Auto-generiertes Mapping von Begriffen zu IDs
+// Erstellt aus glossary: term, en, und id
+export const termToId = Object.fromEntries(
+  Object.entries(glossary).flatMap(([id, entry]) => {
+    const terms = [
+      id,
+      entry.term?.toLowerCase(),
+      entry.en?.toLowerCase(),
+      // Varianten ohne Bindestriche
+      id.replace(/-/g, ' '),
+      entry.term?.toLowerCase().replace(/-/g, ' '),
+    ].filter(Boolean);
+
+    // Deduplizieren und zurückgeben
+    return [...new Set(terms)].map(term => [term, id]);
+  })
+);
+
+// Zusätzliche manuelle Aliase für Sonderfälle
+const additionalAliases = {
   'sprachmodell': 'llm',
-  'context window': 'context-window',
   'kontextfenster': 'context-window',
-  'context rot': 'context-rot',
-  'in-context learning': 'in-context-learning',
-  'prompt engineering': 'prompt-engineering',
-  'chain of thought': 'chain-of-thought',
   'cot': 'chain-of-thought',
-  'sycophancy': 'sycophancy',
   'halluzination': 'halluzinationen',
-  'halluzinationen': 'halluzinationen',
   'konfabulation': 'halluzinationen',
-  'rag': 'rag',
-  'retrieval augmented generation': 'rag',
-  'token': 'token',
   'tokens': 'token',
-  'system prompt': 'system-prompt',
-  'system-prompt': 'system-prompt',
-  'few-shot': 'few-shot',
   'zero-shot': 'few-shot',
-  'tool use': 'tool-use',
   'function calling': 'tool-use',
-  'ai agent': 'ai-agent',
   'agent': 'ai-agent',
-  'agentic ai': 'agentic-ai',
   'agentic': 'agentic-ai',
-  'mcp': 'mcp',
-  'model context protocol': 'mcp',
-  'alignment': 'alignment',
-  'fine-tuning': 'fine-tuning',
   'finetuning': 'fine-tuning',
-  'embedding': 'embedding',
   'embeddings': 'embedding',
-  'latent space': 'latent-space',
   'latenter raum': 'latent-space',
-  'vibe check': 'vibe-check',
-  'vibe-check': 'vibe-check',
-  'system 1.42': 'system-142',
   'system142': 'system-142',
-  'critical expert': 'critical-expert',
-  'critical expert in the loop': 'critical-expert',
   'vault': 'promptotyping-vault',
-  'promptotyping vault': 'promptotyping-vault',
-  'promptotyping documents': 'promptotyping-documents',
   'promptotyping document': 'promptotyping-documents',
   'data.md': 'promptotyping-documents',
   'requirements.md': 'promptotyping-documents',
   'context.md': 'promptotyping-documents',
-  'prompt': 'prompt',
-  'prototyping': 'prototyping',
-  'frontier model': 'frontier-model',
-  'frontier-model': 'frontier-model',
   'frontier models': 'frontier-model',
   'frontier-llm': 'frontier-model',
   'frontier-llms': 'frontier-model',
-  'vibe coding': 'vibe-coding',
-  'vibe-coding': 'vibe-coding',
-  'correspexplorer': 'correspexplorer',
   'corresp explorer': 'correspexplorer',
-  'cmif': 'cmif',
   'cmif-xml': 'cmif',
-  'correspondence metadata interchange format': 'cmif',
-  'correspsearch': 'correspsearch',
-  'corresp search': 'correspsearch'
+  'corresp search': 'correspsearch',
 };
+
+Object.assign(termToId, additionalAliases);
