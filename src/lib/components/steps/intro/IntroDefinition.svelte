@@ -11,14 +11,15 @@
 
   <div class="text-card">
     <p>
-      <span class="promptotyping">Promptotyping</span> ist eine strukturierte Methode zur forschungsdatengetriebenen
-      Entwicklung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-<GlossaryTerm id="llm">LLMs</GlossaryTerm>. Das vierphasige Prozessmodell formalisiert, wie Domänenwissen für die LLM-gestützte Iteration aufbereitet und validiert wird.
+      <span class="promptotyping">Promptotyping</span> ist eine <GlossaryTerm id="context-engineering">Context-Engineering</GlossaryTerm>-Arbeitstechnik,
+      die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte
+      mittels <GlossaryTerm id="frontier-model">Frontier-LLMs</GlossaryTerm> ermöglicht.
     </p>
 
     <p>
       Der Name verbindet <GlossaryTerm id="prompt">Prompt</GlossaryTerm> (die Eingabe an ein LLM) mit
       <GlossaryTerm id="prototyping">Prototyping</GlossaryTerm> (iterative Entwicklung von Funktionsmustern).
-      Die Methode ist nicht abgeschlossen, sondern entwickelt sich mit den Möglichkeiten der Frontier-LLMs weiter.
+      Die Arbeitstechnik entwickelt sich mit den Möglichkeiten der Frontier-LLMs und neuen Erkenntnissen zu Context Engineering weiter.
     </p>
   </div>
 </div>

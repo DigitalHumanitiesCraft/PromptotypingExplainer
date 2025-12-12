@@ -38,6 +38,7 @@ Die Fallbeispiele dienen dazu:
 | Kriminalmuseum | Dual-Interface | ~10h | 3 | [Demo](https://chpollin.github.io/km/collection-explorer.html) |
 | Lucina Edition | Digitale Edition | ~25h | 11+ | [Demo](https://chpollin.github.io/diged-neolat/edition-5/web/) |
 | REALonline v2 | Verbesserte Version | ~8h | 7 | [Demo](https://chpollin.github.io/imareal-room-object) |
+| CorrespExplorer | Briefkorrespondenzen | ~15h | 5 | [Demo](https://dhcraft.org/CorrespExplorer) |
 
 **Repositories:** Alle Projekte sind Open Source unter [github.com/chpollin](https://github.com/chpollin) und [github.com/DigitalHumanitiesCraft](https://github.com/DigitalHumanitiesCraft) verfügbar.
 

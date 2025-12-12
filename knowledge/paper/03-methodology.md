@@ -8,7 +8,7 @@
 
 ### Definition
 
-> Promptotyping ist ein dreiebenes Framework für die methodisch strukturierte KI-gestützte Entwicklung digitaler Forschungswerkzeuge. Es integriert technisches Prompt Engineering, methodisches Requirements Engineering und epistemische Reflexion systematisch.
+> Promptotyping ist eine Context-Engineering-Arbeitstechnik, die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte mittels Frontier-LLMs ermöglicht.
 
 ### Context Engineering: Eine Arbeitsdefinition
 

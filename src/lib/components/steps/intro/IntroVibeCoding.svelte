@@ -36,15 +36,15 @@
         </svg>
       </div>
       <p class="tweet-text">
-        There's a new kind of coding I call <strong>"vibe coding"</strong>, where you fully give in to the vibes,
-        embrace exponentials, and forget that the code even exists. It's possible because the LLMs (e.g. Cursor
+        There's a new kind of coding I call <strong>"vibe coding"</strong>, where you <mark>fully give in to the vibes</mark>,
+        embrace exponentials, and <mark>forget that the code even exists</mark>. It's possible because the LLMs (e.g. Cursor
         Composer w Sonnet) are getting too good. Also I just talk to Composer with SuperWhisper so I barely even
         touch the keyboard. I ask for the dumbest things like "decrease the padding on the sidebar by half" because
-        I'm too lazy to find it. I "Accept All" always, I don't read the diffs anymore. When I get error messages
-        I just copy paste them in with no comment, usually that fixes it. The code grows beyond my usual comprehension,
-        I'd have to really read through it for a while. Sometimes the LLMs can't fix a bug so I just work around it
-        or ask for random changes until it goes away. It's not too bad for throwaway weekend projects, but still
-        quite amusing. I'm building a project or webapp, but it's not really coding - I just see stuff, say stuff,
+        I'm too lazy to find it. <mark>I "Accept All" always, I don't read the diffs anymore.</mark> When I get error messages
+        I just copy paste them in with no comment, usually that fixes it. <mark>The code grows beyond my usual comprehension</mark>,
+        I'd have to really read through it for a while. Sometimes the LLMs can't fix a bug so I just <mark>work around it
+        or ask for random changes until it goes away</mark>. It's not too bad for throwaway weekend projects, but still
+        quite amusing. I'm building a project or webapp, but <mark>it's not really coding</mark> - I just see stuff, say stuff,
         run stuff, and copy paste stuff, and it mostly works.
       </p>
       <div class="tweet-footer">
@@ -149,6 +149,13 @@
 
   .tweet-text strong {
     color: var(--color-terracotta) !important;
+  }
+
+  .tweet-text mark {
+    background: linear-gradient(120deg, rgba(255, 235, 59, 0.35) 0%, rgba(255, 193, 7, 0.35) 100%);
+    padding: 0.05em 0.2em;
+    border-radius: 3px;
+    color: inherit;
   }
 
   .tweet-footer {

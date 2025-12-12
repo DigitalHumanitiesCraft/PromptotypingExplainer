@@ -32,7 +32,7 @@ Dieses Paper stellt Promptotyping als strukturierte Methodik für die LLM-gestü
 
 ### Definition
 
-Promptotyping ist eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-LLMs.
+Promptotyping ist eine Context-Engineering-Arbeitstechnik, die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte mittels Frontier-LLMs ermöglicht.
 
 ### Das vierphasige Modell
 

@@ -35,7 +35,7 @@ Promptotyping ist der Versuch, dieses Wissen systematisch an LLMs zu kommunizier
 
 ### Definition
 
-Promptotyping ist eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-LLMs.
+Promptotyping ist eine Context-Engineering-Arbeitstechnik, die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte mittels Frontier-LLMs ermöglicht.
 
 ### Anwendungsbereich
 
@@ -43,7 +43,7 @@ Obwohl die Methodik ihren Ursprung in den Digital Humanities hat, sind ihre Mech
 
 ### Kernprinzip
 
-Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
+Das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte durch iterative Mensch-LLM-Kollaboration.
 
 ### Theoretischer Rahmen: Co-Intelligence
 
@@ -127,7 +127,7 @@ Scholar-Centered Design & Digital Humanities:
 ### Phase 1: Preparation
 
 Narrativ:
-Sammlung aller relevanten Rohmaterialien. Forschungsdaten (.doc, .xml, PDFs, CSV), Dokumentation zu Standards und Modellen (Editionsrichtlinien, Schemata), Forschungsfragen und Domänenwissen.
+Sammlung aller relevanten Rohmaterialien. Forschungsdaten (.doc, .xml, PDFs, CSV), Dokumentation zu Standards und Modellen (Editionsrichtlinien, Schemata), Forschungsfragen und Domänenwissen. Diese Phase zwingt zur präzisen Artikulation der Projektziele.
 
 Artefakte:
 Rohdateien - keine .md Dokumente. Das Rohmaterial ist der Input für die späteren Phasen.
@@ -159,15 +159,18 @@ Artefakte (der Promptotyping Vault):
 - REQUIREMENTS.md: Formalisierte Anforderungen mit MUSS/SOLL/KANN-Priorisierung
 - CONTEXT.md: Domänenwissen, Forschungsfragen, Projektziele
 
+Reproduzierbarkeit:
+Ein anderer Forschender mit denselben Promptotyping-Dokumenten und demselben LLM sollte zu vergleichbaren Ergebnissen kommen. Die Dokumente externalisieren das implizite Projektwissen und machen es übertragbar.
+
 ---
 
 ### Phase 4: Implementation
 
 Narrativ:
-Der eigentliche Promptotyping-Dialog beginnt. Das LLM erhält die destillierten .md-Dokumente und generiert Code. Der Mensch validiert, gibt Feedback, lässt nachbessern. Jede Iteration produziert einen neuen Prototype.
+Der eigentliche Promptotyping-Dialog beginnt. Das LLM erhält die destillierten .md-Dokumente und generiert Code. Der Mensch validiert, gibt Feedback, lässt nachbessern. Jede Iteration produziert einen neuen Prototype. Tools wie Claude Code ermöglichen dabei direkten Dateisystem-Zugriff.
 
 Artefakte:
-- Prototype(n): Lauffähiger Code (jede Iteration = neuer Prototype)
+- Prototype(n): Lauffähiger Code (jede Iteration = neuer Prototype, jeder Git-Commit = Snapshot)
 - Vault-Updates: Die .md Files werden mit neuem Wissen aktualisiert
 
 Critical Expert in the Loop:

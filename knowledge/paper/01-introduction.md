@@ -14,7 +14,7 @@ Diese Untersuchung adressiert drei praktische Fragenkomplexe. Erstens: Wie struk
 
 ## 1.3 Promptotyping als Lösungsansatz
 
-Promptotyping ist eine Context-Engineering-Methode für die schnelle, forschungsdatengetriebene Erstellung von Prototypen für Forschungstools, Workflows und Modelle mittels Frontier-LLMs – eine strukturierte Arbeitstechnik, die Context- und Requirements Engineering in einem vierphasigen Prozessmodell (Preparation, Exploration, Destillation, Implementation) synthetisiert. Es dient dazu, intuitiven Ansätzen wie dem Vibe Coding die für Forschungskontexte notwendige Strenge zu verleihen, ist jedoch explizit als exploratives Framework zu verstehen.
+Promptotyping ist eine Context-Engineering-Arbeitstechnik, die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte mittels Frontier-LLMs ermöglicht. Ein vierphasiges Prozessmodell (Preparation, Exploration, Destillation, Implementation) strukturiert die Arbeit. Es dient dazu, intuitiven Ansätzen wie dem Vibe Coding die für Forschungskontexte notwendige Strenge zu verleihen, ist jedoch explizit als exploratives Framework zu verstehen.
 
 Mollick beobachtet, dass sich die Rolle des Menschen verschiebt: vom Korrigieren von KI-Fehlern zum Steuern von KI-Arbeit (Mollick, 2025). Der "Critical Expert in the Loop" geht einen Schritt weiter. Der Mensch prüft nicht nur, ob das Ergebnis korrekt ist, sondern ob es fachlich angemessen ist. Er erkennt Sycophancy, prüft auf Konfabulationen und bringt das Domänenwissen ein, das LLMs strukturell fehlt.
 

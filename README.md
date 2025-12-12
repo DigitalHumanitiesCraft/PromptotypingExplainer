@@ -6,9 +6,9 @@ Scrollytelling-Website zur Erklärung der **Promptotyping**-Methodik für LLM-ge
 
 ## Was ist Promptotyping?
 
-> Das Mapping von semantisch reichhaltigen Forschungsdaten und explizitem Forschungskontext auf funktionale Interfaces durch iterative Mensch-LLM-Kollaboration.
+> **Promptotyping** ist eine Context-Engineering-Arbeitstechnik, die das Mapping von semantischen Forschungsdaten und explizitem Forschungskontext auf Forschungsartefakte mittels Frontier-LLMs ermöglicht.
 
-Promptotyping ist eine vierphasige Methodik:
+Ein vierphasiges Prozessmodell strukturiert die Arbeit:
 
 1. **Vorbereitung** – Materialsammlung
 2. **Exploration** – Datenanalyse
