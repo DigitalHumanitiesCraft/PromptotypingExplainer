@@ -63,12 +63,18 @@ src/
 │   │   ├── Glossary.svelte       # Glossar-Übersicht (alphabetisch)
 │   │   ├── Bibliography.svelte   # Bibliographie mit APA-Zitaten
 │   │   ├── steps/                # Step-Komponenten pro Phase
-│   │   │   ├── intro/            # Definition, Vibe Coding, Strange New Minds, Kernprinzip, Critical Expert, Scholar-Centered, Phasen
-│   │   │   ├── phase1/           # Titel, Rohdaten, Sammlung
+│   │   │   ├── intro/            # Definition, Vibe Coding, Strange New Minds, Kernprinzip, Methodik, Scholar-Centered, Phasen
+│   │   │   ├── phase1/           # Titel, Datenqualität, Sammlung
 │   │   │   ├── phase2/           # Exploration
 │   │   │   ├── phase3/           # Titel, Dokumente, Vault
-│   │   │   ├── phase4/           # Titel, Iteration, Vault-Update
+│   │   │   ├── phase4/           # Titel, Iteration, Journal, Versionierung, Vault-Update
 │   │   │   └── outro/            # Beispiele, Diskussion, Zusammenfassung
+│   │   ├── pages/                # Seiten-Layouts
+│   │   │   ├── PageLayout.svelte
+│   │   │   ├── AboutPage.svelte
+│   │   │   ├── VaultPage.svelte
+│   │   │   ├── GlossarPage.svelte
+│   │   │   └── BibliographiePage.svelte
 │   │   ├── elements/             # Wiederverwendbare UI-Elemente
 │   │   │   ├── DocumentIcon.svelte
 │   │   │   ├── EntityIcon.svelte
@@ -76,6 +82,9 @@ src/
 │   │   │   ├── ChatBubble.svelte
 │   │   │   ├── BrowserFrame.svelte
 │   │   │   ├── AnimatedChat.svelte   # Loop-Animation des Reasoning-Zyklus
+│   │   │   ├── CodePreview.svelte
+│   │   │   ├── ConnectionLine.svelte
+│   │   │   ├── Icon.svelte
 │   │   │   └── DeepDiveTrigger.svelte
 │   │   └── blocks/               # Extrahierte Komponenten
 │   │       ├── SceneHeader.svelte
@@ -86,6 +95,7 @@ src/
 │   │   ├── bibliography.js       # Bibliographie-Einträge (APA)
 │   │   ├── deep-dives.js         # Deep Dive Inhalte
 │   │   ├── vault-structure.js    # Vault-Dateistruktur für Viewer
+│   │   ├── case-studies.js       # Fallstudien und Beispiele
 │   │   └── prompts.js            # Chat-Dialoge für Phase 4
 │   └── stores/
 │       ├── scroll.js             # Svelte Stores für Progress/Phase/Step
@@ -102,8 +112,9 @@ Die Wissensbasis für dieses Projekt liegt in `knowledge/`:
 | `knowledge.md` | Inhalt, Visual System, Scroll-Logic |
 | `requirements.md` | Zielgruppen, User Stories, Constraints |
 | `implementation.md` | Technische Details |
+| `design.md` | Design System Details |
 | `journal.md` | Entwicklungstagebuch |
-| `paper/` | Methodenpaper (Kapitel 01-07) |
+| `paper/` | Methodenpaper (Kapitel 00-07) |
 
 ## Design System
 

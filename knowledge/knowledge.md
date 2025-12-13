@@ -7,8 +7,8 @@ Destilliertes Wissen für die Entwicklung einer Scrollytelling-Webseite, die den
 Weitere Dokumente im Vault:
 - [requirements.md](requirements.md) – Zielgruppen, User Stories, technische Constraints
 - [implementation.md](implementation.md) – Tech Stack, Komponenten-Architektur
+- [design.md](design.md) – Design System Details
 - [journal.md](journal.md) – Arbeitstagbuch, Entscheidungen, Learnings
-- [WEBSITE-OUTLINE.md](WEBSITE-OUTLINE.md) – Scrollytelling-Struktur
 - [paper/](paper/) – Akademische Dokumentation der Methodik
 
 ---

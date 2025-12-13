@@ -20,11 +20,9 @@ Dieses Paper stellt Promptotyping als strukturierte Methodik für die LLM-gestü
 - 2: [02-theoretical-foundation.md](02-theoretical-foundation.md) – Theoretische Grundlagen, Co-Intelligence
 - 3: [03-methodology.md](03-methodology.md) – Das vierphasige Entwicklungsmodell, Critical Expert in the Loop
 - 4: [04-scholar-centered-design.md](04-scholar-centered-design.md) – UCD/SCD-Synthese, Knowledge Acquisition Methoden
-- 5: [05-empirical-evidence.md](05-empirical-evidence.md) – Fallstudien, Workshop-Validierung
+- 5: [05-case-studies.md](05-case-studies.md) – Fallstudien, Workshop-Validierung
 - 6: [06-critical-reflection.md](06-critical-reflection.md) – Blinde Flecken, Limitationen
 - 7: [07-references.md](07-references.md) – Vollständiges Literaturverzeichnis
-- A: [appendix-a-templates.md](appendix-a-templates.md) – Journal-Template, Projektstruktur
-- B: [appendix-b-prompts.md](appendix-b-prompts.md) – Beispiel-Prompts für jede Phase
 
 ---
 
